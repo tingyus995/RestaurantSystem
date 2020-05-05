@@ -29,18 +29,21 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.pnActiveIndicator = new System.Windows.Forms.Panel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.ibOrder = new FontAwesome.Sharp.IconButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbShopName = new System.Windows.Forms.Label();
             this.pnTitle = new System.Windows.Forms.Panel();
             this.lbTitle = new System.Windows.Forms.Label();
             this.pnContainer = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.pnTitle.SuspendLayout();
             this.pnContainer.SuspendLayout();
@@ -49,6 +52,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.panel1.Controls.Add(this.iconButton4);
             this.panel1.Controls.Add(this.pnActiveIndicator);
             this.panel1.Controls.Add(this.iconButton3);
             this.panel1.Controls.Add(this.iconButton2);
@@ -60,6 +64,44 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(250, 561);
             this.panel1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(78, 66);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.iconButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(93)))), ((int)(((byte)(119)))));
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.iconButton4.ForeColor = System.Drawing.Color.White;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Tools;
+            this.iconButton4.IconColor = System.Drawing.Color.White;
+            this.iconButton4.IconSize = 32;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.Location = new System.Drawing.Point(0, 266);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(6);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(250, 50);
+            this.iconButton4.TabIndex = 11;
+            this.iconButton4.Text = "系統設定";
+            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton4.UseVisualStyleBackColor = false;
             // 
             // pnActiveIndicator
             // 
@@ -179,12 +221,24 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.lbShopName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(250, 66);
             this.panel2.TabIndex = 0;
+            // 
+            // lbShopName
+            // 
+            this.lbShopName.AutoSize = true;
+            this.lbShopName.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbShopName.ForeColor = System.Drawing.Color.White;
+            this.lbShopName.Location = new System.Drawing.Point(84, 24);
+            this.lbShopName.Name = "lbShopName";
+            this.lbShopName.Size = new System.Drawing.Size(96, 26);
+            this.lbShopName.TabIndex = 0;
+            this.lbShopName.Text = "店家名稱";
             // 
             // pnTitle
             // 
@@ -217,17 +271,6 @@
             this.pnContainer.Size = new System.Drawing.Size(849, 495);
             this.pnContainer.TabIndex = 8;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(45, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "店家名稱";
-            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -253,6 +296,7 @@
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnTitle.ResumeLayout(false);
@@ -274,7 +318,9 @@
         private System.Windows.Forms.Panel pnTitle;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel pnContainer;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbShopName;
         private System.Windows.Forms.Label label2;
+        private FontAwesome.Sharp.IconButton iconButton4;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

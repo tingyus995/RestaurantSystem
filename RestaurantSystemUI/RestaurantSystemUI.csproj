@@ -54,8 +54,12 @@
     <Reference Include="FontAwesome.Sharp, Version=5.12.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.12.1\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="LiteDB, Version=5.0.7.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.5.0.7\lib\net45\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,58 +71,97 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="modules\CategoryItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\CategoryItem.Designer.cs">
+      <DependentUpon>CategoryItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorTheme.cs" />
+    <Compile Include="controls\FlatNumericUpDown.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\FlatNumericUpDown.Designer.cs">
+      <DependentUpon>FlatNumericUpDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\FlatTextbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\FlatTextbox.Designer.cs">
+      <DependentUpon>FlatTextbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IThemeable.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Order.cs">
+    <Compile Include="modules\Order.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Order.Designer.cs">
+    <Compile Include="modules\Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderItem.cs">
+    <Compile Include="modules\OrderItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="OrderItem.Designer.cs">
+    <Compile Include="modules\OrderItem.Designer.cs">
       <DependentUpon>OrderItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderList.cs">
+    <Compile Include="modules\OrderList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="OrderList.Designer.cs">
+    <Compile Include="modules\OrderList.Designer.cs">
       <DependentUpon>OrderList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Personnel.cs">
+    <Compile Include="modules\Personnel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Personnel.Designer.cs">
+    <Compile Include="modules\Personnel.Designer.cs">
       <DependentUpon>Personnel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\Settings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Status.cs">
+    <Compile Include="modules\Status.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Status.Designer.cs">
+    <Compile Include="modules\Status.Designer.cs">
       <DependentUpon>Status.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utility.cs" />
+    <EmbeddedResource Include="modules\CategoryItem.resx">
+      <DependentUpon>CategoryItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\FlatNumericUpDown.resx">
+      <DependentUpon>FlatNumericUpDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\FlatTextbox.resx">
+      <DependentUpon>FlatTextbox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Order.resx">
+    <EmbeddedResource Include="modules\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderItem.resx">
+    <EmbeddedResource Include="modules\OrderItem.resx">
       <DependentUpon>OrderItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderList.resx">
+    <EmbeddedResource Include="modules\OrderList.resx">
       <DependentUpon>OrderList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Personnel.resx">
+    <EmbeddedResource Include="modules\Personnel.resx">
       <DependentUpon>Personnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,7 +173,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Status.resx">
+    <EmbeddedResource Include="modules\Status.resx">
       <DependentUpon>Status.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -161,6 +204,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\300.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantSystemCore\RestaurantSystemCore.csproj">
+      <Project>{CDD5BF01-4661-4300-AA5D-C959949CE3FD}</Project>
+      <Name>RestaurantSystemCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

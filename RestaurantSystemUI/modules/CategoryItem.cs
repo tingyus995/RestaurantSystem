@@ -7,19 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestaurantSystemCore.models;
 
 namespace RestaurantSystemUI
 {
-    public partial class Order : UserControl
+    public partial class CategoryItem : UserControl
     {
-        public Order()
+        Category category;
+        public CategoryItem(Category c)
         {
+            category = c;
             InitializeComponent();
         }
 
-        private void Order_Load(object sender, EventArgs e)
+        private void CategoryItem_Load(object sender, EventArgs e)
         {
-            cbFood.Items.AddRange(new string[] {"A", "B", "C" });
+            label1.Text = category.Name;
         }
     }
 }
