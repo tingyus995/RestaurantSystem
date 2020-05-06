@@ -53,7 +53,8 @@ namespace RestaurantSystemUI
                 new Page(iconButton1, new OrderList()),
                 new Page(iconButton2, new Status()),
                 new Page(iconButton3, new Personnel()),
-                new Page(iconButton4, setting_page)
+                new Page(iconButton4, setting_page),
+                new Page(iconButton5, new FoodEditor())
             };
 
             

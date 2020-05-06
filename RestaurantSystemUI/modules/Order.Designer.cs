@@ -32,12 +32,16 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.flatTextbox1 = new RestaurantSystemUI.FlatTextbox();
             this.col1 = new System.Windows.Forms.Panel();
+            this.fpCategories = new System.Windows.Forms.FlowLayoutPanel();
             this.col1_header = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.fpCategories = new System.Windows.Forms.FlowLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.col1.SuspendLayout();
             this.col1_header.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // cbFood
@@ -76,6 +80,15 @@
             this.col1.Size = new System.Drawing.Size(327, 561);
             this.col1.TabIndex = 4;
             // 
+            // fpCategories
+            // 
+            this.fpCategories.AutoScroll = true;
+            this.fpCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fpCategories.Location = new System.Drawing.Point(0, 63);
+            this.fpCategories.Name = "fpCategories";
+            this.fpCategories.Size = new System.Drawing.Size(327, 498);
+            this.fpCategories.TabIndex = 2;
+            // 
             // col1_header
             // 
             this.col1_header.Controls.Add(this.label1);
@@ -97,20 +110,35 @@
             this.label1.Text = "餐點分類";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // fpCategories
+            // dataGridView1
             // 
-            this.fpCategories.AutoScroll = true;
-            this.fpCategories.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fpCategories.Location = new System.Drawing.Point(0, 63);
-            this.fpCategories.Name = "fpCategories";
-            this.fpCategories.Size = new System.Drawing.Size(327, 498);
-            this.fpCategories.TabIndex = 2;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Time,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(371, 296);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(372, 211);
+            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Time
+            // 
+            this.Time.HeaderText = "Column1";
+            this.Time.Name = "Time";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Column1";
+            this.Column2.Name = "Column2";
             // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.col1);
             this.Controls.Add(this.flatTextbox1);
             this.Controls.Add(this.numericUpDown1);
@@ -122,6 +150,7 @@
             this.col1.ResumeLayout(false);
             this.col1_header.ResumeLayout(false);
             this.col1_header.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,5 +164,8 @@
         private System.Windows.Forms.FlowLayoutPanel fpCategories;
         private System.Windows.Forms.Panel col1_header;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
