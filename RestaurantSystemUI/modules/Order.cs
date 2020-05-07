@@ -23,12 +23,12 @@ namespace RestaurantSystemUI
         {   
             cbFood.Items.AddRange(new string[] {"A", "B", "C" });
 
-            FoodManager fm = new FoodManager();
-            Category[] cats = fm.GetCategories();
+            //FoodManager fm = new FoodManager();
+            Category[] cats = FoodManager.GetCategories();
 
             foreach(var c in cats)
             {
-                fpCategories.Controls.Add(new CategoryItem(c));
+                fpCategories.Controls.Add(new CategoryItem() { Category = c});
             }
 
         }

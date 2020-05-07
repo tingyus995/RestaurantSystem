@@ -7,12 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestaurantSystemCore.models;
 
 namespace RestaurantSystemUI.controls
 {
     public partial class TagInput : UserControl
     {
-        List<string> tags = new List<string>();
+        private List<string> tags = new List<string>();
+
+        public string[] Tags {
+            get {
+                return tags.ToArray();
+            }
+
+            set
+            {
+                foreach(string tag in value)
+                {
+                    AddTag(tag);
+                }
+            }
+        }
 
         public TagInput()
         {
@@ -23,7 +38,30 @@ namespace RestaurantSystemUI.controls
         {
 
             flatTextbox1.textBox.KeyDown += handleKeyDown;
-            flatTextbox1.Height = new CategoryItem(new RestaurantSystemCore.models.Category()).Height;
+            flatTextbox1.Height = new CategoryItem().Height;
+        }
+
+        private void AddTag(string tagText)
+        {
+            if (tags.IndexOf(tagText) >= 0)
+            {
+                MessageBox.Show("分類名稱重複。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            tags.Add(tagText);
+
+            flowLayoutPanel1.Controls.Add(new CategoryItem()
+            {
+                Category = new Category()
+                {
+                    Name = tagText
+                }
+            });
+
+            flowLayoutPanel1.Controls.SetChildIndex(flatTextbox1, flowLayoutPanel1.Controls.Count - 1);
+
+            flowLayoutPanel1.ScrollControlIntoView(flatTextbox1);
         }
 
         private void handleKeyDown(object sender, KeyEventArgs e)
@@ -34,26 +72,12 @@ namespace RestaurantSystemUI.controls
 
                 if (tagText.Length == 0) return;
 
-                if (tags.IndexOf(tagText) >= 0)
-                {
-                    MessageBox.Show("分類名稱重複。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }                
-                
-                tags.Add(tagText);
-
-                flowLayoutPanel1.Controls.Add(new CategoryItem(new RestaurantSystemCore.models.Category()
-                {
-                    Name = tagText
-                }));
-
+                AddTag(tagText);
+                    
                 flatTextbox1.textBox.Text = "";
 
-                flowLayoutPanel1.Controls.SetChildIndex(flatTextbox1, flowLayoutPanel1.Controls.Count - 1);
-
-                flowLayoutPanel1.ScrollControlIntoView(flatTextbox1);
-
-
+                e.Handled = true;
+                e.SuppressKeyPress = true;
                 
             }
 

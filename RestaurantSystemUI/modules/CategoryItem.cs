@@ -13,16 +13,15 @@ namespace RestaurantSystemUI
 {
     public partial class CategoryItem : UserControl
     {
-        Category category;
-        public CategoryItem(Category c)
-        {
-            category = c;
+        public Category Category {get; set; }
+        public CategoryItem()
+        {   
             InitializeComponent();
         }
 
         private void CategoryItem_Load(object sender, EventArgs e)
         {
-            label1.Text = category.Name;
+            label1.Text = Category.Name;
         }
     }
 }

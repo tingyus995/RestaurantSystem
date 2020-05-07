@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RestaurantSystemUI
 {
@@ -13,23 +14,35 @@ namespace RestaurantSystemUI
     {
         public static string ImageToBase64(Bitmap image)
         {
+            if (image == null) return null;
+                // Convert byte[] to Base64 String
+                string base64String = Convert.ToBase64String(ImageToBytes(image));
+                return base64String;            
+        }
+
+        public static byte[] ImageToBytes(Bitmap image)
+        {
+            if (image == null) return null;
             using (MemoryStream ms = new MemoryStream())
             {
                 // Convert Image to byte[]
                 image.Save(ms, ImageFormat.Png);
-                byte[] imageBytes = ms.ToArray();
-
-                // Convert byte[] to Base64 String
-                string base64String = Convert.ToBase64String(imageBytes);
-                return base64String;
+                return ms.ToArray();
             }
         }
 
         /// base64 To Image
         public static Bitmap Base64ToImage(string base64String)
         {
+            if (base64String == null) return null;
             // Convert Base64 String to byte[]
             byte[] imageBytes = Convert.FromBase64String(base64String);
+            return BytesToImage(imageBytes);
+        }
+        /// bytes To Image
+        public static Bitmap BytesToImage(byte[] imageBytes)
+        {
+            if (imageBytes == null) return null;
             using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
             {
 
@@ -38,6 +51,26 @@ namespace RestaurantSystemUI
                 Bitmap image = new Bitmap(ms, true);
                 return image;
             }
+        }
+
+        /// Show full space dialog in module
+        
+        public static void ShowFullSpaceDialog(UserControl parent, UserControl child)
+        {
+            parent.Controls.Add(child);
+            child.Top = 0;
+            child.Left = 0;
+
+            child.Width = parent.Width;
+            child.Height = parent.Height;
+
+            child.BringToFront();
+
+            parent.Resize += (object sender, EventArgs e) =>
+            {
+                child.Width = parent.Width;
+                child.Height = parent.Height;
+            };
         }
     }
 }

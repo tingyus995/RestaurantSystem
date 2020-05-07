@@ -109,6 +109,24 @@
     <Compile Include="modules\FoodEditor.Designer.cs">
       <DependentUpon>FoodEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="modules\FoodItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\FoodItem.Designer.cs">
+      <DependentUpon>FoodItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\FoodList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\FoodList.Designer.cs">
+      <DependentUpon>FoodList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\FoodVarient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\FoodVarient.Designer.cs">
+      <DependentUpon>FoodVarient.cs</DependentUpon>
+    </Compile>
     <Compile Include="modules\Order.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,6 +183,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modules\FoodEditor.resx">
       <DependentUpon>FoodEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\FoodItem.resx">
+      <DependentUpon>FoodItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\FoodList.resx">
+      <DependentUpon>FoodList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\FoodVarient.resx">
+      <DependentUpon>FoodVarient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>

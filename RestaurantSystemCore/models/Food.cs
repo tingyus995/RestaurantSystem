@@ -11,8 +11,8 @@ namespace RestaurantSystemCore.models
 
         public int SelectedVarient { get; set; }
         public int BasePrice { get; set; }
-        public byte[] image { get; set; }
-
-        public Varient[] Varients;
+        public byte[] Image { get; set; }
+        public string[] Categories { get; set; }
+        public Varient[] Varients { get; set; }
     }
 }
