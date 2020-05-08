@@ -17,7 +17,11 @@ namespace RestaurantSystemUI.modules
     public partial class FoodEditor : UserControl
     {
 
-        private List<FoodVarient> fvs = new List<FoodVarient>();        
+
+        public event EventHandler EditorExited;
+
+        private List<FoodVarient> fvs = new List<FoodVarient>();
+        
         private Bitmap foodImage;
         private Food food;
         
@@ -65,12 +69,32 @@ namespace RestaurantSystemUI.modules
             foreach(Varient v in food.Varients)
             {
                 addAnotherVarient(v);
-            }            
+            }
+
+            // food image
+            //FoodImage = Utility.BytesToImage(food.Image);
+            foodImage = Utility.BytesToImage(food.Image);
+
+            if(foodImage == null)
+            {
+                MessageBox.Show("food image is null.");
+            }
+            
+            
+            pbFoodImage.Image = foodImage;
+            
+            if(foodImage == null)
+            {
+                pictureBox1.Image = Properties.Resources.DefaultFoodImage;
+            }
         }
 
         private void FoodEditor_Load(object sender, EventArgs e)
         {
             addAnotherVarient();
+            //pbFoodImage.Image = Properties.Resources.
+            //pbFoodImage.Image = Properties.Resources.DefaultFoodImage;
+            //pbFoodImage.InitialImage = Properties.Resources.DefaultFoodImage;
         }
 
 
@@ -86,7 +110,8 @@ namespace RestaurantSystemUI.modules
 
             foreach(var fv in fvs)
             {
-                varients.Add(fv.Varient);
+                if(fv.Varient != null)
+                    varients.Add(fv.Varient);
             }
 
             // assign new value
@@ -97,11 +122,31 @@ namespace RestaurantSystemUI.modules
             food.Categories = tagInput1.Tags;
 
             FoodManager.UpdateOrSaveFood(food);
+
+            EditorExited?.Invoke(this, new EventArgs());
+            this.Parent.Controls.Remove(this);
         }
 
         private void ibtnBack_Click(object sender, EventArgs e)
         {
+            EditorExited?.Invoke(this, new EventArgs());
             Parent.Controls.Remove(this);
+        }
+
+        private void pbFoodImage_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = Utility.GetSupportedImageFilter();
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    foodImage = new Bitmap(openFileDialog1.FileName);
+                    pbFoodImage.Image = foodImage;
+                }catch
+                {
+                    MessageBox.Show("檔案開啟時發生錯誤。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

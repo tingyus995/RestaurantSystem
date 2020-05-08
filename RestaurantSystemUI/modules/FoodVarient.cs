@@ -26,13 +26,21 @@ namespace RestaurantSystemUI.modules
                 {
                     varient = new Varient();
                 }
-                
 
-                varient.Name = ftbName.textBox.Text;
-                varient.delta = int.Parse(ftbDelta.textBox.Text.Trim());
-                varient.image = Utility.ImageToBytes(foodImage);
+                try
+                {
 
-                return varient;
+                    varient.Name = ftbName.textBox.Text;
+                    varient.delta = int.Parse(ftbDelta.textBox.Text.Trim());
+                    varient.image = Utility.ImageToBytes(foodImage);
+
+                    return varient;
+
+                }
+                catch
+                {
+                    return null;
+                }
             
             }
             set { varient = value; updateUI(); }
@@ -53,6 +61,7 @@ namespace RestaurantSystemUI.modules
         private void FoodVarient_Load(object sender, EventArgs e)
         {
             ftbDelta.textBox.KeyDown += handleKeyDown;
+            ftbDelta.textBox.KeyPress += handleKeyPress;
             ftbDelta.LostFocus += FtbDelta_LostFocus;
             //flatTbName.Focus();
         }
@@ -62,11 +71,63 @@ namespace RestaurantSystemUI.modules
             
         }
 
+        private void setSign(char sign)
+        {
+            TextBox tb = ftbDelta.textBox;
+            int idx = tb.SelectionStart;
+            
+            if (tb.Text.Length == 0)
+            {
+                tb.Text = sign.ToString();
+                tb.SelectionStart = 1;
+                return;
+            }
+
+            if (!Char.IsDigit(tb.Text[0]))
+            {
+                tb.Text = sign.ToString() + tb.Text.Substring(1);
+                tb.SelectionStart = idx;
+                return;
+            }
+            else { 
+                tb.Text = sign.ToString() + tb.Text;
+                tb.SelectionStart = (idx + 1);
+            }
+        }
+
+        private void handleKeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            
+            if (Char.IsDigit(e.KeyChar))
+            {
+                if (tb.Text.Length == 1 && !Char.IsDigit(tb.Text[0])) tb.SelectionStart = 1;
+                return;
+            }
+            if (Char.IsControl(e.KeyChar)) return;
+
+            e.Handled = true;
+        }
         private void handleKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
-            {
-                RequireAnotherVarient?.Invoke(this, new EventArgs());
+            switch (e.KeyCode)
+            {   
+                case Keys.Enter:
+                    RequireAnotherVarient?.Invoke(this, new EventArgs());
+                    e.Handled = true;
+                    e.SuppressKeyPress = true; // avoid that ding sound
+                    return;
+                
+                case Keys.Add: // handle plus
+                case Keys.Oemplus:
+                    setSign('+');
+                    e.Handled = true;
+                    return;                    
+                case Keys.Subtract: // handle minus
+                case Keys.OemMinus:
+                    setSign('-');
+                    e.Handled = true;
+                    return;
             }
         }
     }

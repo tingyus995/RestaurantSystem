@@ -30,6 +30,7 @@ namespace RestaurantSystemUI.modules
         {
             lbFoodName.Text = Food.Name;
             lbPrice.Text = Food.BasePrice.ToString();
+            pictureBox1.Image = Utility.BytesToImage(food.Image);
         }
 
         public FoodItem()

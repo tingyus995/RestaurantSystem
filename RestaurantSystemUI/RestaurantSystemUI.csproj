@@ -256,5 +256,11 @@
       <Name>RestaurantSystemCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultFoodImage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\food_flat.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

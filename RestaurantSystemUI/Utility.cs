@@ -72,5 +72,24 @@ namespace RestaurantSystemUI
                 child.Height = parent.Height;
             };
         }
+
+        public static string GetSupportedImageFilter()
+        {
+            // reference https://stackoverflow.com/questions/2069048/setting-the-filter-to-an-openfiledialog-to-allow-the-typical-image-formats
+            
+            string result = "Supported Image Files |";
+            
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+            bool first = true;
+
+            foreach (var c in codecs)
+            {
+                if (first) first = false;
+                else result += "; ";
+                result += c.FilenameExtension.ToLower();
+            }
+
+            return result;
+        }
     }
 }

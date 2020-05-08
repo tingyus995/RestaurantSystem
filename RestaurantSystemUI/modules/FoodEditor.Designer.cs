@@ -28,54 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            this.ipbFoodImage = new FontAwesome.Sharp.IconPictureBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label4 = new System.Windows.Forms.Label();
-            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.ftbName = new RestaurantSystemUI.FlatTextbox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.ftbBasePrice = new RestaurantSystemUI.FlatTextbox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.pnTopHalf = new System.Windows.Forms.Panel();
+            this.pbFoodImage = new System.Windows.Forms.PictureBox();
             this.ibtnBack = new FontAwesome.Sharp.IconButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.fpVarients = new System.Windows.Forms.FlowLayoutPanel();
             this.tlpBottomHalf = new System.Windows.Forms.TableLayoutPanel();
             this.tagInput1 = new RestaurantSystemUI.controls.TagInput();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbFoodImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             this.pnTopHalf.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoodImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tlpBottomHalf.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Utensils;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox1.Location = new System.Drawing.Point(3, 7);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.iconPictureBox1.TabIndex = 4;
-            this.iconPictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -101,18 +89,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "食物基本價錢";
             // 
-            // iconPictureBox2
-            // 
-            this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Coins;
-            this.iconPictureBox2.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox2.Location = new System.Drawing.Point(3, 4);
-            this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(32, 32);
-            this.iconPictureBox2.TabIndex = 6;
-            this.iconPictureBox2.TabStop = false;
-            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -124,33 +100,6 @@
             this.label3.Size = new System.Drawing.Size(96, 26);
             this.label3.TabIndex = 9;
             this.label3.Text = "食物分類";
-            // 
-            // iconPictureBox3
-            // 
-            this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.FolderOpen;
-            this.iconPictureBox3.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox3.Location = new System.Drawing.Point(3, 4);
-            this.iconPictureBox3.Name = "iconPictureBox3";
-            this.iconPictureBox3.Size = new System.Drawing.Size(32, 32);
-            this.iconPictureBox3.TabIndex = 8;
-            this.iconPictureBox3.TabStop = false;
-            // 
-            // ipbFoodImage
-            // 
-            this.ipbFoodImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.ipbFoodImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ipbFoodImage.ForeColor = System.Drawing.Color.LightGray;
-            this.ipbFoodImage.IconChar = FontAwesome.Sharp.IconChar.PizzaSlice;
-            this.ipbFoodImage.IconColor = System.Drawing.Color.LightGray;
-            this.ipbFoodImage.IconSize = 130;
-            this.ipbFoodImage.Location = new System.Drawing.Point(12, 17);
-            this.ipbFoodImage.Name = "ipbFoodImage";
-            this.ipbFoodImage.Size = new System.Drawing.Size(130, 130);
-            this.ipbFoodImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.ipbFoodImage.TabIndex = 10;
-            this.ipbFoodImage.TabStop = false;
             // 
             // btnSave
             // 
@@ -183,18 +132,6 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "食物種類";
             // 
-            // iconPictureBox5
-            // 
-            this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Buffer;
-            this.iconPictureBox5.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox5.Location = new System.Drawing.Point(3, 4);
-            this.iconPictureBox5.Name = "iconPictureBox5";
-            this.iconPictureBox5.Size = new System.Drawing.Size(32, 32);
-            this.iconPictureBox5.TabIndex = 12;
-            this.iconPictureBox5.TabStop = false;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
@@ -211,6 +148,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(394, 46);
             this.tableLayoutPanel1.TabIndex = 16;
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Utensils;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox1.Location = new System.Drawing.Point(3, 7);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.iconPictureBox1.TabIndex = 4;
+            this.iconPictureBox1.TabStop = false;
             // 
             // ftbName
             // 
@@ -239,6 +188,18 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(394, 41);
             this.tableLayoutPanel2.TabIndex = 17;
             // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Coins;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox2.Location = new System.Drawing.Point(3, 4);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.iconPictureBox2.TabIndex = 6;
+            this.iconPictureBox2.TabStop = false;
+            // 
             // ftbBasePrice
             // 
             this.ftbBasePrice.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -264,6 +225,18 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(144, 41);
             this.tableLayoutPanel4.TabIndex = 19;
             // 
+            // iconPictureBox5
+            // 
+            this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Buffer;
+            this.iconPictureBox5.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox5.Location = new System.Drawing.Point(3, 4);
+            this.iconPictureBox5.Name = "iconPictureBox5";
+            this.iconPictureBox5.Size = new System.Drawing.Size(32, 32);
+            this.iconPictureBox5.TabIndex = 12;
+            this.iconPictureBox5.TabStop = false;
+            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
@@ -278,11 +251,23 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(139, 41);
             this.tableLayoutPanel6.TabIndex = 21;
             // 
+            // iconPictureBox3
+            // 
+            this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.FolderOpen;
+            this.iconPictureBox3.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox3.Location = new System.Drawing.Point(3, 4);
+            this.iconPictureBox3.Name = "iconPictureBox3";
+            this.iconPictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.iconPictureBox3.TabIndex = 8;
+            this.iconPictureBox3.TabStop = false;
+            // 
             // pnTopHalf
             // 
+            this.pnTopHalf.Controls.Add(this.pbFoodImage);
             this.pnTopHalf.Controls.Add(this.ibtnBack);
             this.pnTopHalf.Controls.Add(this.pictureBox1);
-            this.pnTopHalf.Controls.Add(this.ipbFoodImage);
             this.pnTopHalf.Controls.Add(this.btnSave);
             this.pnTopHalf.Controls.Add(this.tableLayoutPanel2);
             this.pnTopHalf.Controls.Add(this.tableLayoutPanel1);
@@ -291,6 +276,18 @@
             this.pnTopHalf.Name = "pnTopHalf";
             this.pnTopHalf.Size = new System.Drawing.Size(1138, 169);
             this.pnTopHalf.TabIndex = 23;
+            // 
+            // pbFoodImage
+            // 
+            this.pbFoodImage.BackColor = System.Drawing.Color.Transparent;
+            this.pbFoodImage.InitialImage = null;
+            this.pbFoodImage.Location = new System.Drawing.Point(16, 14);
+            this.pbFoodImage.Name = "pbFoodImage";
+            this.pbFoodImage.Size = new System.Drawing.Size(136, 133);
+            this.pbFoodImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFoodImage.TabIndex = 20;
+            this.pbFoodImage.TabStop = false;
+            this.pbFoodImage.Click += new System.EventHandler(this.pbFoodImage_Click);
             // 
             // ibtnBack
             // 
@@ -367,20 +364,20 @@
             this.Name = "FoodEditor";
             this.Size = new System.Drawing.Size(1138, 722);
             this.Load += new System.EventHandler(this.FoodEditor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbFoodImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             this.pnTopHalf.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoodImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tlpBottomHalf.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -398,7 +395,6 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private FontAwesome.Sharp.IconPictureBox ipbFoodImage;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label4;
@@ -412,5 +408,6 @@
         private System.Windows.Forms.TableLayoutPanel tlpBottomHalf;
         private System.Windows.Forms.PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton ibtnBack;
+        private System.Windows.Forms.PictureBox pbFoodImage;
     }
 }

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnMenuBar = new System.Windows.Forms.Panel();
+            this.pnActiveIndicator = new System.Windows.Forms.Panel();
+            this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.pnActiveIndicator = new System.Windows.Forms.Panel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
@@ -39,35 +40,74 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbShopName = new System.Windows.Forms.Label();
-            this.pnTitle = new System.Windows.Forms.Panel();
-            this.lbTitle = new System.Windows.Forms.Label();
+            this.pnTitleBar = new System.Windows.Forms.Panel();
+            this.ibtnMinimizeWindow = new FontAwesome.Sharp.IconButton();
+            this.ibtnMaximizeWindow = new FontAwesome.Sharp.IconButton();
+            this.ibtnCloseWindow = new FontAwesome.Sharp.IconButton();
+            this.lbProgramName = new System.Windows.Forms.Label();
             this.pnContainer = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.panel1.SuspendLayout();
+            this.pnContentWrapper = new System.Windows.Forms.Panel();
+            this.pnMenuBar.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnTitle.SuspendLayout();
+            this.pnTitleBar.SuspendLayout();
             this.pnContainer.SuspendLayout();
+            this.pnContentWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnMenuBar
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.panel1.Controls.Add(this.iconButton6);
-            this.panel1.Controls.Add(this.iconButton5);
-            this.panel1.Controls.Add(this.iconButton4);
-            this.panel1.Controls.Add(this.pnActiveIndicator);
-            this.panel1.Controls.Add(this.iconButton3);
-            this.panel1.Controls.Add(this.iconButton2);
-            this.panel1.Controls.Add(this.iconButton1);
-            this.panel1.Controls.Add(this.ibOrder);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 561);
-            this.panel1.TabIndex = 5;
+            this.pnMenuBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.pnMenuBar.Controls.Add(this.pnActiveIndicator);
+            this.pnMenuBar.Controls.Add(this.iconButton6);
+            this.pnMenuBar.Controls.Add(this.iconButton5);
+            this.pnMenuBar.Controls.Add(this.iconButton4);
+            this.pnMenuBar.Controls.Add(this.iconButton3);
+            this.pnMenuBar.Controls.Add(this.iconButton2);
+            this.pnMenuBar.Controls.Add(this.iconButton1);
+            this.pnMenuBar.Controls.Add(this.ibOrder);
+            this.pnMenuBar.Controls.Add(this.panel2);
+            this.pnMenuBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnMenuBar.Location = new System.Drawing.Point(0, 30);
+            this.pnMenuBar.Name = "pnMenuBar";
+            this.pnMenuBar.Size = new System.Drawing.Size(250, 562);
+            this.pnMenuBar.TabIndex = 5;
+            // 
+            // pnActiveIndicator
+            // 
+            this.pnActiveIndicator.BackColor = System.Drawing.Color.White;
+            this.pnActiveIndicator.Location = new System.Drawing.Point(0, 511);
+            this.pnActiveIndicator.Name = "pnActiveIndicator";
+            this.pnActiveIndicator.Size = new System.Drawing.Size(10, 50);
+            this.pnActiveIndicator.TabIndex = 10;
+            // 
+            // iconButton6
+            // 
+            this.iconButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton6.FlatAppearance.BorderSize = 0;
+            this.iconButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.iconButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(93)))), ((int)(((byte)(119)))));
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton6.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.iconButton6.ForeColor = System.Drawing.Color.White;
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.Tools;
+            this.iconButton6.IconColor = System.Drawing.Color.White;
+            this.iconButton6.IconSize = 32;
+            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton6.Location = new System.Drawing.Point(0, 366);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(6);
+            this.iconButton6.Name = "iconButton6";
+            this.iconButton6.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.iconButton6.Rotation = 0D;
+            this.iconButton6.Size = new System.Drawing.Size(250, 50);
+            this.iconButton6.TabIndex = 13;
+            this.iconButton6.Text = "食物管理";
+            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton6.UseVisualStyleBackColor = false;
             // 
             // iconButton5
             // 
@@ -122,14 +162,6 @@
             this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton4.UseVisualStyleBackColor = false;
-            // 
-            // pnActiveIndicator
-            // 
-            this.pnActiveIndicator.BackColor = System.Drawing.Color.White;
-            this.pnActiveIndicator.Location = new System.Drawing.Point(0, 511);
-            this.pnActiveIndicator.Name = "pnActiveIndicator";
-            this.pnActiveIndicator.Size = new System.Drawing.Size(10, 50);
-            this.pnActiveIndicator.TabIndex = 10;
             // 
             // iconButton3
             // 
@@ -271,35 +303,93 @@
             this.lbShopName.TabIndex = 0;
             this.lbShopName.Text = "店家名稱";
             // 
-            // pnTitle
+            // pnTitleBar
             // 
-            this.pnTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.pnTitle.Controls.Add(this.lbTitle);
-            this.pnTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnTitle.Location = new System.Drawing.Point(250, 0);
-            this.pnTitle.Name = "pnTitle";
-            this.pnTitle.Size = new System.Drawing.Size(849, 66);
-            this.pnTitle.TabIndex = 7;
+            this.pnTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.pnTitleBar.Controls.Add(this.ibtnMinimizeWindow);
+            this.pnTitleBar.Controls.Add(this.ibtnMaximizeWindow);
+            this.pnTitleBar.Controls.Add(this.ibtnCloseWindow);
+            this.pnTitleBar.Controls.Add(this.lbProgramName);
+            this.pnTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.pnTitleBar.Name = "pnTitleBar";
+            this.pnTitleBar.Size = new System.Drawing.Size(1099, 30);
+            this.pnTitleBar.TabIndex = 7;
             // 
-            // lbTitle
+            // ibtnMinimizeWindow
             // 
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Font = new System.Drawing.Font("Microsoft JhengHei UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.ForeColor = System.Drawing.Color.White;
-            this.lbTitle.Location = new System.Drawing.Point(17, 24);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(78, 41);
-            this.lbTitle.TabIndex = 0;
-            this.lbTitle.Text = "title";
+            this.ibtnMinimizeWindow.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ibtnMinimizeWindow.FlatAppearance.BorderSize = 0;
+            this.ibtnMinimizeWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnMinimizeWindow.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ibtnMinimizeWindow.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
+            this.ibtnMinimizeWindow.IconColor = System.Drawing.Color.White;
+            this.ibtnMinimizeWindow.IconSize = 16;
+            this.ibtnMinimizeWindow.Location = new System.Drawing.Point(1009, 0);
+            this.ibtnMinimizeWindow.Name = "ibtnMinimizeWindow";
+            this.ibtnMinimizeWindow.Rotation = 0D;
+            this.ibtnMinimizeWindow.Size = new System.Drawing.Size(30, 30);
+            this.ibtnMinimizeWindow.TabIndex = 2;
+            this.ibtnMinimizeWindow.UseVisualStyleBackColor = true;
+            this.ibtnMinimizeWindow.Click += new System.EventHandler(this.ibtnMinimizeWindow_Click);
+            // 
+            // ibtnMaximizeWindow
+            // 
+            this.ibtnMaximizeWindow.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ibtnMaximizeWindow.FlatAppearance.BorderSize = 0;
+            this.ibtnMaximizeWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnMaximizeWindow.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ibtnMaximizeWindow.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize;
+            this.ibtnMaximizeWindow.IconColor = System.Drawing.Color.White;
+            this.ibtnMaximizeWindow.IconSize = 16;
+            this.ibtnMaximizeWindow.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ibtnMaximizeWindow.Location = new System.Drawing.Point(1039, 0);
+            this.ibtnMaximizeWindow.Name = "ibtnMaximizeWindow";
+            this.ibtnMaximizeWindow.Rotation = 0D;
+            this.ibtnMaximizeWindow.Size = new System.Drawing.Size(30, 30);
+            this.ibtnMaximizeWindow.TabIndex = 1;
+            this.ibtnMaximizeWindow.UseVisualStyleBackColor = true;
+            this.ibtnMaximizeWindow.Click += new System.EventHandler(this.ibtnMaximizeWindow_Click);
+            // 
+            // ibtnCloseWindow
+            // 
+            this.ibtnCloseWindow.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ibtnCloseWindow.FlatAppearance.BorderSize = 0;
+            this.ibtnCloseWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnCloseWindow.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ibtnCloseWindow.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.ibtnCloseWindow.IconColor = System.Drawing.Color.White;
+            this.ibtnCloseWindow.IconSize = 16;
+            this.ibtnCloseWindow.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ibtnCloseWindow.Location = new System.Drawing.Point(1069, 0);
+            this.ibtnCloseWindow.Name = "ibtnCloseWindow";
+            this.ibtnCloseWindow.Rotation = 0D;
+            this.ibtnCloseWindow.Size = new System.Drawing.Size(30, 30);
+            this.ibtnCloseWindow.TabIndex = 0;
+            this.ibtnCloseWindow.UseVisualStyleBackColor = true;
+            this.ibtnCloseWindow.Click += new System.EventHandler(this.ibtnCloseWindow_Click);
+            // 
+            // lbProgramName
+            // 
+            this.lbProgramName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbProgramName.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lbProgramName.ForeColor = System.Drawing.Color.White;
+            this.lbProgramName.Location = new System.Drawing.Point(0, 0);
+            this.lbProgramName.Name = "lbProgramName";
+            this.lbProgramName.Size = new System.Drawing.Size(1099, 30);
+            this.lbProgramName.TabIndex = 3;
+            this.lbProgramName.Text = "NPTU POS";
+            this.lbProgramName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbProgramName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbProgramName_MouseDown);
             // 
             // pnContainer
             // 
             this.pnContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.pnContainer.Controls.Add(this.label2);
             this.pnContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContainer.Location = new System.Drawing.Point(250, 66);
+            this.pnContainer.Location = new System.Drawing.Point(250, 30);
             this.pnContainer.Name = "pnContainer";
-            this.pnContainer.Size = new System.Drawing.Size(849, 495);
+            this.pnContainer.Size = new System.Drawing.Size(849, 562);
             this.pnContainer.TabIndex = 8;
             // 
             // label2
@@ -308,73 +398,56 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(279, 196);
+            this.label2.Location = new System.Drawing.Point(286, 237);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(306, 52);
             this.label2.TabIndex = 1;
             this.label2.Text = "歡迎使用本系統\r\n使用左側選單選取要使用的功能";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // iconButton6
+            // pnContentWrapper
             // 
-            this.iconButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.iconButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(93)))), ((int)(((byte)(119)))));
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton6.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.iconButton6.ForeColor = System.Drawing.Color.White;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.Tools;
-            this.iconButton6.IconColor = System.Drawing.Color.White;
-            this.iconButton6.IconSize = 32;
-            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.Location = new System.Drawing.Point(0, 366);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(6);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.iconButton6.Rotation = 0D;
-            this.iconButton6.Size = new System.Drawing.Size(250, 50);
-            this.iconButton6.TabIndex = 13;
-            this.iconButton6.Text = "食物管理";
-            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton6.UseVisualStyleBackColor = false;
+            this.pnContentWrapper.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.pnContentWrapper.Controls.Add(this.pnContainer);
+            this.pnContentWrapper.Controls.Add(this.pnMenuBar);
+            this.pnContentWrapper.Controls.Add(this.pnTitleBar);
+            this.pnContentWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnContentWrapper.Location = new System.Drawing.Point(0, 0);
+            this.pnContentWrapper.Name = "pnContentWrapper";
+            this.pnContentWrapper.Size = new System.Drawing.Size(1099, 592);
+            this.pnContentWrapper.TabIndex = 9;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 561);
-            this.Controls.Add(this.pnContainer);
-            this.Controls.Add(this.pnTitle);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1099, 592);
+            this.Controls.Add(this.pnContentWrapper);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
-            this.panel1.ResumeLayout(false);
+            this.pnMenuBar.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnTitle.ResumeLayout(false);
-            this.pnTitle.PerformLayout();
+            this.pnTitleBar.ResumeLayout(false);
             this.pnContainer.ResumeLayout(false);
             this.pnContainer.PerformLayout();
+            this.pnContentWrapper.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnMenuBar;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton ibOrder;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Panel pnActiveIndicator;
-        private System.Windows.Forms.Panel pnTitle;
-        private System.Windows.Forms.Label lbTitle;
+        private System.Windows.Forms.Panel pnTitleBar;
         private System.Windows.Forms.Panel pnContainer;
         private System.Windows.Forms.Label lbShopName;
         private System.Windows.Forms.Label label2;
@@ -382,5 +455,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton iconButton5;
         private FontAwesome.Sharp.IconButton iconButton6;
+        private FontAwesome.Sharp.IconButton ibtnCloseWindow;
+        private FontAwesome.Sharp.IconButton ibtnMaximizeWindow;
+        private FontAwesome.Sharp.IconButton ibtnMinimizeWindow;
+        private System.Windows.Forms.Panel pnContentWrapper;
+        private System.Windows.Forms.Label lbProgramName;
     }
 }
