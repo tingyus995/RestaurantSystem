@@ -28,53 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.ibtnPlus = new FontAwesome.Sharp.IconButton();
+            this.ibtnMinus = new FontAwesome.Sharp.IconButton();
+            this.lbNumber = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // iconButton1
+            // ibtnPlus
             // 
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconSize = 16;
-            this.iconButton1.Location = new System.Drawing.Point(217, 26);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(75, 23);
-            this.iconButton1.TabIndex = 0;
-            this.iconButton1.Text = "\\";
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.ibtnPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ibtnPlus.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ibtnPlus.FlatAppearance.BorderSize = 0;
+            this.ibtnPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnPlus.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ibtnPlus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ibtnPlus.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.ibtnPlus.IconColor = System.Drawing.Color.White;
+            this.ibtnPlus.IconSize = 20;
+            this.ibtnPlus.Location = new System.Drawing.Point(157, 0);
+            this.ibtnPlus.Name = "ibtnPlus";
+            this.ibtnPlus.Rotation = 0D;
+            this.ibtnPlus.Size = new System.Drawing.Size(60, 60);
+            this.ibtnPlus.TabIndex = 0;
+            this.ibtnPlus.UseVisualStyleBackColor = false;
+            this.ibtnPlus.Click += new System.EventHandler(this.ibtnPlus_Click);
             // 
-            // iconButton2
+            // ibtnMinus
             // 
-            this.iconButton2.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Minus;
-            this.iconButton2.IconColor = System.Drawing.Color.Black;
-            this.iconButton2.IconSize = 16;
-            this.iconButton2.Location = new System.Drawing.Point(20, 26);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(75, 23);
-            this.iconButton2.TabIndex = 1;
-            this.iconButton2.UseVisualStyleBackColor = true;
+            this.ibtnMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ibtnMinus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ibtnMinus.FlatAppearance.BorderSize = 0;
+            this.ibtnMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ibtnMinus.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ibtnMinus.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ibtnMinus.IconChar = FontAwesome.Sharp.IconChar.Minus;
+            this.ibtnMinus.IconColor = System.Drawing.Color.White;
+            this.ibtnMinus.IconSize = 20;
+            this.ibtnMinus.Location = new System.Drawing.Point(0, 0);
+            this.ibtnMinus.Name = "ibtnMinus";
+            this.ibtnMinus.Rotation = 0D;
+            this.ibtnMinus.Size = new System.Drawing.Size(60, 60);
+            this.ibtnMinus.TabIndex = 1;
+            this.ibtnMinus.UseVisualStyleBackColor = false;
+            this.ibtnMinus.Click += new System.EventHandler(this.ibtnMinus_Click);
+            // 
+            // lbNumber
+            // 
+            this.lbNumber.AutoSize = true;
+            this.lbNumber.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumber.ForeColor = System.Drawing.Color.White;
+            this.lbNumber.Location = new System.Drawing.Point(84, 19);
+            this.lbNumber.Name = "lbNumber";
+            this.lbNumber.Size = new System.Drawing.Size(55, 20);
+            this.lbNumber.TabIndex = 2;
+            this.lbNumber.Text = "label1";
             // 
             // FlatNumericUpDown
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.Controls.Add(this.iconButton2);
-            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.lbNumber);
+            this.Controls.Add(this.ibtnMinus);
+            this.Controls.Add(this.ibtnPlus);
             this.Name = "FlatNumericUpDown";
-            this.Size = new System.Drawing.Size(304, 77);
+            this.Size = new System.Drawing.Size(217, 60);
+            this.Load += new System.EventHandler(this.FlatNumericUpDown_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton ibtnPlus;
+        private FontAwesome.Sharp.IconButton ibtnMinus;
+        private System.Windows.Forms.Label lbNumber;
     }
 }

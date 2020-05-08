@@ -33,6 +33,8 @@ namespace RestaurantSystemUI.modules
             food = new Food(){                
                 SelectedVarient = -1
             };
+
+            pbFoodImage.Image = Properties.Resources.DefaultFoodImage;
         }
 
         public FoodEditor(Food _food)
@@ -74,18 +76,12 @@ namespace RestaurantSystemUI.modules
             // food image
             //FoodImage = Utility.BytesToImage(food.Image);
             foodImage = Utility.BytesToImage(food.Image);
-
-            if(foodImage == null)
-            {
-                MessageBox.Show("food image is null.");
-            }
-            
             
             pbFoodImage.Image = foodImage;
             
             if(foodImage == null)
             {
-                pictureBox1.Image = Properties.Resources.DefaultFoodImage;
+                pbFoodImage.Image = Properties.Resources.DefaultFoodImage;
             }
         }
 

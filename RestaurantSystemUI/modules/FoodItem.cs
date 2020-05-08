@@ -31,6 +31,12 @@ namespace RestaurantSystemUI.modules
             lbFoodName.Text = Food.Name;
             lbPrice.Text = Food.BasePrice.ToString();
             pictureBox1.Image = Utility.BytesToImage(food.Image);
+
+            if(pictureBox1.Image == null)
+            {
+                pictureBox1.Image = Properties.Resources.DefaultFoodImage;
+            }
+
         }
 
         public FoodItem()
@@ -40,12 +46,12 @@ namespace RestaurantSystemUI.modules
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            EditFoodClicked?.Invoke(sender, e);
+            EditFoodClicked?.Invoke(this, e);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DeleteFoodClicked?.Invoke(sender, e);
+            DeleteFoodClicked?.Invoke(this, e);
         }
     }
 }

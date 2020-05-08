@@ -47,7 +47,6 @@
             this.pnTopHalf = new System.Windows.Forms.Panel();
             this.pbFoodImage = new System.Windows.Forms.PictureBox();
             this.ibtnBack = new FontAwesome.Sharp.IconButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.fpVarients = new System.Windows.Forms.FlowLayoutPanel();
             this.tlpBottomHalf = new System.Windows.Forms.TableLayoutPanel();
             this.tagInput1 = new RestaurantSystemUI.controls.TagInput();
@@ -61,7 +60,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
             this.pnTopHalf.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoodImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tlpBottomHalf.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -267,7 +265,6 @@
             // 
             this.pnTopHalf.Controls.Add(this.pbFoodImage);
             this.pnTopHalf.Controls.Add(this.ibtnBack);
-            this.pnTopHalf.Controls.Add(this.pictureBox1);
             this.pnTopHalf.Controls.Add(this.btnSave);
             this.pnTopHalf.Controls.Add(this.tableLayoutPanel2);
             this.pnTopHalf.Controls.Add(this.tableLayoutPanel1);
@@ -305,14 +302,6 @@
             this.ibtnBack.TabIndex = 19;
             this.ibtnBack.UseVisualStyleBackColor = true;
             this.ibtnBack.Click += new System.EventHandler(this.ibtnBack_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(735, 48);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(125, 99);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
             // 
             // fpVarients
             // 
@@ -378,7 +367,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).EndInit();
             this.pnTopHalf.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbFoodImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tlpBottomHalf.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -406,7 +394,6 @@
         private System.Windows.Forms.Panel pnTopHalf;
         private System.Windows.Forms.FlowLayoutPanel fpVarients;
         private System.Windows.Forms.TableLayoutPanel tlpBottomHalf;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton ibtnBack;
         private System.Windows.Forms.PictureBox pbFoodImage;
     }

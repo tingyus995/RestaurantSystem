@@ -46,6 +46,11 @@ namespace RestaurantSystemCore
             colFood.Upsert(f);
         }
 
+        public static void DeleteFood(Food f)
+        {
+            colFood.Delete(f.Id);
+        }
+
         public static Food[] GetFoods(string category = "")
         {
             if(category.Length == 0)
@@ -56,6 +61,31 @@ namespace RestaurantSystemCore
             {
                 return colFood.Find(x => x.Categories.Contains(category)).ToArray();
             }
+        }
+
+        public static bool EditCategory(string oldName, string newName)
+        {
+
+            Category[] cats = GetCategories();
+
+            foreach(Category c in cats)
+            {
+                if (c.Name == newName) return false;
+            }
+
+
+            Food[] foods = colFood.FindAll().ToArray();
+
+            foreach(Food f in foods)
+            {
+                for(int i = 0; i < f.Categories.Length; ++i)
+                {
+                    if (f.Categories[i] == oldName) f.Categories[i] = newName;
+                }
+                colFood.Update(f);
+            }
+
+            return true;
         }
     }
 }

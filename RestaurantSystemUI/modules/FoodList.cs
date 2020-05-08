@@ -23,6 +23,15 @@ namespace RestaurantSystemUI.modules
             InitializeComponent();
         }
 
+        private void activateCategory(CategoryItem c)
+        {
+            foreach(CategoryItem cat in fpnCategories.Controls)
+            {
+                cat.Active = false;
+            }
+            c.Active = true;
+        }
+
         private void loadData()
         {
 
@@ -35,10 +44,11 @@ namespace RestaurantSystemUI.modules
                 {
                     Name = ALL_CATEGORIES,
                     Amount = -1
-                }
+                },
+                Editable = false
             };
 
-            allCats.Click += CategoryItem_Click;
+            allCats.CategoryItemClicked += CategoryItem_Click;
             fpnCategories.Controls.Add(allCats);
 
 
@@ -46,7 +56,10 @@ namespace RestaurantSystemUI.modules
             foreach (Category cat in categories)
             {
                 CategoryItem item = new CategoryItem() { Category = cat };
-                item.Click += CategoryItem_Click;
+                item.CategoryItemClicked += CategoryItem_Click;
+                /*item.CategoryNameUpdated += (object _s, EventArgs _e) => {
+                    if( FoodManager.EditCategory())
+                }*/
                 fpnCategories.Controls.Add(item);
             }
 
@@ -77,6 +90,7 @@ namespace RestaurantSystemUI.modules
         private void CategoryItem_Click(object sender, EventArgs e)
         {
             CategoryItem item = sender as CategoryItem;
+            activateCategory(item);
 
             selectedCategoryName = item.Category.Name;
             
@@ -104,8 +118,36 @@ namespace RestaurantSystemUI.modules
                     Utility.ShowFullSpaceDialog(this, editor);
                     
                 };
+
+                foodItem.DeleteFoodClicked += (object _s, EventArgs _e) =>
+                {                    
+                    FoodItem it = _s as FoodItem;
+
+                    if(DialogResult.OK == MessageBox.Show(
+                        String.Format("您確定要刪除{0}嗎? \n刪除後將無法復原。", it.Food.Name), 
+                        "警告", 
+                        MessageBoxButtons.OKCancel, 
+                        MessageBoxIcon.Warning
+                    )){
+                        FoodManager.DeleteFood(it.Food);
+                        loadData();
+                    }                   
+
+                };
+
                 fpnFoodItems.Controls.Add(foodItem);
             }
+        }
+
+        private void ibtnAddFood_Click(object sender, EventArgs e)
+        {
+            FoodEditor editor = new FoodEditor();
+            
+            editor.EditorExited += (object __s, EventArgs __e) =>
+            {
+                loadData();
+            };
+            Utility.ShowFullSpaceDialog(this, editor);
         }
     }
 }

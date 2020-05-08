@@ -30,7 +30,6 @@
         {
             this.cbFood = new System.Windows.Forms.ComboBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.flatTextbox1 = new RestaurantSystemUI.FlatTextbox();
             this.col1 = new System.Windows.Forms.Panel();
             this.fpCategories = new System.Windows.Forms.FlowLayoutPanel();
             this.col1_header = new System.Windows.Forms.Panel();
@@ -38,6 +37,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flatNumericUpDown1 = new RestaurantSystemUI.FlatNumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.col1.SuspendLayout();
             this.col1_header.SuspendLayout();
@@ -59,16 +59,6 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 2;
-            // 
-            // flatTextbox1
-            // 
-            this.flatTextbox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.flatTextbox1.Location = new System.Drawing.Point(348, 234);
-            this.flatTextbox1.Name = "flatTextbox1";
-            this.flatTextbox1.PlaceHolder = "店家名稱";
-            this.flatTextbox1.Size = new System.Drawing.Size(406, 35);
-            this.flatTextbox1.TabIndex = 3;
-            this.flatTextbox1.Theme = null;
             // 
             // col1
             // 
@@ -133,14 +123,25 @@
             this.Column2.HeaderText = "Column1";
             this.Column2.Name = "Column2";
             // 
+            // flatNumericUpDown1
+            // 
+            this.flatNumericUpDown1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.flatNumericUpDown1.Location = new System.Drawing.Point(418, 63);
+            this.flatNumericUpDown1.Maximum = 10;
+            this.flatNumericUpDown1.Minimum = 0;
+            this.flatNumericUpDown1.Name = "flatNumericUpDown1";
+            this.flatNumericUpDown1.Size = new System.Drawing.Size(217, 60);
+            this.flatNumericUpDown1.TabIndex = 6;
+            this.flatNumericUpDown1.Value = 0;
+            // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.Controls.Add(this.flatNumericUpDown1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.col1);
-            this.Controls.Add(this.flatTextbox1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.cbFood);
             this.Name = "Order";
@@ -159,7 +160,6 @@
 
         private System.Windows.Forms.ComboBox cbFood;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private FlatTextbox flatTextbox1;
         private System.Windows.Forms.Panel col1;
         private System.Windows.Forms.FlowLayoutPanel fpCategories;
         private System.Windows.Forms.Panel col1_header;
@@ -167,5 +167,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private FlatNumericUpDown flatNumericUpDown1;
     }
 }
