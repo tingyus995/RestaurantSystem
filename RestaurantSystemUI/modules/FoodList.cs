@@ -149,5 +149,27 @@ namespace RestaurantSystemUI.modules
             };
             Utility.ShowFullSpaceDialog(this, editor);
         }
+
+        
+
+
+        private void fpnFoodItems_Resize(object sender, EventArgs e)
+        {
+
+            /*Control pn = sender as Control;
+
+            if (pn.Controls.Count == 0) return;
+
+            int amount = pn.ClientSize.Width / (400 + 6);
+
+            if (amount == 0) return;
+
+            pn.SuspendLayout();
+            foreach(Control c in fpnFoodItems.Controls)
+            {
+                c.MinimumSize = new Size((fpnFoodItems.ClientSize.Width / amount - (c.Margin.Left + c.Margin.Right)) - 10, c.Height);
+            }
+            pn.ResumeLayout();*/
+        }
     }
 }

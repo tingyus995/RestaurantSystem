@@ -1,6 +1,6 @@
 ﻿namespace RestaurantSystemUI.modules
 {
-    partial class FoodVarient
+    partial class FoodVarientEditor
     {
         /// <summary> 
         /// Required designer variable.

@@ -20,7 +20,7 @@ namespace RestaurantSystemUI.modules
 
         public event EventHandler EditorExited;
 
-        private List<FoodVarient> fvs = new List<FoodVarient>();
+        private List<FoodVarientEditor> fvs = new List<FoodVarientEditor>();
         
         private Bitmap foodImage;
         private Food food;
@@ -49,7 +49,7 @@ namespace RestaurantSystemUI.modules
         private void addAnotherVarient(Varient v = null)
         {
             
-            FoodVarient fv = new FoodVarient();
+            FoodVarientEditor fv = new FoodVarientEditor();
             if (v != null) fv.Varient = v;
             
             fvs.Add(fv);

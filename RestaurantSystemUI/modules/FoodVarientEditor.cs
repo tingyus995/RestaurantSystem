@@ -11,7 +11,7 @@ using RestaurantSystemCore.models;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class FoodVarient : UserControl
+    public partial class FoodVarientEditor : UserControl
     {
         public event EventHandler RequireAnotherVarient;
 
@@ -46,7 +46,7 @@ namespace RestaurantSystemUI.modules
             set { varient = value; updateUI(); }
         }
         
-        public FoodVarient()
+        public FoodVarientEditor()
         {
             InitializeComponent();
         }

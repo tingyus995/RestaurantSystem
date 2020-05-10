@@ -77,6 +77,15 @@
     <Compile Include="controls\TagInput.Designer.cs">
       <DependentUpon>TagInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="controls\ThemedIconButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\ThemedIconTextButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\ThemedLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="modules\CategoryItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,11 +130,17 @@
     <Compile Include="modules\FoodList.Designer.cs">
       <DependentUpon>FoodList.cs</DependentUpon>
     </Compile>
-    <Compile Include="modules\FoodVarient.cs">
+    <Compile Include="modules\FoodVarientEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="modules\FoodVarient.Designer.cs">
-      <DependentUpon>FoodVarient.cs</DependentUpon>
+    <Compile Include="modules\FoodVarientEditor.Designer.cs">
+      <DependentUpon>FoodVarientEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\FoodVarientItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\FoodVarientItem.Designer.cs">
+      <DependentUpon>FoodVarientItem.cs</DependentUpon>
     </Compile>
     <Compile Include="modules\Order.cs">
       <SubType>UserControl</SubType>
@@ -144,6 +159,18 @@
     </Compile>
     <Compile Include="modules\OrderList.Designer.cs">
       <DependentUpon>OrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\OrderPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\OrderPreview.Designer.cs">
+      <DependentUpon>OrderPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\OrderPreviewFoodItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\OrderPreviewFoodItem.Designer.cs">
+      <DependentUpon>OrderPreviewFoodItem.cs</DependentUpon>
     </Compile>
     <Compile Include="modules\Personnel.cs">
       <SubType>UserControl</SubType>
@@ -190,8 +217,11 @@
     <EmbeddedResource Include="modules\FoodList.resx">
       <DependentUpon>FoodList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modules\FoodVarient.resx">
-      <DependentUpon>FoodVarient.cs</DependentUpon>
+    <EmbeddedResource Include="modules\FoodVarientEditor.resx">
+      <DependentUpon>FoodVarientEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\FoodVarientItem.resx">
+      <DependentUpon>FoodVarientItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
@@ -201,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modules\OrderList.resx">
       <DependentUpon>OrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\OrderPreview.resx">
+      <DependentUpon>OrderPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\OrderPreviewFoodItem.resx">
+      <DependentUpon>OrderPreviewFoodItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Personnel.resx">
       <DependentUpon>Personnel.cs</DependentUpon>
