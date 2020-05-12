@@ -212,12 +212,14 @@ namespace RestaurantSystemUI
                     pnContainer.Controls.Add(p.page);
                     p.page.Dock = DockStyle.Fill;
                     p.page.BringToFront();
+
+                    if (p.page is ISubmodule)
+                        ((ISubmodule)p.page).BeforeMounted();
+                    
                     break;
                 }
             }
         }
-
-
     }
 
     class Page

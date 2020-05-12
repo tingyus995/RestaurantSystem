@@ -13,13 +13,16 @@ namespace RestaurantSystemCore
         private static LiteDatabase db = DBProvider.GetDatabase();
         private static ILiteCollection<Order> colOrder = db.GetCollection<Order>("orders");
 
+        public static int No = 1;
+
         public static Order[] GetAllOrders()
         {
-            return colOrder.FindAll().ToArray();
+            return colOrder.FindAll().OrderByDescending(x => x.CreatedAt).ToArray();
         }
 
         public static void AddOrder(Order o)
         {
+            o.No = No++;
             colOrder.Insert(o);
         }
 

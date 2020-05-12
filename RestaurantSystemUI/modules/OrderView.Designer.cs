@@ -30,43 +30,43 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnTopHalf = new System.Windows.Forms.Panel();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.pnCreatedOrderInfo = new System.Windows.Forms.Panel();
             this.lbStatus = new System.Windows.Forms.Label();
+            this.lbWaitTime = new RestaurantSystemUI.controls.ThemedLabel();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
+            this.lbOrderNumber = new RestaurantSystemUI.controls.ThemedLabel();
             this.pnBottomBar = new System.Windows.Forms.Panel();
-            this.fpnFoodItems = new System.Windows.Forms.FlowLayoutPanel();
-            this.tmUpdateWaitTime = new System.Windows.Forms.Timer(this.components);
             this.btnNext = new RestaurantSystemUI.controls.ThemedIconTextButton();
             this.lbTotal = new RestaurantSystemUI.controls.ThemedLabel();
-            this.lbWaitTime = new RestaurantSystemUI.controls.ThemedLabel();
-            this.themedLabel1 = new RestaurantSystemUI.controls.ThemedLabel();
-            this.pnCreatedOrderInfo = new System.Windows.Forms.Panel();
+            this.fpnFoodItems = new System.Windows.Forms.FlowLayoutPanel();
+            this.tmUpdateWaitTime = new System.Windows.Forms.Timer(this.components);
             this.pnTopHalf.SuspendLayout();
+            this.pnCreatedOrderInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.pnBottomBar.SuspendLayout();
-            this.pnCreatedOrderInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTopHalf
             // 
             this.pnTopHalf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             this.pnTopHalf.Controls.Add(this.pnCreatedOrderInfo);
-            this.pnTopHalf.Controls.Add(this.themedLabel1);
+            this.pnTopHalf.Controls.Add(this.lbOrderNumber);
             this.pnTopHalf.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTopHalf.Location = new System.Drawing.Point(0, 0);
             this.pnTopHalf.Name = "pnTopHalf";
             this.pnTopHalf.Size = new System.Drawing.Size(513, 43);
             this.pnTopHalf.TabIndex = 2;
             // 
-            // iconPictureBox1
+            // pnCreatedOrderInfo
             // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Clock;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox1.Location = new System.Drawing.Point(129, 3);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.iconPictureBox1.TabIndex = 6;
-            this.iconPictureBox1.TabStop = false;
+            this.pnCreatedOrderInfo.Controls.Add(this.lbStatus);
+            this.pnCreatedOrderInfo.Controls.Add(this.lbWaitTime);
+            this.pnCreatedOrderInfo.Controls.Add(this.iconPictureBox1);
+            this.pnCreatedOrderInfo.Location = new System.Drawing.Point(104, 3);
+            this.pnCreatedOrderInfo.Name = "pnCreatedOrderInfo";
+            this.pnCreatedOrderInfo.Size = new System.Drawing.Size(392, 40);
+            this.pnCreatedOrderInfo.TabIndex = 7;
+            this.pnCreatedOrderInfo.Visible = false;
             // 
             // lbStatus
             // 
@@ -80,6 +80,39 @@
             this.lbStatus.TabIndex = 5;
             this.lbStatus.Text = "準備中";
             // 
+            // lbWaitTime
+            // 
+            this.lbWaitTime.AutoSize = true;
+            this.lbWaitTime.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lbWaitTime.ForeColor = System.Drawing.Color.White;
+            this.lbWaitTime.Location = new System.Drawing.Point(167, 4);
+            this.lbWaitTime.Name = "lbWaitTime";
+            this.lbWaitTime.Size = new System.Drawing.Size(126, 28);
+            this.lbWaitTime.TabIndex = 1;
+            this.lbWaitTime.Text = "{wait time}";
+            // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Clock;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox1.Location = new System.Drawing.Point(129, 3);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.iconPictureBox1.TabIndex = 6;
+            this.iconPictureBox1.TabStop = false;
+            // 
+            // lbOrderNumber
+            // 
+            this.lbOrderNumber.AutoSize = true;
+            this.lbOrderNumber.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lbOrderNumber.ForeColor = System.Drawing.Color.White;
+            this.lbOrderNumber.Location = new System.Drawing.Point(12, 9);
+            this.lbOrderNumber.Name = "lbOrderNumber";
+            this.lbOrderNumber.Size = new System.Drawing.Size(39, 28);
+            this.lbOrderNumber.TabIndex = 0;
+            this.lbOrderNumber.Text = "#1";
+            // 
             // pnBottomBar
             // 
             this.pnBottomBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
@@ -90,22 +123,6 @@
             this.pnBottomBar.Name = "pnBottomBar";
             this.pnBottomBar.Size = new System.Drawing.Size(513, 52);
             this.pnBottomBar.TabIndex = 3;
-            // 
-            // fpnFoodItems
-            // 
-            this.fpnFoodItems.AutoSize = true;
-            this.fpnFoodItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fpnFoodItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.fpnFoodItems.Location = new System.Drawing.Point(0, 43);
-            this.fpnFoodItems.MinimumSize = new System.Drawing.Size(300, 20);
-            this.fpnFoodItems.Name = "fpnFoodItems";
-            this.fpnFoodItems.Size = new System.Drawing.Size(513, 36);
-            this.fpnFoodItems.TabIndex = 4;
-            // 
-            // tmUpdateWaitTime
-            // 
-            this.tmUpdateWaitTime.Interval = 1000;
-            this.tmUpdateWaitTime.Tick += new System.EventHandler(this.tmUpdateWaitTime_Tick);
             // 
             // btnNext
             // 
@@ -143,38 +160,21 @@
             this.lbTotal.TabIndex = 1;
             this.lbTotal.Text = "共 0 元";
             // 
-            // lbWaitTime
+            // fpnFoodItems
             // 
-            this.lbWaitTime.AutoSize = true;
-            this.lbWaitTime.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lbWaitTime.ForeColor = System.Drawing.Color.White;
-            this.lbWaitTime.Location = new System.Drawing.Point(167, 4);
-            this.lbWaitTime.Name = "lbWaitTime";
-            this.lbWaitTime.Size = new System.Drawing.Size(126, 28);
-            this.lbWaitTime.TabIndex = 1;
-            this.lbWaitTime.Text = "{wait time}";
+            this.fpnFoodItems.AutoSize = true;
+            this.fpnFoodItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fpnFoodItems.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.fpnFoodItems.Location = new System.Drawing.Point(0, 43);
+            this.fpnFoodItems.MinimumSize = new System.Drawing.Size(300, 20);
+            this.fpnFoodItems.Name = "fpnFoodItems";
+            this.fpnFoodItems.Size = new System.Drawing.Size(513, 36);
+            this.fpnFoodItems.TabIndex = 4;
             // 
-            // themedLabel1
+            // tmUpdateWaitTime
             // 
-            this.themedLabel1.AutoSize = true;
-            this.themedLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold);
-            this.themedLabel1.ForeColor = System.Drawing.Color.White;
-            this.themedLabel1.Location = new System.Drawing.Point(12, 9);
-            this.themedLabel1.Name = "themedLabel1";
-            this.themedLabel1.Size = new System.Drawing.Size(39, 28);
-            this.themedLabel1.TabIndex = 0;
-            this.themedLabel1.Text = "#1";
-            // 
-            // pnCreatedOrderInfo
-            // 
-            this.pnCreatedOrderInfo.Controls.Add(this.lbStatus);
-            this.pnCreatedOrderInfo.Controls.Add(this.lbWaitTime);
-            this.pnCreatedOrderInfo.Controls.Add(this.iconPictureBox1);
-            this.pnCreatedOrderInfo.Location = new System.Drawing.Point(104, 3);
-            this.pnCreatedOrderInfo.Name = "pnCreatedOrderInfo";
-            this.pnCreatedOrderInfo.Size = new System.Drawing.Size(392, 40);
-            this.pnCreatedOrderInfo.TabIndex = 7;
-            this.pnCreatedOrderInfo.Visible = false;
+            this.tmUpdateWaitTime.Interval = 1000;
+            this.tmUpdateWaitTime.Tick += new System.EventHandler(this.tmUpdateWaitTime_Tick);
             // 
             // OrderView
             // 
@@ -190,11 +190,11 @@
             this.Load += new System.EventHandler(this.OrderView_Load);
             this.pnTopHalf.ResumeLayout(false);
             this.pnTopHalf.PerformLayout();
+            this.pnCreatedOrderInfo.ResumeLayout(false);
+            this.pnCreatedOrderInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.pnBottomBar.ResumeLayout(false);
             this.pnBottomBar.PerformLayout();
-            this.pnCreatedOrderInfo.ResumeLayout(false);
-            this.pnCreatedOrderInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,7 +202,7 @@
 
         #endregion
 
-        private controls.ThemedLabel themedLabel1;
+        private controls.ThemedLabel lbOrderNumber;
         private controls.ThemedIconTextButton btnNext;
         private controls.ThemedLabel lbTotal;
         private System.Windows.Forms.Panel pnTopHalf;

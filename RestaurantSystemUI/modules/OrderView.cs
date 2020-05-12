@@ -43,6 +43,13 @@ namespace RestaurantSystemUI.modules
 
         public event EventHandler NextButtonClicked;
 
+        public void Reset()
+        {
+            fpnFoodItems.Controls.Clear();
+            lbOrderNumber.Text = String.Format("#{0}", OrderManager.No);
+            updateTotal();
+        }
+
         private void AddOrUpdateFoodItem(Food f, int amount)
         {
             foreach (OrderViewFoodItem item in fpnFoodItems.Controls)
@@ -166,8 +173,10 @@ namespace RestaurantSystemUI.modules
 
         private void OrderView_Load(object sender, EventArgs e)
         {
-            
-            if(order != null) {
+
+            lbOrderNumber.Text = String.Format("#{0}", OrderManager.No);
+
+            if (order != null) {
                 //MessageBox.Show(order.Foods.Length.ToString());
                 foreach (Food f in order.Foods)
                 {
@@ -181,7 +190,7 @@ namespace RestaurantSystemUI.modules
 
 
                 }
-
+                lbOrderNumber.Text = String.Format("#{0}", order.No.ToString());
                 //lbWaitTime.Visible = true;
                 updateWaitTime();
                 pnCreatedOrderInfo.Visible = true;

@@ -49,7 +49,8 @@ namespace RestaurantSystemUI
                     Status = Order.OrderStatus.Queuing
                 });
 
-                MessageBox.Show("Saved.");
+                MessageBox.Show("訂單新增成功", "資訊", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                orderPreview1.Reset();
                 
             };
 

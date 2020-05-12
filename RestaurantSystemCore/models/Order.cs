@@ -17,6 +17,7 @@ namespace RestaurantSystemCore.models
             Cancelled
         }
         public int Id { get; set; }
+        public int No { get; set; }
         public Food[] Foods { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime FinishedAt { get; set; }

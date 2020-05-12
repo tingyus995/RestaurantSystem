@@ -13,11 +13,30 @@ using RestaurantSystemUI.modules;
 
 namespace RestaurantSystemUI
 {
-    public partial class OrderList : UserControl
+    public partial class OrderList : UserControl, ISubmodule
     {
         public OrderList()
         {
             InitializeComponent();
+        }
+
+        public void BeforeMounted()
+        {
+            init();
+        }
+
+        private void init()
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+            Order[] orders = OrderManager.GetAllOrders();
+            //MessageBox.Show(orders.Length.ToString());
+            foreach (Order ord in orders)
+            {
+                OrderView ordView = new OrderView(ord);
+
+                flowLayoutPanel1.Controls.Add(new OrderView(ord));
+            }
         }
 
         private void OrderList_Load(object sender, EventArgs e)
@@ -50,15 +69,7 @@ namespace RestaurantSystemUI
             flowLayoutPanel1.Controls.Add(new OrderItem("義大利麵", OrderItem.State.Ready, d));
             flowLayoutPanel1.Controls.Add(new OrderItem("培根鐵板麵", OrderItem.State.Ready, d));*/
 
-            Order[] orders = OrderManager.GetAllOrders();
-            //MessageBox.Show(orders.Length.ToString());
-            foreach (Order ord in orders)
-            {
-                OrderView ordView = new OrderView(ord);
-                
-                flowLayoutPanel1.Controls.Add(new OrderView(ord));
-            }
-
+            init();
 
         }
     }
