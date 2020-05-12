@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestaurantSystemCore.models;
+using RestaurantSystemCore;
+using RestaurantSystemUI.modules;
 
 namespace RestaurantSystemUI
 {
@@ -38,14 +41,24 @@ namespace RestaurantSystemUI
 
             // put some dummpy data
 
-            DateTime d = DateTime.Now;
+            /*DateTime d = DateTime.Now;
 
 
             flowLayoutPanel1.Controls.Add(new OrderItem("焗烤麵", OrderItem.State.Preparing, d));
             flowLayoutPanel1.Controls.Add(new OrderItem("麻醬麵", OrderItem.State.Queuing,d ));
             flowLayoutPanel1.Controls.Add(new OrderItem("培根鐵板麵", OrderItem.State.Finished, d));
             flowLayoutPanel1.Controls.Add(new OrderItem("義大利麵", OrderItem.State.Ready, d));
-            flowLayoutPanel1.Controls.Add(new OrderItem("培根鐵板麵", OrderItem.State.Ready, d));
+            flowLayoutPanel1.Controls.Add(new OrderItem("培根鐵板麵", OrderItem.State.Ready, d));*/
+
+            Order[] orders = OrderManager.GetAllOrders();
+            //MessageBox.Show(orders.Length.ToString());
+            foreach (Order ord in orders)
+            {
+                OrderView ordView = new OrderView(ord);
+                
+                flowLayoutPanel1.Controls.Add(new OrderView(ord));
+            }
+
 
         }
     }

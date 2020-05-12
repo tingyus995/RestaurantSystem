@@ -50,7 +50,7 @@ namespace RestaurantSystemUI.modules
                 item.PlusButtonClicked += (object _s, EventArgs _e) =>
                 {
                     FoodVarientItem it = _s as FoodVarientItem;
-                    food.SelectedVarient = fpnVarients.Controls.IndexOf(it);
+                    food.SelectedVarientIndex = fpnVarients.Controls.IndexOf(it);
                     FoodSelected?.Invoke(this, new FoodSelectedEventArgs(food));
                 };
                

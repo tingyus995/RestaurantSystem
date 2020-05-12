@@ -11,22 +11,37 @@ using RestaurantSystemCore.models;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class OrderPreviewFoodItem : UserControl
+    public partial class OrderViewFoodItem : UserControl
     {
         public event EventHandler FoodAmountChanged;
         private Food food;
 
         private Bitmap thumbnail;
 
+        private bool showRemoveIcon = false;
+
+        public bool ShowRemoveIcon
+        {
+            get { return showRemoveIcon; }
+            set {
+                showRemoveIcon = value;
+
+                btnRemove.Visible = showRemoveIcon;            
+            }
+        }
+
+
+
         public Food Food
         {
             get { return food; }
             set { food = value; 
                 lbFoodName.Text = Food.Name;
-                lbVarientName.Text = Food.Varients[Food.SelectedVarient].Name;
-                lbPrice.Text = (Food.BasePrice + Food.Varients[Food.SelectedVarient].delta).ToString();
-
-                thumbnail = Utility.BytesToImage(Food.Varients[Food.SelectedVarient].image);
+                lbVarientName.Text = Food.Varients[Food.SelectedVarientIndex].Name;
+                lbPrice.Text = (Food.BasePrice + Food.Varients[Food.SelectedVarientIndex].delta).ToString();
+                lbAmount.Text = Food.Amount.ToString() + "x ";
+                Amount = food.Amount;
+                thumbnail = Utility.BytesToImage(Food.Varients[Food.SelectedVarientIndex].image);
 
                 if(thumbnail == null)
                 {
@@ -50,11 +65,12 @@ namespace RestaurantSystemUI.modules
             get { return amount; }
             set { amount = value;
                 lbAmount.Text = Amount.ToString() + "x ";
+                food.Amount = amount;
             }
         }
 
 
-        public OrderPreviewFoodItem()
+        public OrderViewFoodItem()
         {
             InitializeComponent();
         }

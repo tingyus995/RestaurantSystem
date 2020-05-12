@@ -16,12 +16,12 @@ using System.Drawing.Text;
 
 namespace RestaurantSystemUI
 {
-    public partial class Order : UserControl
+    public partial class AddOrder : UserControl
     {
 
         private const string ALL_CATEGORIES = "全部分類";
 
-        public Order()
+        public AddOrder()
         {
             InitializeComponent();
         }
@@ -29,6 +29,31 @@ namespace RestaurantSystemUI
         private void Order_Load(object sender, EventArgs e)
         {
             loadCategories();
+
+            orderPreview1.NextButtonClicked += (object _s, EventArgs _e) =>
+            {
+                // save order to db
+
+                Food[] foods = orderPreview1.GetFoods();
+                if (foods.Length == 0)
+                {
+                    MessageBox.Show("訂單內沒有食物。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+                OrderManager.AddOrder(new Order()
+                {
+                    Foods = foods,
+                    CreatedAt = DateTime.Now,
+                    Status = Order.OrderStatus.Queuing
+                });
+
+                MessageBox.Show("Saved.");
+                
+            };
+
+            orderPreview1.SetNextButton("新增訂單", IconChar.Plus, Color.DarkCyan);
         }
 
         private void loadCategories()
@@ -132,9 +157,8 @@ namespace RestaurantSystemUI
 
                 item.FoodSelected += (object __s, FoodSelectedEventArgs __e) => {
 
-                    FoodItem i = __s as FoodItem;
-                    
-                    orderPreview1.AddFood(i.Food.clone());
+                    FoodItem i = __s as FoodItem;                    
+                    orderPreview1.AddFood(i.Food);
                 };
             }          
 

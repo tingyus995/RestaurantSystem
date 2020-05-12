@@ -1,6 +1,6 @@
 ﻿namespace RestaurantSystemUI
 {
-    partial class Order
+    partial class AddOrder
     {
         /// <summary> 
         /// Required designer variable.
@@ -74,18 +74,21 @@
             // 
             this.orderPreview1.AutoSize = true;
             this.orderPreview1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.orderPreview1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.orderPreview1.Editable = false;
             this.orderPreview1.Location = new System.Drawing.Point(427, 9);
             this.orderPreview1.Name = "orderPreview1";
-            this.orderPreview1.Size = new System.Drawing.Size(300, 115);
+            this.orderPreview1.Size = new System.Drawing.Size(419, 115);
             this.orderPreview1.TabIndex = 8;
+            this.orderPreview1.Total = 0;
             // 
-            // Order
+            // AddOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Order";
+            this.Name = "AddOrder";
             this.Size = new System.Drawing.Size(849, 561);
             this.Load += new System.EventHandler(this.Order_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

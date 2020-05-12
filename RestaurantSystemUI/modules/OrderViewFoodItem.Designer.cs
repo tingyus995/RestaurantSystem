@@ -1,6 +1,6 @@
 ﻿namespace RestaurantSystemUI.modules
 {
-    partial class OrderPreviewFoodItem
+    partial class OrderViewFoodItem
     {
         /// <summary> 
         /// Required designer variable.

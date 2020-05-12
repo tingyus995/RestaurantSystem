@@ -142,11 +142,11 @@
     <Compile Include="modules\FoodVarientItem.Designer.cs">
       <DependentUpon>FoodVarientItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="modules\Order.cs">
+    <Compile Include="modules\AddOrder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="modules\Order.Designer.cs">
-      <DependentUpon>Order.cs</DependentUpon>
+    <Compile Include="modules\AddOrder.Designer.cs">
+      <DependentUpon>AddOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="modules\OrderItem.cs">
       <SubType>UserControl</SubType>
@@ -160,17 +160,17 @@
     <Compile Include="modules\OrderList.Designer.cs">
       <DependentUpon>OrderList.cs</DependentUpon>
     </Compile>
-    <Compile Include="modules\OrderPreview.cs">
+    <Compile Include="modules\OrderView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="modules\OrderPreview.Designer.cs">
-      <DependentUpon>OrderPreview.cs</DependentUpon>
+    <Compile Include="modules\OrderView.Designer.cs">
+      <DependentUpon>OrderView.cs</DependentUpon>
     </Compile>
-    <Compile Include="modules\OrderPreviewFoodItem.cs">
+    <Compile Include="modules\OrderViewFoodItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="modules\OrderPreviewFoodItem.Designer.cs">
-      <DependentUpon>OrderPreviewFoodItem.cs</DependentUpon>
+    <Compile Include="modules\OrderViewFoodItem.Designer.cs">
+      <DependentUpon>OrderViewFoodItem.cs</DependentUpon>
     </Compile>
     <Compile Include="modules\Personnel.cs">
       <SubType>UserControl</SubType>
@@ -223,8 +223,8 @@
     <EmbeddedResource Include="modules\FoodVarientItem.resx">
       <DependentUpon>FoodVarientItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modules\Order.resx">
-      <DependentUpon>Order.cs</DependentUpon>
+    <EmbeddedResource Include="modules\AddOrder.resx">
+      <DependentUpon>AddOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\OrderItem.resx">
       <DependentUpon>OrderItem.cs</DependentUpon>
@@ -232,11 +232,11 @@
     <EmbeddedResource Include="modules\OrderList.resx">
       <DependentUpon>OrderList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modules\OrderPreview.resx">
-      <DependentUpon>OrderPreview.cs</DependentUpon>
+    <EmbeddedResource Include="modules\OrderView.resx">
+      <DependentUpon>OrderView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modules\OrderPreviewFoodItem.resx">
-      <DependentUpon>OrderPreviewFoodItem.cs</DependentUpon>
+    <EmbeddedResource Include="modules\OrderViewFoodItem.resx">
+      <DependentUpon>OrderViewFoodItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Personnel.resx">
       <DependentUpon>Personnel.cs</DependentUpon>

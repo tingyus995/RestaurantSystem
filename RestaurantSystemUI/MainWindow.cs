@@ -49,7 +49,7 @@ namespace RestaurantSystemUI
             };
 
             pages = new List<Page>() {
-                new Page(ibOrder, new Order()),
+                new Page(ibOrder, new AddOrder()),
                 new Page(iconButton1, new OrderList()),
                 new Page(iconButton2, new Status()),
                 new Page(iconButton3, new Personnel()),

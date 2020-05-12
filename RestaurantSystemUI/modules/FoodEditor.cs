@@ -31,7 +31,7 @@ namespace RestaurantSystemUI.modules
             InitializeComponent();
             // new food
             food = new Food(){                
-                SelectedVarient = -1
+                SelectedVarientIndex = -1
             };
 
             pbFoodImage.Image = Properties.Resources.DefaultFoodImage;
