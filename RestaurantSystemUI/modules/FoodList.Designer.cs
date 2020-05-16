@@ -47,8 +47,7 @@
             // 
             // fpnCategories
             // 
-            this.fpnCategories.AutoScroll = true;
-            this.fpnCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.fpnCategories.AutoScroll = true;            
             this.fpnCategories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnCategories.Location = new System.Drawing.Point(3, 93);
             this.fpnCategories.Name = "fpnCategories";
@@ -57,8 +56,7 @@
             // 
             // fpnFoodItems
             // 
-            this.fpnFoodItems.AutoScroll = true;
-            this.fpnFoodItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.fpnFoodItems.AutoScroll = true;            
             this.fpnFoodItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnFoodItems.Location = new System.Drawing.Point(318, 47);
             this.fpnFoodItems.Margin = new System.Windows.Forms.Padding(0);
@@ -104,8 +102,7 @@
             // 
             // iconPictureBox3
             // 
-            this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;            
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.FolderOpen;
             this.iconPictureBox3.IconColor = System.Drawing.Color.White;
             this.iconPictureBox3.Location = new System.Drawing.Point(3, 4);
@@ -143,8 +140,7 @@
             // 
             // iconPictureBox5
             // 
-            this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;            
             this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.List;
             this.iconPictureBox5.IconColor = System.Drawing.Color.White;
             this.iconPictureBox5.Location = new System.Drawing.Point(3, 4);
@@ -167,8 +163,7 @@
             // 
             // ibtnAddFood
             // 
-            this.ibtnAddFood.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ibtnAddFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ibtnAddFood.Anchor = System.Windows.Forms.AnchorStyles.Left;            
             this.ibtnAddFood.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.ibtnAddFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnAddFood.Flip = FontAwesome.Sharp.FlipOrientation.Normal;

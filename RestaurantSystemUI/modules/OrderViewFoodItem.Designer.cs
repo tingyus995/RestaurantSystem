@@ -72,6 +72,7 @@
             // 
             // lbPrice
             // 
+            this.lbPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPrice.AutoSize = true;
             this.lbPrice.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold);
             this.lbPrice.ForeColor = System.Drawing.Color.White;
@@ -115,7 +116,7 @@
             this.lbFoodName.TabIndex = 1;
             this.lbFoodName.Text = "{food name}";
             // 
-            // OrderPreviewFoodItem
+            // OrderViewFoodItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -126,7 +127,8 @@
             this.Controls.Add(this.lbVarientName);
             this.Controls.Add(this.lbFoodName);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "OrderPreviewFoodItem";
+            this.Margin = new System.Windows.Forms.Padding(0);
+            this.Name = "OrderViewFoodItem";
             this.Size = new System.Drawing.Size(513, 63);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

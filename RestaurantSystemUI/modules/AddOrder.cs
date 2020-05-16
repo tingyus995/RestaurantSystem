@@ -16,10 +16,17 @@ using System.Drawing.Text;
 
 namespace RestaurantSystemUI
 {
-    public partial class AddOrder : UserControl
+    public partial class AddOrder : UserControl, IThemeable
     {
 
         private const string ALL_CATEGORIES = "全部分類";
+        
+        
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+        }
 
         public AddOrder()
         {
@@ -95,7 +102,7 @@ namespace RestaurantSystemUI
 
             foreach (var c in cats)
             {
-                CategoryItem item = new CategoryItem() { Category = c };
+                CategoryItem item = new CategoryItem() { Category = c, Editable = false};
                 item.CategoryItemClicked += (object _s, EventArgs _e) =>
                 {
 
@@ -171,5 +178,7 @@ namespace RestaurantSystemUI
         {
 
         }
+
+
     }
 }

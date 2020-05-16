@@ -7,7 +7,7 @@ namespace RestaurantSystemCore
 {
     public static class DBProvider
     {        
-        private static LiteDatabase DB = new LiteDatabase(@"data.db");
+        private static LiteDatabase DB = new LiteDatabase(@"Filename=data.db;Connection=Shared");
 
         public static LiteDatabase GetDatabase()
         {

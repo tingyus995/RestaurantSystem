@@ -90,5 +90,10 @@ namespace RestaurantSystemUI.controls
                 }
             }
         }
+
+        private void TagInput_BackColorChanged(object sender, EventArgs e)
+        {
+            flatTextbox1.BackColor = BackColor;
+        }
     }
 }

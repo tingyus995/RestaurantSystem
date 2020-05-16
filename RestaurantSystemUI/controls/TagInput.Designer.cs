@@ -51,7 +51,6 @@
             this.flatTextbox1.PlaceHolder = null;
             this.flatTextbox1.Size = new System.Drawing.Size(145, 36);
             this.flatTextbox1.TabIndex = 4;
-            this.flatTextbox1.Theme = null;
             // 
             // TagInput
             // 
@@ -62,6 +61,7 @@
             this.Name = "TagInput";
             this.Size = new System.Drawing.Size(686, 118);
             this.Load += new System.EventHandler(this.TagInput_Load);
+            this.BackColorChanged += new System.EventHandler(this.TagInput_BackColorChanged);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

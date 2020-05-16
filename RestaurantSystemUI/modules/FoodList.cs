@@ -12,7 +12,7 @@ using RestaurantSystemCore;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class FoodList : UserControl
+    public partial class FoodList : UserControl, IThemeable
     {
 
         private string selectedCategoryName;
@@ -88,7 +88,8 @@ namespace RestaurantSystemUI.modules
         }
 
         private void CategoryItem_Click(object sender, EventArgs e)
-        {
+        {            
+            
             CategoryItem item = sender as CategoryItem;
             activateCategory(item);
 
@@ -170,6 +171,12 @@ namespace RestaurantSystemUI.modules
                 c.MinimumSize = new Size((fpnFoodItems.ClientSize.Width / amount - (c.Margin.Left + c.Margin.Right)) - 10, c.Height);
             }
             pn.ResumeLayout();*/
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
         }
     }
 }

@@ -100,8 +100,7 @@
             this.label3.Text = "食物分類";
             // 
             // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            //             
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,8 +148,7 @@
             // 
             // iconPictureBox1
             // 
-            this.iconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;            
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Utensils;
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.Location = new System.Drawing.Point(3, 7);
@@ -161,14 +159,12 @@
             // 
             // ftbName
             // 
-            this.ftbName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ftbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.ftbName.Anchor = System.Windows.Forms.AnchorStyles.None;            
             this.ftbName.Location = new System.Drawing.Point(151, 5);
             this.ftbName.Name = "ftbName";
             this.ftbName.PlaceHolder = "例如：麻醬麵";
             this.ftbName.Size = new System.Drawing.Size(231, 36);
-            this.ftbName.TabIndex = 0;
-            this.ftbName.Theme = null;
+            this.ftbName.TabIndex = 0;            
             // 
             // tableLayoutPanel2
             // 
@@ -188,8 +184,7 @@
             // 
             // iconPictureBox2
             // 
-            this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;            
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.Coins;
             this.iconPictureBox2.IconColor = System.Drawing.Color.White;
             this.iconPictureBox2.Location = new System.Drawing.Point(3, 4);
@@ -200,14 +195,13 @@
             // 
             // ftbBasePrice
             // 
-            this.ftbBasePrice.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ftbBasePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.ftbBasePrice.Anchor = System.Windows.Forms.AnchorStyles.None;            
             this.ftbBasePrice.Location = new System.Drawing.Point(223, 3);
             this.ftbBasePrice.Name = "ftbBasePrice";
             this.ftbBasePrice.PlaceHolder = "例如：180";
             this.ftbBasePrice.Size = new System.Drawing.Size(129, 35);
             this.ftbBasePrice.TabIndex = 1;
-            this.ftbBasePrice.Theme = null;
+            
             // 
             // tableLayoutPanel4
             // 
@@ -225,8 +219,7 @@
             // 
             // iconPictureBox5
             // 
-            this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;            
             this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Buffer;
             this.iconPictureBox5.IconColor = System.Drawing.Color.White;
             this.iconPictureBox5.Location = new System.Drawing.Point(3, 4);
@@ -251,8 +244,7 @@
             // 
             // iconPictureBox3
             // 
-            this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;            
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.FolderOpen;
             this.iconPictureBox3.IconColor = System.Drawing.Color.White;
             this.iconPictureBox3.Location = new System.Drawing.Point(3, 4);
@@ -276,7 +268,7 @@
             // 
             // pbFoodImage
             // 
-            this.pbFoodImage.BackColor = System.Drawing.Color.Transparent;
+            
             this.pbFoodImage.InitialImage = null;
             this.pbFoodImage.Location = new System.Drawing.Point(16, 14);
             this.pbFoodImage.Name = "pbFoodImage";
@@ -333,8 +325,7 @@
             // 
             // tagInput1
             // 
-            this.tagInput1.AutoScroll = true;
-            this.tagInput1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.tagInput1.AutoScroll = true;            
             this.tagInput1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tagInput1.Location = new System.Drawing.Point(3, 50);
             this.tagInput1.Name = "tagInput1";

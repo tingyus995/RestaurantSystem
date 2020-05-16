@@ -11,7 +11,7 @@ using RestaurantSystemCore.models;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class FoodVarientEditor : UserControl
+    public partial class FoodVarientEditor : UserControl, IThemeable
     {
         public event EventHandler RequireAnotherVarient;
 
@@ -63,6 +63,7 @@ namespace RestaurantSystemUI.modules
             ftbDelta.textBox.KeyDown += handleKeyDown;
             ftbDelta.textBox.KeyPress += handleKeyPress;
             ftbDelta.LostFocus += FtbDelta_LostFocus;
+            ApplyTheme();
             //flatTbName.Focus();
         }
 
@@ -128,6 +129,23 @@ namespace RestaurantSystemUI.modules
                     setSign('-');
                     e.Handled = true;
                     return;
+            }
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+
+            // textboxes
+
+            foreach(Control control in Controls)
+            {
+                if(control is FlatTextbox)
+                {
+                    var ftb = control as FlatTextbox;
+                    ftb.BackColor = theme.ContentPanel;
+                }    
             }
         }
     }

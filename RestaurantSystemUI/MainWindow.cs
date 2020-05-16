@@ -18,11 +18,28 @@ namespace RestaurantSystemUI
     {
 
         private List<Page> pages;
-        ColorTheme theme;
+        public ColorTheme theme;
 
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ApplyTheme(ColorTheme theme)
+        {
+            // main areas
+            pnMenuBar.BackColor = theme.MainMenuBar; // menubar panel
+            pnContainer.BackColor = theme.ContentPanel;
+            pnTitleBar.BackColor = theme.TitleBar;
+
+            // menu items
+            foreach (Page p in pages)
+            {
+                p.menuButton.Click += onMenuItemClick;
+                p.menuButton.BackColor = theme.MainMenuItem;
+                p.menuButton.FlatAppearance.MouseOverBackColor = theme.MainMenuItemMouseOver;
+                p.menuButton.FlatAppearance.MouseDownBackColor = theme.MainMenuItemMouseDown;
+            }
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -30,16 +47,7 @@ namespace RestaurantSystemUI
 
             theme = new ColorTheme();
 
-            // apply color theme
-            pnMenuBar.BackColor = theme.MainMenuBar; // menubar panel
-            pnContainer.BackColor = theme.ContentPanel;
-            pnTitleBar.BackColor = theme.MainMenuItem;
-
-
             pnActiveIndicator.Visible = false;
-
-            //lbTitle.Text = "";
-
 
             Settings setting_page = new Settings();
 
@@ -59,16 +67,7 @@ namespace RestaurantSystemUI
 
 
 
-            // theme
-
-            foreach (Page p in pages)
-            {
-                p.menuButton.Click += onMenuItemClick;
-                p.menuButton.BackColor = theme.MainMenuItem;
-                p.menuButton.FlatAppearance.MouseOverBackColor = theme.MainMenuItemMouseOver;
-                p.menuButton.FlatAppearance.MouseDownBackColor = theme.MainMenuItemMouseDown;
-            }
-
+            
             lbShopName.Text = ShopManager.ShopName;
 
             string logo_base64 = ShopManager.ShopLogo;
@@ -77,6 +76,7 @@ namespace RestaurantSystemUI
                 pictureBox1.Image = Utility.Base64ToImage(logo_base64);
             }
 
+            ApplyTheme(theme);
 
         }
         #region borderless window
@@ -193,12 +193,12 @@ namespace RestaurantSystemUI
 
         private void onMenuItemClick(object sender, EventArgs e)
         {
+            // set to original background color
             foreach (Page b in pages)
             {
                 b.menuButton.BackColor = theme.MainMenuItem;
-
             }
-
+            // set active background color
             IconButton btn = sender as IconButton;
             btn.BackColor = theme.MainMenuItemSelected;
             pnActiveIndicator.Visible = true;
@@ -212,13 +212,20 @@ namespace RestaurantSystemUI
                     pnContainer.Controls.Add(p.page);
                     p.page.Dock = DockStyle.Fill;
                     p.page.BringToFront();
-
+                    if (p.page is IThemeable)
+                        ((IThemeable)p.page).ApplyTheme();
                     if (p.page is ISubmodule)
                         ((ISubmodule)p.page).BeforeMounted();
+
                     
                     break;
                 }
             }
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DBProvider.GetDatabase().Dispose();
         }
     }
 

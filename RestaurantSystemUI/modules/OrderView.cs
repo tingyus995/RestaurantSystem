@@ -14,7 +14,7 @@ using RestaurantSystemCore;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class OrderView : UserControl
+    public partial class OrderView : UserControl, IThemeable
     {
         //private List<Food> foods = new List<Food>();
 
@@ -45,20 +45,64 @@ namespace RestaurantSystemUI.modules
 
         public void Reset()
         {
-            fpnFoodItems.Controls.Clear();
+            tlpFoodItems.Controls.Clear();
             lbOrderNumber.Text = String.Format("#{0}", OrderManager.No);
             updateTotal();
         }
 
+        private void AddRow(OrderViewFoodItem item)
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+
+            /*item.Dock = DockStyle.Fill;
+            if (tlpFoodItems.RowCount == 1 && tlpFoodItems.Controls[0] is Label) // first food
+            {
+                item.BackColor = theme.OrderViewItemEven;
+                tlpFoodItems.Controls.Clear();
+                tlpFoodItems.Controls.Add(item);
+            }
+            else
+            {
+
+                if (tlpFoodItems.RowCount % 2 == 0)
+                    item.BackColor = theme.OrderViewItemEven;
+                else
+                    item.BackColor = theme.OrderViewItemOdd;
+
+                tlpFoodItems.RowCount = tlpFoodItems.RowCount + 1;
+
+                tlpFoodItems.Controls.Add(item, 0, tlpFoodItems.RowCount - 1);
+            }*/
+
+           
+            themedLabel1.Visible = false;
+            
+            item.Dock = DockStyle.Fill;
+            if (tlpFoodItems.RowCount % 2 == 0)
+                item.BackColor = theme.OrderViewItemEven;
+            else
+                item.BackColor = theme.OrderViewItemOdd;
+
+            tlpFoodItems.RowCount = tlpFoodItems.RowCount + 1;
+
+            tlpFoodItems.Controls.Add(item, 0, tlpFoodItems.RowCount - 1);
+            
+        }
+
         private void AddOrUpdateFoodItem(Food f, int amount)
         {
-            foreach (OrderViewFoodItem item in fpnFoodItems.Controls)
+            foreach (Control control in tlpFoodItems.Controls)
             {
-                if (item.Food.Id == f.Id && item.Food.SelectedVarientIndex == f.SelectedVarientIndex)
+                if(control is OrderViewFoodItem)
                 {
-                    item.Amount += amount;
-                    return;
-                }
+                    OrderViewFoodItem item = control as OrderViewFoodItem;
+                    if (item.Food.Id == f.Id && item.Food.SelectedVarientIndex == f.SelectedVarientIndex)
+                    {
+                        item.Amount += amount;
+                        return;
+                    }
+                }               
+
             }
 
             Food clonedFood = f.clone();
@@ -68,14 +112,14 @@ namespace RestaurantSystemUI.modules
             {
                 Food = clonedFood,
                 ShowRemoveIcon = Editable
-            };
+            };            
 
             it.FoodAmountChanged += (object _s, EventArgs _e) =>
             {
                 updateTotal();
             };
-
-            fpnFoodItems.Controls.Add(it);
+            
+            AddRow(it);
         }
 
         public void AddFood(Food f, int amount = 1)
@@ -88,9 +132,12 @@ namespace RestaurantSystemUI.modules
         {
             List<Food> result = new List<Food>();
             
-            foreach(OrderViewFoodItem item in fpnFoodItems.Controls)
-            {
-                result.Add(item.Food);
+            foreach(Control control in tlpFoodItems.Controls){
+                if(control is OrderViewFoodItem)
+                {
+                    OrderViewFoodItem item = control as OrderViewFoodItem;
+                    result.Add(item.Food);
+                }
             }
 
             return result.ToArray();
@@ -100,14 +147,21 @@ namespace RestaurantSystemUI.modules
         void updateTotal()
         {
             int result = 0;
-            if(fpnFoodItems.Controls != null)
-                foreach(OrderViewFoodItem item in fpnFoodItems.Controls)
+            if(tlpFoodItems.Controls != null)
+                foreach(Control control in tlpFoodItems.Controls)
                 {
-                    result += (item.Food.BasePrice + item.Food.Varients[item.Food.SelectedVarientIndex].delta) * item.Amount;                
+                    if(control is OrderViewFoodItem)
+                    {
+                        OrderViewFoodItem item = control as OrderViewFoodItem;
+                        result += (item.Food.BasePrice + item.Food.Varients[item.Food.SelectedVarientIndex].delta) * item.Amount;                
+                    }
                 }
 
             Total = result;
+
             lbTotal.Text = string.Format("共 {0} 元", Total.ToString());
+
+            if (Total == 0) themedLabel1.Visible = true;
         }
         
         
@@ -186,7 +240,8 @@ namespace RestaurantSystemUI.modules
                         ShowRemoveIcon = Editable
                     };
 
-                    fpnFoodItems.Controls.Add(it);
+                    //tlpFoodItems.Controls.Add(it);
+                    AddRow(it);
 
 
                 }
@@ -223,7 +278,10 @@ namespace RestaurantSystemUI.modules
                 };
 
                 updateTotal();
+                
+                
             }
+            ApplyTheme();
         }
 
         private void updateWaitTime()
@@ -251,20 +309,32 @@ namespace RestaurantSystemUI.modules
             {
                 lbWaitTime.Text = string.Format("{0}分{1}秒", timeElapsed.Minutes, timeElapsed.Seconds);
             }
-            else
+            else if(timeElapsed.TotalSeconds < 60 * 60 * 24)
             {
                 lbWaitTime.Text = string.Format("{0}時{1}分{2}秒", timeElapsed.Hours, timeElapsed.Minutes, timeElapsed.Seconds);
+            }
+            else
+            {
+                lbWaitTime.Text = string.Format("{0}天{1}時{2}分{3}秒", timeElapsed.Days, timeElapsed.Hours, timeElapsed.Minutes, timeElapsed.Seconds);
             }
 
 
 
-            if (order.Status == Order.OrderStatus.Finished) lbWaitTime.Enabled = false;
+            if (order.Status == Order.OrderStatus.Finished) tmUpdateWaitTime.Enabled = false;
             //lbWaitTime.Text = "已等候時間：" + (DateTime.Now - order.CreatedAt).ToString(@"hh\:mm\:ss");
         }
 
         private void tmUpdateWaitTime_Tick(object sender, EventArgs e)
         {            
             updateWaitTime();
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            pnTopHalf.BackColor = theme.OrderViewTitle;
+            pnBottomBar.BackColor = theme.OrderViewBottom;
+            tlpFoodItems.BackColor = theme.OrderViewItemEven;
         }
     }
 

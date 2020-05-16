@@ -13,11 +13,17 @@ using RestaurantSystemUI.modules;
 
 namespace RestaurantSystemUI
 {
-    public partial class OrderList : UserControl, ISubmodule
+    public partial class OrderList : UserControl, ISubmodule, IThemeable
     {
         public OrderList()
         {
             InitializeComponent();
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
         }
 
         public void BeforeMounted()
@@ -27,7 +33,11 @@ namespace RestaurantSystemUI
 
         private void init()
         {
+            flowLayoutPanel1.SuspendLayout();
+
             flowLayoutPanel1.Controls.Clear();
+            /*foreach (Control control in flowLayoutPanel1.Controls)
+                control.Dispose();*/
 
             Order[] orders = OrderManager.GetAllOrders();
             //MessageBox.Show(orders.Length.ToString());
@@ -37,6 +47,8 @@ namespace RestaurantSystemUI
 
                 flowLayoutPanel1.Controls.Add(new OrderView(ord));
             }
+
+            flowLayoutPanel1.ResumeLayout();
         }
 
         private void OrderList_Load(object sender, EventArgs e)

@@ -41,8 +41,7 @@
             this.ftbName.Name = "ftbName";
             this.ftbName.PlaceHolder = "例如：大杯";
             this.ftbName.Size = new System.Drawing.Size(173, 45);
-            this.ftbName.TabIndex = 12;
-            this.ftbName.Theme = null;
+            this.ftbName.TabIndex = 12;            
             // 
             // ftbDelta
             // 
@@ -53,7 +52,7 @@
             this.ftbDelta.PlaceHolder = "例如：+35";
             this.ftbDelta.Size = new System.Drawing.Size(140, 45);
             this.ftbDelta.TabIndex = 13;
-            this.ftbDelta.Theme = null;
+            
             // 
             // pictureBox1
             // 

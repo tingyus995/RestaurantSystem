@@ -45,8 +45,7 @@
             // 
             // ibtnEdit
             // 
-            this.ibtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ibtnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.ibtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));            
             this.ibtnEdit.FlatAppearance.BorderSize = 0;
             this.ibtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnEdit.Flip = FontAwesome.Sharp.FlipOrientation.Normal;

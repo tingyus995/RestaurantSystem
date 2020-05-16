@@ -51,7 +51,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.fpCategories, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.fpnLeftTitle, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.orderPreview1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.orderPreview1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -75,10 +75,11 @@
             this.orderPreview1.AutoSize = true;
             this.orderPreview1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.orderPreview1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.orderPreview1.Editable = false;
-            this.orderPreview1.Location = new System.Drawing.Point(427, 9);
+            this.orderPreview1.Editable = true;
+            this.orderPreview1.Location = new System.Drawing.Point(427, 3);
             this.orderPreview1.Name = "orderPreview1";
-            this.orderPreview1.Size = new System.Drawing.Size(419, 115);
+            this.tableLayoutPanel1.SetRowSpan(this.orderPreview1, 2);
+            this.orderPreview1.Size = new System.Drawing.Size(419, 95);
             this.orderPreview1.TabIndex = 8;
             this.orderPreview1.Total = 0;
             // 

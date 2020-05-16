@@ -14,7 +14,7 @@ using System.Runtime.CompilerServices;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class FoodEditor : UserControl
+    public partial class FoodEditor : UserControl, IThemeable
     {
 
 
@@ -88,6 +88,7 @@ namespace RestaurantSystemUI.modules
         private void FoodEditor_Load(object sender, EventArgs e)
         {
             addAnotherVarient();
+            ApplyTheme();
             //pbFoodImage.Image = Properties.Resources.
             //pbFoodImage.Image = Properties.Resources.DefaultFoodImage;
             //pbFoodImage.InitialImage = Properties.Resources.DefaultFoodImage;
@@ -143,6 +144,20 @@ namespace RestaurantSystemUI.modules
                     MessageBox.Show("檔案開啟時發生錯誤。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+            tagInput1.BackColor = BackColor;
+
+            // textboxes
+            ftbBasePrice.BackColor = BackColor;
+            ftbName.BackColor = BackColor;
+
+           
+
         }
     }
 }

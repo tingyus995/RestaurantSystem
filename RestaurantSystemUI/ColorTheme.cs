@@ -15,8 +15,13 @@ namespace RestaurantSystemUI
 
         //26,188,156
 
-        private static Color mainColor = Color.FromArgb(26, 188, 156);
-        private static Color mainColorDark = Color.FromArgb(22, 160, 133);
+        private static Color mainAccent = Color.FromArgb(26, 188, 156);
+        private static Color mainAcceintDerivative = Color.FromArgb(22, 160, 133);
+
+        private static Color secondary = Color.FromArgb(155, 89, 182);
+        private static Color secondaryDerivative = Color.FromArgb(142, 68, 173);
+
+
         public Color Contrast = Color.White;
 
         private static Color Darken(Color c, int amount)
@@ -44,25 +49,42 @@ namespace RestaurantSystemUI
             int b = c.B + amount;
 
 
-            if (r > 255) r = 0;
-            if (g > 255) g = 0;
-            if (b > 255) b = 0;
+            if (r > 255) r = 255;
+            if (g > 255) g = 255;
+            if (b > 255) b = 255;
 
             return Color.FromArgb(a, r, g, b);
         }
 
         // menu-related
 
-        public Color MainMenuBar = mainColor;
-        
-        public Color MainMenuItem = mainColor;
-        public Color MainMenuItemMouseOver = Lighten(mainColor, 20);
-        public Color MainMenuItemMouseDown = Darken(mainColor, 20);
-        public Color MainMenuItemSelected = Lighten(mainColor, 20);
+        public Color MainMenuBar = mainAccent;        
+        public Color MainMenuItem = mainAccent;
+        public Color MainMenuItemMouseOver = Lighten(mainAccent, 20);
+        public Color MainMenuItemMouseDown = Darken(mainAccent, 20);
+        public Color MainMenuItemSelected = Lighten(mainAccent, 20);
+        public Color TitleBar = Darken(mainAcceintDerivative, 10);
 
         // content
 
-        public Color ContentPanel = mainColorDark;
+        public Color ContentPanel = mainAcceintDerivative;
+
+        // category item
+        public Color CategoryItem = mainAccent;
+        public Color CategoryItemDecoration = Lighten(mainAccent, 20);
+        public Color CategoryItemActive = secondary;
+        public Color categoryItemActiveDecoration = Lighten(secondary, 20);
+
+        // order view title
+        public Color OrderViewTitle = secondary;
+        public Color OrderViewBottom = secondaryDerivative;
+
+        public Color OrderViewItemEven = Darken(secondaryDerivative, 10);
+        public Color OrderViewItemOdd = Darken(secondaryDerivative, 20);
+
+        
+
+        //public Color OrderViewTitle = 
 
         // controls
 

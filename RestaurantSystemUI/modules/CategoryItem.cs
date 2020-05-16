@@ -13,7 +13,7 @@ using RestaurantSystemCore;
 namespace RestaurantSystemUI
 {
 
-    public partial class CategoryItem : UserControl
+    public partial class CategoryItem : UserControl, IThemeable
     {
 
         Color normal = Color.FromArgb(52, 73, 94);
@@ -26,6 +26,7 @@ namespace RestaurantSystemUI
         public event EventHandler CategoryItemClicked;
 
         private bool editable = true;
+        private ColorTheme theme = ThemeProvider.GetTheme();
 
         public bool Editable
         {
@@ -44,18 +45,17 @@ namespace RestaurantSystemUI
             set { 
                 active = value;
 
+                
                 if (active)
                 {
-                    BackColor = activated;
-                    pnDecoration.BackColor = activatedLeft;
-                    ibtnEdit.BackColor = activated;
+                    BackColor = theme.CategoryItemActive;                    
+                    pnDecoration.BackColor = theme.categoryItemActiveDecoration;                    
                 }
                 else
                 {
-                    BackColor = normal;
-                    pnDecoration.BackColor = normalLeft;
-                    ibtnEdit.BackColor = normal;
-                }
+                    BackColor = theme.CategoryItem;                    
+                    pnDecoration.BackColor = theme.CategoryItemDecoration;                    
+                }                
             
             }
         }
@@ -69,7 +69,9 @@ namespace RestaurantSystemUI
 
         private void CategoryItem_Load(object sender, EventArgs e)
         {
+            ApplyTheme();
             updateUI();
+
         }
 
         private void updateUI()
@@ -133,6 +135,13 @@ namespace RestaurantSystemUI
         private void CategoryItem_Click(object sender, EventArgs e)
         {
             handleClick();
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.CategoryItem;            
+            pnDecoration.BackColor = theme.CategoryItemDecoration;
         }
     }
 }

@@ -82,6 +82,7 @@
             this.Name = "FlatTextbox";
             this.Size = new System.Drawing.Size(313, 45);
             this.Load += new System.EventHandler(this.FlatTextbox_Load);
+            this.BackColorChanged += new System.EventHandler(this.FlatTextbox_BackColorChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

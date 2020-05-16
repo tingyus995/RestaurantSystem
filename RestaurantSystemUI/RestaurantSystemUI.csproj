@@ -193,6 +193,7 @@
     <Compile Include="modules\Status.Designer.cs">
       <DependentUpon>Status.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThemeProvider.cs" />
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="controls\TagInput.resx">
       <DependentUpon>TagInput.cs</DependentUpon>

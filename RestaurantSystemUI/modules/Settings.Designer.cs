@@ -46,7 +46,7 @@
             this.flatTextbox1.PlaceHolder = "店家名稱";
             this.flatTextbox1.Size = new System.Drawing.Size(406, 35);
             this.flatTextbox1.TabIndex = 4;
-            this.flatTextbox1.Theme = null;
+            
             // 
             // iconPictureBox1
             // 
