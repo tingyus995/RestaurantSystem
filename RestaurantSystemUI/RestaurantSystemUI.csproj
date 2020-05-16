@@ -113,6 +113,30 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="modules\EmployeeEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\EmployeeEditor.Designer.cs">
+      <DependentUpon>EmployeeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\EmployeeItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\EmployeeItem.designer.cs">
+      <DependentUpon>EmployeeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\EmployeeItemCompact.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\EmployeeItemCompact.designer.cs">
+      <DependentUpon>EmployeeItemCompact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\EmployeeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\EmployeeList.designer.cs">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="modules\FoodEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +209,15 @@
     <Compile Include="modules\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="modules\Shift.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\Shift.designer.cs">
+      <DependentUpon>Shift.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\TimeSlotFlowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="modules\Status.cs">
@@ -209,6 +242,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\EmployeeEditor.resx">
+      <DependentUpon>EmployeeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\EmployeeItem.resx">
+      <DependentUpon>EmployeeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\EmployeeItemCompact.resx">
+      <DependentUpon>EmployeeItemCompact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\EmployeeList.resx">
+      <DependentUpon>EmployeeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\FoodEditor.resx">
       <DependentUpon>FoodEditor.cs</DependentUpon>
@@ -245,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\Shift.resx">
+      <DependentUpon>Shift.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -299,6 +347,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\food_flat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultEmployeeImage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
