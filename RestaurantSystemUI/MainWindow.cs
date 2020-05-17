@@ -60,11 +60,12 @@ namespace RestaurantSystemUI
                 new Page(ibOrder, new AddOrder()),
                 new Page(iconButton1, new OrderList()),
                 new Page(iconButton2, new Status()),
-                new Page(iconButton3, new Personnel()),
                 new Page(iconButton4, setting_page),                
                 new Page(iconButton6, new FoodList()),
                 new Page(iconButton5, new EmployeeList()),
-                new Page(iconButton7, new Shift())
+                new Page(iconButton7, new Shift()),
+                new Page(iconButton3, new Attendance()),
+                new Page(iconButton8, new AttendanceState()),
             };
 
 
@@ -228,6 +229,11 @@ namespace RestaurantSystemUI
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             DBProvider.GetDatabase().Dispose();
+        }
+
+        private void pnContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

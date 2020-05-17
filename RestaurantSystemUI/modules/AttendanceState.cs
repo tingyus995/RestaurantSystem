@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace RestaurantSystemUI
 {
-    public partial class Shift : UserControl
+    public partial class AttendanceState : UserControl
     {
         //time
         DateTime CurrentDate;
@@ -26,12 +26,14 @@ namespace RestaurantSystemUI
         Point previousPosition;
         Panel hoverCell;
         private Employee[] employeeList;
-        public Shift()
+        public AttendanceState()
         {
             InitializeComponent();
         }
 
-        private void Shift_Load(object sender, EventArgs e)
+        
+
+        private void AttendanceState_Load(object sender, EventArgs e)
         {
             CurrentDate = DateTime.Now;
             CurrentWeekStart = CurrentDate.AddDays(-(int)CurrentDate.DayOfWeek);
@@ -39,9 +41,9 @@ namespace RestaurantSystemUI
             
             
 
-            SetUpShift();
+            SetUpAttendanceState();
 
-            loadShiftData();
+            loadAttendanceStateData();
 
 
         }
@@ -88,7 +90,7 @@ namespace RestaurantSystemUI
 
         }
 
-        private void SetUpShift()
+        private void SetUpAttendanceState()
         {
             CurrentWeekButton.Text = CurrentWeekStart.ToLongDateString()+"~"+ CurrentWeekEnd.ToLongDateString();
 
@@ -244,21 +246,21 @@ namespace RestaurantSystemUI
             CurrentWeekStart = CurrentWeekStart.AddDays(-7);
             CurrentWeekEnd = CurrentWeekEnd.AddDays(-7);
             panel5.Controls.Remove(tableLayoutPanel);
-            SetUpShift();
-            loadShiftData();
+            SetUpAttendanceState();
+            loadAttendanceStateData();
         }
         private void NextWeekButton_Click(object sender, EventArgs e)
         {
             CurrentWeekStart = CurrentWeekStart.AddDays(7);
             CurrentWeekEnd = CurrentWeekEnd.AddDays(7);
             panel5.Controls.Remove(tableLayoutPanel);
-            SetUpShift();
-            loadShiftData();
+            SetUpAttendanceState();
+            loadAttendanceStateData();
         }
 
        
 
-        private void loadShiftData()
+        private void loadAttendanceStateData()
         {
             Employee[] employees = EmployeeManager.GetEmployees("clerk");
 
@@ -396,9 +398,8 @@ namespace RestaurantSystemUI
                 deleteAllWorkingTimes();
             }
             panel5.Controls.Remove(tableLayoutPanel);
-            flowLayoutPanel1.Controls.Clear();
-            SetUpShift();
-            loadShiftData();
+            SetUpAttendanceState();
+            loadAttendanceStateData();
 
         }
     }

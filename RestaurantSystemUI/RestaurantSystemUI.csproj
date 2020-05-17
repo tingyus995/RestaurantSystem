@@ -87,6 +87,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ISubmodule.cs" />
+    <Compile Include="modules\Attendance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\Attendance.Designer.cs">
+      <DependentUpon>Attendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="modules\CategoryItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +118,12 @@
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\EmployeeCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\EmployeeCard.Designer.cs">
+      <DependentUpon>EmployeeCard.cs</DependentUpon>
     </Compile>
     <Compile Include="modules\EmployeeEditor.cs">
       <SubType>UserControl</SubType>
@@ -209,6 +221,12 @@
     <Compile Include="modules\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="modules\AttendanceState.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\AttendanceState.designer.cs">
+      <DependentUpon>AttendanceState.cs</DependentUpon>
+    </Compile>
     <Compile Include="modules\Shift.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -231,6 +249,9 @@
     <EmbeddedResource Include="controls\TagInput.resx">
       <DependentUpon>TagInput.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modules\Attendance.resx">
+      <DependentUpon>Attendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modules\CategoryItem.resx">
       <DependentUpon>CategoryItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\EmployeeCard.resx">
+      <DependentUpon>EmployeeCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\EmployeeEditor.resx">
       <DependentUpon>EmployeeEditor.cs</DependentUpon>
@@ -290,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\AttendanceState.resx">
+      <DependentUpon>AttendanceState.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Shift.resx">
       <DependentUpon>Shift.cs</DependentUpon>

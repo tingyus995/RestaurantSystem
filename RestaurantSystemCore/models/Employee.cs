@@ -14,14 +14,17 @@ namespace RestaurantSystemCore.models
         public byte[] Image { get; set; }
         public string[] Categories { get; set; }
         public WorkTime[] workTime { get; set; }
+
     }
 
 
     public class WorkTime
     {
-        public DateTime Date { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        
+        public DateTime? ActualStart { get; set; }
+        public DateTime? ActualEnd { get; set; }
+        public bool LateCheck { get; set; }
+        public string LateCheckReason { get; set; }
     }
 }
