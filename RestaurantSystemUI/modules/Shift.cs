@@ -11,6 +11,8 @@ using RestaurantSystemCore.models;
 using RestaurantSystemCore;
 using System.Threading;
 using System.Threading.Tasks;
+using RestaurantSystemUI.modules;
+
 namespace RestaurantSystemUI
 {
     public partial class Shift : UserControl
@@ -255,8 +257,11 @@ namespace RestaurantSystemUI
             SetUpShift();
             loadShiftData();
         }
+        private bool IsTimeInRange(DateTime target, DateTime begin, DateTime end)
+        {
+            return (DateTime.Compare(target, begin) >= 0) && (DateTime.Compare(target, end) <= 0);
+        }
 
-       
 
         private void loadShiftData()
         {
@@ -277,7 +282,10 @@ namespace RestaurantSystemUI
                         if(employee.workTime != null) { 
                             foreach(WorkTime t in employee.workTime)
                             {
-                                if(t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)
+                                //if(t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)
+                                if(IsTimeInRange(slot.BeginTime, t.StartTime, t.EndTime) &&
+                                    IsTimeInRange(slot.EndTime, t.StartTime, t.EndTime)
+                                )
                                 {
                                     slot.Controls.Add(new EmployeeItemCompact()
                                     {
@@ -313,6 +321,62 @@ namespace RestaurantSystemUI
             
         }
 
+        private bool IsContinuous(WorkTime t1, WorkTime t2)
+        {
+            return (t1.EndTime == t2.StartTime);
+        }
+
+        private WorkTime MergeTime(WorkTime t1, WorkTime t2)
+        {
+            WorkTime result = new WorkTime();
+
+            if (IsContinuous(t1, t2))
+            {
+                result.StartTime = t1.StartTime;
+                result.EndTime = t2.EndTime;
+
+                return result;
+            }
+
+            return null;
+        }
+
+        private void ConnectContinuousSlot(Employee employee)
+        {
+            if (employee.workTime == null) return;
+            if (employee.workTime.Length <= 1) return;
+
+            List<WorkTime> original = new List<WorkTime>();
+            List<WorkTime> newWorkTime = new List<WorkTime>();
+            original.AddRange(employee.workTime);
+            
+            //original.Sort();
+
+            for(int i = 1; i < original.Count; ++i)
+            {                
+                WorkTime merged = MergeTime(original[i-1], original[i]);
+
+                if(merged != null)
+                {
+                    newWorkTime.Add(merged);
+                }
+                else
+                {
+                    newWorkTime.Add(original[i-1]);
+                    if(i == original.Count - 1)
+                    {
+                        newWorkTime.Add(original[i]);
+                    }
+                }
+
+            }
+
+            employee.workTime = newWorkTime.ToArray();
+            EmployeeManager.UpdateOrSaveEmployee(employee);
+           
+        }
+
+
         private void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -322,6 +386,8 @@ namespace RestaurantSystemUI
                 {
                     TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
                     // check if anyone is here
+                    Control previous;
+                    Control first;
                     foreach (Control _c in slot.Controls)
                     {
                         if(_c is EmployeeItemCompact) {
@@ -334,16 +400,17 @@ namespace RestaurantSystemUI
                             else workingTimes = new List<WorkTime>();
 
                             // before we add, let's check if there's already one
-
                             bool found = false;
                             foreach(WorkTime t in workingTimes)
                             {
-                                if(t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)
+                                // check if there's already one
+                                if(t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)                                
                                 {
                                     found = true;
                                     break;
                                 }
                             }
+                              
                             if (!found) {
                                 //MessageBox.Show("debug");
                                 workingTimes.Add(new WorkTime()
@@ -356,7 +423,14 @@ namespace RestaurantSystemUI
                             compact.Employee.workTime = workingTimes.ToArray();
                             EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
                         }
+                        first = _c;
+                        previous = _c;
                     }
+                }
+
+                foreach(Employee employee in EmployeeManager.GetEmployees())
+                {
+                    ConnectContinuousSlot(employee);
                 }
 
             }
