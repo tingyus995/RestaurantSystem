@@ -15,11 +15,17 @@ namespace RestaurantSystemUI
 
         //26,188,156
 
-        private static Color mainAccent = Color.FromArgb(26, 188, 156);
-        private static Color mainAcceintDerivative = Color.FromArgb(22, 160, 133);
+        //private static Color mainAccent = Color.FromArgb(26, 188, 156);
+        //private static Color mainAcceintDerivative = Color.FromArgb(22, 160, 133);
+        private static Color mainAccent = Color.FromArgb(155, 89, 182);
+        private static Color mainAcceintDerivative = Color.FromArgb(142, 68, 173);
 
         private static Color secondary = Color.FromArgb(155, 89, 182);
         private static Color secondaryDerivative = Color.FromArgb(142, 68, 173);
+
+        private static Color Normal = Color.FromArgb(46, 204, 113);
+        private static Color Dangerous = Color.FromArgb(231, 76, 60);
+        private static Color Warning = Color.FromArgb(230, 126, 34);
 
 
         public Color Contrast = Color.White;
@@ -91,6 +97,12 @@ namespace RestaurantSystemUI
         // flatTextbox
 
         public Color Placeholder = Darken(Color.White, 50);
+
+        // shift
+        public Color LateCard = Warning;
+        public Color OnTimeCard = Normal;
+        public Color MissingCard = Dangerous;
+
 
 
 

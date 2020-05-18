@@ -34,6 +34,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbGodMode = new System.Windows.Forms.CheckBox();
+            this.lbSystemTime = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -49,7 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ftbName = new RestaurantSystemUI.FlatTextbox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lbSystemTime = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -114,6 +114,17 @@
             this.cbGodMode.Text = "GodMode";
             this.cbGodMode.UseVisualStyleBackColor = true;
             this.cbGodMode.CheckedChanged += new System.EventHandler(this.cbGodMode_CheckedChanged);
+            // 
+            // lbSystemTime
+            // 
+            this.lbSystemTime.AutoSize = true;
+            this.lbSystemTime.Font = new System.Drawing.Font("PMingLiU", 9F);
+            this.lbSystemTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbSystemTime.Location = new System.Drawing.Point(525, 119);
+            this.lbSystemTime.Name = "lbSystemTime";
+            this.lbSystemTime.Size = new System.Drawing.Size(94, 18);
+            this.lbSystemTime.TabIndex = 14;
+            this.lbSystemTime.Text = "SystemTime";
             // 
             // btnClear
             // 
@@ -297,17 +308,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lbSystemTime
-            // 
-            this.lbSystemTime.AutoSize = true;
-            this.lbSystemTime.Font = new System.Drawing.Font("PMingLiU", 9F);
-            this.lbSystemTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbSystemTime.Location = new System.Drawing.Point(525, 119);
-            this.lbSystemTime.Name = "lbSystemTime";
-            this.lbSystemTime.Size = new System.Drawing.Size(94, 18);
-            this.lbSystemTime.TabIndex = 14;
-            this.lbSystemTime.Text = "SystemTime";
             // 
             // Shift
             // 

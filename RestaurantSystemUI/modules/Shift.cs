@@ -15,7 +15,7 @@ using RestaurantSystemUI.modules;
 
 namespace RestaurantSystemUI
 {
-    public partial class Shift : UserControl
+    public partial class Shift : UserControl, IThemeable
     {
         //time
         DateTime SystemClock = new DateTime(2020, 5, 23, 8, 30, 1);
@@ -46,6 +46,7 @@ namespace RestaurantSystemUI
             SetUpShift();
 
             loadShiftData();
+            ApplyTheme();
 
             // doing debug
 
@@ -67,7 +68,7 @@ namespace RestaurantSystemUI
                 }
             });*/
 
-           
+
 
 
         }
@@ -298,12 +299,29 @@ namespace RestaurantSystemUI
             return (DateTime.Compare(target, begin) >= 0) && (DateTime.Compare(target, end) <= 0);
         }
 
+        private void SetTooltipStyleForCard(ToolTip t, string title, ToolTipIcon icon)
+        {
+            t.IsBalloon = true;
+            t.ToolTipIcon = icon;
+            t.ToolTipTitle = title;
+        }
 
         private void loadShiftData()
         {
             Employee[] employees = EmployeeManager.GetEmployees("clerk");
 
-            
+            ToolTip OnTimeCardTooltip = new ToolTip();
+            SetTooltipStyleForCard(OnTimeCardTooltip, "已打卡", ToolTipIcon.Info);
+
+            ToolTip LateCardToolTip = new ToolTip();
+            SetTooltipStyleForCard(LateCardToolTip, "打卡時間異常", ToolTipIcon.Warning);
+
+            ToolTip MissingCardTooltip = new ToolTip();
+            SetTooltipStyleForCard(MissingCardTooltip, "未打卡", ToolTipIcon.Error);
+
+
+
+
 
             foreach (Control c in tableLayoutPanel.Controls)
             {
@@ -330,18 +348,23 @@ namespace RestaurantSystemUI
                                         DateTime bfslotStart = slotStart.AddMinutes(-10);
                                         DateTime slotEnd = slot.EndTime;
                                         DateTime afslotEnd = slotEnd.AddMinutes(10);
+                                        ColorTheme theme = ThemeProvider.GetTheme();
                                         if (t.ActualStart == null || t.ActualEnd == null) {
-                                            item.BackColor = Color.Red;
+                                            
+                                            item.BackColor = theme.MissingCard;
+                                            MissingCardTooltip.SetToolTip(item, "請注意員工狀況");
                                             continue;
                                         }
                                         DateTime ActualStart = t.ActualStart.Value;
                                         DateTime ActualEnd = t.ActualEnd.Value;
                                         
                                         if (IsTimeInRange(ActualStart, bfslotStart, slotStart) && IsTimeInRange(ActualEnd, slotEnd, afslotEnd)){
-                                            item.BackColor = Color.PaleGreen;
+                                            item.BackColor = theme.OnTimeCard;                                            
+                                            OnTimeCardTooltip.SetToolTip(item, "已打卡");
                                         }
                                         else {
-                                            item.BackColor = Color.Yellow;
+                                            item.BackColor = theme.LateCard;                                            
+                                            LateCardToolTip.SetToolTip(item, String.Format("打卡上班時間:{0}\n打卡下班時間:{1}", ActualStart.ToLongTimeString(),ActualEnd.ToLongTimeString()));                                            
                                         }
                                     
                                         
@@ -666,6 +689,15 @@ namespace RestaurantSystemUI
             SetUpShift();
 
             loadShiftData();
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+
+            flatTextbox1.BackColor = theme.ContentPanel;
+            flatTextbox2.BackColor = theme.ContentPanel;
         }
     }
 }
