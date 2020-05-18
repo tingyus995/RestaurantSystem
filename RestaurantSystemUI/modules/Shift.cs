@@ -18,6 +18,7 @@ namespace RestaurantSystemUI
     public partial class Shift : UserControl
     {
         //time
+        DateTime SystemClock = new DateTime(2020, 5, 23, 8, 30, 1);
         DateTime CurrentDate;
         DateTime CurrentWeekStart;
         DateTime CurrentWeekEnd;
@@ -35,15 +36,38 @@ namespace RestaurantSystemUI
 
         private void Shift_Load(object sender, EventArgs e)
         {
+            lbSystemTime.Text = SystemClock.ToLongDateString() + SystemClock.ToLongTimeString();
             CurrentDate = DateTime.Now;
             CurrentWeekStart = CurrentDate.AddDays(-(int)CurrentDate.DayOfWeek);
             CurrentWeekEnd = CurrentWeekStart.AddDays(6);
-            
-            
 
+
+            
             SetUpShift();
 
             loadShiftData();
+
+            // doing debug
+
+            /*ConnectContinuousSlotDebug(new Employee()
+            {
+                Name = "Ddebug",
+                workTime = new WorkTime[]
+                {
+                    new WorkTime()
+                    {
+                        StartTime = new DateTime(2020,5,18,10,30,0),
+                        EndTime = new DateTime(2020,5,18,12,30,0)
+                    },
+                    new WorkTime()
+                    {
+                        StartTime = new DateTime(2020,5,18,13,30,0),
+                        EndTime = new DateTime(2020,5,18,14,30,0)
+                    }
+                }
+            });*/
+
+           
 
 
         }
@@ -90,6 +114,7 @@ namespace RestaurantSystemUI
 
         }
 
+       
         private void SetUpShift()
         {
             CurrentWeekButton.Text = CurrentWeekStart.ToLongDateString()+"~"+ CurrentWeekEnd.ToLongDateString();
@@ -223,11 +248,20 @@ namespace RestaurantSystemUI
 
 
                     //myPanel.Dock = DockStyle.Fill;
-                    myPanel.AllowDrop = true;
-                    myPanel.DragOver += cellDragOver;
-                    myPanel.DragLeave += cellDragLeave;
-                    myPanel.DragDrop += cellDragDrop;
-                    myPanel.DragEnter += cellDragEnter;
+
+                    //no allow shift in pass
+                    if (DateTime.Compare(myPanel.BeginTime, SystemClock) < 0 && cbGodMode.Checked == false)
+                    {
+                        myPanel.AllowDrop = false;
+                    }
+                    else {
+                        myPanel.AllowDrop = true;
+                        myPanel.DragOver += cellDragOver;
+                        myPanel.DragLeave += cellDragLeave;
+                        myPanel.DragDrop += cellDragDrop;
+                        myPanel.DragEnter += cellDragEnter;
+                    }
+                    
                 }
 
                 if (i != 0) 
@@ -245,6 +279,7 @@ namespace RestaurantSystemUI
         {
             CurrentWeekStart = CurrentWeekStart.AddDays(-7);
             CurrentWeekEnd = CurrentWeekEnd.AddDays(-7);
+            flowLayoutPanel1.Controls.Clear();
             panel5.Controls.Remove(tableLayoutPanel);
             SetUpShift();
             loadShiftData();
@@ -253,6 +288,7 @@ namespace RestaurantSystemUI
         {
             CurrentWeekStart = CurrentWeekStart.AddDays(7);
             CurrentWeekEnd = CurrentWeekEnd.AddDays(7);
+            flowLayoutPanel1.Controls.Clear();
             panel5.Controls.Remove(tableLayoutPanel);
             SetUpShift();
             loadShiftData();
@@ -287,10 +323,29 @@ namespace RestaurantSystemUI
                                     IsTimeInRange(slot.EndTime, t.StartTime, t.EndTime)
                                 )
                                 {
-                                    slot.Controls.Add(new EmployeeItemCompact()
-                                    {
-                                        Employee = employee
-                                    });
+                                    EmployeeItemCompact item = new EmployeeItemCompact() { Employee = employee };
+                                    slot.Controls.Add(item);
+                                    if(c.AllowDrop == false) { // shift in pass
+                                        DateTime slotStart = slot.BeginTime;
+                                        DateTime bfslotStart = slotStart.AddMinutes(-10);
+                                        DateTime slotEnd = slot.EndTime;
+                                        DateTime afslotEnd = slotEnd.AddMinutes(10);
+                                        if (t.ActualStart == null || t.ActualEnd == null) {
+                                            item.BackColor = Color.Red;
+                                            continue;
+                                        }
+                                        DateTime ActualStart = t.ActualStart.Value;
+                                        DateTime ActualEnd = t.ActualEnd.Value;
+                                        
+                                        if (IsTimeInRange(ActualStart, bfslotStart, slotStart) && IsTimeInRange(ActualEnd, slotEnd, afslotEnd)){
+                                            item.BackColor = Color.PaleGreen;
+                                        }
+                                        else {
+                                            item.BackColor = Color.Yellow;
+                                        }
+                                    
+                                        
+                                    }
                                 }
                             }
                         }
@@ -376,9 +431,59 @@ namespace RestaurantSystemUI
            
         }
 
-
-        private void btnSave_Click(object sender, EventArgs e)
+        private void ConnectContinuousSlotDebug(Employee employee)
         {
+            if (employee.workTime == null) return;
+            if (employee.workTime.Length <= 1) return;
+
+            List<WorkTime> original = new List<WorkTime>();
+            List<WorkTime> newWorkTime = new List<WorkTime>();
+            original.AddRange(employee.workTime);
+
+            //original.Sort();
+
+            for (int i = 1; i < original.Count; ++i)
+            {
+                WorkTime merged = MergeTime(original[i - 1], original[i]);
+
+                if (merged != null)
+                {
+                    newWorkTime.Add(merged);
+                }
+                else
+                {
+                    newWorkTime.Add(original[i - 1]);
+                    if (i == original.Count - 1)
+                    {
+                        newWorkTime.Add(original[i]);
+                    }
+                }
+
+            }
+
+            employee.workTime = newWorkTime.ToArray();
+
+            string msg = "";
+            foreach(var nwt in newWorkTime)
+            {
+                msg += string.Format("from {0} to {1}\n", nwt.StartTime, nwt.EndTime);
+            }
+
+            MessageBox.Show(msg, "DEBUGGGGGG", MessageBoxButtons.OK);
+        }
+
+
+        private void _deprecated_btnSave_Click(object sender, EventArgs e)
+        {
+            // delete all worktimes in employee
+
+            /*Employee[] employees = EmployeeManager.GetEmployees();
+            foreach(Employee employee in employees)
+            {
+                employee.workTime = null;
+            }*/
+
+            //deleteAllWorkingTimes();
 
             foreach(Control c in tableLayoutPanel.Controls)
             {
@@ -386,8 +491,6 @@ namespace RestaurantSystemUI
                 {
                     TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
                     // check if anyone is here
-                    Control previous;
-                    Control first;
                     foreach (Control _c in slot.Controls)
                     {
                         if(_c is EmployeeItemCompact) {
@@ -423,8 +526,7 @@ namespace RestaurantSystemUI
                             compact.Employee.workTime = workingTimes.ToArray();
                             EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
                         }
-                        first = _c;
-                        previous = _c;
+                        
                     }
                 }
 
@@ -463,6 +565,80 @@ namespace RestaurantSystemUI
             }*/
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            // delete all worktimes in employee
+
+            /*Employee[] employees = EmployeeManager.GetEmployees();
+            foreach(Employee employee in employees)
+            {
+                employee.workTime = null;
+            }*/
+
+            //deleteAllWorkingTimes();
+
+            foreach (Control c in tableLayoutPanel.Controls)
+            {
+                if (c is TimeSlotFlowPanel)
+                {
+                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+                    // check if anyone is here
+                    foreach (Control _c in slot.Controls)
+                    {
+                        if (_c is EmployeeItemCompact)
+                        {
+                            EmployeeItemCompact compact = _c as EmployeeItemCompact;
+                            // we found employee                            
+
+                            List<WorkTime> workingTimes;
+
+                            if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
+                            else workingTimes = new List<WorkTime>();
+
+                            // before we add, let's check if there's already one
+                            bool found = false;
+                            foreach (WorkTime t in workingTimes)
+                            {
+                                // check if there's already one
+                                //if (t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)
+                                /*if (IsTimeInRange(t.StartTime, slot.BeginTime, slot.EndTime) &&
+                                    IsTimeInRange(t.EndTime, slot.BeginTime, slot.EndTime))*/
+                                if( (DateTime.Compare(t.StartTime, slot.BeginTime) <= 0) &&
+                                        (DateTime.Compare(slot.EndTime, t.EndTime) <= 0))
+                                {
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (!found)
+                            {
+                                //MessageBox.Show("debug");
+                                workingTimes.Add(new WorkTime()
+                                {
+                                    StartTime = slot.BeginTime,
+                                    EndTime = slot.EndTime
+                                });
+                            }
+
+                            compact.Employee.workTime = workingTimes.ToArray();
+                            EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
+                        }
+
+                    }
+                }
+
+                foreach (Employee employee in EmployeeManager.GetEmployees())
+                {
+                    ConnectContinuousSlot(employee);
+                }
+
+            }
+          
+        }
+
+
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("您確定要清除所有排班嗎?", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
@@ -474,6 +650,22 @@ namespace RestaurantSystemUI
             SetUpShift();
             loadShiftData();
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+            lbSystemTime.Text = DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
+            timer1.Start();
+        }
+
+        private void cbGodMode_CheckedChanged(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            panel5.Controls.Remove(tableLayoutPanel);
+            SetUpShift();
+
+            loadShiftData();
         }
     }
 }

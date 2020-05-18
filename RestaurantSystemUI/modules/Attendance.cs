@@ -15,7 +15,7 @@ namespace RestaurantSystemUI.modules
     public partial class Attendance : UserControl
     {
         private Employee[] employeeList;
-        DateTime SystemClock;
+        public static DateTime SystemClock = new DateTime(2020, 5, 21, 13, 35, 0);
         DateTime CurrentShiftStart;
         DateTime CurrentShiftEnd;
         public Attendance()
@@ -25,16 +25,6 @@ namespace RestaurantSystemUI.modules
 
         private void Attendance_Load(object sender, EventArgs e)
         {
-            
-            
-
-
-            //combobox
-            employeeList = EmployeeManager.GetEmployees("clerk");
-            foreach (Employee employee in employeeList)
-            {
-                comboBox1.Items.Add(employee.Name);
-            }
 
             // for debug
             // add possible time slots

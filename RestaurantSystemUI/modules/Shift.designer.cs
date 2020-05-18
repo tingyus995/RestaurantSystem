@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbGodMode = new System.Windows.Forms.CheckBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.NextWeekButton = new FontAwesome.Sharp.IconPictureBox();
             this.CurrentWeekButton = new FontAwesome.Sharp.IconButton();
             this.PreviousWeekButton = new FontAwesome.Sharp.IconPictureBox();
@@ -45,7 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ftbName = new RestaurantSystemUI.FlatTextbox();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbSystemTime = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -87,6 +91,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cbGodMode);
+            this.panel2.Controls.Add(this.lbSystemTime);
             this.panel2.Controls.Add(this.btnClear);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.panel3);
@@ -96,6 +102,18 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(931, 189);
             this.panel2.TabIndex = 1;
+            // 
+            // cbGodMode
+            // 
+            this.cbGodMode.AutoSize = true;
+            this.cbGodMode.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cbGodMode.Location = new System.Drawing.Point(852, 128);
+            this.cbGodMode.Name = "cbGodMode";
+            this.cbGodMode.Size = new System.Drawing.Size(101, 22);
+            this.cbGodMode.TabIndex = 15;
+            this.cbGodMode.Text = "GodMode";
+            this.cbGodMode.UseVisualStyleBackColor = true;
+            this.cbGodMode.CheckedChanged += new System.EventHandler(this.cbGodMode_CheckedChanged);
             // 
             // btnClear
             // 
@@ -139,6 +157,13 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(388, 72);
             this.panel3.TabIndex = 2;
+            // 
+            // panel6
+            // 
+            this.panel6.Location = new System.Drawing.Point(13, 67);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(200, 100);
+            this.panel6.TabIndex = 8;
             // 
             // NextWeekButton
             // 
@@ -269,12 +294,20 @@
             this.ftbName.Size = new System.Drawing.Size(99, 50);
             this.ftbName.TabIndex = 0;
             // 
-            // panel6
+            // timer1
             // 
-            this.panel6.Location = new System.Drawing.Point(13, 67);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(200, 100);
-            this.panel6.TabIndex = 8;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lbSystemTime
+            // 
+            this.lbSystemTime.AutoSize = true;
+            this.lbSystemTime.Font = new System.Drawing.Font("PMingLiU", 9F);
+            this.lbSystemTime.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbSystemTime.Location = new System.Drawing.Point(525, 119);
+            this.lbSystemTime.Name = "lbSystemTime";
+            this.lbSystemTime.Size = new System.Drawing.Size(94, 18);
+            this.lbSystemTime.TabIndex = 14;
+            this.lbSystemTime.Text = "SystemTime";
             // 
             // Shift
             // 
@@ -288,6 +321,7 @@
             this.Load += new System.EventHandler(this.Shift_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NextWeekButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreviousWeekButton)).EndInit();
@@ -316,5 +350,8 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox cbGodMode;
+        private System.Windows.Forms.Label lbSystemTime;
     }
 }
