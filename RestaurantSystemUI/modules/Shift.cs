@@ -328,9 +328,10 @@ namespace RestaurantSystemUI
             //{
             //    drawCell = drawCell.AddDays(-(int)drawCell.DayOfWeek);
             //}
+            ToolTip ShiftTimeToolTip = new ToolTip();
+            SetTooltipStyleForCard(ShiftTimeToolTip, "時段", ToolTipIcon.Info);
 
 
-            
             tableLayoutPanel.SuspendLayout();
             for (int i = 0; i < tableLayoutPanel.ColumnCount; i++)
             {
@@ -379,12 +380,13 @@ namespace RestaurantSystemUI
 
                     drawCell = myPanel.EndTime;
 
-                    myPanel.Controls.Add(new Label()
+                    /*myPanel.Controls.Add(new Label()
                     {
-                        Text = string.Format("{0}\n{1}\n~{2}",myPanel.BeginTime.ToShortDateString(), myPanel.BeginTime.ToShortTimeString(), myPanel.EndTime.ToShortTimeString()),
+                        //Text = string.Format("{0}\n{1}\n~{2}",myPanel.BeginTime.ToShortDateString(), myPanel.BeginTime.ToShortTimeString(), myPanel.EndTime.ToShortTimeString()),
                         AutoSize = true
 
-                    });
+                    });*/
+                    ShiftTimeToolTip.SetToolTip(myPanel, string.Format("{0}\n{1}\n~\n{2}", myPanel.BeginTime.ToShortDateString(), myPanel.BeginTime.ToShortTimeString(), myPanel.EndTime.ToShortTimeString()));
 
                     myPanel.BackColor = Color.Aquamarine;
                     tableLayoutPanel.Controls.Add(myPanel, i, j);
