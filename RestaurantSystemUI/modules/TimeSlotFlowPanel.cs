@@ -12,5 +12,11 @@ namespace RestaurantSystemUI
         public DateTime Date { get; set; }
         public DateTime BeginTime { get; set; }
         public DateTime EndTime { get; set; }
+
+        public TimeSlotFlowPanel()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.TimeSlotBackground;
+        }
     }
 }

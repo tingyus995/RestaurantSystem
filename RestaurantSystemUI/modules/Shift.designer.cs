@@ -154,7 +154,6 @@
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "儲存";
             this.btnSave.UseVisualStyleBackColor = false;
-            //this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // panel3
             // 
@@ -177,6 +176,7 @@
             // NextWeekButton
             // 
             this.NextWeekButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.NextWeekButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.NextWeekButton.IconChar = FontAwesome.Sharp.IconChar.CaretRight;
             this.NextWeekButton.IconColor = System.Drawing.Color.White;
             this.NextWeekButton.IconSize = 44;
@@ -205,6 +205,7 @@
             // PreviousWeekButton
             // 
             this.PreviousWeekButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PreviousWeekButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.PreviousWeekButton.IconChar = FontAwesome.Sharp.IconChar.CaretLeft;
             this.PreviousWeekButton.IconColor = System.Drawing.Color.White;
             this.PreviousWeekButton.IconSize = 44;

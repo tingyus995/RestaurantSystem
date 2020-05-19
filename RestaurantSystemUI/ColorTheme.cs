@@ -103,6 +103,11 @@ namespace RestaurantSystemUI
         public Color OnTimeCard = Normal;
         public Color MissingCard = Dangerous;
 
+        public Color TimeSlotBackground = Darken(mainAccent, 40);
+        public Color TimeSlotHover = mainAccent;
+
+
+
 
 
 

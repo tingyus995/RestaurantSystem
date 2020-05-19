@@ -34,7 +34,7 @@
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(41, 42);
+            this.lbName.Location = new System.Drawing.Point(17, 13);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(50, 18);
             this.lbName.TabIndex = 0;
@@ -47,7 +47,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.lbName);
             this.Name = "EmployeeItemCompact";
-            this.Size = new System.Drawing.Size(183, 91);
+            this.Size = new System.Drawing.Size(98, 41);
             this.Load += new System.EventHandler(this.EmployeeItemCompact_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -12,6 +12,7 @@ using RestaurantSystemCore;
 using System.Threading;
 using System.Threading.Tasks;
 using RestaurantSystemUI.modules;
+using RestaurantSystemUI.controls;
 
 namespace RestaurantSystemUI
 {
@@ -89,23 +90,26 @@ namespace RestaurantSystemUI
        
 
         private void cellDragOver(object sender, EventArgs e) {
+            ColorTheme theme = ThemeProvider.GetTheme();
             hoverCell = sender as TimeSlotFlowPanel;
-            hoverCell.BackColor = Color.Brown;
+            hoverCell.BackColor = theme.TimeSlotHover;
         }
 
         private void cellDragLeave(object sender, EventArgs e)
         {
-            TimeSlotFlowPanel cell = sender as TimeSlotFlowPanel;
-            cell.BackColor = Color.Aquamarine;
+            ColorTheme theme = ThemeProvider.GetTheme();
+            TimeSlotFlowPanel cell = sender as TimeSlotFlowPanel;            
+            cell.BackColor = theme.TimeSlotBackground;
         }
         private void cellDragDrop(object sender, EventArgs e)
         {
+            ColorTheme theme = ThemeProvider.GetTheme();
             EmployeeItemCompact item = new EmployeeItemCompact() {
                 Employee = activeControl.Employee
             };
             
             hoverCell.Controls.Add(item);
-            hoverCell.BackColor = Color.Aquamarine;
+            hoverCell.BackColor = theme.TimeSlotBackground;
             item.BringToFront();
             //MessageBox.Show(hoverCell.);
             //SaveThisDay(hoverCell.BeginTime.Date);
@@ -281,6 +285,7 @@ namespace RestaurantSystemUI
 
             //table
             tableLayoutPanel = new TableLayoutPanel();
+            tableLayoutPanel.Padding = new Padding(15);
             tableLayoutPanel.Dock = DockStyle.Fill;
             tableLayoutPanel.AutoScroll = true;
             panel5.Controls.Add(tableLayoutPanel);
@@ -315,10 +320,13 @@ namespace RestaurantSystemUI
             tableLayoutPanel.RowCount = rowcount;
 
             //prepare column styles
-            for (int i = 0; i < tableLayoutPanel.ColumnCount - 1; ++i)
+            for (int i = 0; i < tableLayoutPanel.ColumnCount; ++i)
             {
-                tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, (100f / 7)));
+                //tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, (100f / 7)));
+                tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 0.5f));
             }
+
+            
 
 
 
@@ -331,6 +339,7 @@ namespace RestaurantSystemUI
             ToolTip ShiftTimeToolTip = new ToolTip();
             SetTooltipStyleForCard(ShiftTimeToolTip, "時段", ToolTipIcon.Info);
 
+            int minH = panel5.Height / tableLayoutPanel.RowCount;
 
             tableLayoutPanel.SuspendLayout();
             for (int i = 0; i < tableLayoutPanel.ColumnCount; i++)
@@ -340,36 +349,43 @@ namespace RestaurantSystemUI
                     if (i == 0 && j == 0) { continue; }
                     if (i == 0)
                     {
-                        //add detail time 
-                        tableLayoutPanel.Controls.Add(new Label()
+                        //add detail time
+                        ThemedLabel lbDetailTime = new ThemedLabel()
                         {
-                            Text = detailTime[j - 1],
+                            Text = detailTime[j - 1]                            
                             //Text = i.ToString()+ " "+ j.ToString(),
-                            BackColor = Color.Aquamarine,
-                            ForeColor = Color.Purple
-                        }, i, j);
+                        };
+
+                        lbDetailTime.Font = new Font(lbDetailTime.Font.FontFamily, 10f);
+
+                        tableLayoutPanel.Controls.Add(lbDetailTime, i, j);
                         continue;
 
                     }
                     if (j == 0)
                     {
-                        // add weekdays                        
+                        // add weekdays
 
-                        tableLayoutPanel.Controls.Add(new Label()
+                        ThemedLabel weekday = new ThemedLabel()
                         {
                             Text = weekdays[i - 1],
-                            //Text = weekdays[i-1] + i.ToString() + j.ToString(),
-                            BackColor = Color.Aquamarine,
-                            ForeColor = Color.Purple
-                        }, i, j);
+                            TextAlign = ContentAlignment.MiddleCenter
+                            //Text = weekdays[i-1] + i.ToString() + j.ToString()
+
+                        };
+                        weekday.Dock = DockStyle.Fill;
+                        tableLayoutPanel.Controls.Add(weekday, i, j);
+
                         continue;
 
                     }
 
                     // draw cell
                     TimeSlotFlowPanel myPanel = new TimeSlotFlowPanel();
-                    //myPanel.AutoScroll = true;                
-                    myPanel.MinimumSize = new Size(100, 50);
+                    //myPanel.AutoScroll = true;             
+                    myPanel.MinimumSize = new Size(0, minH);
+                    myPanel.Dock = DockStyle.Fill;
+                    
                     myPanel.AutoSizeMode = AutoSizeMode.GrowOnly;
                     myPanel.AutoSize = true;
 
@@ -388,7 +404,7 @@ namespace RestaurantSystemUI
                     });*/
                     ShiftTimeToolTip.SetToolTip(myPanel, string.Format("{0}\n{1}\n~\n{2}", myPanel.BeginTime.ToShortDateString(), myPanel.BeginTime.ToShortTimeString(), myPanel.EndTime.ToShortTimeString()));
 
-                    myPanel.BackColor = Color.Aquamarine;
+                    //myPanel.BackColor = Color.Aquamarine;
                     tableLayoutPanel.Controls.Add(myPanel, i, j);
 
 
@@ -405,8 +421,17 @@ namespace RestaurantSystemUI
                         myPanel.DragLeave += cellDragLeave;
                         myPanel.DragDrop += cellDragDrop;
                         myPanel.DragEnter += cellDragEnter;
+                        
                     }
-                    
+
+                    // hover hint
+                    myPanel.MouseEnter += cellMouseEnter;
+                    myPanel.MouseLeave += cellMouseLeave;
+
+
+
+
+
                 }
 
                 if (i != 0) 
@@ -419,6 +444,23 @@ namespace RestaurantSystemUI
 
             tableLayoutPanel.ResumeLayout();
         }
+
+        private void cellMouseLeave(object sender, EventArgs e)
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            Control control = sender as Control;
+            control.BackColor = theme.TimeSlotBackground;
+        }
+
+        private void cellMouseEnter(object sender, EventArgs e)
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            Control control = sender as Control;
+            control.BackColor = theme.TimeSlotHover;
+
+        }
+
+
 
         private void PreviousWeekButton_Click(object sender, EventArgs e)
         {
