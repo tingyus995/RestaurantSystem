@@ -128,7 +128,6 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,7 +143,6 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,7 +154,7 @@
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "儲存";
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            //this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // panel3
             // 
@@ -179,7 +177,6 @@
             // NextWeekButton
             // 
             this.NextWeekButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.NextWeekButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.NextWeekButton.IconChar = FontAwesome.Sharp.IconChar.CaretRight;
             this.NextWeekButton.IconColor = System.Drawing.Color.White;
             this.NextWeekButton.IconSize = 44;
@@ -208,7 +205,6 @@
             // PreviousWeekButton
             // 
             this.PreviousWeekButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PreviousWeekButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.PreviousWeekButton.IconChar = FontAwesome.Sharp.IconChar.CaretLeft;
             this.PreviousWeekButton.IconColor = System.Drawing.Color.White;
             this.PreviousWeekButton.IconSize = 44;

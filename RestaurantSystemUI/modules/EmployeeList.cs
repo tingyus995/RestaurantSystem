@@ -12,7 +12,7 @@ using RestaurantSystemCore;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class EmployeeList : UserControl
+    public partial class EmployeeList : UserControl, IThemeable
     {
 
         private string selectedCategoryName;
@@ -85,6 +85,7 @@ namespace RestaurantSystemUI.modules
         private void EmployeeList_Load(object sender, EventArgs e)
         {
             loadData();
+            ApplyTheme();
         }
 
         private void CategoryItem_Click(object sender, EventArgs e)
@@ -170,6 +171,12 @@ namespace RestaurantSystemUI.modules
                 c.MinimumSize = new Size((fpnEmployeeItems.ClientSize.Width / amount - (c.Margin.Left + c.Margin.Right)) - 10, c.Height);
             }
             pn.ResumeLayout();*/
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
         }
     }
 }

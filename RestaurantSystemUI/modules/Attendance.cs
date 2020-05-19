@@ -12,7 +12,7 @@ using RestaurantSystemCore.models;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class Attendance : UserControl
+    public partial class Attendance : UserControl, IThemeable
     {
         private Employee[] employeeList;
         public static DateTime SystemClock = new DateTime(2020, 5, 21, 13, 35, 0);
@@ -170,6 +170,10 @@ namespace RestaurantSystemUI.modules
             }
         }
 
-       
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+        }
     }
 }

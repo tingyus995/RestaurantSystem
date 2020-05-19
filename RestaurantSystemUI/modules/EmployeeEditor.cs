@@ -14,7 +14,7 @@ using System.Runtime.CompilerServices;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class EmployeeEditor : UserControl
+    public partial class EmployeeEditor : UserControl, IThemeable
     {
 
 
@@ -77,10 +77,8 @@ namespace RestaurantSystemUI.modules
 
         private void EmployeeEditor_Load(object sender, EventArgs e)
         {
-            
-            //pbEmployeeImage.Image = Properties.Resources.
-            //pbEmployeeImage.Image = Properties.Resources.DefaultEmployeeImage;
-            //pbEmployeeImage.InitialImage = Properties.Resources.DefaultEmployeeImage;
+
+            ApplyTheme();
         }
 
 
@@ -178,6 +176,17 @@ namespace RestaurantSystemUI.modules
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             ftbBirthday.textBox.Text =  dateTimePicker1.Value.ToShortDateString();
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+            ftbName.BackColor = BackColor;
+            ftbSalary.BackColor = BackColor;
+            ftbContactNumber.BackColor = BackColor;
+            ftbBirthday.BackColor = BackColor;
+            tagInput1.BackColor = BackColor;
         }
     }
 }

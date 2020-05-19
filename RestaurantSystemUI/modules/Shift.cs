@@ -18,7 +18,7 @@ namespace RestaurantSystemUI
     public partial class Shift : UserControl, IThemeable
     {
         //time
-        DateTime SystemClock = new DateTime(2020, 5, 23, 8, 30, 1);
+        DateTime SystemClock = new DateTime(2020, 5, 20, 8, 30, 1);
         DateTime CurrentDate;
         DateTime CurrentWeekStart;
         DateTime CurrentWeekEnd;
@@ -27,7 +27,7 @@ namespace RestaurantSystemUI
 
         EmployeeItemCompact activeControl;
         Point previousPosition;
-        Panel hoverCell;
+        TimeSlotFlowPanel hoverCell;
         private Employee[] employeeList;
         public Shift()
         {
@@ -107,15 +107,157 @@ namespace RestaurantSystemUI
             hoverCell.Controls.Add(item);
             hoverCell.BackColor = Color.Aquamarine;
             item.BringToFront();
+            //MessageBox.Show(hoverCell.);
+            //SaveThisDay(hoverCell.BeginTime.Date);
+            SaveDay(hoverCell, activeControl.Employee);
             
         }
+
+        private void SaveDay(TimeSlotFlowPanel cell, Employee employee)
+        {
+            // the day we're going to deal with
+            int colIdx = tableLayoutPanel.GetColumn(cell);
+
+            List<WorkTime> newWorkTimes = new List<WorkTime>();
+            
+            // filter out worktime of this day
+            if(employee.workTime != null)
+                foreach(WorkTime t in employee.workTime)
+                {
+                    if(t.StartTime.Date.CompareTo(cell.Date) != 0)
+                    {
+                        newWorkTimes.Add(t);
+                    }
+                }
+            
+
+            // read new worktimes
+            for(int i = 1; i < tableLayoutPanel.RowCount; ++i) // i = 0 is weekdays
+            {
+                Control c = tableLayoutPanel.GetControlFromPosition(colIdx, i);
+                if(c is TimeSlotFlowPanel)
+                {
+                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+
+                    foreach(Control _c in slot.Controls)
+                    {
+                        if(_c is EmployeeItemCompact)
+                        {
+                            EmployeeItemCompact compact = _c as EmployeeItemCompact;
+                            if(compact.Employee.Id == employee.Id)
+                                newWorkTimes.Add(new WorkTime()
+                                {
+                                    StartTime = slot.BeginTime,
+                                    EndTime = slot.EndTime
+                                });
+
+                        }
+                    }                    
+                }
+                
+            }
+            // merge
+
+            //ConnectContinuousSlot(employee);
+            int pivot = 0;
+
+            while((pivot + 1) < newWorkTimes.Count)
+            {
+                // still have worktimes after
+
+                if(IsContinuous(newWorkTimes[pivot], newWorkTimes[pivot + 1])) {
+
+                    // merge
+                    newWorkTimes[pivot] = MergeTime(newWorkTimes[pivot], newWorkTimes[pivot + 1]);
+                    // remove +1 one
+                    newWorkTimes.RemoveAt(pivot + 1);
+                }
+
+                ++pivot;
+            }
+
+            employee.workTime = newWorkTimes.ToArray();
+            EmployeeManager.UpdateOrSaveEmployee(employee);
+
+        }
+        
         private void cellDragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
 
         }
 
-       
+        private void SaveThisDay(DateTime time)
+        {
+            foreach (Control c in tableLayoutPanel.Controls)
+            {
+                if (c is TimeSlotFlowPanel)
+                {
+                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+                    if (slot.BeginTime.Date == time) {
+                        foreach (Control _c in slot.Controls)
+                        {
+                            if (_c is EmployeeItemCompact) {
+                                EmployeeItemCompact compact = _c as EmployeeItemCompact;
+                                List<WorkTime> workingTimes;
+                                if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
+                                else workingTimes = new List<WorkTime>();
+                                if (compact.Employee.workTime != null) {
+                                    foreach (WorkTime t in workingTimes) {
+                                        if (t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime) {
+                                            workingTimes.Remove(t);
+                                            break;
+                                        }
+                                    }
+                                    compact.Employee.workTime = workingTimes.ToArray();
+                                    EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
+                                }
+                                
+
+                            }
+                        }   
+
+
+                    }
+                }
+            }
+            foreach (Control c in tableLayoutPanel.Controls)
+            {
+                if (c is TimeSlotFlowPanel)
+                {
+                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+                    if (slot.BeginTime.Date == time)
+                    {
+                        foreach (Control _c in slot.Controls)
+                        {
+                            if (_c is EmployeeItemCompact)
+                            {
+                                EmployeeItemCompact compact = _c as EmployeeItemCompact;
+                                List<WorkTime> workingTimes;
+                                if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
+                                else workingTimes = new List<WorkTime>();
+
+                                workingTimes.Add(new WorkTime()
+                                {
+                                    StartTime = slot.BeginTime,
+                                    EndTime = slot.EndTime
+                                });
+                                compact.Employee.workTime = workingTimes.ToArray();
+                                EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
+                                
+
+
+                            }
+                        }
+                    }
+                }
+            }
+            foreach (Employee employee in EmployeeManager.GetEmployees())
+            {
+              ConnectContinuousSlot(employee);
+            }
+
+        }
         private void SetUpShift()
         {
             CurrentWeekButton.Text = CurrentWeekStart.ToLongDateString()+"~"+ CurrentWeekEnd.ToLongDateString();
@@ -239,7 +381,7 @@ namespace RestaurantSystemUI
 
                     myPanel.Controls.Add(new Label()
                     {
-                        Text = string.Format("{0} to {1}", myPanel.BeginTime.ToString(), myPanel.EndTime.ToShortTimeString()),
+                        Text = string.Format("{0}\n{1}\n~{2}",myPanel.BeginTime.ToShortDateString(), myPanel.BeginTime.ToShortTimeString(), myPanel.EndTime.ToShortTimeString()),
                         AutoSize = true
 
                     });
@@ -321,8 +463,6 @@ namespace RestaurantSystemUI
 
 
 
-
-
             foreach (Control c in tableLayoutPanel.Controls)
             {
                 if (c is TimeSlotFlowPanel)
@@ -373,17 +513,13 @@ namespace RestaurantSystemUI
                             }
                         }
                     }
-
-
-
-
-
-
                 }
 
             }
         }
+        private void deleteCellWorkTime() {
 
+        }
 
         private void deleteAllWorkingTimes()
         {
@@ -450,8 +586,7 @@ namespace RestaurantSystemUI
             }
 
             employee.workTime = newWorkTime.ToArray();
-            EmployeeManager.UpdateOrSaveEmployee(employee);
-           
+            //EmployeeManager.UpdateOrSaveEmployee(employee);           
         }
 
         private void ConnectContinuousSlotDebug(Employee employee)
@@ -496,169 +631,169 @@ namespace RestaurantSystemUI
         }
 
 
-        private void _deprecated_btnSave_Click(object sender, EventArgs e)
-        {
-            // delete all worktimes in employee
+        //private void _deprecated_btnSave_Click(object sender, EventArgs e)
+        //{
+        //    // delete all worktimes in employee
 
-            /*Employee[] employees = EmployeeManager.GetEmployees();
-            foreach(Employee employee in employees)
-            {
-                employee.workTime = null;
-            }*/
+        //    /*Employee[] employees = EmployeeManager.GetEmployees();
+        //    foreach(Employee employee in employees)
+        //    {
+        //        employee.workTime = null;
+        //    }*/
 
-            //deleteAllWorkingTimes();
+        //    //deleteAllWorkingTimes();
 
-            foreach(Control c in tableLayoutPanel.Controls)
-            {
-                if(c is TimeSlotFlowPanel)
-                {
-                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
-                    // check if anyone is here
-                    foreach (Control _c in slot.Controls)
-                    {
-                        if(_c is EmployeeItemCompact) {
-                            EmployeeItemCompact compact = _c as EmployeeItemCompact;
-                            // we found employee                            
+        //    foreach(Control c in tableLayoutPanel.Controls)
+        //    {
+        //        if(c is TimeSlotFlowPanel)
+        //        {
+        //            TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+        //            // check if anyone is here
+        //            foreach (Control _c in slot.Controls)
+        //            {
+        //                if(_c is EmployeeItemCompact) {
+        //                    EmployeeItemCompact compact = _c as EmployeeItemCompact;
+        //                    // we found employee                            
 
-                            List<WorkTime> workingTimes;
+        //                    List<WorkTime> workingTimes;
 
-                            if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
-                            else workingTimes = new List<WorkTime>();
+        //                    if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
+        //                    else workingTimes = new List<WorkTime>();
 
-                            // before we add, let's check if there's already one
-                            bool found = false;
-                            foreach(WorkTime t in workingTimes)
-                            {
-                                // check if there's already one
-                                if(t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)                                
-                                {
-                                    found = true;
-                                    break;
-                                }
-                            }
+        //                    // before we add, let's check if there's already one
+        //                    bool found = false;
+        //                    foreach(WorkTime t in workingTimes)
+        //                    {
+        //                        // check if there's already one
+        //                        if(t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)                                
+        //                        {
+        //                            found = true;
+        //                            break;
+        //                        }
+        //                    }
                               
-                            if (!found) {
-                                //MessageBox.Show("debug");
-                                workingTimes.Add(new WorkTime()
-                                {
-                                    StartTime = slot.BeginTime,
-                                    EndTime = slot.EndTime
-                                });
-                            }
+        //                    if (!found) {
+        //                        //MessageBox.Show("debug");
+        //                        workingTimes.Add(new WorkTime()
+        //                        {
+        //                            StartTime = slot.BeginTime,
+        //                            EndTime = slot.EndTime
+        //                        });
+        //                    }
 
-                            compact.Employee.workTime = workingTimes.ToArray();
-                            EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
-                        }
+        //                    compact.Employee.workTime = workingTimes.ToArray();
+        //                    EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
+        //                }
                         
-                    }
-                }
+        //            }
+        //        }
 
-                foreach(Employee employee in EmployeeManager.GetEmployees())
-                {
-                    ConnectContinuousSlot(employee);
-                }
+        //        foreach(Employee employee in EmployeeManager.GetEmployees())
+        //        {
+        //            ConnectContinuousSlot(employee);
+        //        }
 
-            }
-            /*for (int i = 0; i < tableLayoutPanel.ColumnCount; i++) {
-                for (int j = 0; j < tableLayoutPanel.RowCount; j++) {
+        //    }
+        //    /*for (int i = 0; i < tableLayoutPanel.ColumnCount; i++) {
+        //        for (int j = 0; j < tableLayoutPanel.RowCount; j++) {
                     
                     
                     
                     
-                    if (tableLayoutPanel.GetControlFromPosition(i, j) == null) continue;// i=0, j=0 is null
-                    if (tableLayoutPanel.GetControlFromPosition(i, j).GetType() == typeof(TimeSlotFlowPanel)) {//timeslotpanel filter
-                        foreach (Control control in tableLayoutPanel.GetControlFromPosition(i, j).Controls) {
-                            if (control.GetType() == typeof(EmployeeItemCompact)) {
-                                //Employee em = control.GetType().GetProperty("Employee").GetValue(control);
-                                Console.WriteLine(control);
-                                Console.WriteLine(tableLayoutPanel.GetControlFromPosition(i, j).GetType().GetProperty("Date").GetValue(tableLayoutPanel.GetControlFromPosition(i, j)));
-                                Console.WriteLine(tableLayoutPanel.GetControlFromPosition(i, j).GetType().GetProperty("BeginTime").GetValue(tableLayoutPanel.GetControlFromPosition(i, j)));
-                                Console.WriteLine(tableLayoutPanel.GetControlFromPosition(i, j).GetType().GetProperty("EndTime").GetValue(tableLayoutPanel.GetControlFromPosition(i, j)));
-                                //EmployeeManager.UpdateOrSaveEmployee()
-                                Console.WriteLine(control.GetType().GetProperty("Employee").GetValue(control).GetType());
-                                Console.WriteLine(control.GetType().GetProperty("Employee").GetType());
-                            }   
+        //            if (tableLayoutPanel.GetControlFromPosition(i, j) == null) continue;// i=0, j=0 is null
+        //            if (tableLayoutPanel.GetControlFromPosition(i, j).GetType() == typeof(TimeSlotFlowPanel)) {//timeslotpanel filter
+        //                foreach (Control control in tableLayoutPanel.GetControlFromPosition(i, j).Controls) {
+        //                    if (control.GetType() == typeof(EmployeeItemCompact)) {
+        //                        //Employee em = control.GetType().GetProperty("Employee").GetValue(control);
+        //                        Console.WriteLine(control);
+        //                        Console.WriteLine(tableLayoutPanel.GetControlFromPosition(i, j).GetType().GetProperty("Date").GetValue(tableLayoutPanel.GetControlFromPosition(i, j)));
+        //                        Console.WriteLine(tableLayoutPanel.GetControlFromPosition(i, j).GetType().GetProperty("BeginTime").GetValue(tableLayoutPanel.GetControlFromPosition(i, j)));
+        //                        Console.WriteLine(tableLayoutPanel.GetControlFromPosition(i, j).GetType().GetProperty("EndTime").GetValue(tableLayoutPanel.GetControlFromPosition(i, j)));
+        //                        //EmployeeManager.UpdateOrSaveEmployee()
+        //                        Console.WriteLine(control.GetType().GetProperty("Employee").GetValue(control).GetType());
+        //                        Console.WriteLine(control.GetType().GetProperty("Employee").GetType());
+        //                    }   
 
-                        }
+        //                }
 
-                    }
+        //            }
 
-                }
+        //        }
 
-            }*/
-        }
+        //    }*/
+        //}
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            // delete all worktimes in employee
+        //private void btnSave_Click(object sender, EventArgs e)
+        //{
+        //    // delete all worktimes in employee
 
-            /*Employee[] employees = EmployeeManager.GetEmployees();
-            foreach(Employee employee in employees)
-            {
-                employee.workTime = null;
-            }*/
+        //    /*Employee[] employees = EmployeeManager.GetEmployees();
+        //    foreach(Employee employee in employees)
+        //    {
+        //        employee.workTime = null;
+        //    }*/
 
-            //deleteAllWorkingTimes();
+        //    //deleteAllWorkingTimes();
 
-            foreach (Control c in tableLayoutPanel.Controls)
-            {
-                if (c is TimeSlotFlowPanel)
-                {
-                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
-                    // check if anyone is here
-                    foreach (Control _c in slot.Controls)
-                    {
-                        if (_c is EmployeeItemCompact)
-                        {
-                            EmployeeItemCompact compact = _c as EmployeeItemCompact;
-                            // we found employee                            
+        //    foreach (Control c in tableLayoutPanel.Controls)
+        //    {
+        //        if (c is TimeSlotFlowPanel)
+        //        {
+        //            TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+        //            // check if anyone is here
+        //            foreach (Control _c in slot.Controls)
+        //            {
+        //                if (_c is EmployeeItemCompact)
+        //                {
+        //                    EmployeeItemCompact compact = _c as EmployeeItemCompact;
+        //                    // we found employee                            
 
-                            List<WorkTime> workingTimes;
+        //                    List<WorkTime> workingTimes;
 
-                            if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
-                            else workingTimes = new List<WorkTime>();
+        //                    if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
+        //                    else workingTimes = new List<WorkTime>();
 
-                            // before we add, let's check if there's already one
-                            bool found = false;
-                            foreach (WorkTime t in workingTimes)
-                            {
-                                // check if there's already one
-                                //if (t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)
-                                /*if (IsTimeInRange(t.StartTime, slot.BeginTime, slot.EndTime) &&
-                                    IsTimeInRange(t.EndTime, slot.BeginTime, slot.EndTime))*/
-                                if( (DateTime.Compare(t.StartTime, slot.BeginTime) <= 0) &&
-                                        (DateTime.Compare(slot.EndTime, t.EndTime) <= 0))
-                                {
-                                    found = true;
-                                    break;
-                                }
-                            }
+        //                    // before we add, let's check if there's already one
+        //                    bool found = false;
+        //                    foreach (WorkTime t in workingTimes)
+        //                    {
+        //                        // check if there's already one
+        //                        //if (t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime)
+        //                        /*if (IsTimeInRange(t.StartTime, slot.BeginTime, slot.EndTime) &&
+        //                            IsTimeInRange(t.EndTime, slot.BeginTime, slot.EndTime))*/
+        //                        if( (DateTime.Compare(t.StartTime, slot.BeginTime) <= 0) &&
+        //                                (DateTime.Compare(slot.EndTime, t.EndTime) <= 0))
+        //                        {
+        //                            found = true;
+        //                            break;
+        //                        }
+        //                    }
 
-                            if (!found)
-                            {
-                                //MessageBox.Show("debug");
-                                workingTimes.Add(new WorkTime()
-                                {
-                                    StartTime = slot.BeginTime,
-                                    EndTime = slot.EndTime
-                                });
-                            }
+        //                    if (!found)
+        //                    {
+        //                        //MessageBox.Show("debug");
+        //                        workingTimes.Add(new WorkTime()
+        //                        {
+        //                            StartTime = slot.BeginTime,
+        //                            EndTime = slot.EndTime
+        //                        });
+        //                    }
 
-                            compact.Employee.workTime = workingTimes.ToArray();
-                            EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
-                        }
+        //                    compact.Employee.workTime = workingTimes.ToArray();
+        //                    EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
+        //                }
 
-                    }
-                }
+        //            }
+        //        }
 
-                foreach (Employee employee in EmployeeManager.GetEmployees())
-                {
-                    ConnectContinuousSlot(employee);
-                }
+        //        foreach (Employee employee in EmployeeManager.GetEmployees())
+        //        {
+        //            ConnectContinuousSlot(employee);
+        //        }
 
-            }
+        //    }
           
-        }
+        //}
 
 
 
@@ -696,8 +831,9 @@ namespace RestaurantSystemUI
             ColorTheme theme = ThemeProvider.GetTheme();
             BackColor = theme.ContentPanel;
 
-            flatTextbox1.BackColor = theme.ContentPanel;
-            flatTextbox2.BackColor = theme.ContentPanel;
+            flatTextbox1.BackColor = BackColor;
+            flatTextbox2.BackColor = BackColor;
+            ftbName.BackColor = BackColor;
         }
     }
 }
