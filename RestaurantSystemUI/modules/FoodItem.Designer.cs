@@ -150,6 +150,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FoodItem";
             this.Size = new System.Drawing.Size(389, 179);
+            this.Load += new System.EventHandler(this.FoodItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

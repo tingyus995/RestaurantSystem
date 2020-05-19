@@ -156,7 +156,7 @@ namespace RestaurantSystemUI
             foreach(Food f in FoodManager.GetFoods(cat))
             {
                 
-                FoodItem item = new FoodItem()
+                FoodItem item = new FoodItem(plusbtn: true, editBtn: false)
                 {
                     Food = f
                 };

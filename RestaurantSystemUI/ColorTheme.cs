@@ -82,6 +82,11 @@ namespace RestaurantSystemUI
         public Color OrderViewItemEven = Darken(secondaryDerivative, 10);
         public Color OrderViewItemOdd = Darken(secondaryDerivative, 20);
 
+        // food item
+        public Color FoodItem = Darken(mainAcceintDerivative, 20);
+        // food varient
+        public Color FoodItemVarient = Darken(mainAcceintDerivative, 40);
+
         
 
         //public Color OrderViewTitle = 
