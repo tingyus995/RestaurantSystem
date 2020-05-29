@@ -60,7 +60,6 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.AllowDrop = true;
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -70,6 +69,8 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(169, 700);
             this.flowLayoutPanel1.TabIndex = 1;
+            this.flowLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragEnter);
+            this.flowLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragOver);
             // 
             // panel1
             // 
@@ -83,6 +84,7 @@
             // 
             // panel5
             // 
+            this.panel5.AllowDrop = true;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 189);
             this.panel5.Name = "panel5";
@@ -308,6 +310,7 @@
             // 
             // Shift
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
@@ -316,6 +319,7 @@
             this.Name = "Shift";
             this.Size = new System.Drawing.Size(1100, 700);
             this.Load += new System.EventHandler(this.Shift_Load);
+            this.DragOver += new System.Windows.Forms.DragEventHandler(this.Shift_DragOver);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

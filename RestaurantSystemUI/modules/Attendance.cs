@@ -15,7 +15,7 @@ namespace RestaurantSystemUI.modules
     public partial class Attendance : UserControl, IThemeable
     {
         private Employee[] employeeList;
-        public static DateTime SystemClock = new DateTime(2020, 5, 21, 13, 35, 0);
+        public static DateTime SystemClock = new DateTime(2020, 5, 26, 10, 31, 0);
         DateTime CurrentShiftStart;
         DateTime CurrentShiftEnd;
         public Attendance()

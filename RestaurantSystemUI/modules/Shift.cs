@@ -19,7 +19,7 @@ namespace RestaurantSystemUI
     public partial class Shift : UserControl, IThemeable
     {
         //time
-        DateTime SystemClock = new DateTime(2020, 5, 20, 8, 30, 1);
+        DateTime SystemClock = new DateTime(2020, 5, 27, 8, 30, 1);
         DateTime CurrentDate;
         DateTime CurrentWeekStart;
         DateTime CurrentWeekEnd;
@@ -29,6 +29,13 @@ namespace RestaurantSystemUI
         EmployeeItemCompact activeControl;
         Point previousPosition;
         TimeSlotFlowPanel hoverCell;
+
+        // for drag and drop effects
+        Bitmap dragThumbnail;
+        PictureBox dragdropPictureBox;
+        bool isDragging = false;
+        Cursor cursor;
+
         private Employee[] employeeList;
         public Shift()
         {
@@ -42,7 +49,7 @@ namespace RestaurantSystemUI
             CurrentWeekStart = CurrentDate.AddDays(-(int)CurrentDate.DayOfWeek);
             CurrentWeekEnd = CurrentWeekStart.AddDays(6);
 
-
+         
             
             SetUpShift();
 
@@ -76,18 +83,70 @@ namespace RestaurantSystemUI
         private void onEmployeeItemMouseDown(object sender, MouseEventArgs e) {
 
             activeControl = (EmployeeItemCompact)sender;//sender as EmployeeItem;
-            Bitmap bitmap = new Bitmap(activeControl.Width, activeControl.Height);
-            activeControl.DrawToBitmap(bitmap, new Rectangle(Point.Empty, bitmap.Size));
+            dragThumbnail = new Bitmap(activeControl.Width, activeControl.Height);
+            activeControl.DrawToBitmap(dragThumbnail, new Rectangle(Point.Empty, dragThumbnail.Size));
 
             //previousPosition = e.Location;
-            //Cursor = Cursors.Hand;
-            Cursor cursor = new Cursor(bitmap.GetHicon());
+            cursor = new Cursor(dragThumbnail.GetHicon());
             Cursor.Current = cursor;
+            
             this.DoDragDrop(activeControl.Name, DragDropEffects.Move);
+            
+            /*dragdropPictureBox = new PictureBox();
+            dragdropPictureBox.Image = dragThumbnail;
+            //dragdropPictureBox.Left = e.X;
+            //dragdropPictureBox.Top = e.Y;
+            dragdropPictureBox.Left = e.X + activeControl.Left;
+            dragdropPictureBox.Top = e.Y + activeControl.Top;
+            dragdropPictureBox.Width = dragThumbnail.Width;
+            dragdropPictureBox.Height = dragThumbnail.Height;
+
+            dragdropPictureBox.Parent = this;
+
+            //dragdropPictureBox.Left = 10;
+            //dragdropPictureBox.Top = 10;
+
+            Controls.Add(dragdropPictureBox);
+            dragdropPictureBox.BringToFront();
+
+            isDragging = true;*/
+
+
         }
-        
-        
-       
+        private void onEmployeeItemMouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                if (activeControl == null || activeControl != sender)
+                {
+                    return;
+                }
+                
+
+
+                Cursor.Current = cursor;
+
+                //e.Effect = DragDropEffects.Move;
+
+
+                this.DoDragDrop(activeControl.Name, DragDropEffects.Move);
+
+                //var location = activeControl.Location;
+                //location.Offset(e.Location.X - previousPosition.X, e.Location.Y - previousPosition.Y);
+                //activeControl.Location = location;
+            }
+
+                
+
+            //if (isDragging)
+            //{
+            //    Control activeControl = sender as Control;
+            //    dragdropPictureBox.Top = e.Y + activeControl.Top;
+            //    dragdropPictureBox.Left = e.X + activeControl.Left;
+            //}
+        }
+
+
 
         private void cellDragOver(object sender, EventArgs e) {
             ColorTheme theme = ThemeProvider.GetTheme();
@@ -191,7 +250,7 @@ namespace RestaurantSystemUI
 
         }
 
-        private void SaveThisDay(DateTime time)
+        /*private void SaveThisDay(DateTime time)
         {
             foreach (Control c in tableLayoutPanel.Controls)
             {
@@ -262,6 +321,7 @@ namespace RestaurantSystemUI
             }
 
         }
+        */
         private void SetUpShift()
         {
             CurrentWeekButton.Text = CurrentWeekStart.ToLongDateString()+"~"+ CurrentWeekEnd.ToLongDateString();
@@ -275,9 +335,11 @@ namespace RestaurantSystemUI
                 {
                     Employee = employee
                 };
-
+                
                 flowLayoutPanel1.Controls.Add(item);
-                item.MouseDown += new MouseEventHandler(onEmployeeItemMouseDown);
+                item.MouseDown += onEmployeeItemMouseDown;
+                //item.MouseMove += onEmployeeItemMouseMove;
+                
             }
             flowLayoutPanel1.ResumeLayout();
 
@@ -445,6 +507,9 @@ namespace RestaurantSystemUI
             tableLayoutPanel.ResumeLayout();
         }
 
+        
+       
+
         private void cellMouseLeave(object sender, EventArgs e)
         {
             ColorTheme theme = ThemeProvider.GetTheme();
@@ -534,8 +599,9 @@ namespace RestaurantSystemUI
                                         DateTime afslotEnd = slotEnd.AddMinutes(10);
                                         ColorTheme theme = ThemeProvider.GetTheme();
                                         if (t.ActualStart == null || t.ActualEnd == null) {
-                                            
-                                            item.BackColor = theme.MissingCard;
+
+                                            //item.BackColor = theme.MissingCard;
+                                            item.Status = EmployeeItemCompact.CardStatus.Missing;
                                             MissingCardTooltip.SetToolTip(item, "請注意員工狀況");
                                             continue;
                                         }
@@ -543,11 +609,13 @@ namespace RestaurantSystemUI
                                         DateTime ActualEnd = t.ActualEnd.Value;
                                         
                                         if (IsTimeInRange(ActualStart, bfslotStart, slotStart) && IsTimeInRange(ActualEnd, slotEnd, afslotEnd)){
-                                            item.BackColor = theme.OnTimeCard;                                            
+                                            //item.BackColor = theme.OnTimeCard;                                            
+                                            item.Status = EmployeeItemCompact.CardStatus.OnTime;
                                             OnTimeCardTooltip.SetToolTip(item, "已打卡");
                                         }
                                         else {
-                                            item.BackColor = theme.LateCard;                                            
+                                            //item.BackColor = theme.LateCard;                                            
+                                            item.Status = EmployeeItemCompact.CardStatus.Late;
                                             LateCardToolTip.SetToolTip(item, String.Format("打卡上班時間:{0}\n打卡下班時間:{1}", ActualStart.ToLongTimeString(),ActualEnd.ToLongTimeString()));                                            
                                         }
                                     
@@ -878,6 +946,31 @@ namespace RestaurantSystemUI
             flatTextbox1.BackColor = BackColor;
             flatTextbox2.BackColor = BackColor;
             ftbName.BackColor = BackColor;
+        }
+
+        private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
+        {
+            Cursor.Current = cursor;
+            //MessageBox.Show(sender.GetType().ToString());
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void flowLayoutPanel1_DragOver(object sender, DragEventArgs e)
+        {
+            Cursor.Current = cursor;
+
+
+            e.Effect = DragDropEffects.Move;
+            //this.DoDragDrop(activeControl.Name, DragDropEffects.Move);
+        }
+
+        private void Shift_DragOver(object sender, DragEventArgs e)
+        {
+            Cursor.Current = cursor;
+
+            e.Effect = DragDropEffects.Move;
+            //this.DoDragDrop(activeControl.Name, DragDropEffects.Move);
+
         }
     }
 }
