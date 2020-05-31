@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btnShowDisplay = new RestaurantSystemUI.controls.ThemedIconTextButton();
             this.SuspendLayout();
             // 
             // checkBox1
@@ -43,11 +44,35 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // btnShowDisplay
+            // 
+            this.btnShowDisplay.AutoSize = true;
+            this.btnShowDisplay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnShowDisplay.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnShowDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowDisplay.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnShowDisplay.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold);
+            this.btnShowDisplay.ForeColor = System.Drawing.Color.White;
+            this.btnShowDisplay.IconChar = FontAwesome.Sharp.IconChar.Tv;
+            this.btnShowDisplay.IconColor = System.Drawing.Color.White;
+            this.btnShowDisplay.IconSize = 18;
+            this.btnShowDisplay.Location = new System.Drawing.Point(15, 49);
+            this.btnShowDisplay.MinimumSize = new System.Drawing.Size(10, 10);
+            this.btnShowDisplay.Name = "btnShowDisplay";
+            this.btnShowDisplay.Rotation = 0D;
+            this.btnShowDisplay.Size = new System.Drawing.Size(192, 36);
+            this.btnShowDisplay.TabIndex = 1;
+            this.btnShowDisplay.Text = "顯示店家外部螢幕";
+            this.btnShowDisplay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnShowDisplay.UseVisualStyleBackColor = true;
+            this.btnShowDisplay.Click += new System.EventHandler(this.btnShowDisplay_Click);
+            // 
             // Status
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.Controls.Add(this.btnShowDisplay);
             this.Controls.Add(this.checkBox1);
             this.Name = "Status";
             this.Size = new System.Drawing.Size(809, 540);
@@ -59,5 +84,6 @@
         #endregion
 
         private System.Windows.Forms.CheckBox checkBox1;
+        private controls.ThemedIconTextButton btnShowDisplay;
     }
 }

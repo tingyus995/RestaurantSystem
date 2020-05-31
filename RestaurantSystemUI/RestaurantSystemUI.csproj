@@ -86,6 +86,12 @@
     <Compile Include="controls\ThemedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Display.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Display.Designer.cs">
+      <DependentUpon>Display.cs</DependentUpon>
+    </Compile>
     <Compile Include="ISubmodule.cs" />
     <Compile Include="modules\CategoryItem.cs">
       <SubType>UserControl</SubType>
@@ -230,6 +236,9 @@
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="controls\TagInput.resx">
       <DependentUpon>TagInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Display.resx">
+      <DependentUpon>Display.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\CategoryItem.resx">
       <DependentUpon>CategoryItem.cs</DependentUpon>
