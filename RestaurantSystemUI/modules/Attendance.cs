@@ -12,8 +12,40 @@ using RestaurantSystemCore.models;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class Attendance : UserControl, IThemeable
+    public partial class Attendance : UserControl, IThemeable, ISubmodule
     {
+
+        class BeginTimeHolder : IComparable<BeginTimeHolder>
+        {
+            public DateTime BeginTime { get; set; }
+            public string BeginTimeText {
+                get {
+
+                    string result = BeginTime.ToLongDateString() + BeginTime.ToLongTimeString();
+
+                    TimeSpan span = DateTime.Now - BeginTime;
+
+                    if (span.TotalSeconds >= 60 * 10) // more than 10 mins
+                    {
+                        result += "（補打卡）";
+                    }
+                    else
+                    {
+                        result += "（正常打卡）";
+                    }
+
+                    return result;
+
+
+                    
+                }
+            }
+
+            public int CompareTo(BeginTimeHolder other)
+            {
+                return DateTime.Compare(BeginTime, other.BeginTime);
+            }
+        }
         private Employee[] employeeList;
         public static DateTime SystemClock = new DateTime(2020, 5, 26, 10, 31, 0);
         DateTime CurrentShiftStart;
@@ -27,68 +59,81 @@ namespace RestaurantSystemUI.modules
         {
 
             // for debug
+            //List<DateTime> startTimes = new List<DateTime>();
+            SortedSet<BeginTimeHolder> startTimes = new SortedSet<BeginTimeHolder>();
+
+            // clear combobox first
+            CBSelect.DataSource = null;
             // add possible time slots
-            Employee[] employees = EmployeeManager.GetEmployees();
+            Employee[] employees = EmployeeManager.GetEmployees("clerk");
             foreach(Employee employee in employees)
             {
                 if(employee.workTime != null)
                     foreach (WorkTime slot in employee.workTime)
                     {
+                        Console.WriteLine(slot.StartTime.ToString() + "~" + slot.EndTime.ToShortTimeString());
                         // add to combobox
-                        comboBox2.Items.Add(slot.StartTime);
+                        //CBSelect.Items.Add(slot.StartTime);
+                        //CBSelect.Items.Add(slot.StartTime);
+                        startTimes.Add(new BeginTimeHolder() {
+                            BeginTime = slot.StartTime
+                        });
                     }
             }
 
+            List<BeginTimeHolder> holders = startTimes.ToList();
 
-           
-             
-            
-        }
-        public void SetUpAttendance() {
+            CBSelect.DisplayMember = "BeginTimeText";
+            CBSelect.ValueMember = "BeginTime";
+            CBSelect.DataSource = holders;
 
-            if (GetCurrentShift() == null)
-            {
-                lbCurrentShift.Text = "no";
-            }
-            else {
-                lbCurrentShift.Text = GetCurrentShift().Item1.ToLongTimeString() + GetCurrentShift().Item2.ToLongTimeString();
-            }
 
         }
+        //public void SetUpAttendance() {
+
+        //    if (GetCurrentShift() == null)
+        //    {
+        //        lbCurrentShift.Text = "no";
+        //    }
+        //    else {
+        //        lbCurrentShift.Text = GetCurrentShift().Item1.ToLongTimeString() + GetCurrentShift().Item2.ToLongTimeString();
+        //    }
+
+        //}
 
 
-        //getCurrentShift
-        public Tuple<DateTime, DateTime> GetCurrentShift()
-        {
-            bool found = false;
-            Employee[] employees = EmployeeManager.GetEmployees();
-            foreach (Employee employee in employees)
-            {
-                if (employee.workTime != null)
-                {
-                    foreach (WorkTime time in employee.workTime)
-                    {
-                        int result1 = DateTime.Compare(time.StartTime, SystemClock);
-                        int result2 = DateTime.Compare(time.EndTime, SystemClock);
-                        if (result1 <= 0 && result2 > 0)
-                        {
-                            CurrentShiftStart = time.StartTime;
-                            CurrentShiftEnd = time.EndTime;
-                            found = true;
-                            goto Outside;
-                        }
+        ////getCurrentShift
+        //public Tuple<DateTime, DateTime> GetCurrentShift()
+        //{
+        //    bool found = false;
+        //    Employee[] employees = EmployeeManager.GetEmployees();
+        //    foreach (Employee employee in employees)
+        //    {
+        //        if (employee.workTime != null)
+        //        {
+        //            foreach (WorkTime time in employee.workTime)
+        //            {
+        //                int result1 = DateTime.Compare(time.StartTime, SystemClock);
+        //                int result2 = DateTime.Compare(time.EndTime, SystemClock);
+        //                if (result1 <= 0 && result2 > 0)
+        //                {
+        //                    CurrentShiftStart = time.StartTime;
+        //                    CurrentShiftEnd = time.EndTime;
+        //                    found = true;
+        //                    goto Outside;
+        //                }
 
-                    }
-                }
+        //            }
+        //        }
                 
-            }
+        //    }
 
-            Outside:
-            if (found != true) {
-                return null;
-            }
-            return Tuple.Create(CurrentShiftStart, CurrentShiftEnd);
-        }
+        //    Outside:
+        //    if (found != true) {
+        //        return null;
+        //    }
+        //    return Tuple.Create(CurrentShiftStart, CurrentShiftEnd);
+        //}
 
 
         //system time
@@ -103,7 +148,7 @@ namespace RestaurantSystemUI.modules
             SystemClock = new DateTime(int.Parse(ftbYear.textBox.Text), int.Parse(ftbMonth.textBox.Text), int.Parse(ftbDay.textBox.Text), int.Parse(ftbHour.textBox.Text), int.Parse(ftbMin.textBox.Text), 0);
             //DateTime testend = new DateTime(year, month, day, endHourOfDay, endMinuteOfDay, 0);
             lbSystemTime.Text = SystemClock.ToLongDateString() + SystemClock.ToLongTimeString();
-            SetUpAttendance();
+            //SetUpAttendance();
         }
 
         private bool IsTimeInRange(DateTime target, DateTime begin, DateTime end)
@@ -114,8 +159,8 @@ namespace RestaurantSystemUI.modules
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             // add possible time slots
-            if(comboBox2.SelectedItem != null) { 
-                CurrentShiftStart = (DateTime)comboBox2.SelectedItem;
+            if(CBSelect.SelectedValue != null) { 
+                CurrentShiftStart = (DateTime)CBSelect.SelectedValue;
                 CurrentShiftEnd = CurrentShiftStart.AddMinutes(60);
             }
 
@@ -174,6 +219,17 @@ namespace RestaurantSystemUI.modules
         {
             ColorTheme theme = ThemeProvider.GetTheme();
             BackColor = theme.ContentPanel;
+        }
+
+        public void BeforeMounted()
+        {
+            Attendance_Load(this, new EventArgs());
+            //SignatureBoard s = new SignatureBoard();
+            //s.ShowDialog();
+
+            //Bitmap map = s.bmp;
+
+
         }
     }
 }

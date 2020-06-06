@@ -56,28 +56,35 @@ namespace RestaurantSystemUI.modules
             if (card.lbActualStart.Text == "尚未打上班卡") {
                 if (MessageBox.Show("您確定要打上班卡嗎？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    SignatureBoard signatureBoard = new SignatureBoard();
+                    signatureBoard.ShowDialog();
                     //card.Employee.workTime[card.index].ActualStart = DateTime.Now;
                     card.Employee.workTime[card.index].ActualStart = Attendance.SystemClock;
                     EmployeeManager.UpdateOrSaveEmployee(card.Employee);
                     card.lbActualStart.Text = card.Employee.workTime[card.index].ActualStart.Value.ToLongTimeString();
                     card.btnNext.Text = "下班打卡";
-                    return;
+
+
+                    Bitmap map = signatureBoard.bmp;
+                    card.Employee.workTime[card.index].CheckInSignature = Utility.ImageToBytes(map);
                 }
                
             }
 
-
-
-
             // modify employee.workingTime[index].EndtTime and save
-            if (card.lbActualStart.Text != "尚未打上班卡") {
+            else if (card.lbActualStart.Text != "尚未打上班卡") {
                 if (MessageBox.Show("您確定要打下班卡嗎？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    SignatureBoard signatureBoard = new SignatureBoard();
+                    signatureBoard.ShowDialog();
                     //card.Employee.workTime[card.index].ActualEnd = DateTime.Now;
                     card.Employee.workTime[card.index].ActualEnd = Attendance.SystemClock;
                     EmployeeManager.UpdateOrSaveEmployee(card.Employee);
                     card.lbActualEnd.Text = card.Employee.workTime[card.index].ActualEnd.Value.ToLongTimeString();
                     card.btnNext.Visible = false;
+
+                    Bitmap map = signatureBoard.bmp;
+                    card.Employee.workTime[card.index].CheckOutSignature = Utility.ImageToBytes(map);
                 }
             }
         }

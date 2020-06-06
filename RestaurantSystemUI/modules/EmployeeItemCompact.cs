@@ -74,9 +74,15 @@ namespace RestaurantSystemUI
 
         private void EmployeeItemCompact_Load(object sender, EventArgs e)
         {
-            
+            // propagate children's events
+            pnCardStatus.MouseDown += fireMouseDown;
+            lbName.MouseDown += fireMouseDown;
         }
-        
+
+        private void fireMouseDown(object sender, MouseEventArgs e)
+        {
+            this.OnMouseDown(e);
+        }
     }
     
 }

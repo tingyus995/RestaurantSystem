@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Drawing;
+using System.Linq;
+
 
 namespace RestaurantSystemCore.models
 {
@@ -12,9 +15,11 @@ namespace RestaurantSystemCore.models
         public DateTime Birthday { get; set; }
         public string ContactNumber { get; set; }
         public byte[] Image { get; set; }
+
         public string[] Categories { get; set; }
         public WorkTime[] workTime { get; set; }
 
+        
     }
 
 
@@ -27,5 +32,7 @@ namespace RestaurantSystemCore.models
         public DateTime? ActualEnd { get; set; }
         public bool LateCheck { get; set; }
         public string LateCheckReason { get; set; }
+        public Byte[] CheckInSignature { get; set; }
+        public Byte[] CheckOutSignature { get; set; }
     }
 }

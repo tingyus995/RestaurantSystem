@@ -9,15 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RestaurantSystemCore.models;
 using RestaurantSystemCore;
-using System.Threading;
-using System.Threading.Tasks;
 using RestaurantSystemUI.modules;
 using RestaurantSystemUI.controls;
+using TimersTimer = System.Timers.Timer;
 
 namespace RestaurantSystemUI
 {
-    public partial class Shift : UserControl, IThemeable
+    public partial class Shift : UserControl, IThemeable, ISubmodule
     {
+
+        //TimersTimer _TimersTimer = null;
+        System.Windows.Forms.Timer _Timer = null;
         //time
         DateTime SystemClock = new DateTime(2020, 5, 27, 8, 30, 1);
         DateTime CurrentDate;
@@ -26,14 +28,14 @@ namespace RestaurantSystemUI
         //tableLayoutPanel
         TableLayoutPanel tableLayoutPanel;
 
+
         EmployeeItemCompact activeControl;
+        EmployeeItemCompact prepareDeleteControl;
+        TimeSlotFlowPanel prepareDeleteControlCell;
         Point previousPosition;
         TimeSlotFlowPanel hoverCell;
-
         // for drag and drop effects
         Bitmap dragThumbnail;
-        PictureBox dragdropPictureBox;
-        bool isDragging = false;
         Cursor cursor;
 
         private Employee[] employeeList;
@@ -41,7 +43,7 @@ namespace RestaurantSystemUI
         {
             InitializeComponent();
         }
-
+        
         private void Shift_Load(object sender, EventArgs e)
         {
             lbSystemTime.Text = SystemClock.ToLongDateString() + SystemClock.ToLongTimeString();
@@ -49,13 +51,8 @@ namespace RestaurantSystemUI
             CurrentWeekStart = CurrentDate.AddDays(-(int)CurrentDate.DayOfWeek);
             CurrentWeekEnd = CurrentWeekStart.AddDays(6);
 
-         
+
             
-            SetUpShift();
-
-            loadShiftData();
-            ApplyTheme();
-
             // doing debug
 
             /*ConnectContinuousSlotDebug(new Employee()
@@ -76,77 +73,184 @@ namespace RestaurantSystemUI
                 }
             });*/
 
+            //comboBox1
+            var item = DateTime.Today.AddHours(0); // 00:00:00
+            while (item <= DateTime.Today.AddHours(23).AddMinutes(45)) 
+            {
+                this.comboBox1.Items.Add(item.TimeOfDay.ToString(@"hh\:mm"));
+                item = item.AddMinutes(15);
+            }
 
+            if(ShopManager.ShiftCb1StartTime == "")//for the first time
+            {
+                comboBox1.SelectedIndex = 32;//08:00
+            }
+            else
+            {
+                comboBox1.SelectedIndex = comboBox1.FindString(ShopManager.ShiftCb1StartTime);
+            }
+            //if (comboBox1.FindString(ShopManager.ShiftCb1StartTime) >= 0)
+            //{
+            //    comboBox1.SelectedIndex = comboBox1.FindString(ShopManager.ShiftCb1StartTime);
+            //}else{
+            //    comboBox1.SelectedIndex = 32;//08:00
+            //}
+            
+
+
+            //comboBox2
+            DateTime startTime = DateTime.Parse(comboBox1.SelectedItem.ToString());
+            DateTime endTime = DateTime.Today.AddHours(24).AddMinutes(0);
+            Console.WriteLine(startTime.ToString());
+
+            TimeSpan span = endTime.Subtract(startTime);
+            Console.WriteLine("Time Difference (minutes): " + span.TotalMinutes);
+            if ((int)span.TotalMinutes >= 15)
+            {
+                comboBox2.Items.Add(15 + "分鐘");
+            }
+            if ((int)span.TotalMinutes >= 30)
+            {
+                comboBox2.Items.Add(30 + "分鐘");
+            }
+            if ((int)span.TotalMinutes >= 45)
+            {
+                comboBox2.Items.Add(45 + "分鐘");
+            }
+
+            
+            double interval = 60;
+            while(interval <= span.TotalMinutes)
+            {
+                comboBox2.Items.Add(interval+"分鐘");
+                interval += 60;
+            }
+            if(ShopManager.ShiftCb2Interval == "")//for the first time
+            {
+                comboBox2.SelectedIndex = 0;
+            }
+            else
+            {
+                comboBox2.SelectedIndex = comboBox2.FindString(ShopManager.ShiftCb2Interval);
+            }
+            
+
+            //comboBox3
+            string[] list = comboBox2.SelectedItem.ToString().Split('分');
+            Console.WriteLine(list[0].ToString());
+            int count = (int)span.TotalMinutes / int.Parse(list[0]);
+            int i = 1;
+            while (i <= count) {
+                comboBox3.Items.Add(i);
+                i++;
+            }
+            if(ShopManager.ShiftCb3Amount == "")
+            {
+                comboBox3.SelectedIndex = 0;
+            }
+            else
+            {
+                comboBox3.SelectedIndex = comboBox3.FindString(ShopManager.ShiftCb3Amount);
+            }
+
+            SetUpShift();
+
+            loadShiftData();
+            ApplyTheme();
 
 
         }
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            comboBox2.Items.Clear();
+
+            DateTime startTime = DateTime.Parse(comboBox1.SelectedItem.ToString());
+            DateTime endTime = DateTime.Today.AddHours(24).AddMinutes(0);
+            Console.WriteLine(startTime.ToString());
+
+            TimeSpan span = endTime.Subtract(startTime);
+            //Console.WriteLine("Time Difference (minutes): " + span.TotalMinutes);
+            if ((int)span.TotalMinutes >= 15)
+            {
+                comboBox2.Items.Add(15 + "分鐘");
+            }
+            if ((int)span.TotalMinutes >= 30)
+            {
+                comboBox2.Items.Add(30 + "分鐘");
+            }
+            if ((int)span.TotalMinutes >= 45)
+            {
+                comboBox2.Items.Add(45 + "分鐘");
+            }
+
+
+
+            double interval = 60;
+            while (interval <= span.TotalMinutes)
+            {
+                comboBox2.Items.Add(interval + "分鐘");
+                interval += 60;
+            }
+            //comboBox2.Items.Add(span.TotalMinutes+"分鐘");
+            comboBox2.SelectedIndex = 0;
+
+            
+            //comboBox3.SelectedIndex = 0;// in case user do not select new value of combobox2 and box3 index out of range
+            comboBox3.Items.Clear();
+           
+            string[] list = comboBox2.SelectedItem.ToString().Split('分');
+
+            int count = (int)span.TotalMinutes / int.Parse(list[0]);
+            int i = 1;
+            while (i <= count)
+            {
+                comboBox3.Items.Add(i);
+                i++;
+            }
+            comboBox3.SelectedIndex = 0;
+        }
+        private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            comboBox3.Items.Clear();
+            DateTime startTime = DateTime.Parse(comboBox1.SelectedItem.ToString());
+            DateTime endTime = DateTime.Today.AddHours(24).AddMinutes(0);
+
+            TimeSpan span = endTime.Subtract(startTime);
+            string[] list = comboBox2.SelectedItem.ToString().Split('分');
+
+            int count = (int)span.TotalMinutes / int.Parse(list[0]);
+            int i = 1;
+            while (i <= count)
+            {
+                comboBox3.Items.Add(i);
+                i++;
+            }
+            comboBox3.SelectedIndex = 0;
+        }
+
+        private void btnFormat_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("您確定要修改格式嗎？這將導致資料流失我們建議您先到報表列印歷史報表", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            {
+                ShopManager.ShiftCb1StartTime = comboBox1.SelectedItem.ToString();
+                ShopManager.ShiftCb2Interval = comboBox2.SelectedItem.ToString();
+                ShopManager.ShiftCb3Amount = comboBox3.SelectedItem.ToString();
+                deleteAllWorkingTimes();
+
+            }
+        }
+
+
         private void onEmployeeItemMouseDown(object sender, MouseEventArgs e) {
 
             activeControl = (EmployeeItemCompact)sender;//sender as EmployeeItem;
             dragThumbnail = new Bitmap(activeControl.Width, activeControl.Height);
             activeControl.DrawToBitmap(dragThumbnail, new Rectangle(Point.Empty, dragThumbnail.Size));
-
-            //previousPosition = e.Location;
             cursor = new Cursor(dragThumbnail.GetHicon());
             Cursor.Current = cursor;
             
-            this.DoDragDrop(activeControl.Name, DragDropEffects.Move);
-            
-            /*dragdropPictureBox = new PictureBox();
-            dragdropPictureBox.Image = dragThumbnail;
-            //dragdropPictureBox.Left = e.X;
-            //dragdropPictureBox.Top = e.Y;
-            dragdropPictureBox.Left = e.X + activeControl.Left;
-            dragdropPictureBox.Top = e.Y + activeControl.Top;
-            dragdropPictureBox.Width = dragThumbnail.Width;
-            dragdropPictureBox.Height = dragThumbnail.Height;
-
-            dragdropPictureBox.Parent = this;
-
-            //dragdropPictureBox.Left = 10;
-            //dragdropPictureBox.Top = 10;
-
-            Controls.Add(dragdropPictureBox);
-            dragdropPictureBox.BringToFront();
-
-            isDragging = true;*/
-
-
+            this.DoDragDrop(activeControl, DragDropEffects.Move);
         }
-        private void onEmployeeItemMouseMove(object sender, MouseEventArgs e)
-        {
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                if (activeControl == null || activeControl != sender)
-                {
-                    return;
-                }
-                
-
-
-                Cursor.Current = cursor;
-
-                //e.Effect = DragDropEffects.Move;
-
-
-                this.DoDragDrop(activeControl.Name, DragDropEffects.Move);
-
-                //var location = activeControl.Location;
-                //location.Offset(e.Location.X - previousPosition.X, e.Location.Y - previousPosition.Y);
-                //activeControl.Location = location;
-            }
-
-                
-
-            //if (isDragging)
-            //{
-            //    Control activeControl = sender as Control;
-            //    dragdropPictureBox.Top = e.Y + activeControl.Top;
-            //    dragdropPictureBox.Left = e.X + activeControl.Left;
-            //}
-        }
-
-
 
         private void cellDragOver(object sender, EventArgs e) {
             ColorTheme theme = ThemeProvider.GetTheme();
@@ -160,22 +264,135 @@ namespace RestaurantSystemUI
             TimeSlotFlowPanel cell = sender as TimeSlotFlowPanel;            
             cell.BackColor = theme.TimeSlotBackground;
         }
+        
         private void cellDragDrop(object sender, EventArgs e)
         {
             ColorTheme theme = ThemeProvider.GetTheme();
             EmployeeItemCompact item = new EmployeeItemCompact() {
                 Employee = activeControl.Employee
             };
-            
+            foreach (Control c in hoverCell.Controls)
+            {
+                if(c is EmployeeItemCompact)
+                {
+                    EmployeeItemCompact compact = (EmployeeItemCompact)c;
+                    if(item.Employee.Id == compact.Employee.Id)
+                    {
+                        MessageBox.Show("同個時段不能新增一樣的人");
+                        return;
+                    }
+
+                }
+            }
             hoverCell.Controls.Add(item);
+            
             hoverCell.BackColor = theme.TimeSlotBackground;
             item.BringToFront();
+
+            item.MouseDown += button_MouseDown;
+            item.MouseUp += button_MouseUp;
             //MessageBox.Show(hoverCell.);
             //SaveThisDay(hoverCell.BeginTime.Date);
             SaveDay(hoverCell, activeControl.Employee);
             
         }
 
+        public void button_MouseDown(object sender, EventArgs e)
+        {
+            prepareDeleteControl = (EmployeeItemCompact)sender;
+            prepareDeleteControlCell = (TimeSlotFlowPanel)prepareDeleteControl.Parent;
+
+            Console.WriteLine("click");
+            _Timer = new System.Windows.Forms.Timer();
+
+
+            _Timer.Enabled = true;
+            
+            const int longPressTime = 1000;
+            _Timer.Interval = longPressTime;
+            _Timer.Start();
+            _Timer.Tick += new System.EventHandler(Timer_Tick);
+        }
+
+        void Timer_Tick(object sender, EventArgs e)
+        {
+            _Timer.Stop();
+            _Timer.Enabled = false;  // or timer1.Enabled = false;
+
+            if (MessageBox.Show("您確定要刪除該時段嗎？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            {
+                DeleteThisWorkTime(prepareDeleteControlCell, prepareDeleteControl);
+            }
+             
+        }
+        public void button_MouseUp(object sender, EventArgs e)
+        {
+            _Timer.Stop();
+            _Timer.Enabled = false;
+        }
+        
+
+        private void DeleteThisWorkTime(TimeSlotFlowPanel cell, EmployeeItemCompact deletecompact)
+        {
+            cell.Controls.Remove(deletecompact);
+
+            int colIdx = tableLayoutPanel.GetColumn(cell);
+
+            Employee employee = deletecompact.Employee;
+            List<WorkTime> newWorkTimes = new List<WorkTime>();
+            for (int i = 1; i < tableLayoutPanel.RowCount; ++i) // i = 0 is weekdays
+            {
+                Control c = tableLayoutPanel.GetControlFromPosition(colIdx, i);
+                if (c is TimeSlotFlowPanel)
+                {
+                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+
+                    foreach (Control _c in slot.Controls)
+                    {
+                        if (_c is EmployeeItemCompact)
+                        {
+                            EmployeeItemCompact compact = _c as EmployeeItemCompact;
+                            if (compact.Employee.Id == employee.Id)
+                                
+                            newWorkTimes.Add(new WorkTime()
+                            {
+                                StartTime = slot.BeginTime,
+                                EndTime = slot.EndTime
+                            });
+
+                        }
+                    }
+                }
+            }
+            // merge
+
+            //ConnectContinuousSlot(employee);
+            int pivot = 0;
+
+            while ((pivot + 1) < newWorkTimes.Count)
+            {
+                // still have worktimes after
+
+                if (IsContinuous(newWorkTimes[pivot], newWorkTimes[pivot + 1]))
+                {
+
+                    // merge
+                    newWorkTimes[pivot] = MergeTime(newWorkTimes[pivot], newWorkTimes[pivot + 1]);
+                    // remove +1 one
+                    newWorkTimes.RemoveAt(pivot + 1);
+                }
+
+                ++pivot;
+            }
+
+            employee.workTime = newWorkTimes.ToArray();
+            EmployeeManager.UpdateOrSaveEmployee(employee);
+
+
+        }
+        
+        
+        
         private void SaveDay(TimeSlotFlowPanel cell, Employee employee)
         {
             // the day we're going to deal with
@@ -207,7 +424,8 @@ namespace RestaurantSystemUI
                         if(_c is EmployeeItemCompact)
                         {
                             EmployeeItemCompact compact = _c as EmployeeItemCompact;
-                            if(compact.Employee.Id == employee.Id)
+                            if (compact.Employee.Id == employee.Id)
+                                //MessageBox.Show("ya");
                                 newWorkTimes.Add(new WorkTime()
                                 {
                                     StartTime = slot.BeginTime,
@@ -235,8 +453,10 @@ namespace RestaurantSystemUI
                     // remove +1 one
                     newWorkTimes.RemoveAt(pivot + 1);
                 }
-
-                ++pivot;
+                else
+                {
+                    ++pivot;
+                }                
             }
 
             employee.workTime = newWorkTimes.ToArray();
@@ -250,85 +470,15 @@ namespace RestaurantSystemUI
 
         }
 
-        /*private void SaveThisDay(DateTime time)
-        {
-            foreach (Control c in tableLayoutPanel.Controls)
-            {
-                if (c is TimeSlotFlowPanel)
-                {
-                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
-                    if (slot.BeginTime.Date == time) {
-                        foreach (Control _c in slot.Controls)
-                        {
-                            if (_c is EmployeeItemCompact) {
-                                EmployeeItemCompact compact = _c as EmployeeItemCompact;
-                                List<WorkTime> workingTimes;
-                                if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
-                                else workingTimes = new List<WorkTime>();
-                                if (compact.Employee.workTime != null) {
-                                    foreach (WorkTime t in workingTimes) {
-                                        if (t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime) {
-                                            workingTimes.Remove(t);
-                                            break;
-                                        }
-                                    }
-                                    compact.Employee.workTime = workingTimes.ToArray();
-                                    EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
-                                }
-                                
-
-                            }
-                        }   
-
-
-                    }
-                }
-            }
-            foreach (Control c in tableLayoutPanel.Controls)
-            {
-                if (c is TimeSlotFlowPanel)
-                {
-                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
-                    if (slot.BeginTime.Date == time)
-                    {
-                        foreach (Control _c in slot.Controls)
-                        {
-                            if (_c is EmployeeItemCompact)
-                            {
-                                EmployeeItemCompact compact = _c as EmployeeItemCompact;
-                                List<WorkTime> workingTimes;
-                                if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
-                                else workingTimes = new List<WorkTime>();
-
-                                workingTimes.Add(new WorkTime()
-                                {
-                                    StartTime = slot.BeginTime,
-                                    EndTime = slot.EndTime
-                                });
-                                compact.Employee.workTime = workingTimes.ToArray();
-                                EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
-                                
-
-
-                            }
-                        }
-                    }
-                }
-            }
-            foreach (Employee employee in EmployeeManager.GetEmployees())
-            {
-              ConnectContinuousSlot(employee);
-            }
-
-        }
-        */
         private void SetUpShift()
         {
             CurrentWeekButton.Text = CurrentWeekStart.ToLongDateString()+"~"+ CurrentWeekEnd.ToLongDateString();
 
             //employee
+            
             employeeList = EmployeeManager.GetEmployees("clerk");
             flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel1.Controls.Clear();
             foreach (Employee employee in employeeList)
             {
                 EmployeeItemCompact item = new EmployeeItemCompact()
@@ -338,39 +488,52 @@ namespace RestaurantSystemUI
                 
                 flowLayoutPanel1.Controls.Add(item);
                 item.MouseDown += onEmployeeItemMouseDown;
-                //item.MouseMove += onEmployeeItemMouseMove;
-                
             }
             flowLayoutPanel1.ResumeLayout();
 
-
-
+            container.Controls.Remove(tableLayoutPanel);
             //table
             tableLayoutPanel = new TableLayoutPanel();
             tableLayoutPanel.Padding = new Padding(15);
             tableLayoutPanel.Dock = DockStyle.Fill;
             tableLayoutPanel.AutoScroll = true;
-            panel5.Controls.Add(tableLayoutPanel);
+            container.Controls.Add(tableLayoutPanel);
 
             int year = CurrentWeekStart.Year;
             int month = CurrentWeekStart.Month;
             int day = CurrentWeekStart.Day;
-            //int dayOfWeek = (int)CurrentDate.DayOfWeek;
-            int startHourOfDay = 9;
-            int startMinuteOfDay = 30;
-            int endHourOfDay = 17;
-            int endMinuteOfDay = 30;
-            int duration = 60;
+
+            DateTime formatStartTime = Convert.ToDateTime(comboBox1.SelectedItem);
+            //MessageBox.Show(formatTime.Hour.ToString()+" "+ formatTime.Minute.ToString());
+            string[] list = comboBox2.SelectedItem.ToString().Split('分');
+            int interval = int.Parse(list[0]);
+            int amount = int.Parse(comboBox3.SelectedItem.ToString());
+            //int amount = 1;
+            DateTime formatEndTime = formatStartTime.AddMinutes(interval*amount);
+            formatEndTime = formatEndTime.AddSeconds(-1);
+            //MessageBox.Show(formatEndTime.ToString());
+            int startHourOfDay = formatStartTime.Hour;
+            int startMinuteOfDay = formatStartTime.Minute;
+            int endHourOfDay = formatEndTime.Hour;
+            int endMinuteOfDay = formatEndTime.Minute;
+            int duration = interval;
+
+            //int startHourOfDay = 9;
+            //int startMinuteOfDay = 30;
+            //int endHourOfDay = 17;
+            //int endMinuteOfDay = 30;
+            //int duration = 60;
 
             // calculate how many row tablelayoutpanel need and prepare detail time
             DateTime teststart = new DateTime(year, month, day, startHourOfDay, startMinuteOfDay, 0);
             DateTime testend = new DateTime(year, month, day, endHourOfDay, endMinuteOfDay, 0);
+            testend.AddSeconds(-10);
             int rowcount = 0;
             List<string> detailTime = new List<string>();
             while (DateTime.Compare(teststart, testend) < 0)
             {
                 detailTime.Add(teststart.ToShortTimeString());
-                teststart = teststart.AddMinutes(60);
+                teststart = teststart.AddMinutes(interval);
                 rowcount++;
             }
 
@@ -388,10 +551,6 @@ namespace RestaurantSystemUI
                 tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 0.5f));
             }
 
-            
-
-
-
             DateTime drawCell = new DateTime(year, month, day, startHourOfDay, startMinuteOfDay, 0);
             //Console.WriteLine((int)drawCell.DayOfWeek);
             //if ((int)drawCell.DayOfWeek != 0) // sunday equal to 0
@@ -401,7 +560,7 @@ namespace RestaurantSystemUI
             ToolTip ShiftTimeToolTip = new ToolTip();
             SetTooltipStyleForCard(ShiftTimeToolTip, "時段", ToolTipIcon.Info);
 
-            int minH = panel5.Height / tableLayoutPanel.RowCount;
+            int minH = container.Height / tableLayoutPanel.RowCount;
 
             tableLayoutPanel.SuspendLayout();
             for (int i = 0; i < tableLayoutPanel.ColumnCount; i++)
@@ -490,10 +649,6 @@ namespace RestaurantSystemUI
                     myPanel.MouseEnter += cellMouseEnter;
                     myPanel.MouseLeave += cellMouseLeave;
 
-
-
-
-
                 }
 
                 if (i != 0) 
@@ -531,8 +686,6 @@ namespace RestaurantSystemUI
         {
             CurrentWeekStart = CurrentWeekStart.AddDays(-7);
             CurrentWeekEnd = CurrentWeekEnd.AddDays(-7);
-            flowLayoutPanel1.Controls.Clear();
-            panel5.Controls.Remove(tableLayoutPanel);
             SetUpShift();
             loadShiftData();
         }
@@ -540,8 +693,6 @@ namespace RestaurantSystemUI
         {
             CurrentWeekStart = CurrentWeekStart.AddDays(7);
             CurrentWeekEnd = CurrentWeekEnd.AddDays(7);
-            flowLayoutPanel1.Controls.Clear();
-            panel5.Controls.Remove(tableLayoutPanel);
             SetUpShift();
             loadShiftData();
         }
@@ -591,6 +742,16 @@ namespace RestaurantSystemUI
                                 )
                                 {
                                     EmployeeItemCompact item = new EmployeeItemCompact() { Employee = employee };
+                                    if (DateTime.Compare(slot.BeginTime, SystemClock) < 0 && cbGodMode.Checked == false)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        item.MouseDown += button_MouseDown;
+                                        item.MouseUp += button_MouseUp;
+                                    }
+                                    
                                     slot.Controls.Add(item);
                                     if(c.AllowDrop == false) { // shift in pass
                                         DateTime slotStart = slot.BeginTime;
@@ -629,9 +790,7 @@ namespace RestaurantSystemUI
 
             }
         }
-        private void deleteCellWorkTime() {
-
-        }
+        
 
         private void deleteAllWorkingTimes()
         {
@@ -743,6 +902,67 @@ namespace RestaurantSystemUI
         }
 
 
+        
+
+
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("您確定要清除所有排班嗎?", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            {
+                deleteAllWorkingTimes();
+            }
+            SetUpShift();
+            loadShiftData();
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+            lbSystemTime.Text = DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
+            timer1.Start();
+        }
+
+        private void cbGodMode_CheckedChanged(object sender, EventArgs e)
+        {
+            SetUpShift();
+            loadShiftData();
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+
+           // flatTextbox1.BackColor = BackColor;
+            //flatTextbox2.BackColor = BackColor;
+            //ftbName.BackColor = BackColor;
+        }
+
+       
+        
+
+        
+
+        private void Shift_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            e.UseDefaultCursors = false;
+            Cursor.Current = cursor;
+        }
+
+        public void BeforeMounted()
+        {
+            Shift_Load(this, new EventArgs());
+
+        }
+
+
+
+
+
+
+
         //private void _deprecated_btnSave_Click(object sender, EventArgs e)
         //{
         //    // delete all worktimes in employee
@@ -783,7 +1003,7 @@ namespace RestaurantSystemUI
         //                            break;
         //                        }
         //                    }
-                              
+
         //                    if (!found) {
         //                        //MessageBox.Show("debug");
         //                        workingTimes.Add(new WorkTime()
@@ -796,7 +1016,7 @@ namespace RestaurantSystemUI
         //                    compact.Employee.workTime = workingTimes.ToArray();
         //                    EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
         //                }
-                        
+
         //            }
         //        }
 
@@ -808,10 +1028,10 @@ namespace RestaurantSystemUI
         //    }
         //    /*for (int i = 0; i < tableLayoutPanel.ColumnCount; i++) {
         //        for (int j = 0; j < tableLayoutPanel.RowCount; j++) {
-                    
-                    
-                    
-                    
+
+
+
+
         //            if (tableLayoutPanel.GetControlFromPosition(i, j) == null) continue;// i=0, j=0 is null
         //            if (tableLayoutPanel.GetControlFromPosition(i, j).GetType() == typeof(TimeSlotFlowPanel)) {//timeslotpanel filter
         //                foreach (Control control in tableLayoutPanel.GetControlFromPosition(i, j).Controls) {
@@ -904,73 +1124,82 @@ namespace RestaurantSystemUI
         //        }
 
         //    }
-          
+
         //}
 
-
-
-        private void btnClear_Click(object sender, EventArgs e)
+        /*private void SaveThisDay(DateTime time)
         {
-            if(MessageBox.Show("您確定要清除所有排班嗎?", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            foreach (Control c in tableLayoutPanel.Controls)
             {
-                deleteAllWorkingTimes();
+                if (c is TimeSlotFlowPanel)
+                {
+                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+                    if (slot.BeginTime.Date == time) {
+                        foreach (Control _c in slot.Controls)
+                        {
+                            if (_c is EmployeeItemCompact) {
+                                EmployeeItemCompact compact = _c as EmployeeItemCompact;
+                                List<WorkTime> workingTimes;
+                                if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
+                                else workingTimes = new List<WorkTime>();
+                                if (compact.Employee.workTime != null) {
+                                    foreach (WorkTime t in workingTimes) {
+                                        if (t.StartTime == slot.BeginTime && t.EndTime == slot.EndTime) {
+                                            workingTimes.Remove(t);
+                                            break;
+                                        }
+                                    }
+                                    compact.Employee.workTime = workingTimes.ToArray();
+                                    EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
+                                }
+                                
+
+                            }
+                        }   
+
+
+                    }
+                }
             }
-            panel5.Controls.Remove(tableLayoutPanel);
-            flowLayoutPanel1.Controls.Clear();
-            SetUpShift();
-            loadShiftData();
+            foreach (Control c in tableLayoutPanel.Controls)
+            {
+                if (c is TimeSlotFlowPanel)
+                {
+                    TimeSlotFlowPanel slot = c as TimeSlotFlowPanel;
+                    if (slot.BeginTime.Date == time)
+                    {
+                        foreach (Control _c in slot.Controls)
+                        {
+                            if (_c is EmployeeItemCompact)
+                            {
+                                EmployeeItemCompact compact = _c as EmployeeItemCompact;
+                                List<WorkTime> workingTimes;
+                                if (compact.Employee.workTime != null) workingTimes = compact.Employee.workTime.ToList();
+                                else workingTimes = new List<WorkTime>();
+
+                                workingTimes.Add(new WorkTime()
+                                {
+                                    StartTime = slot.BeginTime,
+                                    EndTime = slot.EndTime
+                                });
+                                compact.Employee.workTime = workingTimes.ToArray();
+                                EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
+                                
+
+
+                            }
+                        }
+                    }
+                }
+            }
+            foreach (Employee employee in EmployeeManager.GetEmployees())
+            {
+              ConnectContinuousSlot(employee);
+            }
 
         }
+        */
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-            lbSystemTime.Text = DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
-            timer1.Start();
-        }
-
-        private void cbGodMode_CheckedChanged(object sender, EventArgs e)
-        {
-            flowLayoutPanel1.Controls.Clear();
-            panel5.Controls.Remove(tableLayoutPanel);
-            SetUpShift();
-
-            loadShiftData();
-        }
-
-        public void ApplyTheme()
-        {
-            ColorTheme theme = ThemeProvider.GetTheme();
-            BackColor = theme.ContentPanel;
-
-            flatTextbox1.BackColor = BackColor;
-            flatTextbox2.BackColor = BackColor;
-            ftbName.BackColor = BackColor;
-        }
-
-        private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
-        {
-            Cursor.Current = cursor;
-            //MessageBox.Show(sender.GetType().ToString());
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void flowLayoutPanel1_DragOver(object sender, DragEventArgs e)
-        {
-            Cursor.Current = cursor;
-
-
-            e.Effect = DragDropEffects.Move;
-            //this.DoDragDrop(activeControl.Name, DragDropEffects.Move);
-        }
-
-        private void Shift_DragOver(object sender, DragEventArgs e)
-        {
-            Cursor.Current = cursor;
-
-            e.Effect = DragDropEffects.Move;
-            //this.DoDragDrop(activeControl.Name, DragDropEffects.Move);
-
-        }
     }
 }
+
