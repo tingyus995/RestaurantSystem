@@ -11,23 +11,19 @@ using RestaurantSystemCore.models;
 using RestaurantSystemCore;
 using RestaurantSystemUI.modules;
 using RestaurantSystemUI.controls;
-using TimersTimer = System.Timers.Timer;
 
 namespace RestaurantSystemUI
 {
     public partial class Shift : UserControl, IThemeable, ISubmodule
     {
-
-        //TimersTimer _TimersTimer = null;
         System.Windows.Forms.Timer _Timer = null;
         //time
-        DateTime SystemClock = new DateTime(2020, 5, 27, 8, 30, 1);
+        DateTime SystemClock = new DateTime(2020, 6, 9, 7, 30, 1);
         DateTime CurrentDate;
         DateTime CurrentWeekStart;
         DateTime CurrentWeekEnd;
         //tableLayoutPanel
         TableLayoutPanel tableLayoutPanel;
-
 
         EmployeeItemCompact activeControl;
         EmployeeItemCompact prepareDeleteControl;
@@ -37,22 +33,23 @@ namespace RestaurantSystemUI
         // for drag and drop effects
         Bitmap dragThumbnail;
         Cursor cursor;
+        bool AlreadyShowDialog = false;
 
         private Employee[] employeeList;
         public Shift()
         {
             InitializeComponent();
         }
-        
+
         private void Shift_Load(object sender, EventArgs e)
         {
+            LoadingScreen loading = new LoadingScreen();
+            Utility.ShowFullSpaceDialog(this, loading);
             lbSystemTime.Text = SystemClock.ToLongDateString() + SystemClock.ToLongTimeString();
             CurrentDate = DateTime.Now;
             CurrentWeekStart = CurrentDate.AddDays(-(int)CurrentDate.DayOfWeek);
             CurrentWeekEnd = CurrentWeekStart.AddDays(6);
 
-
-            
             // doing debug
 
             /*ConnectContinuousSlotDebug(new Employee()
@@ -75,13 +72,13 @@ namespace RestaurantSystemUI
 
             //comboBox1
             var item = DateTime.Today.AddHours(0); // 00:00:00
-            while (item <= DateTime.Today.AddHours(23).AddMinutes(45)) 
+            while (item <= DateTime.Today.AddHours(23).AddMinutes(45))
             {
                 this.comboBox1.Items.Add(item.TimeOfDay.ToString(@"hh\:mm"));
                 item = item.AddMinutes(15);
             }
 
-            if(ShopManager.ShiftCb1StartTime == "")//for the first time
+            if (ShopManager.ShiftCb1StartTime == "")//for the first time
             {
                 comboBox1.SelectedIndex = 32;//08:00
             }
@@ -95,7 +92,7 @@ namespace RestaurantSystemUI
             //}else{
             //    comboBox1.SelectedIndex = 32;//08:00
             //}
-            
+
 
 
             //comboBox2
@@ -118,14 +115,14 @@ namespace RestaurantSystemUI
                 comboBox2.Items.Add(45 + "分鐘");
             }
 
-            
+
             double interval = 60;
-            while(interval <= span.TotalMinutes)
+            while (interval <= span.TotalMinutes)
             {
-                comboBox2.Items.Add(interval+"分鐘");
+                comboBox2.Items.Add(interval + "分鐘");
                 interval += 60;
             }
-            if(ShopManager.ShiftCb2Interval == "")//for the first time
+            if (ShopManager.ShiftCb2Interval == "")//for the first time
             {
                 comboBox2.SelectedIndex = 0;
             }
@@ -133,18 +130,19 @@ namespace RestaurantSystemUI
             {
                 comboBox2.SelectedIndex = comboBox2.FindString(ShopManager.ShiftCb2Interval);
             }
-            
+
 
             //comboBox3
             string[] list = comboBox2.SelectedItem.ToString().Split('分');
             Console.WriteLine(list[0].ToString());
             int count = (int)span.TotalMinutes / int.Parse(list[0]);
             int i = 1;
-            while (i <= count) {
+            while (i <= count)
+            {
                 comboBox3.Items.Add(i);
                 i++;
             }
-            if(ShopManager.ShiftCb3Amount == "")
+            if (ShopManager.ShiftCb3Amount == "")
             {
                 comboBox3.SelectedIndex = 0;
             }
@@ -158,6 +156,7 @@ namespace RestaurantSystemUI
             loadShiftData();
             ApplyTheme();
 
+            this.Controls.Remove(loading);
 
         }
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
@@ -303,6 +302,7 @@ namespace RestaurantSystemUI
             prepareDeleteControlCell = (TimeSlotFlowPanel)prepareDeleteControl.Parent;
 
             Console.WriteLine("click");
+            //AlreadyShowDialog = true;
             _Timer = new System.Windows.Forms.Timer();
 
 
@@ -318,12 +318,24 @@ namespace RestaurantSystemUI
         {
             _Timer.Stop();
             _Timer.Enabled = false;  // or timer1.Enabled = false;
-
-            if (MessageBox.Show("您確定要刪除該時段嗎？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            AlreadyShowDialog = false;
+            if (!AlreadyShowDialog)
             {
-                DeleteThisWorkTime(prepareDeleteControlCell, prepareDeleteControl);
+                if (MessageBox.Show("您確定要刪除該時段嗎？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+                {
+                    //AlreadyShowDialog = true;
+                    DeleteThisWorkTime(prepareDeleteControlCell, prepareDeleteControl);
+                }
+
             }
-             
+            AlreadyShowDialog = false;
+            //if (MessageBox.Show("您確定要刪除該時段嗎？", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            //{
+            //    //AlreadyShowDialog = true;
+            //    DeleteThisWorkTime(prepareDeleteControlCell, prepareDeleteControl);
+            //}
+
+
         }
         public void button_MouseUp(object sender, EventArgs e)
         {
@@ -390,8 +402,6 @@ namespace RestaurantSystemUI
 
 
         }
-        
-        
         
         private void SaveDay(TimeSlotFlowPanel cell, Employee employee)
         {
@@ -497,6 +507,7 @@ namespace RestaurantSystemUI
             tableLayoutPanel.Padding = new Padding(15);
             tableLayoutPanel.Dock = DockStyle.Fill;
             tableLayoutPanel.AutoScroll = true;
+            //tableLayoutPanel.Margin = new Padding(0, 0, 0, 1000);
             container.Controls.Add(tableLayoutPanel);
 
             int year = CurrentWeekStart.Year;
@@ -552,6 +563,7 @@ namespace RestaurantSystemUI
             }
 
             DateTime drawCell = new DateTime(year, month, day, startHourOfDay, startMinuteOfDay, 0);
+            DateTime temp = drawCell;
             //Console.WriteLine((int)drawCell.DayOfWeek);
             //if ((int)drawCell.DayOfWeek != 0) // sunday equal to 0
             //{
@@ -616,6 +628,7 @@ namespace RestaurantSystemUI
                     myPanel.EndTime = drawCell.AddMinutes(duration);
 
                     drawCell = myPanel.EndTime;
+                    
 
                     /*myPanel.Controls.Add(new Label()
                     {
@@ -651,12 +664,13 @@ namespace RestaurantSystemUI
 
                 }
 
-                if (i != 0) 
-                {
-                    drawCell = drawCell.AddDays(1);
-                }
+                //if (i != 0) 
+                //{
+                //    drawCell = drawCell.AddDays(1);
+                //}
 
-                drawCell = new DateTime(drawCell.Year, drawCell.Month, drawCell.Day, startHourOfDay, startMinuteOfDay, 0);
+                //drawCell = new DateTime(drawCell.Year, drawCell.Month, drawCell.Day, startHourOfDay, startMinuteOfDay, 0);
+                drawCell = temp.AddDays(i);
             }
 
             tableLayoutPanel.ResumeLayout();
@@ -766,6 +780,8 @@ namespace RestaurantSystemUI
                                             MissingCardTooltip.SetToolTip(item, "請注意員工狀況");
                                             continue;
                                         }
+                                        DateTime StartTime = t.StartTime;
+                                        DateTime EndTime = t.EndTime;
                                         DateTime ActualStart = t.ActualStart.Value;
                                         DateTime ActualEnd = t.ActualEnd.Value;
                                         
@@ -777,7 +793,34 @@ namespace RestaurantSystemUI
                                         else {
                                             //item.BackColor = theme.LateCard;                                            
                                             item.Status = EmployeeItemCompact.CardStatus.Late;
-                                            LateCardToolTip.SetToolTip(item, String.Format("打卡上班時間:{0}\n打卡下班時間:{1}", ActualStart.ToLongTimeString(),ActualEnd.ToLongTimeString()));                                            
+                                            TimeSpan timeSpan = ActualStart.Subtract(StartTime);
+
+                                            TimeSpan timeSpan1 = EndTime.Subtract(ActualEnd);
+
+                                            //DateTime test1 = new DateTime(2020, 6, 7, 9, 10, 0);
+                                            //DateTime test2 = new DateTime(2020, 6, 7, 9, 5, 0);
+                                            //TimeSpan testSpan = test2 - test1;
+                                            //int count = (int)timeSpan.TotalMinutes;
+                                            //MessageBox.Show(StartTime.ToString()+ ActualStart.ToString()+" "+  count.ToString());
+                                            int count1 = (int)timeSpan.TotalMinutes;
+                                            int count2 = (int)timeSpan1.TotalMinutes;
+                                            Console.WriteLine(StartTime.ToString() + " " + ActualStart.ToString()+" "+ (int)timeSpan.TotalMinutes + " ");
+                                            Console.WriteLine(EndTime.ToString() + " " + ActualEnd.ToString() + " " + count2 + " ");
+                                            string StartlateMinutes = "";
+                                            string EndearlyMinutes = "";
+                                            if (count1 > 0)
+                                            {
+                                                StartlateMinutes = "(遲到"+count1.ToString()+"分鐘)";
+                                            }
+                                            if(count2 > 0)
+                                            {
+                                                EndearlyMinutes = "(早退"+count2.ToString()+"分鐘)";
+                                            }
+                                            LateCardToolTip.SetToolTip(item, String.Format("打卡上班時間:{0} {1}\n打卡下班時間:{2} {3}", 
+                                                ActualStart.ToString("yyyy/M/d HH:mm"),
+                                                StartlateMinutes,
+                                                ActualEnd.ToString("yyyy/M/d HH:mm"),
+                                                EndearlyMinutes));                                            
                                         }
                                     
                                         
@@ -957,9 +1000,7 @@ namespace RestaurantSystemUI
 
         }
 
-
-
-
+       
 
 
 
@@ -1028,8 +1069,6 @@ namespace RestaurantSystemUI
         //    }
         //    /*for (int i = 0; i < tableLayoutPanel.ColumnCount; i++) {
         //        for (int j = 0; j < tableLayoutPanel.RowCount; j++) {
-
-
 
 
         //            if (tableLayoutPanel.GetControlFromPosition(i, j) == null) continue;// i=0, j=0 is null

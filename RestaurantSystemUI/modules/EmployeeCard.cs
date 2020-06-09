@@ -17,6 +17,7 @@ namespace RestaurantSystemUI.modules
         private Employee employee;
 
         private int index; // so that we know which worktime to deal with
+        ToolTip toolTip= new ToolTip();
         public Employee Employee
         {
 
@@ -25,13 +26,16 @@ namespace RestaurantSystemUI.modules
                 if (employee.Image != null) pictureBox1.Image = Utility.BytesToImage(employee.Image);
                 lbName.Text = employee.Name;
                 if (employee.workTime[index].ActualStart != null){
-                    lbActualStart.Text = employee.workTime[index].ActualStart.Value.ToLongTimeString();
+                    lbActualStart.Text = employee.workTime[index].ActualStart.Value.ToString("yyyy/M/d HH:mm");
+                    btnNext.Text = "下班打卡";
                 }
                 if (employee.workTime[index].ActualEnd != null)
                 {
-                    lbActualEnd.Text = employee.workTime[index].ActualEnd.Value.ToLongTimeString();
+                    lbActualEnd.Text = employee.workTime[index].ActualEnd.Value.ToString("yyyy/M/d HH:mm");
                     btnNext.Visible = false;
                 }
+                toolTip.SetToolTip(lbActualStart, "上班打卡");
+                toolTip.SetToolTip(lbActualEnd, "下班打卡");
 
 
 
@@ -60,13 +64,12 @@ namespace RestaurantSystemUI.modules
                     signatureBoard.ShowDialog();
                     //card.Employee.workTime[card.index].ActualStart = DateTime.Now;
                     card.Employee.workTime[card.index].ActualStart = Attendance.SystemClock;
-                    EmployeeManager.UpdateOrSaveEmployee(card.Employee);
-                    card.lbActualStart.Text = card.Employee.workTime[card.index].ActualStart.Value.ToLongTimeString();
-                    card.btnNext.Text = "下班打卡";
-
-
                     Bitmap map = signatureBoard.bmp;
                     card.Employee.workTime[card.index].CheckInSignature = Utility.ImageToBytes(map);
+                    EmployeeManager.UpdateOrSaveEmployee(card.Employee);
+                    card.lbActualStart.Text = card.Employee.workTime[card.index].ActualStart.Value.ToString("yyyy/M/d HH:mm");
+                    card.btnNext.Text = "下班打卡";
+                    
                 }
                
             }
@@ -79,12 +82,11 @@ namespace RestaurantSystemUI.modules
                     signatureBoard.ShowDialog();
                     //card.Employee.workTime[card.index].ActualEnd = DateTime.Now;
                     card.Employee.workTime[card.index].ActualEnd = Attendance.SystemClock;
-                    EmployeeManager.UpdateOrSaveEmployee(card.Employee);
-                    card.lbActualEnd.Text = card.Employee.workTime[card.index].ActualEnd.Value.ToLongTimeString();
-                    card.btnNext.Visible = false;
-
                     Bitmap map = signatureBoard.bmp;
                     card.Employee.workTime[card.index].CheckOutSignature = Utility.ImageToBytes(map);
+                    EmployeeManager.UpdateOrSaveEmployee(card.Employee);
+                    card.lbActualEnd.Text = card.Employee.workTime[card.index].ActualEnd.Value.ToString("yyyy/M/d HH:mm");
+                    card.btnNext.Visible = false;
                 }
             }
         }

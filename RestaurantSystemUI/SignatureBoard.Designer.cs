@@ -35,6 +35,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.themedLabel1 = new RestaurantSystemUI.controls.ThemedLabel();
             this.Submit = new RestaurantSystemUI.controls.ThemedIconTextButton();
+            this.Clear = new RestaurantSystemUI.controls.ThemedIconTextButton();
             ((System.ComponentModel.ISupportInitialize)(this.Thickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrentColor)).BeginInit();
@@ -107,7 +108,7 @@
             this.Submit.IconChar = FontAwesome.Sharp.IconChar.Heart;
             this.Submit.IconColor = System.Drawing.Color.White;
             this.Submit.IconSize = 18;
-            this.Submit.Location = new System.Drawing.Point(332, 478);
+            this.Submit.Location = new System.Drawing.Point(447, 478);
             this.Submit.MinimumSize = new System.Drawing.Size(10, 10);
             this.Submit.Name = "Submit";
             this.Submit.Rotation = 0D;
@@ -118,12 +119,36 @@
             this.Submit.UseVisualStyleBackColor = true;
             this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
+            // Clear
+            // 
+            this.Clear.AutoSize = true;
+            this.Clear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Clear.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Clear.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.Clear.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold);
+            this.Clear.ForeColor = System.Drawing.Color.White;
+            this.Clear.IconChar = FontAwesome.Sharp.IconChar.Heart;
+            this.Clear.IconColor = System.Drawing.Color.White;
+            this.Clear.IconSize = 18;
+            this.Clear.Location = new System.Drawing.Point(257, 478);
+            this.Clear.MinimumSize = new System.Drawing.Size(10, 10);
+            this.Clear.Name = "Clear";
+            this.Clear.Rotation = 0D;
+            this.Clear.Size = new System.Drawing.Size(101, 48);
+            this.Clear.TabIndex = 8;
+            this.Clear.Text = "清除";
+            this.Clear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Clear.UseVisualStyleBackColor = true;
+            this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
             // SignatureBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(800, 538);
+            this.Controls.Add(this.Clear);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.themedLabel1);
             this.Controls.Add(this.themedLabel2);
@@ -149,5 +174,6 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private controls.ThemedLabel themedLabel1;
         private controls.ThemedIconTextButton Submit;
+        private controls.ThemedIconTextButton Clear;
     }
 }

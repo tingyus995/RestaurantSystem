@@ -40,7 +40,7 @@ namespace RestaurantSystemUI
         Pen pen;
         Pen fixedPen; // for border
         Brush brush;
-
+        double length = 0;
 
 
 
@@ -64,6 +64,7 @@ namespace RestaurantSystemUI
             Point = Thickness.Value;
 
             PenColor = Color.Black;
+            Submit.Visible = false;
             
         }
 
@@ -71,8 +72,16 @@ namespace RestaurantSystemUI
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                CurrentColor.BackColor = colorDialog1.Color;
-                PenColor = colorDialog1.Color;
+                if(colorDialog1.Color.R>200 && colorDialog1.Color.G > 200 && colorDialog1.Color.B > 200)
+                {
+                    MessageBox.Show("您選擇的顏色太淺");
+                }
+                else
+                {
+                    CurrentColor.BackColor = colorDialog1.Color;
+                    PenColor = colorDialog1.Color;
+                }
+                
             }
         }
 
@@ -93,8 +102,9 @@ namespace RestaurantSystemUI
             int half = point / 2;
             if (e.Button == MouseButtons.Left)
             {
-                Graphics g = Graphics.FromImage(bmp);                
-
+                
+                Graphics g = Graphics.FromImage(bmp);
+                length += Distance(e.X-oldX, e.Y-oldY);
 
                 // draw eclipse at beginning and end, connect them with line to mitigate weird "crayon effect" ;)                
 
@@ -104,9 +114,15 @@ namespace RestaurantSystemUI
 
                 canvas.Image = bmp;
 
+
+                if (length >= 200)
+                {
+                    Submit.Visible = true;
+                }
                 // update old location
                 oldX = e.X;
                 oldY = e.Y;
+                
             }
             else
             {
@@ -140,6 +156,19 @@ namespace RestaurantSystemUI
         private void Submit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private double Distance(int dx, int dy)
+        {
+            double squared = Math.Pow(dx, 2) + Math.Pow(dy, 2);
+            return Math.Sqrt(squared);
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            Graphics g = Graphics.FromImage(bmp);
+            g.Clear(Color.Transparent);
+            //g.FillRectangle(Brushes.White, 0, 0, 667, 379);
+            canvas.Image = bmp;
         }
     }
 }

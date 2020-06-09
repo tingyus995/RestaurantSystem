@@ -132,8 +132,7 @@ namespace RestaurantSystemUI.modules
             }
             //sort orders
             MonthOrderList.Sort((x, y) => DateTime.Compare(x.CreatedAt, y.CreatedAt));
-            //string encoding = "<head><meta http-equiv=\"content - type\" content=\"text / html; charset = UTF - 8\"></head> \n\n";
-            //string encoding1 = "<head><meta charset =\"utf-8\"/></head>  \n\n";
+            
 
             string md = string.Format("# {0}年{1}月營業報表  \n", comboBox1.SelectedItem.ToString(), comboBox2.SelectedItem.ToString());
 
@@ -176,6 +175,10 @@ namespace RestaurantSystemUI.modules
                 string ActualEnd = "";
                 string CheckInSignature = "";
                 string CheckOutSignature = "";
+                string StartLateMinutes = "";
+                string EndEarlyMinutes = "";
+                TimeSpan timeSpan, timeSpan1;
+                int count, count1;
                 foreach (Holder holder in holders)
                 {
                     if (holder.worktime.ActualStart == null || holder.worktime.ActualEnd == null)
@@ -184,40 +187,67 @@ namespace RestaurantSystemUI.modules
                         {
                             status = "未打卡";
                             ActualStart = "未打上班卡";
-
+                            CheckInSignature = "尚未上班簽名";
                         }
                         else
                         {
-                            ActualStart = holder.worktime.ActualStart.Value.ToShortDateString() + holder.worktime.ActualStart.Value.ToShortTimeString();
+                            ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm");
+                            CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                           
                         }
                         if (holder.worktime.ActualEnd == null)
                         {
                             status = "未打卡";
                             ActualEnd = "未打下班卡";
+                            CheckOutSignature = "尚未下班簽名";
                         }
                         else
                         {
-                            ActualEnd = holder.worktime.ActualEnd.Value.ToShortDateString() + holder.worktime.ActualEnd.Value.ToShortTimeString();
+                            ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm");
+                            CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
                         }
                     }
                     else if (IsTimeInRange(holder.worktime.ActualStart.Value, holder.worktime.StartTime.AddMinutes(-10), holder.worktime.StartTime) && IsTimeInRange(holder.worktime.ActualEnd.Value, holder.worktime.EndTime, holder.worktime.EndTime.AddMinutes(10)))
                     {
                         status = "已打卡";
-                        ActualStart = holder.worktime.ActualStart.Value.ToShortDateString() + holder.worktime.ActualStart.Value.ToShortTimeString();
-                        ActualEnd = holder.worktime.ActualEnd.Value.ToShortDateString() + holder.worktime.ActualEnd.Value.ToShortTimeString();
+                        ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm");
+                        ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm");
+                        CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                        CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
+
                     }
                     else
                     {
+                        timeSpan = holder.worktime.ActualStart.Value.Subtract(holder.worktime.StartTime);
+                        timeSpan1 = holder.worktime.EndTime.Subtract(holder.worktime.ActualEnd.Value);
+                        count = (int)timeSpan.TotalMinutes;
+                        count1 = (int)timeSpan1.TotalMinutes;
+                        if (count > 0)
+                        {
+                            StartLateMinutes = "<br>(遲到" + count.ToString() + "分鐘)";
+                        }
+                        else
+                        {
+                            StartLateMinutes = "";
+                        }
+                        if (count1 > 0)
+                        {
+                            EndEarlyMinutes = "<br>(早退" + count1.ToString() + "分鐘)";
+                        }
+                        else
+                        {
+                            EndEarlyMinutes = "";
+                        }
                         status = "打卡異常";
-                        ActualStart = holder.worktime.ActualStart.Value.ToShortDateString() + holder.worktime.ActualStart.Value.ToShortTimeString();
-                        ActualEnd = holder.worktime.ActualEnd.Value.ToShortDateString() + holder.worktime.ActualEnd.Value.ToShortTimeString();
+                        ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm")+StartLateMinutes;
+                        ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm")+EndEarlyMinutes;
                         CheckInSignature = "![Hello World](data:image/png;base64,"+Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature))+")";
-                        CheckOutSignature = Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature));
+                        CheckOutSignature = "![Hello World](data:image/png;base64,"+Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature))+")";
                     }
                     tb.Add(string.Format("|{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|",
                         holder.employee.Name.ToString(),
-                        holder.worktime.StartTime.ToShortDateString() + holder.worktime.StartTime.ToShortTimeString(),
-                        holder.worktime.EndTime.ToShortDateString() + holder.worktime.EndTime.ToShortTimeString(),
+                        holder.worktime.StartTime.ToString("yyyy/M/d HH:mm"),
+                        holder.worktime.EndTime.ToString("yyyy/M/d HH:mm"),
                         ActualStart,
                         CheckInSignature,
                         ActualEnd,
@@ -260,9 +290,14 @@ namespace RestaurantSystemUI.modules
                     }
                     else
                     {
-                        FinishedAt = o.FinishedAt.ToShortDateString() + o.FinishedAt.ToShortTimeString();
+                        FinishedAt = o.FinishedAt.ToString("yyyy/M/d HH:mm");
                     }
-                    myorder.Add(string.Format("No.{0}|{1}|{2}|{3}|{4}元", count, o.CreatedAt.ToShortDateString() + o.CreatedAt.ToShortTimeString(), FinishedAt, mealist, getTotal(o)));
+                    myorder.Add(string.Format("No.{0}|{1}|{2}|{3}|{4}元", 
+                        count,
+                        o.CreatedAt.ToString("yyyy/M/d HH:mm"),
+                        FinishedAt,
+                        mealist,
+                        getTotal(o)));
                 }
                 md += string.Join("\n", myorder);
                 md += "\n";
@@ -384,7 +419,6 @@ namespace RestaurantSystemUI.modules
             return (DateTime.Compare(target, begin) >= 0) && (DateTime.Compare(target, end) <= 0);
         }
 
-        
 
         private void btnHistory_Click(object sender, EventArgs e)
         {
@@ -469,16 +503,22 @@ namespace RestaurantSystemUI.modules
                     {
                         md += "## 出勤狀況\n\n";
                         List<string> tb = new List<string>
-                    {
-                    "| 名字 | 應到時間 | 應退時間   | 實際打卡上班時間 | 實際打卡下班時間 | 狀態 |",
-                    "|:---: | :------: |:--------:| :--------------:| :--------------:|:---:|",
-                    };
+                        {
+                        "| 名字 | 應到時間 | 應退時間   | 實際打卡上班時間 |上班簽名| 實際打卡下班時間 |下班簽名 |狀態 |",
+                        "|:---: | :------: |:--------:| :--------------:| :---:|:--------------:|:---:|:---:|",
+                        };
                         //sort by datetime
                         holders.Sort((x, y) => DateTime.Compare(x.worktime.StartTime, y.worktime.StartTime));
 
                         string status = "";
                         string ActualStart = "";
                         string ActualEnd = "";
+                        string CheckInSignature = "";
+                        string CheckOutSignature = "";
+                        string StartLateMinutes = "";
+                        string EndEarlyMinutes = "";
+                        TimeSpan timeSpan, timeSpan1;
+                        int count, count1;
                         foreach (Holder holder in holders)
                         {
                             if (holder.worktime.ActualStart == null || holder.worktime.ActualEnd == null)
@@ -487,32 +527,73 @@ namespace RestaurantSystemUI.modules
                                 {
                                     status = "未打卡";
                                     ActualStart = "未打上班卡";
+                                    CheckInSignature = "尚未上班簽名";
+                                }
+                                else
+                                {
+                                    ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm");
+                                    CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+
                                 }
                                 if (holder.worktime.ActualEnd == null)
                                 {
                                     status = "未打卡";
                                     ActualEnd = "未打下班卡";
+                                    CheckOutSignature = "尚未下班簽名";
+                                }
+                                else
+                                {
+                                    ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm");
+                                    CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
                                 }
                             }
                             else if (IsTimeInRange(holder.worktime.ActualStart.Value, holder.worktime.StartTime.AddMinutes(-10), holder.worktime.StartTime) && IsTimeInRange(holder.worktime.ActualEnd.Value, holder.worktime.EndTime, holder.worktime.EndTime.AddMinutes(10)))
                             {
                                 status = "已打卡";
-                                ActualStart = holder.worktime.ActualStart.Value.ToShortDateString() + holder.worktime.ActualStart.Value.ToShortTimeString();
-                                ActualEnd = holder.worktime.ActualEnd.Value.ToShortDateString() + holder.worktime.ActualEnd.Value.ToShortTimeString();
+                                ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm");
+                                ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm");
+                                CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                                CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
+
                             }
                             else
                             {
+                                timeSpan = holder.worktime.ActualStart.Value.Subtract(holder.worktime.StartTime);
+                                timeSpan1 = holder.worktime.EndTime.Subtract(holder.worktime.ActualEnd.Value);
+                                count = (int)timeSpan.TotalMinutes;
+                                count1 = (int)timeSpan1.TotalMinutes;
+                                if (count > 0)
+                                {
+                                    StartLateMinutes = "<br>(遲到" + count.ToString() + "分鐘)";
+                                }
+                                else
+                                {
+                                    StartLateMinutes = "";
+                                }
+                                if (count1 > 0)
+                                {
+                                    EndEarlyMinutes = "<br>(早退" + count1.ToString() + "分鐘)";
+                                }
+                                else
+                                {
+                                    EndEarlyMinutes = "";
+                                }
                                 status = "打卡異常";
-                                ActualStart = holder.worktime.ActualStart.Value.ToShortDateString() + holder.worktime.ActualStart.Value.ToShortTimeString();
-                                ActualEnd = holder.worktime.ActualEnd.Value.ToShortDateString() + holder.worktime.ActualEnd.Value.ToShortTimeString();
+                                ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm") + StartLateMinutes; ;
+                                ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm") + EndEarlyMinutes;
+                                CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                                CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
                             }
-                            tb.Add(string.Format("|{0}|{1}|{2}|{3}|{4}|{5} |",
+                            tb.Add(string.Format("|{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|",
                                 holder.employee.Name.ToString(),
-                                holder.worktime.StartTime.ToShortDateString() + holder.worktime.StartTime.ToShortTimeString(),
-                                holder.worktime.EndTime.ToShortDateString() + holder.worktime.EndTime.ToShortTimeString(),
+                                holder.worktime.StartTime.ToString("yyyy/M/d HH:mm"),
+                                holder.worktime.EndTime.ToString("yyyy/M/d HH:mm"),
                                 ActualStart,
+                                CheckInSignature,
                                 ActualEnd,
+                                CheckOutSignature,
                                 status
+
                                 ));
                         }
                         md += string.Join("\n", tb);
@@ -552,9 +633,13 @@ namespace RestaurantSystemUI.modules
                             }
                             else
                             {
-                                FinishedAt = o.FinishedAt.ToShortDateString() + o.FinishedAt.ToShortTimeString();
+                                FinishedAt = o.FinishedAt.ToString("yyyy/M/d HH:mm");
                             }
-                            myorder.Add(string.Format("No.{0}|{1}|{2}|{3}|{4}元", count, o.CreatedAt.ToShortDateString() + o.CreatedAt.ToShortTimeString(), FinishedAt, mealist, getTotal(o)));
+                            myorder.Add(string.Format("No.{0}|{1}|{2}|{3}|{4}元", count,
+                                o.CreatedAt.ToString("yyyy/M/d HH:mm"),
+                                FinishedAt,
+                                mealist,
+                                getTotal(o)));
                         }
                         md += string.Join("\n", myorder);
                         md += "\n";
@@ -569,16 +654,8 @@ namespace RestaurantSystemUI.modules
                     {
                         md += "## 銷售訂單\n\n";
                         md += "### 該月無資料\n\n";
-                    }
-
-                    
-
-                    
+                    }                    
                 }
-
-                
-
-
 
                 startDate = startDate.AddMonths(1);
                 endDate = new DateTime(startDate.Year, startDate.Month, DateTime.DaysInMonth(startDate.Year, startDate.Month));

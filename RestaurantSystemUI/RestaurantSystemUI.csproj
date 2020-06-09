@@ -142,6 +142,12 @@
       <DependentUpon>FlatTextbox.cs</DependentUpon>
     </Compile>
     <Compile Include="IThemeable.cs" />
+    <Compile Include="LoadingScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadingScreen.Designer.cs">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="controls\FlatTextbox.resx">
       <DependentUpon>FlatTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingScreen.resx">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>

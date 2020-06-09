@@ -14,14 +14,17 @@ namespace RestaurantSystemUI.modules
 {
     public partial class Attendance : UserControl, IThemeable, ISubmodule
     {
-
+        private Employee[] employeeList;
+        public static DateTime SystemClock = new DateTime(2020, 6, 8, 0, 15, 0);
+        DateTime CurrentShiftStart;
+        DateTime CurrentShiftEnd;
         class BeginTimeHolder : IComparable<BeginTimeHolder>
         {
             public DateTime BeginTime { get; set; }
             public string BeginTimeText {
                 get {
 
-                    string result = BeginTime.ToLongDateString() + BeginTime.ToLongTimeString();
+                    string result = BeginTime.ToLongDateString() + BeginTime.ToString("HH:mm");
 
                     TimeSpan span = DateTime.Now - BeginTime;
 
@@ -46,10 +49,7 @@ namespace RestaurantSystemUI.modules
                 return DateTime.Compare(BeginTime, other.BeginTime);
             }
         }
-        private Employee[] employeeList;
-        public static DateTime SystemClock = new DateTime(2020, 5, 26, 10, 31, 0);
-        DateTime CurrentShiftStart;
-        DateTime CurrentShiftEnd;
+        
         public Attendance()
         {
             InitializeComponent();
@@ -71,13 +71,19 @@ namespace RestaurantSystemUI.modules
                 if(employee.workTime != null)
                     foreach (WorkTime slot in employee.workTime)
                     {
-                        Console.WriteLine(slot.StartTime.ToString() + "~" + slot.EndTime.ToShortTimeString());
-                        // add to combobox
-                        //CBSelect.Items.Add(slot.StartTime);
-                        //CBSelect.Items.Add(slot.StartTime);
-                        startTimes.Add(new BeginTimeHolder() {
-                            BeginTime = slot.StartTime
-                        });
+                        DateTime limit = DateTime.Now.AddDays(1);
+                        limit = new DateTime(limit.Year, limit.Month, limit.Day, 0, 0, 0);
+                        if (DateTime.Compare(slot.EndTime, limit) <= 0 || cbGodMode.Checked) {
+                            Console.WriteLine(slot.StartTime.ToString() + "~" + slot.EndTime.ToShortTimeString());
+                            // add to combobox
+                            //CBSelect.Items.Add(slot.StartTime);
+                            //CBSelect.Items.Add(slot.StartTime);
+                            startTimes.Add(new BeginTimeHolder()
+                            {
+                                BeginTime = slot.StartTime
+                            });
+                        }
+                        
                     }
             }
 
@@ -143,47 +149,66 @@ namespace RestaurantSystemUI.modules
             timer1.Start();
         }
 
-        private void btnSetTime_Click(object sender, EventArgs e)
-        {
-            SystemClock = new DateTime(int.Parse(ftbYear.textBox.Text), int.Parse(ftbMonth.textBox.Text), int.Parse(ftbDay.textBox.Text), int.Parse(ftbHour.textBox.Text), int.Parse(ftbMin.textBox.Text), 0);
-            //DateTime testend = new DateTime(year, month, day, endHourOfDay, endMinuteOfDay, 0);
-            lbSystemTime.Text = SystemClock.ToLongDateString() + SystemClock.ToLongTimeString();
-            //SetUpAttendance();
-        }
+        
 
         private bool IsTimeInRange(DateTime target, DateTime begin, DateTime end)
         {
             return (DateTime.Compare(target, begin) >= 0) && (DateTime.Compare(target, end) < 0);
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+       
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+        }
+
+        public void BeforeMounted()
+        {
+            Attendance_Load(this, new EventArgs());
+            //SignatureBoard s = new SignatureBoard();
+            //s.ShowDialog();
+
+            //Bitmap map = s.bmp;
+
+
+        }
+
+        private void cbGodMode_CheckedChanged(object sender, EventArgs e)
+        {
+            Attendance_Load(this, new EventArgs());
+        }
+
+        private void CBSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
             // add possible time slots
-            if(CBSelect.SelectedValue != null) { 
+            if (CBSelect.SelectedValue != null)
+            {
                 CurrentShiftStart = (DateTime)CBSelect.SelectedValue;
                 CurrentShiftEnd = CurrentShiftStart.AddMinutes(60);
             }
 
             pnEmployeeList.Controls.Clear();
-            Employee[] employees = EmployeeManager.GetEmployees();
+            Employee[] employees = EmployeeManager.GetEmployees("clerk");
             foreach (Employee employee in employees)
             {
                 if (employee.workTime != null)
                     //foreach (WorkTime slot in employee.workTime)
-                    for(int i = 0; i < employee.workTime.Length; ++i)
+                    for (int i = 0; i < employee.workTime.Length; ++i)
                     {
                         WorkTime slot = employee.workTime[i];
-                        
+
                         //if( slot.StartTime <= CurrentShiftStart && slot.EndTime  <= CurrentShiftEnd)
-                        if(IsTimeInRange(slot.StartTime, CurrentShiftStart, CurrentShiftEnd))
+                        if (IsTimeInRange(slot.StartTime, CurrentShiftStart, CurrentShiftEnd))
                         {
                             //MessageBox.Show(employee.Name);
                             EmployeeCard compact = new EmployeeCard(i)
                             {
                                 Employee = employee
-                                
-                            };
 
+                            };
+                            
                             pnEmployeeList.Controls.Add(compact);
 
                             //compact.Click += (object _s, EventArgs _e) =>
@@ -213,23 +238,6 @@ namespace RestaurantSystemUI.modules
                         }
                     }
             }
-        }
-
-        public void ApplyTheme()
-        {
-            ColorTheme theme = ThemeProvider.GetTheme();
-            BackColor = theme.ContentPanel;
-        }
-
-        public void BeforeMounted()
-        {
-            Attendance_Load(this, new EventArgs());
-            //SignatureBoard s = new SignatureBoard();
-            //s.ShowDialog();
-
-            //Bitmap map = s.bmp;
-
-
         }
     }
 }

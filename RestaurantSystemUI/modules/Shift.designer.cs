@@ -33,8 +33,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.container = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.btnFormat = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -92,6 +93,7 @@
             // panel2
             // 
             this.panel2.AllowDrop = true;
+            this.panel2.Controls.Add(this.btnFormat);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.cbGodMode);
             this.panel2.Controls.Add(this.lbSystemTime);
@@ -103,9 +105,24 @@
             this.panel2.Size = new System.Drawing.Size(1370, 189);
             this.panel2.TabIndex = 1;
             // 
+            // btnFormat
+            // 
+            this.btnFormat.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFormat.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFormat.ForeColor = System.Drawing.Color.White;
+            this.btnFormat.Location = new System.Drawing.Point(959, 20);
+            this.btnFormat.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFormat.Name = "btnFormat";
+            this.btnFormat.Size = new System.Drawing.Size(214, 48);
+            this.btnFormat.TabIndex = 14;
+            this.btnFormat.Text = "儲存排班格式";
+            this.btnFormat.UseVisualStyleBackColor = false;
+            this.btnFormat.Click += new System.EventHandler(this.btnFormat_Click);
+            // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btnFormat);
+            this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.comboBox3);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.comboBox2);
@@ -117,20 +134,18 @@
             this.panel4.Size = new System.Drawing.Size(990, 74);
             this.panel4.TabIndex = 2;
             // 
-            // btnFormat
+            // label4
             // 
-            this.btnFormat.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFormat.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFormat.ForeColor = System.Drawing.Color.White;
-            this.btnFormat.Location = new System.Drawing.Point(689, 14);
-            this.btnFormat.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFormat.Name = "btnFormat";
-            this.btnFormat.Size = new System.Drawing.Size(214, 48);
-            this.btnFormat.TabIndex = 14;
-            this.btnFormat.Text = "儲存排班格式";
-            this.btnFormat.UseVisualStyleBackColor = false;
-            this.btnFormat.Click += new System.EventHandler(this.btnFormat_Click);
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(673, 17);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(146, 41);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "起始時間";
             // 
             // comboBox3
             // 
@@ -304,7 +319,6 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Shift";
             this.Size = new System.Drawing.Size(1540, 700);
-            this.Load += new System.EventHandler(this.Shift_Load);
             this.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Shift_GiveFeedback);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -339,5 +353,6 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnFormat;
+        private System.Windows.Forms.Label label4;
     }
 }
