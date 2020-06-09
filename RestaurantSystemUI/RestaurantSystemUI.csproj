@@ -289,12 +289,6 @@
     <Compile Include="modules\TimeSlotFlowPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignatureBoard.cs">
@@ -386,33 +380,6 @@
     <EmbeddedResource Include="modules\Status.resx">
       <DependentUpon>Status.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.AddOrder.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.AttendanceState.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.CategoryItem.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.controls.TagInput.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.EmployeeItemCompact.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.FlatNumericUpDown.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.FlatTextbox.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.MainWindow.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.Attendance.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.EmployeeCard.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.EmployeeEditor.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.EmployeeItem.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.EmployeeList.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.FoodEditor.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.FoodItem.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.FoodList.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.FoodVarientEditor.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.FoodVarientItem.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.OrderView.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.OrderViewFoodItem.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.modules.Settings.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.OrderItem.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.OrderList.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.Personnel.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.Properties.Resources.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.Shift.resources" />
-    <EmbeddedResource Include="obj\Release\RestaurantSystemUI.Status.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -430,10 +397,6 @@
     <None Include="bin\Debug\RestaurantSystemUI.exe.config" />
     <None Include="bin\Release\data.db" />
     <None Include="bin\Release\RestaurantSystemUI.exe.config" />
-    <None Include="obj\Release\RestaurantSystemUI.csproj.CopyComplete" />
-    <None Include="obj\Release\RestaurantSystemUI.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Release\RestaurantSystemUI.csproj.GenerateResource.cache" />
-    <None Include="obj\Release\RestaurantSystemUI.csprojAssemblyReference.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -498,10 +461,6 @@
     <Content Include="bin\Release\RestaurantSystemCore.pdb" />
     <Content Include="bin\Release\RestaurantSystemUI.exe" />
     <Content Include="bin\Release\RestaurantSystemUI.pdb" />
-    <Content Include="obj\Release\RestaurantSystemUI.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Release\RestaurantSystemUI.exe" />
-    <Content Include="obj\Release\RestaurantSystemUI.pdb" />
-    <Content Include="obj\Release\TempPE\Properties.Resources.Designer.cs.dll" />
     <Content Include="templates\github-markdown.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
