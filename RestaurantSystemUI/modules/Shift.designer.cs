@@ -87,6 +87,7 @@
             this.container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.container.Location = new System.Drawing.Point(0, 189);
             this.container.Name = "container";
+            this.container.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.container.Size = new System.Drawing.Size(1370, 511);
             this.container.TabIndex = 2;
             // 

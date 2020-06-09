@@ -505,6 +505,8 @@ namespace RestaurantSystemUI
             //table
             tableLayoutPanel = new TableLayoutPanel();
             tableLayoutPanel.Padding = new Padding(15);
+            
+            
             tableLayoutPanel.Dock = DockStyle.Fill;
             tableLayoutPanel.AutoScroll = true;
             //tableLayoutPanel.Margin = new Padding(0, 0, 0, 1000);
@@ -561,7 +563,7 @@ namespace RestaurantSystemUI
                 //tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, (100f / 7)));
                 tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 0.5f));
             }
-
+           
             DateTime drawCell = new DateTime(year, month, day, startHourOfDay, startMinuteOfDay, 0);
             DateTime temp = drawCell;
             //Console.WriteLine((int)drawCell.DayOfWeek);
@@ -671,6 +673,15 @@ namespace RestaurantSystemUI
 
                 //drawCell = new DateTime(drawCell.Year, drawCell.Month, drawCell.Day, startHourOfDay, startMinuteOfDay, 0);
                 drawCell = temp.AddDays(i);
+            }
+
+
+            // set margin for things at last row
+            int lastRow = tableLayoutPanel.RowCount - 1;
+            for(int i = 0; i < tableLayoutPanel.ColumnCount; ++i)
+            {
+                Control c = tableLayoutPanel.GetControlFromPosition(i, lastRow);
+                c.Padding = new Padding(0, 0, 0, 20);
             }
 
             tableLayoutPanel.ResumeLayout();

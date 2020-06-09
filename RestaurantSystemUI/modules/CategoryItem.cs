@@ -24,6 +24,8 @@ namespace RestaurantSystemUI
 
 
         public event EventHandler CategoryItemClicked;
+        public event EventHandler RemoveButtonClicked;
+        public event EventHandler EditButtonClicked;
 
         private bool editable = true;
         private ColorTheme theme = ThemeProvider.GetTheme();
@@ -36,6 +38,15 @@ namespace RestaurantSystemUI
                 ibtnEdit.Visible = editable;            
             }
         }
+        private bool removable = false;
+        public bool Removable { get {
+                return removable;
+            }
+            set {
+                removable = value;
+                ibtnDelete.Visible = removable;
+                ibtnDelete.Top = 0;
+            } }
 
         private bool active = false;
         

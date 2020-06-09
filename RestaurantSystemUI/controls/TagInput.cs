@@ -36,6 +36,12 @@ namespace RestaurantSystemUI.controls
 
         private void TagInput_Load(object sender, EventArgs e)
         {
+            ThemedIconButton plusBtn = new ThemedIconButton();
+            plusBtn.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            flatTextbox1.Controls.Add(plusBtn);
+            plusBtn.Left = flatTextbox1.Width - plusBtn.Width;
+            plusBtn.Top = flatTextbox1.Height - plusBtn.Height / 2;
+            plusBtn.Click += handlePlusButton;
 
             flatTextbox1.textBox.KeyDown += handleKeyDown;
             flatTextbox1.Height = new CategoryItem().Height;
@@ -63,6 +69,20 @@ namespace RestaurantSystemUI.controls
 
             flowLayoutPanel1.ScrollControlIntoView(flatTextbox1);
         }
+
+        private void handlePlusButton(object sender, EventArgs e)
+        {
+            string tagText = flatTextbox1.textBox.Text.Trim();
+
+            if (tagText.Length == 0) return;
+
+            AddTag(tagText);
+
+            flatTextbox1.textBox.Text = "";
+        }
+
+
+       
 
         private void handleKeyDown(object sender, KeyEventArgs e)
         {

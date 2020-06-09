@@ -14,8 +14,10 @@ namespace RestaurantSystemUI.modules
 {
     public partial class Attendance : UserControl, IThemeable, ISubmodule
     {
+        private bool showAll = false;
         private Employee[] employeeList;
-        public static DateTime SystemClock = new DateTime(2020, 6, 8, 0, 15, 0);
+        //public static DateTime SystemClock = new DateTime(2020, 6, 8, 0, 15, 0);
+        public static DateTime SystemClock;
         DateTime CurrentShiftStart;
         DateTime CurrentShiftEnd;
         class BeginTimeHolder : IComparable<BeginTimeHolder>
@@ -27,14 +29,23 @@ namespace RestaurantSystemUI.modules
                     string result = BeginTime.ToLongDateString() + BeginTime.ToString("HH:mm");
 
                     TimeSpan span = DateTime.Now - BeginTime;
+                    Console.WriteLine("Total min: " + span.TotalMinutes);
+                    Console.WriteLine(BeginTime.ToString());
 
-                    if (span.TotalSeconds >= 60 * 10) // more than 10 mins
+                    double deltaM = span.TotalMinutes;
+
+                    if (Math.Abs(deltaM) <= 10) // within 20 minutes
+                    {
+                        result += "（正常打卡）";
+                    }
+                    else if (deltaM > 0)
                     {
                         result += "（補打卡）";
                     }
                     else
                     {
-                        result += "（正常打卡）";
+                        
+                        result += "（未來打卡）";
                     }
 
                     return result;
@@ -57,7 +68,8 @@ namespace RestaurantSystemUI.modules
 
         private void Attendance_Load(object sender, EventArgs e)
         {
-
+            if (cbGodMode.Checked) showAll = true;
+            else showAll = false;
             // for debug
             //List<DateTime> startTimes = new List<DateTime>();
             SortedSet<BeginTimeHolder> startTimes = new SortedSet<BeginTimeHolder>();
@@ -78,10 +90,27 @@ namespace RestaurantSystemUI.modules
                             // add to combobox
                             //CBSelect.Items.Add(slot.StartTime);
                             //CBSelect.Items.Add(slot.StartTime);
-                            startTimes.Add(new BeginTimeHolder()
+                            if (!showAll)
                             {
-                                BeginTime = slot.StartTime
-                            });
+                                // check if this card is completed
+
+                                if(slot.ActualStart == null || slot.ActualEnd == null)
+                                {
+                                    startTimes.Add(new BeginTimeHolder()
+                                    {
+                                        BeginTime = slot.StartTime
+                                    });
+                                }
+                                
+                            }
+                            else
+                            {
+                                startTimes.Add(new BeginTimeHolder()
+                                {
+                                    BeginTime = slot.StartTime
+                                });
+                            }
+                            
                         }
                         
                     }
@@ -145,6 +174,7 @@ namespace RestaurantSystemUI.modules
         //system time
         private void timer1_Tick(object sender, EventArgs e)
         {
+            SystemClock = DateTime.Now;
             lbSystemTime.Text = DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
             timer1.Start();
         }

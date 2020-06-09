@@ -34,9 +34,9 @@
             this.CBSelect = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnEmployeeList = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lbSystemTime = new RestaurantSystemUI.controls.ThemedLabel();
             this.themedLabel1 = new RestaurantSystemUI.controls.ThemedLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             // cbGodMode
             // 
             this.cbGodMode.AutoSize = true;
-            this.cbGodMode.Location = new System.Drawing.Point(607, 28);
+            this.cbGodMode.Location = new System.Drawing.Point(643, 28);
             this.cbGodMode.Name = "cbGodMode";
             this.cbGodMode.Size = new System.Drawing.Size(101, 22);
             this.cbGodMode.TabIndex = 3;
@@ -67,7 +67,7 @@
             // CBSelect
             // 
             this.CBSelect.FormattingEnabled = true;
-            this.CBSelect.Location = new System.Drawing.Point(243, 24);
+            this.CBSelect.Location = new System.Drawing.Point(307, 26);
             this.CBSelect.Name = "CBSelect";
             this.CBSelect.Size = new System.Drawing.Size(315, 26);
             this.CBSelect.TabIndex = 1;
@@ -87,6 +87,14 @@
             this.pnEmployeeList.Size = new System.Drawing.Size(1305, 646);
             this.pnEmployeeList.TabIndex = 4;
             // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1305, 43);
+            this.panel2.TabIndex = 2;
+            // 
             // lbSystemTime
             // 
             this.lbSystemTime.AutoSize = true;
@@ -105,17 +113,9 @@
             this.themedLabel1.ForeColor = System.Drawing.Color.White;
             this.themedLabel1.Location = new System.Drawing.Point(27, 19);
             this.themedLabel1.Name = "themedLabel1";
-            this.themedLabel1.Size = new System.Drawing.Size(210, 41);
+            this.themedLabel1.Size = new System.Drawing.Size(274, 41);
             this.themedLabel1.TabIndex = 2;
-            this.themedLabel1.Text = "選擇打卡時間";
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1305, 43);
-            this.panel2.TabIndex = 2;
+            this.themedLabel1.Text = "選擇上班打卡時段";
             // 
             // Attendance
             // 
