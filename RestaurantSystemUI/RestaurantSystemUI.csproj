@@ -92,6 +92,7 @@
     <Compile Include="Display.Designer.cs">
       <DependentUpon>Display.cs</DependentUpon>
     </Compile>
+    <Compile Include="IOOBEPage.cs" />
     <Compile Include="ISubmodule.cs" />
     <Compile Include="modules\CategoryItem.cs">
       <SubType>UserControl</SubType>
@@ -179,6 +180,12 @@
     <Compile Include="modules\AddOrder.Designer.cs">
       <DependentUpon>AddOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="modules\ImageCropper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\ImageCropper.Designer.cs">
+      <DependentUpon>ImageCropper.cs</DependentUpon>
+    </Compile>
     <Compile Include="modules\OrderItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,6 +229,33 @@
       <DependentUpon>Shift.cs</DependentUpon>
     </Compile>
     <Compile Include="modules\TimeSlotFlowPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OOBE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OOBE.Designer.cs">
+      <DependentUpon>OOBE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\BasicInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\BasicInfo.Designer.cs">
+      <DependentUpon>BasicInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\ShiftConfiguration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\ShiftConfiguration.Designer.cs">
+      <DependentUpon>ShiftConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\Welcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutlinedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -282,6 +316,9 @@
     <EmbeddedResource Include="modules\AddOrder.resx">
       <DependentUpon>AddOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modules\ImageCropper.resx">
+      <DependentUpon>ImageCropper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modules\OrderItem.resx">
       <DependentUpon>OrderItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +339,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Shift.resx">
       <DependentUpon>Shift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE.resx">
+      <DependentUpon>OOBE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\BasicInfo.resx">
+      <DependentUpon>BasicInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\ShiftConfiguration.resx">
+      <DependentUpon>ShiftConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

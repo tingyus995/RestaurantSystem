@@ -91,5 +91,19 @@ namespace RestaurantSystemUI
 
             return result;
         }
+
+        public static Bitmap GetImageFromUser()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = GetSupportedImageFilter();
+            ofd.CheckFileExists = true;
+
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                return new Bitmap(ofd.FileName);
+            }
+
+            return null;
+        }
     }
 }
