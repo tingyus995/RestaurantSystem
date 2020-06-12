@@ -26,6 +26,7 @@ namespace RestaurantSystemCore.models
     public class WorkTime
     {
         public int Id { get; set; }
+        public int CurrentWage { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public DateTime? ActualStart { get; set; }

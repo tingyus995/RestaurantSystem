@@ -16,7 +16,8 @@ namespace RestaurantSystemUI
 {
     public partial class Shift : UserControl, IThemeable, ISubmodule
     {
-        System.Windows.Forms.Timer _Timer = null;
+        const int longPressTime = 1000;
+        System.Windows.Forms.Timer _Timer = new Timer() { Interval = longPressTime };
         //time
         DateTime SystemClock = new DateTime(2020, 6, 9, 7, 30, 1);
         DateTime CurrentDate;
@@ -155,8 +156,9 @@ namespace RestaurantSystemUI
 
             loadShiftData();
             ApplyTheme();
-
+            _Timer.Tick += Timer_Tick;
             this.Controls.Remove(loading);
+            
 
         }
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
@@ -303,20 +305,20 @@ namespace RestaurantSystemUI
 
             Console.WriteLine("click");
             //AlreadyShowDialog = true;
-            _Timer = new System.Windows.Forms.Timer();
+            //_Timer = new System.Windows.Forms.Timer();
 
 
             _Timer.Enabled = true;
             
-            const int longPressTime = 1000;
-            _Timer.Interval = longPressTime;
-            _Timer.Start();
-            _Timer.Tick += new System.EventHandler(Timer_Tick);
+            
+            //_Timer.Interval = longPressTime;
+            //_Timer.Start();
+            
         }
 
         void Timer_Tick(object sender, EventArgs e)
         {
-            _Timer.Stop();
+            //_Timer.Stop();
             _Timer.Enabled = false;  // or timer1.Enabled = false;
             AlreadyShowDialog = false;
             if (!AlreadyShowDialog)
@@ -339,8 +341,9 @@ namespace RestaurantSystemUI
         }
         public void button_MouseUp(object sender, EventArgs e)
         {
-            _Timer.Stop();
+            //_Timer.Stop();
             _Timer.Enabled = false;
+            AlreadyShowDialog = true;
         }
         
 
@@ -365,11 +368,12 @@ namespace RestaurantSystemUI
                         {
                             EmployeeItemCompact compact = _c as EmployeeItemCompact;
                             if (compact.Employee.Id == employee.Id)
-                                
-                            newWorkTimes.Add(new WorkTime()
-                            {
-                                StartTime = slot.BeginTime,
-                                EndTime = slot.EndTime
+
+                                newWorkTimes.Add(new WorkTime()
+                                {
+                                    StartTime = slot.BeginTime,
+                                    EndTime = slot.EndTime,
+                                    CurrentWage = employee.Salary
                             });
 
                         }
@@ -439,7 +443,8 @@ namespace RestaurantSystemUI
                                 newWorkTimes.Add(new WorkTime()
                                 {
                                     StartTime = slot.BeginTime,
-                                    EndTime = slot.EndTime
+                                    EndTime = slot.EndTime,
+                                    CurrentWage = employee.Salary
                                 });
 
                         }
@@ -687,9 +692,6 @@ namespace RestaurantSystemUI
             tableLayoutPanel.ResumeLayout();
         }
 
-        
-       
-
         private void cellMouseLeave(object sender, EventArgs e)
         {
             ColorTheme theme = ThemeProvider.GetTheme();
@@ -704,8 +706,6 @@ namespace RestaurantSystemUI
             control.BackColor = theme.TimeSlotHover;
 
         }
-
-
 
         private void PreviousWeekButton_Click(object sender, EventArgs e)
         {
@@ -745,8 +745,6 @@ namespace RestaurantSystemUI
 
             ToolTip MissingCardTooltip = new ToolTip();
             SetTooltipStyleForCard(MissingCardTooltip, "未打卡", ToolTipIcon.Error);
-
-
 
             foreach (Control c in tableLayoutPanel.Controls)
             {
@@ -873,7 +871,7 @@ namespace RestaurantSystemUI
             {
                 result.StartTime = t1.StartTime;
                 result.EndTime = t2.EndTime;
-
+                result.CurrentWage = t1.CurrentWage;
                 return result;
             }
 
@@ -994,10 +992,6 @@ namespace RestaurantSystemUI
             //ftbName.BackColor = BackColor;
         }
 
-       
-        
-
-        
 
         private void Shift_GiveFeedback(object sender, GiveFeedbackEventArgs e)
         {
@@ -1010,9 +1004,6 @@ namespace RestaurantSystemUI
             Shift_Load(this, new EventArgs());
 
         }
-
-       
-
 
 
         //private void _deprecated_btnSave_Click(object sender, EventArgs e)
@@ -1234,9 +1225,6 @@ namespace RestaurantSystemUI
                                 });
                                 compact.Employee.workTime = workingTimes.ToArray();
                                 EmployeeManager.UpdateOrSaveEmployee(compact.Employee);
-                                
-
-
                             }
                         }
                     }

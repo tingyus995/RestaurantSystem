@@ -86,6 +86,12 @@ namespace RestaurantSystemUI.modules
 
         }
 
+        private int getWage(DateTime startTime, DateTime endTime, int CurrentWage) 
+        {
+            TimeSpan timeSpan = endTime.Subtract(startTime);
+            return CurrentWage*(int)(timeSpan.TotalMinutes / 60.0);
+
+        }
         private void btnMonth_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null)
@@ -122,6 +128,8 @@ namespace RestaurantSystemUI.modules
                     }
 
             }
+            MonthEmployeeList = MonthEmployeeList.OrderBy(x => x.Name).ToList();
+            //MonthEmployeeList.Sort();
             // get orders in this month;
             foreach (Order order in orderList)
             {
@@ -164,8 +172,8 @@ namespace RestaurantSystemUI.modules
                 md += "## 出勤狀況\n\n";
                 List<string> tb = new List<string>
             {
-            "| 名字 | 應到時間 | 應退時間   | 實際打卡上班時間 |上班簽名| 實際打卡下班時間 |下班簽名 |狀態 |",
-            "|:---: | :------: |:--------:| :--------------:| :---:|:--------------:|:---:|:---:|",
+            "| 名字 | 應到時間 | 應退時間   | 實際打卡上班時間 |上班簽名| 實際打卡下班時間 |下班簽名 |狀態 |時薪|工資|",
+            "|:---: | :------: |:--------:| :--------------:|:-----:|:--------------:|:-------:|:---:|:--:|:--:|",
             };
                 //sort by datetime
                 holders.Sort((x, y) => DateTime.Compare(x.worktime.StartTime, y.worktime.StartTime));
@@ -177,6 +185,7 @@ namespace RestaurantSystemUI.modules
                 string CheckOutSignature = "";
                 string StartLateMinutes = "";
                 string EndEarlyMinutes = "";
+                
                 TimeSpan timeSpan, timeSpan1;
                 int count, count1;
                 foreach (Holder holder in holders)
@@ -244,7 +253,9 @@ namespace RestaurantSystemUI.modules
                         CheckInSignature = "![Hello World](data:image/png;base64,"+Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature))+")";
                         CheckOutSignature = "![Hello World](data:image/png;base64,"+Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature))+")";
                     }
-                    tb.Add(string.Format("|{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|",
+                    
+
+                    tb.Add(string.Format("|{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|",
                         holder.employee.Name.ToString(),
                         holder.worktime.StartTime.ToString("yyyy/M/d HH:mm"),
                         holder.worktime.EndTime.ToString("yyyy/M/d HH:mm"),
@@ -252,7 +263,9 @@ namespace RestaurantSystemUI.modules
                         CheckInSignature,
                         ActualEnd,
                         CheckOutSignature,
-                        status
+                        status,
+                        holder.worktime.CurrentWage.ToString()+"元",
+                        getWage(holder.worktime.StartTime, holder.worktime.EndTime, holder.worktime.CurrentWage)+"元"
                         ));
                 }
                 md += string.Join("\n", tb);
@@ -263,6 +276,44 @@ namespace RestaurantSystemUI.modules
                 md += "## 出勤狀況\n\n";
                 md += "### 該月無資料\n\n";
             }
+
+            if (MonthEmployeeList.Count > 0)
+            {
+
+                md += "## 員工月薪\n\n";
+                List<string> salary = new List<string>
+                {
+                "| 名字  |本月薪資 | ",
+                "|:----:|:------:|",
+
+                };
+
+                int sum = 0; 
+                foreach (Employee em in MonthEmployeeList)
+                {
+                    foreach(Holder holder in holders)
+                    {
+                        if(holder.employee == em)
+                        {
+                            sum += getWage(holder.worktime.StartTime, holder.worktime.EndTime, holder.worktime.CurrentWage);
+                        }
+                    }
+                    salary.Add(string.Format("|{0}|{1}|", em.Name, sum.ToString()+"元"));
+                    sum = 0;
+                }
+
+                md += string.Join("\n", salary);
+
+                md += "\n\n";
+            }
+            else
+            {
+                md += "## 員工月薪\n\n";
+                md += "### 該月無資料\n\n";
+            }
+
+
+
 
             if (MonthOrderList.Count > 0)
             {
@@ -302,7 +353,11 @@ namespace RestaurantSystemUI.modules
                 md += string.Join("\n", myorder);
                 md += "\n";
 
-                foreach (var item in myDic)
+
+
+                var MyDic = myDic.OrderBy(x => x.Key).ToList();
+
+                foreach (var item in MyDic)
                 {
                     DicFriend += "<li>" + item.Key + " " + item.Value + "個</li>";
                 }
@@ -455,7 +510,7 @@ namespace RestaurantSystemUI.modules
                         }
 
                 }
-
+                MonthEmployeeList = MonthEmployeeList.OrderBy(x => x.Name).ToList();
                 foreach (Order order in orderArray)
                 {
                     if (order.CreatedAt >= startDate && order.CreatedAt < endDate)
@@ -504,8 +559,8 @@ namespace RestaurantSystemUI.modules
                         md += "## 出勤狀況\n\n";
                         List<string> tb = new List<string>
                         {
-                        "| 名字 | 應到時間 | 應退時間   | 實際打卡上班時間 |上班簽名| 實際打卡下班時間 |下班簽名 |狀態 |",
-                        "|:---: | :------: |:--------:| :--------------:| :---:|:--------------:|:---:|:---:|",
+                        "| 名字 | 應到時間 | 應退時間   | 實際打卡上班時間 |上班簽名| 實際打卡下班時間 |下班簽名 |狀態 |時薪|工資|",
+                        "|:---: | :------: |:--------:| :--------------:| :---:|:--------------:|:-----:|:------:|:---:|:--:|",
                         };
                         //sort by datetime
                         holders.Sort((x, y) => DateTime.Compare(x.worktime.StartTime, y.worktime.StartTime));
@@ -584,7 +639,7 @@ namespace RestaurantSystemUI.modules
                                 CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
                                 CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
                             }
-                            tb.Add(string.Format("|{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|",
+                            tb.Add(string.Format("|{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|",
                                 holder.employee.Name.ToString(),
                                 holder.worktime.StartTime.ToString("yyyy/M/d HH:mm"),
                                 holder.worktime.EndTime.ToString("yyyy/M/d HH:mm"),
@@ -592,7 +647,9 @@ namespace RestaurantSystemUI.modules
                                 CheckInSignature,
                                 ActualEnd,
                                 CheckOutSignature,
-                                status
+                                status,
+                                holder.worktime.CurrentWage.ToString()+"元",
+                                getWage(holder.worktime.StartTime, holder.worktime.EndTime, holder.worktime.CurrentWage)+"元"
 
                                 ));
                         }
@@ -604,6 +661,45 @@ namespace RestaurantSystemUI.modules
                         md += "## 出勤狀況\n\n";
                         md += "### 該月無資料\n\n";
                     }
+
+
+
+                    if (MonthEmployeeList.Count > 0)
+                    {
+
+                        md += "## 員工月薪\n\n";
+                        List<string> salary = new List<string>
+                        {
+                        "| 名字  |本月薪資 | ",
+                        "|:----:|:------:|",
+
+                        };
+
+                        int sum = 0;
+                        foreach (Employee em in MonthEmployeeList)
+                        {
+                            foreach (Holder holder in holders)
+                            {
+                                if (holder.employee == em)
+                                {
+                                    sum += getWage(holder.worktime.StartTime, holder.worktime.EndTime, holder.worktime.CurrentWage);
+                                }
+                            }
+                            salary.Add(string.Format("|{0}|{1}|", em.Name, sum.ToString()+"元"));
+                            sum = 0;
+                        }
+
+                        md += string.Join("\n", salary);
+
+                        md += "\n\n";
+                    }
+                    else
+                    {
+                        md += "## 員工月薪\n\n";
+                        md += "### 該月無資料\n\n";
+                    }
+
+
 
                     if (MonthOrderList.Count > 0)
                     {
@@ -643,7 +739,8 @@ namespace RestaurantSystemUI.modules
                         }
                         md += string.Join("\n", myorder);
                         md += "\n";
-                        foreach (var item in myDic)
+                        var MyDic = myDic.OrderBy(x => x.Key).ToList();
+                        foreach (var item in MyDic)
                         {
                             DicFriend += "<li>" + item.Key + " " + item.Value + "個</li>";
                         }

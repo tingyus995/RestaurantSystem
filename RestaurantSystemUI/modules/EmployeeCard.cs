@@ -63,13 +63,19 @@ namespace RestaurantSystemUI.modules
                     SignatureBoard signatureBoard = new SignatureBoard();
                     signatureBoard.ShowDialog();
                     //card.Employee.workTime[card.index].ActualStart = DateTime.Now;
-                    card.Employee.workTime[card.index].ActualStart = Attendance.SystemClock;
-                    Bitmap map = signatureBoard.bmp;
-                    card.Employee.workTime[card.index].CheckInSignature = Utility.ImageToBytes(map);
-                    EmployeeManager.UpdateOrSaveEmployee(card.Employee);
-                    card.lbActualStart.Text = card.Employee.workTime[card.index].ActualStart.Value.ToString("yyyy/M/d HH:mm");
-                    card.btnNext.Text = "下班打卡";
-                    
+                    if(signatureBoard.Authenticated) { 
+                        card.Employee.workTime[card.index].ActualStart = Attendance.SystemClock;
+                        Bitmap map = signatureBoard.bmp;
+                        card.Employee.workTime[card.index].CheckInSignature = Utility.ImageToBytes(map);
+                        EmployeeManager.UpdateOrSaveEmployee(card.Employee);
+                        card.lbActualStart.Text = card.Employee.workTime[card.index].ActualStart.Value.ToString("yyyy/M/d HH:mm");
+                        card.btnNext.Text = "下班打卡";
+                    }
+                    else
+                    {
+                        MessageBox.Show("簽名驗證失敗。錯誤代碼：0x00CF1。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                
             }
@@ -80,6 +86,7 @@ namespace RestaurantSystemUI.modules
                 {
                     SignatureBoard signatureBoard = new SignatureBoard();
                     signatureBoard.ShowDialog();
+                    if(signatureBoard.Authenticated) { 
                     //card.Employee.workTime[card.index].ActualEnd = DateTime.Now;
                     card.Employee.workTime[card.index].ActualEnd = Attendance.SystemClock;
                     Bitmap map = signatureBoard.bmp;
@@ -87,6 +94,11 @@ namespace RestaurantSystemUI.modules
                     EmployeeManager.UpdateOrSaveEmployee(card.Employee);
                     card.lbActualEnd.Text = card.Employee.workTime[card.index].ActualEnd.Value.ToString("yyyy/M/d HH:mm");
                     card.btnNext.Visible = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("簽名驗證失敗。錯誤代碼：0x00CF2。", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

@@ -48,8 +48,7 @@ namespace RestaurantSystemUI.modules
                 {
                     Name = ALL_CATEGORIES,
                     Amount = -1
-                },
-                Editable = false
+                }
             };
 
             allCats.CategoryItemClicked += CategoryItem_Click;
@@ -59,7 +58,7 @@ namespace RestaurantSystemUI.modules
             Category[] categories = EmployeeManager.GetCategories();
             foreach (Category cat in categories)
             {
-                CategoryItem item = new CategoryItem() { Category = cat };
+                CategoryItem item = new CategoryItem(false, true, "employee") { Category = cat };
                 item.CategoryItemClicked += CategoryItem_Click;
                 /*item.CategoryNameUpdated += (object _s, EventArgs _e) => {
                     if( EmployeeManager.EditCategory())
@@ -122,7 +121,7 @@ namespace RestaurantSystemUI.modules
         }
 
         private void Submit_Click(object sender, EventArgs e) {
-            if(password.Text == "abc")
+            if(password.Text == "")
             {
                 MessageBox.Show("登入成功");
                 LoginPanel.Visible = false;

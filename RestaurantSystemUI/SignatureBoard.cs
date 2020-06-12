@@ -17,7 +17,13 @@ namespace RestaurantSystemUI
             InitializeComponent();
         }
 
+        bool submitted = false;
 
+        public bool Authenticated { get
+            {
+                return submitted;
+            }
+        }
 
 
 
@@ -40,7 +46,7 @@ namespace RestaurantSystemUI
         Pen pen;
         Pen fixedPen; // for border
         Brush brush;
-        double length = 0;
+        internal double length = 0;
 
 
 
@@ -155,6 +161,7 @@ namespace RestaurantSystemUI
 
         private void Submit_Click(object sender, EventArgs e)
         {
+            submitted = true;
             this.Close();
         }
         private double Distance(int dx, int dy)
@@ -167,6 +174,8 @@ namespace RestaurantSystemUI
         {
             Graphics g = Graphics.FromImage(bmp);
             g.Clear(Color.Transparent);
+            Submit.Visible = false;
+            length = 0;            
             //g.FillRectangle(Brushes.White, 0, 0, 667, 379);
             canvas.Image = bmp;
         }
