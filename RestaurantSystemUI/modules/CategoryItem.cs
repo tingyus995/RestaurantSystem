@@ -19,11 +19,13 @@ namespace RestaurantSystemUI
         Color normal = Color.FromArgb(52, 73, 94);
         Color normalLeft = Color.FromArgb(66, 93, 119);
 
-        Color activated = Color.FromArgb(243, 156, 18); 
+        Color activated = Color.FromArgb(243, 156, 18);
         Color activatedLeft = Color.FromArgb(241, 196, 15);
 
 
         public event EventHandler CategoryItemClicked;
+        public event EventHandler RemoveButtonClicked;
+        public event EventHandler EditButtonClicked;
 
         private bool editable = true;
         private ColorTheme theme = ThemeProvider.GetTheme();
@@ -31,40 +33,89 @@ namespace RestaurantSystemUI
         public bool Editable
         {
             get { return editable; }
-            set { 
+            private set
+            {
                 editable = value;
-                ibtnEdit.Visible = editable;            
+                ibtnEdit.Visible = editable;
+            }
+        }
+        private bool removable = false;
+        public bool Removable
+        {
+            get
+            {
+                return removable;
+            }
+            private set
+            {
+                removable = value;
+                ibtnDelete.Visible = removable;
+                ibtnDelete.Top = 0;
             }
         }
 
         private bool active = false;
-        
+
+        private static string[] supportedTargetManager = { "none", "food", "employee" };
+
+        private string targetManager;
+
+
         public bool Active
         {
             get { return active; }
-            set { 
+            set
+            {
                 active = value;
 
-                
+
                 if (active)
                 {
-                    BackColor = theme.CategoryItemActive;                    
-                    pnDecoration.BackColor = theme.categoryItemActiveDecoration;                    
+                    BackColor = theme.CategoryItemActive;
+                    pnDecoration.BackColor = theme.categoryItemActiveDecoration;
                 }
                 else
                 {
-                    BackColor = theme.CategoryItem;                    
-                    pnDecoration.BackColor = theme.CategoryItemDecoration;                    
-                }                
-            
+                    BackColor = theme.CategoryItem;
+                    pnDecoration.BackColor = theme.CategoryItemDecoration;
+                }
+
             }
         }
 
-        
-        public Category Category {get; set; }
-        public CategoryItem()
-        {   
+
+        public Category Category { get; set; }
+        public CategoryItem(bool _removeBtn = false, bool _editBtn = false, string _targetManager = "none")
+        {
             InitializeComponent();
+
+            if (_removeBtn && _editBtn)
+            {
+                throw new System.ArgumentException("There's only one space for action button. You enabled both.");
+            }
+            else
+            {
+                Removable = _removeBtn;
+                Editable = _editBtn;
+
+                if (Removable || Editable)
+                {
+                    if (Array.IndexOf(supportedTargetManager, _targetManager) < 0)
+                    {
+                        throw new System.ArgumentException("Target Manager unsupported.");
+                    }
+                    else if (_targetManager == "none")
+                    {
+                        throw new System.ArgumentException("You must specify target manager when either removable or editable is enabled.");
+                    }
+                    else
+                    {
+                        targetManager = _targetManager;
+                    }
+
+                }
+            }
+
         }
 
         private void CategoryItem_Load(object sender, EventArgs e)
@@ -101,16 +152,41 @@ namespace RestaurantSystemUI
 
                 if (text.Length >= 0)
                 {
-                    if(!FoodManager.EditCategory(Category.Name, text))
+
+                    switch (targetManager)
                     {
-                        MessageBox.Show("同名稱的類別已經存在。", "改名失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        Category.Name = text;
-                        lbCatName.Text = Category.Name;
+                        case "food":
+                            if (!FoodManager.EditCategory(Category.Name, text))
+                            {
+                                MessageBox.Show("同名稱的類別已經存在。", "改名失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                Category.Name = text;
+                                lbCatName.Text = Category.Name;
+                            }
+                            break;
+                        case "employee":
+                            if (!EmployeeManager.EditCategory(Category.Name, text))
+                            {
+                                MessageBox.Show("同名稱的身分組已經存在。", "改名失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                Category.Name = text;
+                                lbCatName.Text = Category.Name;
+                            }
+                            break;
+                        default:
+                            Console.Write("default");
+                            break;
+                    
                     }
                     
+
+
+
+
                 }
 
                 Controls.Remove(ftb);
@@ -140,7 +216,7 @@ namespace RestaurantSystemUI
         public void ApplyTheme()
         {
             ColorTheme theme = ThemeProvider.GetTheme();
-            BackColor = theme.CategoryItem;            
+            BackColor = theme.CategoryItem;
             pnDecoration.BackColor = theme.CategoryItemDecoration;
         }
     }

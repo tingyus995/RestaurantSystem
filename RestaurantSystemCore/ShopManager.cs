@@ -71,6 +71,121 @@ namespace RestaurantSystemCore
                 }
             }
         }
+        public static string ShopPassword
+        {
+            get
+            {
+
+                var result = col_configs.FindOne(x => x.Key == "password");
+
+                if (result == null) return "";
+                return result.Value;
+            }
+            set
+            {
+                var result = col_configs.FindOne(x => x.Key == "password");
+                if (result == null)
+                {
+                    col_configs.Insert(new ShopConfig
+                    {
+                        Key = "password",
+                        Value = value
+                    });
+                }
+                else
+                {
+                    result.Value = value;
+                    col_configs.Update(result);
+                }
+            }
+        }
+
+        public static string ShiftCb1StartTime
+        {
+            get
+            {
+
+                var result = col_configs.FindOne(x => x.Key == "starttime");
+
+                if (result == null) return "";
+                return result.Value;
+            }
+            set
+            {
+                var result = col_configs.FindOne(x => x.Key == "starttime");
+                if (result == null)
+                {
+                    col_configs.Insert(new ShopConfig
+                    {
+                        Key = "starttime",
+                        Value = value
+                    });
+                }
+                else
+                {
+                    result.Value = value;
+                    col_configs.Update(result);
+                }
+            }
+        }
+
+        public static string ShiftCb2Interval
+        {
+            get
+            {
+
+                var result = col_configs.FindOne(x => x.Key == "interval");
+
+                if (result == null) return "";
+                return result.Value;
+            }
+            set
+            {
+                var result = col_configs.FindOne(x => x.Key == "interval");
+                if (result == null)
+                {
+                    col_configs.Insert(new ShopConfig
+                    {
+                        Key = "interval",
+                        Value = value
+                    });
+                }
+                else
+                {
+                    result.Value = value;
+                    col_configs.Update(result);
+                }
+            }
+        }
+
+        public static string ShiftCb3Amount
+        {
+            get
+            {
+
+                var result = col_configs.FindOne(x => x.Key == "amount");
+
+                if (result == null) return "";
+                return result.Value;
+            }
+            set
+            {
+                var result = col_configs.FindOne(x => x.Key == "amount");
+                if (result == null)
+                {
+                    col_configs.Insert(new ShopConfig
+                    {
+                        Key = "amount",
+                        Value = value
+                    });
+                }
+                else
+                {
+                    result.Value = value;
+                    col_configs.Update(result);
+                }
+            }
+        }
 
     }
 }

@@ -46,6 +46,24 @@ namespace RestaurantSystemUI.modules
             {
                 ShopManager.ShopLogo = Utility.ImageToBase64(logo);
             }
+            if(newPwd.textBox.Text != "")
+            {
+             
+                if(oldPwd.textBox.Text == ShopManager.ShopPassword)
+                {
+                    
+                    ShopManager.ShopPassword = newPwd.textBox.Text;
+                    MessageBox.Show("新密碼設定完成");
+                    oldPwd.textBox.Text = "";
+                    newPwd.textBox.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("無法設置新密碼");
+                    oldPwd.textBox.Text = "";
+                    newPwd.textBox.Text = "";
+                }
+            }
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -56,6 +74,12 @@ namespace RestaurantSystemUI.modules
                 pictureBox1.Image = logo;
                 
             }
+        }
+
+        private void AddFoods_Click(object sender, EventArgs e)
+        {
+            BatchFoodImportTool tool = new BatchFoodImportTool();
+            tool.ShowDialog();
         }
     }
 }

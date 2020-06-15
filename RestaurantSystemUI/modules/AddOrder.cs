@@ -84,8 +84,7 @@ namespace RestaurantSystemUI
                 {
                     Name = ALL_CATEGORIES,
                     Amount = -1
-                },
-                Editable = false
+                }                
             };
 
             allCats.CategoryItemClicked += (object _s, EventArgs _e) =>
@@ -102,7 +101,7 @@ namespace RestaurantSystemUI
 
             foreach (var c in cats)
             {
-                CategoryItem item = new CategoryItem() { Category = c, Editable = false};
+                CategoryItem item = new CategoryItem() { Category = c};
                 item.CategoryItemClicked += (object _s, EventArgs _e) =>
                 {
 

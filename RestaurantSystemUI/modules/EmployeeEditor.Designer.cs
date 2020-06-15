@@ -36,32 +36,32 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             this.tlpBottomHalf = new System.Windows.Forms.TableLayoutPanel();
+            this.tagInput1 = new RestaurantSystemUI.controls.TagInput();
             this.fpVarients = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.ftbContactNumber = new RestaurantSystemUI.FlatTextbox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.ftbBirthday = new RestaurantSystemUI.FlatTextbox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ftbName = new RestaurantSystemUI.FlatTextbox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.ftbSalary = new RestaurantSystemUI.FlatTextbox();
             this.btnSave = new System.Windows.Forms.Button();
             this.ibtnBack = new FontAwesome.Sharp.IconButton();
             this.pbEmployeeImage = new System.Windows.Forms.PictureBox();
             this.pnTopHalf = new System.Windows.Forms.Panel();
-            this.tagInput1 = new RestaurantSystemUI.controls.TagInput();
-            this.ftbContactNumber = new RestaurantSystemUI.FlatTextbox();
-            this.ftbBirthday = new RestaurantSystemUI.FlatTextbox();
-            this.ftbSalary = new RestaurantSystemUI.FlatTextbox();
-            this.ftbName = new RestaurantSystemUI.FlatTextbox();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
@@ -131,7 +131,6 @@
             // iconPictureBox5
             // 
             this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Buffer;
             this.iconPictureBox5.IconColor = System.Drawing.Color.White;
             this.iconPictureBox5.IconSize = 44;
@@ -160,7 +159,6 @@
             // iconPictureBox3
             // 
             this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.FolderOpen;
             this.iconPictureBox3.IconColor = System.Drawing.Color.White;
             this.iconPictureBox3.IconSize = 44;
@@ -190,6 +188,19 @@
             this.tlpBottomHalf.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpBottomHalf.Size = new System.Drawing.Size(1707, 766);
             this.tlpBottomHalf.TabIndex = 24;
+            // 
+            // tagInput1
+            // 
+            this.tagInput1.AutoScroll = true;
+            this.tagInput1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.tagInput1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tagInput1.Location = new System.Drawing.Point(6, 71);
+            this.tagInput1.Margin = new System.Windows.Forms.Padding(6);
+            this.tagInput1.Name = "tagInput1";
+            this.tagInput1.Padding = new System.Windows.Forms.Padding(15, 14, 15, 14);
+            this.tagInput1.Size = new System.Drawing.Size(841, 702);
+            this.tagInput1.TabIndex = 3;
+            this.tagInput1.Tags = new string[0];
             // 
             // fpVarients
             // 
@@ -227,7 +238,6 @@
             // iconPictureBox6
             // 
             this.iconPictureBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.iconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.MobileAlt;
             this.iconPictureBox6.IconColor = System.Drawing.Color.White;
             this.iconPictureBox6.IconSize = 44;
@@ -266,6 +276,18 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(529, 57);
             this.tableLayoutPanel7.TabIndex = 31;
             // 
+            // ftbContactNumber
+            // 
+            this.ftbContactNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ftbContactNumber.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ftbContactNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.ftbContactNumber.Location = new System.Drawing.Point(6, 6);
+            this.ftbContactNumber.Margin = new System.Windows.Forms.Padding(6);
+            this.ftbContactNumber.Name = "ftbContactNumber";
+            this.ftbContactNumber.PlaceHolder = "例如：0912345678";
+            this.ftbContactNumber.Size = new System.Drawing.Size(384, 45);
+            this.ftbContactNumber.TabIndex = 1;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -286,7 +308,6 @@
             // iconPictureBox4
             // 
             this.iconPictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.BirthdayCake;
             this.iconPictureBox4.IconColor = System.Drawing.Color.White;
             this.iconPictureBox4.IconSize = 44;
@@ -336,6 +357,17 @@
             this.dateTimePicker1.TabIndex = 33;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
+            // ftbBirthday
+            // 
+            this.ftbBirthday.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ftbBirthday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.ftbBirthday.Location = new System.Drawing.Point(7, 19);
+            this.ftbBirthday.Margin = new System.Windows.Forms.Padding(6);
+            this.ftbBirthday.Name = "ftbBirthday";
+            this.ftbBirthday.PlaceHolder = "例如：1989/5/12";
+            this.ftbBirthday.Size = new System.Drawing.Size(374, 45);
+            this.ftbBirthday.TabIndex = 1;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
@@ -357,7 +389,6 @@
             // iconPictureBox1
             // 
             this.iconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.IconSize = 44;
@@ -381,6 +412,17 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "員工名稱";
             // 
+            // ftbName
+            // 
+            this.ftbName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ftbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.ftbName.Location = new System.Drawing.Point(227, 7);
+            this.ftbName.Margin = new System.Windows.Forms.Padding(6);
+            this.ftbName.Name = "ftbName";
+            this.ftbName.PlaceHolder = "例如：王大明";
+            this.ftbName.Size = new System.Drawing.Size(346, 50);
+            this.ftbName.TabIndex = 0;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
@@ -401,7 +443,6 @@
             // iconPictureBox2
             // 
             this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
             this.iconPictureBox2.IconColor = System.Drawing.Color.White;
             this.iconPictureBox2.IconSize = 44;
@@ -425,9 +466,19 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "員工時薪";
             // 
+            // ftbSalary
+            // 
+            this.ftbSalary.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ftbSalary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.ftbSalary.Location = new System.Drawing.Point(260, 6);
+            this.ftbSalary.Margin = new System.Windows.Forms.Padding(6);
+            this.ftbSalary.Name = "ftbSalary";
+            this.ftbSalary.PlaceHolder = "例如：160";
+            this.ftbSalary.Size = new System.Drawing.Size(281, 45);
+            this.ftbSalary.TabIndex = 1;
+            // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -485,67 +536,6 @@
             this.pnTopHalf.Name = "pnTopHalf";
             this.pnTopHalf.Size = new System.Drawing.Size(1707, 234);
             this.pnTopHalf.TabIndex = 23;
-            // 
-            // tagInput1
-            // 
-            this.tagInput1.AutoScroll = true;
-            this.tagInput1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.tagInput1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tagInput1.Location = new System.Drawing.Point(6, 71);
-            this.tagInput1.Margin = new System.Windows.Forms.Padding(6);
-            this.tagInput1.Name = "tagInput1";
-            this.tagInput1.Padding = new System.Windows.Forms.Padding(15, 14, 15, 14);
-            this.tagInput1.Size = new System.Drawing.Size(841, 702);
-            this.tagInput1.TabIndex = 3;
-            this.tagInput1.Tags = new string[0];
-            // 
-            // ftbContactNumber
-            // 
-            this.ftbContactNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ftbContactNumber.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ftbContactNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.ftbContactNumber.Location = new System.Drawing.Point(6, 6);
-            this.ftbContactNumber.Margin = new System.Windows.Forms.Padding(6);
-            this.ftbContactNumber.Name = "ftbContactNumber";
-            this.ftbContactNumber.PlaceHolder = "例如：0912345678";
-            this.ftbContactNumber.Size = new System.Drawing.Size(384, 45);
-            this.ftbContactNumber.TabIndex = 1;
-            
-            // 
-            // ftbBirthday
-            // 
-            this.ftbBirthday.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ftbBirthday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.ftbBirthday.Location = new System.Drawing.Point(7, 19);
-            this.ftbBirthday.Margin = new System.Windows.Forms.Padding(6);
-            this.ftbBirthday.Name = "ftbBirthday";
-            this.ftbBirthday.PlaceHolder = "例如：1989/5/12";
-            this.ftbBirthday.Size = new System.Drawing.Size(374, 45);
-            this.ftbBirthday.TabIndex = 1;            
-            // 
-            // ftbSalary
-            // 
-            this.ftbSalary.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ftbSalary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.ftbSalary.Location = new System.Drawing.Point(260, 6);
-            this.ftbSalary.Margin = new System.Windows.Forms.Padding(6);
-            this.ftbSalary.Name = "ftbSalary";
-            this.ftbSalary.PlaceHolder = "例如：160";
-            this.ftbSalary.Size = new System.Drawing.Size(281, 45);
-            this.ftbSalary.TabIndex = 1;
-            
-            // 
-            // ftbName
-            // 
-            this.ftbName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ftbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.ftbName.Location = new System.Drawing.Point(227, 7);
-            this.ftbName.Margin = new System.Windows.Forms.Padding(6);
-            this.ftbName.Name = "ftbName";
-            this.ftbName.PlaceHolder = "例如：王大明";
-            this.ftbName.Size = new System.Drawing.Size(346, 50);
-            this.ftbName.TabIndex = 0;
-            
             // 
             // EmployeeEditor
             // 

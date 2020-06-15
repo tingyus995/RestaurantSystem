@@ -11,10 +11,11 @@ using RestaurantSystemCore.models;
 using RestaurantSystemUI;
 using RestaurantSystemCore;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class EmployeeEditor : UserControl
+    public partial class EmployeeEditor : UserControl, IThemeable
     {
 
 
@@ -77,10 +78,8 @@ namespace RestaurantSystemUI.modules
 
         private void EmployeeEditor_Load(object sender, EventArgs e)
         {
-            
-            //pbEmployeeImage.Image = Properties.Resources.
-            //pbEmployeeImage.Image = Properties.Resources.DefaultEmployeeImage;
-            //pbEmployeeImage.InitialImage = Properties.Resources.DefaultEmployeeImage;
+
+            ApplyTheme();
         }
 
 
@@ -88,8 +87,82 @@ namespace RestaurantSystemUI.modules
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if(employee.Name == null)//create mode
+            {
+                //MessageBox.Show(" i am new");
+                //check if db already have the same name
+                Employee[] employees = EmployeeManager.GetEmployees();
+                foreach (Employee em in employees)
+                {
+                    if (em.Name == ftbName.textBox.Text)
+                    {
+                        MessageBox.Show("名字已存在 請取別的名字!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        return;
+                    }
+                }
+
+            }
+            else//edit mode
+            {
+                if (ftbName.textBox.Text == employee.Name)//no change name
+                {
+
+                }
+                else
+                {
+                    Employee[] employees = EmployeeManager.GetEmployees();
+                    foreach (Employee em in employees)
+                    {
+                        if (em.Name == ftbName.textBox.Text)
+                        {
+                            MessageBox.Show("名字已存在 請取別的名字!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            return;
+                        }
+                    }
+                }
+            }
+
             
-            Console.WriteLine(ftbName.textBox.Text);
+
+
+            
+
+            if(ftbName.textBox.Text == "")
+            {
+                MessageBox.Show("名字不能為空");
+                return;
+            }
+            int num = -1;
+            if (!int.TryParse(ftbSalary.textBox.Text.Trim(), out num))
+            {
+                MessageBox.Show("時薪必須為正整數");
+                return;
+            }
+            if (int.Parse(ftbSalary.textBox.Text.Trim()) < 0)
+            {
+                MessageBox.Show("時薪必須為正整數");
+                return;
+            }
+
+            if(ftbContactNumber.textBox.Text == "")
+            {
+                MessageBox.Show("電話號碼不能為空");
+                return;
+            }
+
+            DateTime date;
+            try
+            {
+                date = DateTime.Parse(ftbBirthday.textBox.Text);
+            }
+            catch
+            {
+                MessageBox.Show("日期格式錯誤 \n 請輸入 年年年年/月/日");
+                return;
+            }
+
 
             // assign new value
             employee.Name = ftbName.textBox.Text;
@@ -178,6 +251,17 @@ namespace RestaurantSystemUI.modules
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             ftbBirthday.textBox.Text =  dateTimePicker1.Value.ToShortDateString();
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+            ftbName.BackColor = BackColor;
+            ftbSalary.BackColor = BackColor;
+            ftbContactNumber.BackColor = BackColor;
+            ftbBirthday.BackColor = BackColor;
+            tagInput1.BackColor = BackColor;
         }
     }
 }

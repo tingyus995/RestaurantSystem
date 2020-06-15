@@ -48,10 +48,9 @@
             // fpnCategories
             // 
             this.fpnCategories.AutoScroll = true;
-            this.fpnCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.fpnCategories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnCategories.Location = new System.Drawing.Point(4, 128);
-            this.fpnCategories.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fpnCategories.Margin = new System.Windows.Forms.Padding(4);
             this.fpnCategories.Name = "fpnCategories";
             this.fpnCategories.Size = new System.Drawing.Size(469, 556);
             this.fpnCategories.TabIndex = 0;
@@ -59,7 +58,6 @@
             // fpnEmployeeItems
             // 
             this.fpnEmployeeItems.AutoScroll = true;
-            this.fpnEmployeeItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.fpnEmployeeItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnEmployeeItems.Location = new System.Drawing.Point(477, 65);
             this.fpnEmployeeItems.Margin = new System.Windows.Forms.Padding(0);
@@ -81,7 +79,7 @@
             this.tableLayoutPanel1.Controls.Add(this.ibtnAddFood, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -98,7 +96,7 @@
             this.tableLayoutPanel6.Controls.Add(this.iconPictureBox3, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -108,12 +106,11 @@
             // iconPictureBox3
             // 
             this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.FolderOpen;
             this.iconPictureBox3.IconColor = System.Drawing.Color.White;
             this.iconPictureBox3.IconSize = 44;
             this.iconPictureBox3.Location = new System.Drawing.Point(4, 6);
-            this.iconPictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconPictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.iconPictureBox3.Name = "iconPictureBox3";
             this.iconPictureBox3.Size = new System.Drawing.Size(48, 44);
             this.iconPictureBox3.TabIndex = 8;
@@ -140,7 +137,7 @@
             this.tableLayoutPanel4.Controls.Add(this.iconPictureBox5, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 1, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(481, 4);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -151,12 +148,11 @@
             // iconPictureBox5
             // 
             this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.List;
             this.iconPictureBox5.IconColor = System.Drawing.Color.White;
             this.iconPictureBox5.IconSize = 44;
             this.iconPictureBox5.Location = new System.Drawing.Point(4, 6);
-            this.iconPictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconPictureBox5.Margin = new System.Windows.Forms.Padding(4);
             this.iconPictureBox5.Name = "iconPictureBox5";
             this.iconPictureBox5.Size = new System.Drawing.Size(48, 44);
             this.iconPictureBox5.TabIndex = 12;
@@ -178,7 +174,6 @@
             // ibtnAddFood
             // 
             this.ibtnAddFood.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ibtnAddFood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.ibtnAddFood.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.ibtnAddFood.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ibtnAddFood.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -188,7 +183,7 @@
             this.ibtnAddFood.IconColor = System.Drawing.Color.White;
             this.ibtnAddFood.IconSize = 16;
             this.ibtnAddFood.Location = new System.Drawing.Point(4, 69);
-            this.ibtnAddFood.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ibtnAddFood.Margin = new System.Windows.Forms.Padding(4);
             this.ibtnAddFood.Name = "ibtnAddFood";
             this.ibtnAddFood.Rotation = 0D;
             this.ibtnAddFood.Size = new System.Drawing.Size(224, 51);
@@ -205,7 +200,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EmployeeList";
             this.Size = new System.Drawing.Size(1274, 685);
             this.Load += new System.EventHandler(this.EmployeeList_Load);
