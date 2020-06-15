@@ -54,10 +54,18 @@ namespace RestaurantSystemUI.OOBE_pages
         {
             Bitmap logo = Utility.GetImageFromUser();
 
-            ImageCropper cropper = new ImageCropper(logo);
+            ImageCropper cropper = new ImageCropper(logo);            
             Utility.ShowFullSpaceDialog(this, cropper);
+
+            cropper.SubmitButtonClicked += Cropper_SubmitButtonClicked;
             
-            //pictureBox1.Image = logo;
+        }
+
+        private void Cropper_SubmitButtonClicked(object sender, EventArgs e)
+        {
+            ImageCropper cropper = sender as ImageCropper;
+            pictureBox1.Image = cropper.CroppedImage;
+            Controls.Remove(cropper);
         }
     }
 }

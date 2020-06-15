@@ -24,13 +24,22 @@ namespace RestaurantSystemUI
 
         private void pnPageIndicator_Paint(object sender, PaintEventArgs e)
         {
+
+            Panel pn = sender as Panel;
+
             int startX = 0;
             int startY = 0;
 
             int deltaY = 10;
             int size = 10;
+
+            int totalWidth = pages.Count * size + deltaY * (pages.Count - 1);
+            startX = (pn.Width - totalWidth) / 2;
+
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            
             
             for(int i = 0; i < pages.Count; ++i)
             {
@@ -103,6 +112,9 @@ namespace RestaurantSystemUI
             pages.Add(new Welcome());
             pages.Add(new BasicInfo());
             pages.Add(new ShiftConfiguration());
+            pages.Add(new AdminPassword());
+            pages.Add(new FinalInstructions());
+            
 
             LoadPage();
         }

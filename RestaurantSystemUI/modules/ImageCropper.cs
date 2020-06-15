@@ -13,24 +13,31 @@ namespace RestaurantSystemUI.modules
     public partial class ImageCropper : UserControl
     {
 
-        private bool isDragging = false;
-        int orgX;
-        int orgY;
+        public event EventHandler SubmitButtonClicked;
 
+        public Image CroppedImage { get { return pbPreview.Image; } }
         public ImageCropper()
         {
             InitializeComponent();
         }
 
-        public ImageCropper(Bitmap bmp)
+        public ImageCropper(Image image)
         {
+
             InitializeComponent();
-            pictureBox1.Image = bmp;
+            imageCropperBox1.PreviewImageChanged += ImageCropperBox1_PreviewImageChanged;
+            imageCropperBox1.Image = image;
         }
 
-        private void ImageCropper_Load(object sender, EventArgs e)
+        private void ImageCropperBox1_PreviewImageChanged(object sender, PreviewImageChangedArgs e)
         {
+            pbPreview.Image = e.PreviewImage;
+            btnConfirm.Visible = true;
+        }
 
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            SubmitButtonClicked?.Invoke(this, new EventArgs());
         }
     }
 }
