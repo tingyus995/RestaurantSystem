@@ -92,6 +92,7 @@ namespace RestaurantSystemUI
             return result;
         }
 
+
         public static string[] GetSupportedImageFilenameExtensions()
         {
             List<string> result = new List<string>();
@@ -104,6 +105,20 @@ namespace RestaurantSystemUI
                 result.AddRange(c.FilenameExtension.Replace("*.","").ToLower().Split(';'));
             }            
             return result.ToArray();
+        }
+
+        public static Bitmap GetImageFromUser()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = GetSupportedImageFilter();
+            ofd.CheckFileExists = true;
+
+            if(ofd.ShowDialog() == DialogResult.OK)
+            {
+                return new Bitmap(ofd.FileName);
+            }
+
+            return null;
         }
     }
 }

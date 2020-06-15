@@ -15,13 +15,15 @@ namespace RestaurantSystemUI
 
         //26,188,156
 
-        //private static Color mainAccent = Color.FromArgb(26, 188, 156);
-        //private static Color mainAcceintDerivative = Color.FromArgb(22, 160, 133);
-        private static Color mainAccent = Color.FromArgb(155, 89, 182);
-        private static Color mainAcceintDerivative = Color.FromArgb(142, 68, 173);
 
-        private static Color secondary = Color.FromArgb(155, 89, 182);
-        private static Color secondaryDerivative = Color.FromArgb(142, 68, 173);
+        public static string name = "預設主題（午夜藍）";
+
+
+        protected static Color mainAccent = Color.FromArgb(26, 188, 156);
+        protected static Color mainAcceintDerivative = Color.FromArgb(22, 160, 133);
+
+        protected static Color secondary = Color.FromArgb(155, 89, 182);
+        protected static Color secondaryDerivative = Color.FromArgb(142, 68, 173);
 
         private static Color Normal = Color.FromArgb(46, 204, 113);
         private static Color Dangerous = Color.FromArgb(231, 76, 60);
@@ -30,7 +32,7 @@ namespace RestaurantSystemUI
 
         public Color Contrast = Color.White;
 
-        private static Color Darken(Color c, int amount)
+        protected static Color Darken(Color c, int amount)
         {
 
             int a = c.A;
@@ -46,7 +48,7 @@ namespace RestaurantSystemUI
             return Color.FromArgb(a, r, g, b);
         }
 
-        private static Color Lighten(Color c, int amount)
+        protected static Color Lighten(Color c, int amount)
         {
 
             int a = c.A;
@@ -87,6 +89,11 @@ namespace RestaurantSystemUI
 
         public Color OrderViewItemEven = Darken(secondaryDerivative, 10);
         public Color OrderViewItemOdd = Darken(secondaryDerivative, 20);
+
+        // food item
+        public Color FoodItem = Darken(mainAcceintDerivative, 20);
+        // food varient
+        public Color FoodItemVarient = Darken(mainAcceintDerivative, 40);
 
         
 

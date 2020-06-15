@@ -82,6 +82,9 @@ namespace RestaurantSystemUI
 
             ApplyTheme(theme);
 
+            Form OOBE = new OOBE();
+            OOBE.Show();
+
         }
         #region borderless window
         // for borderless window

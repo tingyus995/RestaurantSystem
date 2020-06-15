@@ -11,7 +11,7 @@ using RestaurantSystemCore.models;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class FoodItem : UserControl
+    public partial class FoodItem : UserControl, IThemeable
     {
 
         private Food food;
@@ -19,6 +19,11 @@ namespace RestaurantSystemUI.modules
         public event EventHandler EditFoodClicked;
         public event EventHandler DeleteFoodClicked;
         public event EventHandler<FoodSelectedEventArgs> FoodSelected;
+
+
+        private bool showPlusButton = false;
+        private bool showEditButton = false;
+
 
         public Food Food
         {
@@ -42,7 +47,8 @@ namespace RestaurantSystemUI.modules
                 FoodVarientItem item = new FoodVarientItem()
                 {
                     VarientName = v.Name,
-                    Price = food.BasePrice + v.delta
+                    Price = food.BasePrice + v.delta,
+                    ShowPlusButton = showPlusButton
                 };
                 
                 fpnVarients.Controls.Add(item);
@@ -63,6 +69,20 @@ namespace RestaurantSystemUI.modules
             InitializeComponent();
         }
 
+        public FoodItem(bool plusbtn, bool editBtn)
+        {
+            InitializeComponent();
+
+            showPlusButton = plusbtn;
+            showEditButton = editBtn;
+
+            if (!showEditButton)
+            {
+                btnEdit.Visible = showEditButton;
+                btnDelete.Visible = showEditButton;
+            }
+        }
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
             EditFoodClicked?.Invoke(this, e);
@@ -72,8 +92,19 @@ namespace RestaurantSystemUI.modules
         {
             DeleteFoodClicked?.Invoke(this, e);
         }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.FoodItem;
+        }
+
+        private void FoodItem_Load(object sender, EventArgs e)
+        {
+            ApplyTheme();
+        }
     }
-    
+
     public class FoodSelectedEventArgs : EventArgs
     {
         public FoodSelectedEventArgs(Food f)

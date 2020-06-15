@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantSystemUI
+namespace RestaurantSystemUI.controls
 {
-    public partial class Status : UserControl
+    public partial class ThemePreviewItem : UserControl
     {
-        public Status()
+        public ThemePreviewItem(ColorTheme c)
         {
             InitializeComponent();
-        }
-
-        private void btnShowDisplay_Click(object sender, EventArgs e)
-        {
-            Display display = new Display();
-            display.Show();
         }
     }
 }

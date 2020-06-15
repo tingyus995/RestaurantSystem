@@ -88,6 +88,7 @@
             this.Controls.Add(this.lbVarientName);
             this.Name = "FoodVarientItem";
             this.Size = new System.Drawing.Size(417, 45);
+            this.Load += new System.EventHandler(this.FoodVarientItem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

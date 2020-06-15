@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class FoodVarientItem : UserControl
+    public partial class FoodVarientItem : UserControl, IThemeable
     {
 
         private string varientName;
@@ -30,7 +30,13 @@ namespace RestaurantSystemUI.modules
             set { price = value; lbPrice.Text = price.ToString();  }
         }
 
+        private bool showPlusButton = true;
 
+        public bool ShowPlusButton
+        {
+            get { return showPlusButton; }
+            set { showPlusButton = value; btnPlus.Visible = value; }
+        }
 
         public FoodVarientItem()
         {
@@ -40,6 +46,17 @@ namespace RestaurantSystemUI.modules
         private void btnPlus_Click(object sender, EventArgs e)
         {
             PlusButtonClicked.Invoke(this, new EventArgs());
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.FoodItemVarient;
+        }
+
+        private void FoodVarientItem_Load(object sender, EventArgs e)
+        {
+            ApplyTheme();
         }
     }
 }

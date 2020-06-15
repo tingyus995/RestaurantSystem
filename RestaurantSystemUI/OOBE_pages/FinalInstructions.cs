@@ -8,19 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantSystemUI
+namespace RestaurantSystemUI.OOBE_pages
 {
-    public partial class Status : UserControl
+    public partial class FinalInstructions : UserControl
     {
-        public Status()
+        public FinalInstructions()
         {
             InitializeComponent();
         }
 
-        private void btnShowDisplay_Click(object sender, EventArgs e)
+        private void btnStartSystem_Click(object sender, EventArgs e)
         {
-            Display display = new Display();
-            display.Show();
+            // save all configurations to database and start form1
         }
     }
 }

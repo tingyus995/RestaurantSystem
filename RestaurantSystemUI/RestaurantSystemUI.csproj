@@ -127,6 +127,32 @@
     <Compile Include="controls\ThemedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    
+    <Compile Include="controls\ThemePreviewItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ThemePreviewItem.Designer.cs">
+      <DependentUpon>ThemePreviewItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="controls\ThemeSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\ThemeSelector.Designer.cs">
+      <DependentUpon>ThemeSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Display.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Display.Designer.cs">
+      <DependentUpon>Display.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageCropperBox.cs" />
+    <Compile Include="IOOBEPage.cs" />
+    <Compile Include="ISubmodule.cs" />
+    <Compile Include="modules\CategoryItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>    
+    
     <Compile Include="BatchFoodImportTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +264,19 @@
     <Compile Include="modules\FoodVarientItem.Designer.cs">
       <DependentUpon>FoodVarientItem.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="modules\AddOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\AddOrder.Designer.cs">
+      <DependentUpon>AddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\ImageCropper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\ImageCropper.Designer.cs">
+      <DependentUpon>ImageCropper.cs</DependentUpon>
+    </Compile>
     <Compile Include="modules\OrderItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -295,6 +334,51 @@
     <Compile Include="modules\TimeSlotFlowPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="OOBE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OOBE.Designer.cs">
+      <DependentUpon>OOBE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\AdminPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\AdminPassword.Designer.cs">
+      <DependentUpon>AdminPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\BasicInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\BasicInfo.Designer.cs">
+      <DependentUpon>BasicInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\FinalInstructions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\FinalInstructions.Designer.cs">
+      <DependentUpon>FinalInstructions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\ShiftConfiguration.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\ShiftConfiguration.Designer.cs">
+      <DependentUpon>ShiftConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\ThemeSelection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\ThemeSelection.Designer.cs">
+      <DependentUpon>ThemeSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OOBE_pages\Welcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OOBE_pages\Welcome.Designer.cs">
+      <DependentUpon>Welcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutlinedLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignatureBoard.cs">
@@ -304,12 +388,26 @@
       <DependentUpon>SignatureBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="ThemeProvider.cs" />
+    <Compile Include="themes\Wisteria.cs" />
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="BatchFoodImportTool.resx">
       <DependentUpon>BatchFoodImportTool.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="controls\TagInput.resx">
       <DependentUpon>TagInput.cs</DependentUpon>
+    </EmbeddedResource>
+
+    <EmbeddedResource Include="controls\ThemePreviewItem.resx">
+      <DependentUpon>ThemePreviewItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="controls\ThemeSelector.resx">
+      <DependentUpon>ThemeSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Display.resx">
+      <DependentUpon>Display.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\CategoryItem.resx">
+      <DependentUpon>CategoryItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="controls\FlatNumericUpDown.resx">
       <DependentUpon>FlatNumericUpDown.cs</DependentUpon>
@@ -362,6 +460,12 @@
     <EmbeddedResource Include="modules\FoodVarientItem.resx">
       <DependentUpon>FoodVarientItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modules\AddOrder.resx">
+      <DependentUpon>AddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\ImageCropper.resx">
+      <DependentUpon>ImageCropper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modules\OrderItem.resx">
       <DependentUpon>OrderItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -386,8 +490,31 @@
     <EmbeddedResource Include="modules\Shift.resx">
       <DependentUpon>Shift.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="modules\Status.resx">
       <DependentUpon>Status.cs</DependentUpon>
+    </EmbeddedResource>
+
+    <EmbeddedResource Include="OOBE.resx">
+      <DependentUpon>OOBE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\AdminPassword.resx">
+      <DependentUpon>AdminPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\BasicInfo.resx">
+      <DependentUpon>BasicInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\FinalInstructions.resx">
+      <DependentUpon>FinalInstructions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\ShiftConfiguration.resx">
+      <DependentUpon>ShiftConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\ThemeSelection.resx">
+      <DependentUpon>ThemeSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OOBE_pages\Welcome.resx">
+      <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RestaurantSystemUI
+namespace RestaurantSystemUI.OOBE_pages
 {
-    public partial class Status : UserControl
+    public partial class AdminPassword : UserControl
     {
-        public Status()
+        public AdminPassword()
         {
             InitializeComponent();
-        }
-
-        private void btnShowDisplay_Click(object sender, EventArgs e)
-        {
-            Display display = new Display();
-            display.Show();
         }
     }
 }

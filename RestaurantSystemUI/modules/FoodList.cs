@@ -105,7 +105,7 @@ namespace RestaurantSystemUI.modules
 
             foreach(Food f in foods)
             {
-                FoodItem foodItem = new FoodItem() { Food = f };
+                FoodItem foodItem = new FoodItem(plusbtn: false, editBtn: true) { Food = f };
                 foodItem.EditFoodClicked += (object _s, EventArgs _e) => {
                     //FoodItem it = _s as FoodItem;
                     FoodEditor editor = new FoodEditor(f);
