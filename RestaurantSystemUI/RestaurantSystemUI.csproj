@@ -127,7 +127,6 @@
     <Compile Include="controls\ThemedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    
     <Compile Include="controls\ThemePreviewItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -148,11 +147,6 @@
     </Compile>
     <Compile Include="ImageCropperBox.cs" />
     <Compile Include="IOOBEPage.cs" />
-    <Compile Include="ISubmodule.cs" />
-    <Compile Include="modules\CategoryItem.cs">
-      <SubType>UserControl</SubType>
-    </Compile>    
-    
     <Compile Include="BatchFoodImportTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,12 +179,6 @@
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="modules\AddOrder.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="modules\AddOrder.Designer.cs">
-      <DependentUpon>AddOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="modules\Attendance.cs">
       <SubType>UserControl</SubType>
@@ -264,7 +252,6 @@
     <Compile Include="modules\FoodVarientItem.Designer.cs">
       <DependentUpon>FoodVarientItem.cs</DependentUpon>
     </Compile>
-
     <Compile Include="modules\AddOrder.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -396,7 +383,6 @@
     <EmbeddedResource Include="controls\TagInput.resx">
       <DependentUpon>TagInput.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="controls\ThemePreviewItem.resx">
       <DependentUpon>ThemePreviewItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -405,9 +391,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Display.resx">
       <DependentUpon>Display.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="modules\CategoryItem.resx">
-      <DependentUpon>CategoryItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="controls\FlatNumericUpDown.resx">
       <DependentUpon>FlatNumericUpDown.cs</DependentUpon>
@@ -420,9 +403,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="modules\AddOrder.resx">
-      <DependentUpon>AddOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\Attendance.resx">
       <DependentUpon>Attendance.cs</DependentUpon>
@@ -490,11 +470,9 @@
     <EmbeddedResource Include="modules\Shift.resx">
       <DependentUpon>Shift.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="modules\Status.resx">
       <DependentUpon>Status.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="OOBE.resx">
       <DependentUpon>OOBE.cs</DependentUpon>
     </EmbeddedResource>
