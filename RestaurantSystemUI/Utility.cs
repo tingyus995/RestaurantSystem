@@ -91,5 +91,19 @@ namespace RestaurantSystemUI
 
             return result;
         }
+
+        public static string[] GetSupportedImageFilenameExtensions()
+        {
+            List<string> result = new List<string>();
+
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();            
+
+            foreach (var c in codecs)
+            {
+                
+                result.AddRange(c.FilenameExtension.Replace("*.","").ToLower().Split(';'));
+            }            
+            return result.ToArray();
+        }
     }
 }

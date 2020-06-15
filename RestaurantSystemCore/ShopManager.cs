@@ -71,6 +71,34 @@ namespace RestaurantSystemCore
                 }
             }
         }
+        public static string ShopPassword
+        {
+            get
+            {
+
+                var result = col_configs.FindOne(x => x.Key == "password");
+
+                if (result == null) return "";
+                return result.Value;
+            }
+            set
+            {
+                var result = col_configs.FindOne(x => x.Key == "password");
+                if (result == null)
+                {
+                    col_configs.Insert(new ShopConfig
+                    {
+                        Key = "password",
+                        Value = value
+                    });
+                }
+                else
+                {
+                    result.Value = value;
+                    col_configs.Update(result);
+                }
+            }
+        }
 
         public static string ShiftCb1StartTime
         {

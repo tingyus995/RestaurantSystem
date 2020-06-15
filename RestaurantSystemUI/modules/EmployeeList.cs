@@ -121,7 +121,7 @@ namespace RestaurantSystemUI.modules
         }
 
         private void Submit_Click(object sender, EventArgs e) {
-            if(password.Text == "")
+            if(password.Text == ShopManager.ShopPassword)
             {
                 MessageBox.Show("登入成功");
                 LoginPanel.Visible = false;

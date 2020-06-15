@@ -127,6 +127,12 @@
     <Compile Include="controls\ThemedLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="BatchFoodImportTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchFoodImportTool.Designer.cs">
+      <DependentUpon>BatchFoodImportTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="ISubmodule.cs" />
     <Compile Include="ColorTheme.cs" />
     <Compile Include="controls\FlatNumericUpDown.cs">
@@ -299,6 +305,9 @@
     </Compile>
     <Compile Include="ThemeProvider.cs" />
     <Compile Include="Utility.cs" />
+    <EmbeddedResource Include="BatchFoodImportTool.resx">
+      <DependentUpon>BatchFoodImportTool.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="controls\TagInput.resx">
       <DependentUpon>TagInput.cs</DependentUpon>
     </EmbeddedResource>

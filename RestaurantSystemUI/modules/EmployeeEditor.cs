@@ -89,7 +89,7 @@ namespace RestaurantSystemUI.modules
         {
             if(employee.Name == null)//create mode
             {
-                MessageBox.Show(" i am new");
+                //MessageBox.Show(" i am new");
                 //check if db already have the same name
                 Employee[] employees = EmployeeManager.GetEmployees();
                 foreach (Employee em in employees)
@@ -159,7 +159,7 @@ namespace RestaurantSystemUI.modules
             }
             catch
             {
-                MessageBox.Show("something went wrong ;(");
+                MessageBox.Show("日期格式錯誤 \n 請輸入 年年年年/月/日");
                 return;
             }
 
