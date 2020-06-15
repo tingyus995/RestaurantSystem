@@ -201,7 +201,7 @@ namespace RestaurantSystemUI.modules
                         else
                         {
                             ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm");
-                            CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                            CheckInSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
                            
                         }
                         if (holder.worktime.ActualEnd == null)
@@ -213,7 +213,7 @@ namespace RestaurantSystemUI.modules
                         else
                         {
                             ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm");
-                            CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
+                            CheckOutSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
                         }
                     }
                     else if (IsTimeInRange(holder.worktime.ActualStart.Value, holder.worktime.StartTime.AddMinutes(-10), holder.worktime.StartTime) && IsTimeInRange(holder.worktime.ActualEnd.Value, holder.worktime.EndTime, holder.worktime.EndTime.AddMinutes(10)))
@@ -221,8 +221,8 @@ namespace RestaurantSystemUI.modules
                         status = "已打卡";
                         ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm");
                         ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm");
-                        CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
-                        CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
+                        CheckInSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                        CheckOutSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
 
                     }
                     else
@@ -250,8 +250,8 @@ namespace RestaurantSystemUI.modules
                         status = "打卡異常";
                         ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm")+StartLateMinutes;
                         ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm")+EndEarlyMinutes;
-                        CheckInSignature = "![Hello World](data:image/png;base64,"+Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature))+")";
-                        CheckOutSignature = "![Hello World](data:image/png;base64,"+Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature))+")";
+                        CheckInSignature = "![員工簽名圖檔](data:image/png;base64,"+Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature))+")";
+                        CheckOutSignature = "![員工簽名圖檔](data:image/png;base64,"+Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature))+")";
                     }
                     
 
@@ -587,7 +587,7 @@ namespace RestaurantSystemUI.modules
                                 else
                                 {
                                     ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm");
-                                    CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                                    CheckInSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
 
                                 }
                                 if (holder.worktime.ActualEnd == null)
@@ -599,7 +599,7 @@ namespace RestaurantSystemUI.modules
                                 else
                                 {
                                     ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm");
-                                    CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
+                                    CheckOutSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
                                 }
                             }
                             else if (IsTimeInRange(holder.worktime.ActualStart.Value, holder.worktime.StartTime.AddMinutes(-10), holder.worktime.StartTime) && IsTimeInRange(holder.worktime.ActualEnd.Value, holder.worktime.EndTime, holder.worktime.EndTime.AddMinutes(10)))
@@ -607,8 +607,8 @@ namespace RestaurantSystemUI.modules
                                 status = "已打卡";
                                 ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm");
                                 ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm");
-                                CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
-                                CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
+                                CheckInSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                                CheckOutSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
 
                             }
                             else
@@ -636,8 +636,8 @@ namespace RestaurantSystemUI.modules
                                 status = "打卡異常";
                                 ActualStart = holder.worktime.ActualStart.Value.ToString("yyyy/M/d HH:mm") + StartLateMinutes; ;
                                 ActualEnd = holder.worktime.ActualEnd.Value.ToString("yyyy/M/d HH:mm") + EndEarlyMinutes;
-                                CheckInSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
-                                CheckOutSignature = "![Hello World](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
+                                CheckInSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckInSignature)) + ")";
+                                CheckOutSignature = "![員工簽名圖檔](data:image/png;base64," + Utility.ImageToBase64(Utility.BytesToImage(holder.worktime.CheckOutSignature)) + ")";
                             }
                             tb.Add(string.Format("|{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|",
                                 holder.employee.Name.ToString(),

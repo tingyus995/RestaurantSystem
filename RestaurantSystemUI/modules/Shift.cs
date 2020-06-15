@@ -239,6 +239,9 @@ namespace RestaurantSystemUI
                 deleteAllWorkingTimes();
 
             }
+            SetUpShift();
+            loadShiftData();
+
         }
 
 
@@ -487,8 +490,8 @@ namespace RestaurantSystemUI
 
         private void SetUpShift()
         {
-            CurrentWeekButton.Text = CurrentWeekStart.ToLongDateString()+"~"+ CurrentWeekEnd.ToLongDateString();
-
+            CurrentWeekLabel.Text = CurrentWeekStart.ToLongDateString()+"~"+ CurrentWeekEnd.ToLongDateString();
+            Console.WriteLine(CurrentWeekLabel.Text);
             //employee
             
             employeeList = EmployeeManager.GetEmployees("clerk");
@@ -716,6 +719,7 @@ namespace RestaurantSystemUI
         }
         private void NextWeekButton_Click(object sender, EventArgs e)
         {
+
             CurrentWeekStart = CurrentWeekStart.AddDays(7);
             CurrentWeekEnd = CurrentWeekEnd.AddDays(7);
             SetUpShift();

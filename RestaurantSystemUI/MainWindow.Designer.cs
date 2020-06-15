@@ -90,7 +90,7 @@
             this.iconButton9.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton9.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.iconButton9.ForeColor = System.Drawing.Color.White;
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.Tasks;
+            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
             this.iconButton9.IconColor = System.Drawing.Color.White;
             this.iconButton9.IconSize = 32;
             this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -117,7 +117,7 @@
             this.iconButton3.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.iconButton3.ForeColor = System.Drawing.Color.White;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Tasks;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.BusinessTime;
             this.iconButton3.IconColor = System.Drawing.Color.White;
             this.iconButton3.IconSize = 32;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -144,7 +144,7 @@
             this.iconButton7.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton7.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.iconButton7.ForeColor = System.Drawing.Color.White;
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.Tasks;
+            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.CalendarAlt;
             this.iconButton7.IconColor = System.Drawing.Color.White;
             this.iconButton7.IconSize = 32;
             this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -171,7 +171,7 @@
             this.iconButton5.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.iconButton5.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.iconButton5.ForeColor = System.Drawing.Color.White;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.Tasks;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
             this.iconButton5.IconColor = System.Drawing.Color.White;
             this.iconButton5.IconSize = 32;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
