@@ -12,8 +12,21 @@ namespace RestaurantSystemUI
 {
     public partial class FlatTextbox : UserControl
     {
-        
+
         public string PlaceHolder { get; set; }
+
+        public bool IsPassword
+        {
+            get
+            {
+                return textBox.UseSystemPasswordChar;
+            }
+            set
+            {
+                textBox.UseSystemPasswordChar = value;
+            }
+        }
+
 
 
         public FlatTextbox()
@@ -21,7 +34,7 @@ namespace RestaurantSystemUI
 
             InitializeComponent();
         }
-        
+
 
         private void FlatTextbox_Load(object sender, EventArgs e)
         {
@@ -36,7 +49,7 @@ namespace RestaurantSystemUI
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
-            if(textBox.Text.Length > 0)
+            if (textBox.Text.Length > 0)
             {
                 lbPlaceholder.Visible = false;
             }
@@ -46,11 +59,11 @@ namespace RestaurantSystemUI
             }
         }
 
-        
+
 
         private void handleClick(object sender, EventArgs e)
         {
-            textBox.Focus();            
+            textBox.Focus();
         }
 
         private void FlatTextbox_BackColorChanged(object sender, EventArgs e)

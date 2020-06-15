@@ -145,6 +145,7 @@
     <Compile Include="Display.Designer.cs">
       <DependentUpon>Display.cs</DependentUpon>
     </Compile>
+    <Compile Include="IAdminView.cs" />
     <Compile Include="ImageCropperBox.cs" />
     <Compile Include="IOOBEPage.cs" />
     <Compile Include="BatchFoodImportTool.cs">
@@ -263,6 +264,12 @@
     </Compile>
     <Compile Include="modules\ImageCropper.Designer.cs">
       <DependentUpon>ImageCropper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modules\LockScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="modules\LockScreen.Designer.cs">
+      <DependentUpon>LockScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="modules\OrderItem.cs">
       <SubType>UserControl</SubType>
@@ -445,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modules\ImageCropper.resx">
       <DependentUpon>ImageCropper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modules\LockScreen.resx">
+      <DependentUpon>LockScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modules\OrderItem.resx">
       <DependentUpon>OrderItem.cs</DependentUpon>

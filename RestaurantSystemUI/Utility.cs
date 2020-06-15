@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace RestaurantSystemUI
 {
     public static class Utility
     {
-        public static string ImageToBase64(Bitmap image)
+        public static string ImageToBase64(Image image)
         {
             if (image == null) return null;
                 // Convert byte[] to Base64 String
@@ -20,7 +21,7 @@ namespace RestaurantSystemUI
                 return base64String;            
         }
 
-        public static byte[] ImageToBytes(Bitmap image)
+        public static byte[] ImageToBytes(Image image)
         {
             if (image == null) return null;
             using (MemoryStream ms = new MemoryStream())
@@ -119,6 +120,23 @@ namespace RestaurantSystemUI
             }
 
             return null;
+        }
+
+        public static string Sha1Hash(string input)
+        {
+            using (SHA1Managed sha1 = new SHA1Managed())
+            {
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(input));
+                var sb = new StringBuilder(hash.Length * 2);
+
+                foreach (byte b in hash)
+                {
+                    // can be "x2" if you want lowercase
+                    sb.Append(b.ToString("X2"));
+                }
+
+                return sb.ToString();
+            }
         }
     }
 }

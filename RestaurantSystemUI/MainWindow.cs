@@ -221,9 +221,28 @@ namespace RestaurantSystemUI
                     p.page.BringToFront();
                     if (p.page is IThemeable)
                         ((IThemeable)p.page).ApplyTheme();
+                    if(p.page is IAdminView)
+                    {
+                        // check if there's already a lock screen in place
+                        
+                        bool hasLockScreen = false;
+
+                        foreach(Control c in p.page.Controls)
+                        {
+                            if( c is LockScreen)
+                            {
+                                hasLockScreen = true;
+                                break;
+                            }
+                        }
+                        if (!hasLockScreen) { 
+                            Utility.ShowFullSpaceDialog(p.page, new LockScreen());
+                        }
+                    }
+
                     if (p.page is ISubmodule)
                         ((ISubmodule)p.page).BeforeMounted();
-
+                    
                     
                     break;
                 }

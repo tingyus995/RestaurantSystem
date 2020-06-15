@@ -61,11 +61,11 @@
             // pnMenuBar
             // 
             this.pnMenuBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.pnMenuBar.Controls.Add(this.pnActiveIndicator);
             this.pnMenuBar.Controls.Add(this.iconButton9);
             this.pnMenuBar.Controls.Add(this.iconButton3);
             this.pnMenuBar.Controls.Add(this.iconButton7);
             this.pnMenuBar.Controls.Add(this.iconButton5);
-            this.pnMenuBar.Controls.Add(this.pnActiveIndicator);
             this.pnMenuBar.Controls.Add(this.iconButton6);
             this.pnMenuBar.Controls.Add(this.iconButton4);
             this.pnMenuBar.Controls.Add(this.iconButton2);
@@ -73,10 +73,9 @@
             this.pnMenuBar.Controls.Add(this.ibOrder);
             this.pnMenuBar.Controls.Add(this.panel2);
             this.pnMenuBar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnMenuBar.Location = new System.Drawing.Point(0, 42);
-            this.pnMenuBar.Margin = new System.Windows.Forms.Padding(4);
+            this.pnMenuBar.Location = new System.Drawing.Point(0, 30);
             this.pnMenuBar.Name = "pnMenuBar";
-            this.pnMenuBar.Size = new System.Drawing.Size(375, 778);
+            this.pnMenuBar.Size = new System.Drawing.Size(250, 562);
             this.pnMenuBar.TabIndex = 5;
             // 
             // iconButton9
@@ -94,12 +93,12 @@
             this.iconButton9.IconColor = System.Drawing.Color.White;
             this.iconButton9.IconSize = 32;
             this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton9.Location = new System.Drawing.Point(0, 643);
-            this.iconButton9.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.iconButton9.Location = new System.Drawing.Point(0, 466);
+            this.iconButton9.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.iconButton9.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton9.Rotation = 0D;
-            this.iconButton9.Size = new System.Drawing.Size(375, 69);
+            this.iconButton9.Size = new System.Drawing.Size(250, 50);
             this.iconButton9.TabIndex = 18;
             this.iconButton9.Text = "營業報表";
             this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -121,12 +120,12 @@
             this.iconButton3.IconColor = System.Drawing.Color.White;
             this.iconButton3.IconSize = 32;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(0, 574);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.iconButton3.Location = new System.Drawing.Point(0, 416);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.iconButton3.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton3.Rotation = 0D;
-            this.iconButton3.Size = new System.Drawing.Size(375, 69);
+            this.iconButton3.Size = new System.Drawing.Size(250, 50);
             this.iconButton3.TabIndex = 16;
             this.iconButton3.Text = "打卡管理";
             this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,12 +147,12 @@
             this.iconButton7.IconColor = System.Drawing.Color.White;
             this.iconButton7.IconSize = 32;
             this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(0, 505);
-            this.iconButton7.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.iconButton7.Location = new System.Drawing.Point(0, 366);
+            this.iconButton7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.iconButton7.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton7.Rotation = 0D;
-            this.iconButton7.Size = new System.Drawing.Size(375, 69);
+            this.iconButton7.Size = new System.Drawing.Size(250, 50);
             this.iconButton7.TabIndex = 15;
             this.iconButton7.Text = "排班管理";
             this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -175,12 +174,12 @@
             this.iconButton5.IconColor = System.Drawing.Color.White;
             this.iconButton5.IconSize = 32;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 436);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.iconButton5.Location = new System.Drawing.Point(0, 316);
+            this.iconButton5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.iconButton5.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton5.Rotation = 0D;
-            this.iconButton5.Size = new System.Drawing.Size(375, 69);
+            this.iconButton5.Size = new System.Drawing.Size(250, 50);
             this.iconButton5.TabIndex = 14;
             this.iconButton5.Text = "人員管理";
             this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -190,10 +189,9 @@
             // pnActiveIndicator
             // 
             this.pnActiveIndicator.BackColor = System.Drawing.Color.White;
-            this.pnActiveIndicator.Location = new System.Drawing.Point(0, 708);
-            this.pnActiveIndicator.Margin = new System.Windows.Forms.Padding(4);
+            this.pnActiveIndicator.Location = new System.Drawing.Point(0, 511);
             this.pnActiveIndicator.Name = "pnActiveIndicator";
-            this.pnActiveIndicator.Size = new System.Drawing.Size(15, 69);
+            this.pnActiveIndicator.Size = new System.Drawing.Size(10, 50);
             this.pnActiveIndicator.TabIndex = 10;
             // 
             // iconButton6
@@ -211,12 +209,12 @@
             this.iconButton6.IconColor = System.Drawing.Color.White;
             this.iconButton6.IconSize = 32;
             this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.Location = new System.Drawing.Point(0, 367);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.iconButton6.Location = new System.Drawing.Point(0, 266);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.iconButton6.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton6.Rotation = 0D;
-            this.iconButton6.Size = new System.Drawing.Size(375, 69);
+            this.iconButton6.Size = new System.Drawing.Size(250, 50);
             this.iconButton6.TabIndex = 13;
             this.iconButton6.Text = "食物管理";
             this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -238,12 +236,12 @@
             this.iconButton4.IconColor = System.Drawing.Color.White;
             this.iconButton4.IconSize = 32;
             this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 298);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.iconButton4.Location = new System.Drawing.Point(0, 216);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.iconButton4.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(375, 69);
+            this.iconButton4.Size = new System.Drawing.Size(250, 50);
             this.iconButton4.TabIndex = 11;
             this.iconButton4.Text = "系統設定";
             this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -265,12 +263,12 @@
             this.iconButton2.IconColor = System.Drawing.Color.White;
             this.iconButton2.IconSize = 32;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 229);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.iconButton2.Location = new System.Drawing.Point(0, 166);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.iconButton2.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton2.Rotation = 0D;
-            this.iconButton2.Size = new System.Drawing.Size(375, 69);
+            this.iconButton2.Size = new System.Drawing.Size(250, 50);
             this.iconButton2.TabIndex = 8;
             this.iconButton2.Text = "狀態管理";
             this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -292,12 +290,12 @@
             this.iconButton1.IconColor = System.Drawing.Color.White;
             this.iconButton1.IconSize = 32;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 160);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.iconButton1.Location = new System.Drawing.Point(0, 116);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.iconButton1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(375, 69);
+            this.iconButton1.Size = new System.Drawing.Size(250, 50);
             this.iconButton1.TabIndex = 7;
             this.iconButton1.Text = "點菜清單";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -319,12 +317,12 @@
             this.ibOrder.IconColor = System.Drawing.Color.White;
             this.ibOrder.IconSize = 32;
             this.ibOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ibOrder.Location = new System.Drawing.Point(0, 91);
-            this.ibOrder.Margin = new System.Windows.Forms.Padding(9, 8, 9, 8);
+            this.ibOrder.Location = new System.Drawing.Point(0, 66);
+            this.ibOrder.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ibOrder.Name = "ibOrder";
-            this.ibOrder.Padding = new System.Windows.Forms.Padding(45, 0, 0, 0);
+            this.ibOrder.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.ibOrder.Rotation = 0D;
-            this.ibOrder.Size = new System.Drawing.Size(375, 69);
+            this.ibOrder.Size = new System.Drawing.Size(250, 50);
             this.ibOrder.TabIndex = 6;
             this.ibOrder.Text = "點菜作業";
             this.ibOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,9 +335,8 @@
             this.panel2.Controls.Add(this.lbShopName);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(375, 91);
+            this.panel2.Size = new System.Drawing.Size(250, 66);
             this.panel2.TabIndex = 0;
             // 
             // pictureBox1
@@ -347,9 +344,8 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 91);
+            this.pictureBox1.Size = new System.Drawing.Size(78, 66);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -359,10 +355,9 @@
             this.lbShopName.AutoSize = true;
             this.lbShopName.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbShopName.ForeColor = System.Drawing.Color.White;
-            this.lbShopName.Location = new System.Drawing.Point(126, 33);
-            this.lbShopName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbShopName.Location = new System.Drawing.Point(84, 24);
             this.lbShopName.Name = "lbShopName";
-            this.lbShopName.Size = new System.Drawing.Size(145, 40);
+            this.lbShopName.Size = new System.Drawing.Size(96, 26);
             this.lbShopName.TabIndex = 0;
             this.lbShopName.Text = "店家名稱";
             // 
@@ -375,9 +370,8 @@
             this.pnTitleBar.Controls.Add(this.lbProgramName);
             this.pnTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.pnTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnTitleBar.Name = "pnTitleBar";
-            this.pnTitleBar.Size = new System.Drawing.Size(1648, 42);
+            this.pnTitleBar.Size = new System.Drawing.Size(1099, 30);
             this.pnTitleBar.TabIndex = 7;
             // 
             // ibtnMinimizeWindow
@@ -389,11 +383,10 @@
             this.ibtnMinimizeWindow.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize;
             this.ibtnMinimizeWindow.IconColor = System.Drawing.Color.White;
             this.ibtnMinimizeWindow.IconSize = 16;
-            this.ibtnMinimizeWindow.Location = new System.Drawing.Point(1513, 0);
-            this.ibtnMinimizeWindow.Margin = new System.Windows.Forms.Padding(4);
+            this.ibtnMinimizeWindow.Location = new System.Drawing.Point(1009, 0);
             this.ibtnMinimizeWindow.Name = "ibtnMinimizeWindow";
             this.ibtnMinimizeWindow.Rotation = 0D;
-            this.ibtnMinimizeWindow.Size = new System.Drawing.Size(45, 42);
+            this.ibtnMinimizeWindow.Size = new System.Drawing.Size(30, 30);
             this.ibtnMinimizeWindow.TabIndex = 2;
             this.ibtnMinimizeWindow.UseVisualStyleBackColor = true;
             this.ibtnMinimizeWindow.Click += new System.EventHandler(this.ibtnMinimizeWindow_Click);
@@ -408,11 +401,10 @@
             this.ibtnMaximizeWindow.IconColor = System.Drawing.Color.White;
             this.ibtnMaximizeWindow.IconSize = 16;
             this.ibtnMaximizeWindow.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ibtnMaximizeWindow.Location = new System.Drawing.Point(1558, 0);
-            this.ibtnMaximizeWindow.Margin = new System.Windows.Forms.Padding(4);
+            this.ibtnMaximizeWindow.Location = new System.Drawing.Point(1039, 0);
             this.ibtnMaximizeWindow.Name = "ibtnMaximizeWindow";
             this.ibtnMaximizeWindow.Rotation = 0D;
-            this.ibtnMaximizeWindow.Size = new System.Drawing.Size(45, 42);
+            this.ibtnMaximizeWindow.Size = new System.Drawing.Size(30, 30);
             this.ibtnMaximizeWindow.TabIndex = 1;
             this.ibtnMaximizeWindow.UseVisualStyleBackColor = true;
             this.ibtnMaximizeWindow.Click += new System.EventHandler(this.ibtnMaximizeWindow_Click);
@@ -427,11 +419,10 @@
             this.ibtnCloseWindow.IconColor = System.Drawing.Color.White;
             this.ibtnCloseWindow.IconSize = 16;
             this.ibtnCloseWindow.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ibtnCloseWindow.Location = new System.Drawing.Point(1603, 0);
-            this.ibtnCloseWindow.Margin = new System.Windows.Forms.Padding(4);
+            this.ibtnCloseWindow.Location = new System.Drawing.Point(1069, 0);
             this.ibtnCloseWindow.Name = "ibtnCloseWindow";
             this.ibtnCloseWindow.Rotation = 0D;
-            this.ibtnCloseWindow.Size = new System.Drawing.Size(45, 42);
+            this.ibtnCloseWindow.Size = new System.Drawing.Size(30, 30);
             this.ibtnCloseWindow.TabIndex = 0;
             this.ibtnCloseWindow.UseVisualStyleBackColor = true;
             this.ibtnCloseWindow.Click += new System.EventHandler(this.ibtnCloseWindow_Click);
@@ -442,9 +433,8 @@
             this.lbProgramName.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lbProgramName.ForeColor = System.Drawing.Color.White;
             this.lbProgramName.Location = new System.Drawing.Point(0, 0);
-            this.lbProgramName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbProgramName.Name = "lbProgramName";
-            this.lbProgramName.Size = new System.Drawing.Size(1648, 42);
+            this.lbProgramName.Size = new System.Drawing.Size(1099, 30);
             this.lbProgramName.TabIndex = 3;
             this.lbProgramName.Text = "NPTU POS";
             this.lbProgramName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -455,10 +445,9 @@
             this.pnContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.pnContainer.Controls.Add(this.label2);
             this.pnContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnContainer.Location = new System.Drawing.Point(375, 42);
-            this.pnContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.pnContainer.Location = new System.Drawing.Point(250, 30);
             this.pnContainer.Name = "pnContainer";
-            this.pnContainer.Size = new System.Drawing.Size(1273, 778);
+            this.pnContainer.Size = new System.Drawing.Size(849, 562);
             this.pnContainer.TabIndex = 8;
             this.pnContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnContainer_Paint);
             // 
@@ -468,10 +457,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(428, 328);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(285, 237);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(465, 80);
+            this.label2.Size = new System.Drawing.Size(306, 52);
             this.label2.TabIndex = 1;
             this.label2.Text = "歡迎使用本系統\r\n使用左側選單選取要使用的功能";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -484,19 +472,17 @@
             this.pnContentWrapper.Controls.Add(this.pnTitleBar);
             this.pnContentWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnContentWrapper.Location = new System.Drawing.Point(0, 0);
-            this.pnContentWrapper.Margin = new System.Windows.Forms.Padding(4);
             this.pnContentWrapper.Name = "pnContentWrapper";
-            this.pnContentWrapper.Size = new System.Drawing.Size(1648, 820);
+            this.pnContentWrapper.Size = new System.Drawing.Size(1099, 592);
             this.pnContentWrapper.TabIndex = 9;
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1648, 820);
+            this.ClientSize = new System.Drawing.Size(1099, 592);
             this.Controls.Add(this.pnContentWrapper);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);

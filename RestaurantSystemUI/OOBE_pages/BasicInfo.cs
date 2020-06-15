@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RestaurantSystemUI.modules;
+using RestaurantSystemCore;
 
 namespace RestaurantSystemUI.OOBE_pages
 {
@@ -45,7 +46,10 @@ namespace RestaurantSystemUI.OOBE_pages
                 return false;
             }
 
-            
+            // save 
+
+            ShopManager.ShopName = flatTextbox1.textBox.Text;
+            ShopManager.ShopLogo = Utility.ImageToBase64(pictureBox1.Image);
 
             return true;
         }

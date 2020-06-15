@@ -63,7 +63,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(113, 467);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(113, 506);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -75,18 +75,18 @@
             this.panel1.Location = new System.Drawing.Point(113, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(914, 467);
+            this.panel1.Size = new System.Drawing.Size(914, 506);
             this.panel1.TabIndex = 4;
             // 
             // container
             // 
             this.container.AllowDrop = true;
             this.container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.container.Location = new System.Drawing.Point(0, 165);
+            this.container.Location = new System.Drawing.Point(0, 179);
             this.container.Margin = new System.Windows.Forms.Padding(2);
             this.container.Name = "container";
-            this.container.Padding = new System.Windows.Forms.Padding(0, 0, 0, 13);
-            this.container.Size = new System.Drawing.Size(914, 302);
+            this.container.Padding = new System.Windows.Forms.Padding(0, 0, 0, 14);
+            this.container.Size = new System.Drawing.Size(914, 327);
             this.container.TabIndex = 2;
             // 
             // panel2
@@ -101,7 +101,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(914, 165);
+            this.panel2.Size = new System.Drawing.Size(914, 179);
             this.panel2.TabIndex = 1;
             // 
             // btnClear
@@ -116,9 +116,9 @@
             this.btnClear.IconChar = FontAwesome.Sharp.IconChar.CalendarTimes;
             this.btnClear.IconColor = System.Drawing.Color.White;
             this.btnClear.IconSize = 18;
-            this.btnClear.Location = new System.Drawing.Point(504, 45);
+            this.btnClear.Location = new System.Drawing.Point(504, 49);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
-            this.btnClear.MinimumSize = new System.Drawing.Size(7, 7);
+            this.btnClear.MinimumSize = new System.Drawing.Size(7, 8);
             this.btnClear.Name = "btnClear";
             this.btnClear.Rotation = 0D;
             this.btnClear.Size = new System.Drawing.Size(154, 36);
@@ -133,7 +133,7 @@
             this.lbSystemTime.AutoSize = true;
             this.lbSystemTime.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold);
             this.lbSystemTime.ForeColor = System.Drawing.Color.White;
-            this.lbSystemTime.Location = new System.Drawing.Point(195, 11);
+            this.lbSystemTime.Location = new System.Drawing.Point(195, 12);
             this.lbSystemTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbSystemTime.Name = "lbSystemTime";
             this.lbSystemTime.Size = new System.Drawing.Size(142, 28);
@@ -149,10 +149,10 @@
             this.panel4.Controls.Add(this.comboBox1);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label1);
-            this.panel4.Location = new System.Drawing.Point(15, 102);
+            this.panel4.Location = new System.Drawing.Point(15, 111);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(793, 49);
+            this.panel4.Size = new System.Drawing.Size(793, 53);
             this.panel4.TabIndex = 2;
             // 
             // btnFormat
@@ -167,9 +167,9 @@
             this.btnFormat.IconChar = FontAwesome.Sharp.IconChar.Save;
             this.btnFormat.IconColor = System.Drawing.Color.White;
             this.btnFormat.IconSize = 18;
-            this.btnFormat.Location = new System.Drawing.Point(478, 9);
+            this.btnFormat.Location = new System.Drawing.Point(478, 10);
             this.btnFormat.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFormat.MinimumSize = new System.Drawing.Size(7, 7);
+            this.btnFormat.MinimumSize = new System.Drawing.Size(7, 8);
             this.btnFormat.Name = "btnFormat";
             this.btnFormat.Rotation = 0D;
             this.btnFormat.Size = new System.Drawing.Size(154, 36);
@@ -181,11 +181,12 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(385, 13);
+            this.comboBox3.Location = new System.Drawing.Point(385, 14);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(82, 20);
+            this.comboBox3.Size = new System.Drawing.Size(82, 21);
             this.comboBox3.TabIndex = 11;
             // 
             // label2
@@ -194,7 +195,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(332, 9);
+            this.label2.Location = new System.Drawing.Point(332, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 26);
             this.label2.TabIndex = 9;
@@ -202,21 +203,23 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(249, 14);
+            this.comboBox2.Location = new System.Drawing.Point(249, 15);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(82, 20);
+            this.comboBox2.Size = new System.Drawing.Size(82, 21);
             this.comboBox2.TabIndex = 10;
             this.comboBox2.SelectionChangeCommitted += new System.EventHandler(this.comboBox2_SelectionChangeCommitted);
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(109, 13);
+            this.comboBox1.Location = new System.Drawing.Point(109, 14);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(82, 20);
+            this.comboBox1.Size = new System.Drawing.Size(82, 21);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
             // 
@@ -226,7 +229,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(193, 9);
+            this.label3.Location = new System.Drawing.Point(193, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 26);
             this.label3.TabIndex = 8;
@@ -238,7 +241,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(7, 9);
+            this.label1.Location = new System.Drawing.Point(7, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 26);
             this.label1.TabIndex = 5;
@@ -248,10 +251,10 @@
             // 
             this.cbGodMode.AutoSize = true;
             this.cbGodMode.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cbGodMode.Location = new System.Drawing.Point(426, 57);
+            this.cbGodMode.Location = new System.Drawing.Point(426, 62);
             this.cbGodMode.Margin = new System.Windows.Forms.Padding(2);
             this.cbGodMode.Name = "cbGodMode";
-            this.cbGodMode.Size = new System.Drawing.Size(71, 16);
+            this.cbGodMode.Size = new System.Drawing.Size(73, 17);
             this.cbGodMode.TabIndex = 15;
             this.cbGodMode.Text = "GodMode";
             this.cbGodMode.UseVisualStyleBackColor = true;
@@ -262,10 +265,10 @@
             this.panel3.Controls.Add(this.NextWeekButton);
             this.panel3.Controls.Add(this.PreviousWeekButton);
             this.panel3.Controls.Add(this.CurrentWeekLabel);
-            this.panel3.Location = new System.Drawing.Point(27, 40);
+            this.panel3.Location = new System.Drawing.Point(27, 43);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(375, 48);
+            this.panel3.Size = new System.Drawing.Size(375, 52);
             this.panel3.TabIndex = 2;
             // 
             // NextWeekButton
@@ -282,10 +285,10 @@
             this.NextWeekButton.IconSize = 30;
             this.NextWeekButton.Location = new System.Drawing.Point(326, 5);
             this.NextWeekButton.Margin = new System.Windows.Forms.Padding(2);
-            this.NextWeekButton.MinimumSize = new System.Drawing.Size(7, 7);
+            this.NextWeekButton.MinimumSize = new System.Drawing.Size(7, 8);
             this.NextWeekButton.Name = "NextWeekButton";
             this.NextWeekButton.Rotation = 0D;
-            this.NextWeekButton.Size = new System.Drawing.Size(43, 36);
+            this.NextWeekButton.Size = new System.Drawing.Size(43, 39);
             this.NextWeekButton.TabIndex = 1;
             this.NextWeekButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NextWeekButton.UseVisualStyleBackColor = true;
@@ -305,10 +308,10 @@
             this.PreviousWeekButton.IconSize = 30;
             this.PreviousWeekButton.Location = new System.Drawing.Point(19, 5);
             this.PreviousWeekButton.Margin = new System.Windows.Forms.Padding(2);
-            this.PreviousWeekButton.MinimumSize = new System.Drawing.Size(7, 7);
+            this.PreviousWeekButton.MinimumSize = new System.Drawing.Size(7, 8);
             this.PreviousWeekButton.Name = "PreviousWeekButton";
             this.PreviousWeekButton.Rotation = 0D;
-            this.PreviousWeekButton.Size = new System.Drawing.Size(43, 36);
+            this.PreviousWeekButton.Size = new System.Drawing.Size(43, 39);
             this.PreviousWeekButton.TabIndex = 0;
             this.PreviousWeekButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PreviousWeekButton.UseVisualStyleBackColor = true;
@@ -319,7 +322,7 @@
             this.CurrentWeekLabel.AutoSize = true;
             this.CurrentWeekLabel.Font = new System.Drawing.Font("Microsoft JhengHei UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.CurrentWeekLabel.ForeColor = System.Drawing.Color.White;
-            this.CurrentWeekLabel.Location = new System.Drawing.Point(74, 13);
+            this.CurrentWeekLabel.Location = new System.Drawing.Point(74, 14);
             this.CurrentWeekLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CurrentWeekLabel.Name = "CurrentWeekLabel";
             this.CurrentWeekLabel.Size = new System.Drawing.Size(236, 19);
@@ -334,14 +337,14 @@
             // Shift
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Shift";
-            this.Size = new System.Drawing.Size(1027, 467);
+            this.Size = new System.Drawing.Size(1027, 506);
             this.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Shift_GiveFeedback);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

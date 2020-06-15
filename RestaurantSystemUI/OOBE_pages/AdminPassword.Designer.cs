@@ -31,11 +31,13 @@
             this.flatTextbox1 = new RestaurantSystemUI.FlatTextbox();
             this.themedLabel2 = new RestaurantSystemUI.controls.ThemedLabel();
             this.themedLabel1 = new RestaurantSystemUI.controls.ThemedLabel();
+            this.flatTextbox2 = new RestaurantSystemUI.FlatTextbox();
             this.SuspendLayout();
             // 
             // flatTextbox1
             // 
             this.flatTextbox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.flatTextbox1.IsPassword = true;
             this.flatTextbox1.Location = new System.Drawing.Point(123, 157);
             this.flatTextbox1.Name = "flatTextbox1";
             this.flatTextbox1.PlaceHolder = "請輸入密碼";
@@ -65,11 +67,22 @@
             this.themedLabel1.TabIndex = 6;
             this.themedLabel1.Text = "管理員密碼";
             // 
+            // flatTextbox2
+            // 
+            this.flatTextbox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.flatTextbox2.IsPassword = true;
+            this.flatTextbox2.Location = new System.Drawing.Point(123, 208);
+            this.flatTextbox2.Name = "flatTextbox2";
+            this.flatTextbox2.PlaceHolder = "請輸入確認密碼";
+            this.flatTextbox2.Size = new System.Drawing.Size(313, 45);
+            this.flatTextbox2.TabIndex = 9;
+            // 
             // AdminPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.Controls.Add(this.flatTextbox2);
             this.Controls.Add(this.flatTextbox1);
             this.Controls.Add(this.themedLabel2);
             this.Controls.Add(this.themedLabel1);
@@ -85,5 +98,6 @@
         private FlatTextbox flatTextbox1;
         private controls.ThemedLabel themedLabel2;
         private controls.ThemedLabel themedLabel1;
+        private FlatTextbox flatTextbox2;
     }
 }
