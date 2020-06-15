@@ -38,10 +38,10 @@
             this.themedLabel2.AutoSize = true;
             this.themedLabel2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.themedLabel2.ForeColor = System.Drawing.Color.White;
-            this.themedLabel2.Location = new System.Drawing.Point(39, 99);
-            this.themedLabel2.MaximumSize = new System.Drawing.Size(500, 0);
+            this.themedLabel2.Location = new System.Drawing.Point(29, 90);
+            this.themedLabel2.MaximumSize = new System.Drawing.Size(600, 0);
             this.themedLabel2.Name = "themedLabel2";
-            this.themedLabel2.Size = new System.Drawing.Size(474, 70);
+            this.themedLabel2.Size = new System.Drawing.Size(582, 70);
             this.themedLabel2.TabIndex = 9;
             this.themedLabel2.Text = "設定完成後請到食物管理新增食物，到人員管理新增員工！";
             this.themedLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,7 +51,7 @@
             this.themedLabel1.AutoSize = true;
             this.themedLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.themedLabel1.ForeColor = System.Drawing.Color.White;
-            this.themedLabel1.Location = new System.Drawing.Point(157, 21);
+            this.themedLabel1.Location = new System.Drawing.Point(202, 25);
             this.themedLabel1.Name = "themedLabel1";
             this.themedLabel1.Size = new System.Drawing.Size(242, 47);
             this.themedLabel1.TabIndex = 8;
@@ -69,7 +69,7 @@
             this.btnStartSystem.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
             this.btnStartSystem.IconColor = System.Drawing.Color.White;
             this.btnStartSystem.IconSize = 18;
-            this.btnStartSystem.Location = new System.Drawing.Point(210, 278);
+            this.btnStartSystem.Location = new System.Drawing.Point(256, 264);
             this.btnStartSystem.MinimumSize = new System.Drawing.Size(10, 10);
             this.btnStartSystem.Name = "btnStartSystem";
             this.btnStartSystem.Rotation = 0D;
@@ -89,7 +89,7 @@
             this.Controls.Add(this.themedLabel2);
             this.Controls.Add(this.themedLabel1);
             this.Name = "FinalInstructions";
-            this.Size = new System.Drawing.Size(556, 469);
+            this.Size = new System.Drawing.Size(640, 480);
             this.ResumeLayout(false);
             this.PerformLayout();
 

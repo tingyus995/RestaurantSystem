@@ -37,7 +37,7 @@
             this.themedLabel2.AutoSize = true;
             this.themedLabel2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.themedLabel2.ForeColor = System.Drawing.Color.White;
-            this.themedLabel2.Location = new System.Drawing.Point(137, 98);
+            this.themedLabel2.Location = new System.Drawing.Point(140, 61);
             this.themedLabel2.MaximumSize = new System.Drawing.Size(500, 0);
             this.themedLabel2.Name = "themedLabel2";
             this.themedLabel2.Size = new System.Drawing.Size(366, 35);
@@ -50,7 +50,7 @@
             this.themedLabel1.AutoSize = true;
             this.themedLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.themedLabel1.ForeColor = System.Drawing.Color.White;
-            this.themedLabel1.Location = new System.Drawing.Point(197, 21);
+            this.themedLabel1.Location = new System.Drawing.Point(197, 14);
             this.themedLabel1.Name = "themedLabel1";
             this.themedLabel1.Size = new System.Drawing.Size(242, 47);
             this.themedLabel1.TabIndex = 10;
@@ -65,6 +65,7 @@
             this.Controls.Add(this.themedLabel1);
             this.Name = "ThemeSelection";
             this.Size = new System.Drawing.Size(640, 480);
+            this.Load += new System.EventHandler(this.ThemeSelection_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -100,6 +100,36 @@ namespace RestaurantSystemCore
             }
         }
 
+        public static string ShopThemeName
+        {
+            get
+            {
+
+                var result = col_configs.FindOne(x => x.Key == "theme");
+
+                if (result == null) return "";
+                return result.Value;
+            }
+            set
+            {
+                var result = col_configs.FindOne(x => x.Key == "theme");
+                if (result == null)
+                {
+                    col_configs.Insert(new ShopConfig
+                    {
+                        Key = "theme",
+                        Value = value
+                    });
+                }
+                else
+                {
+                    result.Value = value;
+                    col_configs.Update(result);
+                }
+            }
+        }
+
+
         public static string ShiftCb1StartTime
         {
             get

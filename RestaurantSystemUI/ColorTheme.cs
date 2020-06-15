@@ -16,18 +16,19 @@ namespace RestaurantSystemUI
         //26,188,156
 
 
-        public static string name = "預設主題（午夜藍）";
+        public string name = "午夜藍";
+        public string Name { get { return name;  } }
 
 
-        protected static Color mainAccent = Color.FromArgb(26, 188, 156);
-        protected static Color mainAcceintDerivative = Color.FromArgb(22, 160, 133);
+        protected Color mainAccent = Color.FromArgb(26, 188, 156);
+        protected Color mainAcceintDerivative = Color.FromArgb(22, 160, 133);
 
-        protected static Color secondary = Color.FromArgb(155, 89, 182);
-        protected static Color secondaryDerivative = Color.FromArgb(142, 68, 173);
+        protected Color secondary = Color.FromArgb(155, 89, 182);
+        protected Color secondaryDerivative = Color.FromArgb(142, 68, 173);
 
-        private static Color Normal = Color.FromArgb(46, 204, 113);
-        private static Color Dangerous = Color.FromArgb(231, 76, 60);
-        private static Color Warning = Color.FromArgb(230, 126, 34);
+        private Color normal = Color.FromArgb(46, 204, 113);
+        private Color dangerous = Color.FromArgb(231, 76, 60);
+        private Color warning = Color.FromArgb(230, 126, 34);
 
 
         public Color Contrast = Color.White;
@@ -66,36 +67,34 @@ namespace RestaurantSystemUI
 
         // menu-related
 
-        public Color MainMenuBar = mainAccent;        
-        public Color MainMenuItem = mainAccent;
-        public Color MainMenuItemMouseOver = Lighten(mainAccent, 20);
-        public Color MainMenuItemMouseDown = Darken(mainAccent, 20);
-        public Color MainMenuItemSelected = Lighten(mainAccent, 20);
-        public Color TitleBar = Darken(mainAcceintDerivative, 10);
+        public Color MainMenuBar { get { return mainAccent; } }
+        public Color MainMenuItem { get { return mainAccent; } }
+        public Color MainMenuItemMouseOver { get { return Lighten(mainAccent, 20); } }
+        public Color MainMenuItemMouseDown { get { return Darken(mainAccent, 20); } }
+        public Color MainMenuItemSelected { get { return Lighten(mainAccent, 20); } }
+        public Color TitleBar { get { return Darken(mainAcceintDerivative, 10); } }
 
         // content
 
-        public Color ContentPanel = mainAcceintDerivative;
+        public Color ContentPanel { get { return mainAcceintDerivative; } }
 
         // category item
-        public Color CategoryItem = mainAccent;
-        public Color CategoryItemDecoration = Lighten(mainAccent, 20);
-        public Color CategoryItemActive = secondary;
-        public Color categoryItemActiveDecoration = Lighten(secondary, 20);
+        public Color CategoryItem { get { return mainAccent; } }
+        public Color CategoryItemDecoration { get { return Lighten(mainAccent, 20); } }
+        public Color CategoryItemActive { get { return secondary; } }
+        public Color categoryItemActiveDecoration { get { return Lighten(secondary, 20); } }
 
         // order view title
-        public Color OrderViewTitle = secondary;
-        public Color OrderViewBottom = secondaryDerivative;
+        public Color OrderViewTitle { get { return secondary; } }
+        public Color OrderViewBottom { get { return secondaryDerivative; } }
 
-        public Color OrderViewItemEven = Darken(secondaryDerivative, 10);
-        public Color OrderViewItemOdd = Darken(secondaryDerivative, 20);
+        public Color OrderViewItemEven { get { return Darken(secondaryDerivative, 10); } }
+        public Color OrderViewItemOdd { get { return Darken(secondaryDerivative, 20); } }
 
         // food item
-        public Color FoodItem = Darken(mainAcceintDerivative, 20);
+        public Color FoodItem { get { return Darken(mainAcceintDerivative, 20); } }
         // food varient
-        public Color FoodItemVarient = Darken(mainAcceintDerivative, 40);
-
-        
+        public Color FoodItemVarient { get { return Darken(mainAcceintDerivative, 40); } }
 
         //public Color OrderViewTitle = 
 
@@ -103,23 +102,15 @@ namespace RestaurantSystemUI
 
         // flatTextbox
 
-        public Color Placeholder = Darken(Color.White, 50);
+        public Color Placeholder { get { return Darken(Color.White, 50); } }
 
         // shift
-        public Color LateCard = Warning;
-        public Color OnTimeCard = Normal;
-        public Color MissingCard = Dangerous;
+        public Color LateCard { get { return warning; } }
+        public Color OnTimeCard { get{ return normal; } }
+        public Color MissingCard { get{ return dangerous; } }
 
-        public Color TimeSlotBackground = Darken(mainAccent, 40);
-        public Color TimeSlotHover = mainAccent;
-
-
-
-
-
-
-
-
+        public Color TimeSlotBackground { get { return Darken(mainAccent, 40); } }
+        public Color TimeSlotHover { get { return mainAccent; } }
 
 
     }

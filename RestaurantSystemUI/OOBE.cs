@@ -113,6 +113,7 @@ namespace RestaurantSystemUI
             pages.Add(new BasicInfo());
             pages.Add(new ShiftConfiguration());
             pages.Add(new AdminPassword());
+            pages.Add(new ThemeSelection());
             pages.Add(new FinalInstructions());
             
 

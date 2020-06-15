@@ -382,7 +382,14 @@
       <DependentUpon>SignatureBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="ThemeProvider.cs" />
-    <Compile Include="themes\Wisteria.cs" />
+    <Compile Include="themes\GrayTheme.cs" />
+    <Compile Include="themes\RedTheme.cs" />
+    <Compile Include="themes\OrangeTheme.cs" />
+    <Compile Include="themes\YelloTheme.cs" />
+    <Compile Include="themes\GreenTheme.cs" />
+    <Compile Include="themes\BlueTheme.cs" />
+    <Compile Include="themes\EmraldTheme.cs" />
+    <Compile Include="themes\PurpleTheme.cs" />
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="BatchFoodImportTool.resx">
       <DependentUpon>BatchFoodImportTool.cs</DependentUpon>

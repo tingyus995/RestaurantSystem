@@ -1,6 +1,7 @@
 ﻿using FontAwesome.Sharp;
 using RestaurantSystemCore;
 using RestaurantSystemUI.modules;
+using RestaurantSystemUI.themes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,7 +46,8 @@ namespace RestaurantSystemUI
         private void MainWindow_Load(object sender, EventArgs e)
         {
 
-            theme = new ColorTheme();
+            //theme = new ColorTheme();
+            theme = ThemeProvider.GetTheme();            
 
             pnActiveIndicator.Visible = false;
 
