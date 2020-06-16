@@ -19,7 +19,7 @@ namespace RestaurantSystemUI
         const int longPressTime = 1000;
         System.Windows.Forms.Timer _Timer = new Timer() { Interval = longPressTime };
         //time
-        DateTime SystemClock = new DateTime(2020, 6, 9, 7, 30, 1);
+        DateTime SystemClock = DateTime.Now;
         DateTime CurrentDate;
         DateTime CurrentWeekStart;
         DateTime CurrentWeekEnd;
@@ -46,7 +46,7 @@ namespace RestaurantSystemUI
         {
             LoadingScreen loading = new LoadingScreen();
             Utility.ShowFullSpaceDialog(this, loading);
-            lbSystemTime.Text = SystemClock.ToLongDateString() + SystemClock.ToLongTimeString();
+            //lbSystemTime.Text = SystemClock.ToLongDateString() + SystemClock.ToLongTimeString();
             CurrentDate = DateTime.Now;
             CurrentWeekStart = CurrentDate.AddDays(-(int)CurrentDate.DayOfWeek);
             CurrentWeekEnd = CurrentWeekStart.AddDays(6);
@@ -231,7 +231,7 @@ namespace RestaurantSystemUI
 
         private void btnFormat_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("您確定要修改格式嗎？這將導致資料流失我們建議您先到報表列印歷史報表", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            if (MessageBox.Show("您確定要修改格式嗎？這將導致資料流失我們建議您先到營業報表功能列印歷史報表", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
                 ShopManager.ShiftCb1StartTime = comboBox1.SelectedItem.ToString();
                 ShopManager.ShiftCb2Interval = comboBox2.SelectedItem.ToString();
@@ -965,7 +965,7 @@ namespace RestaurantSystemUI
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("您確定要清除所有排班嗎?", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
+            if(MessageBox.Show("您確定要清除所有排班嗎? 這將導致資料流失我們建議您先到營業報表功能列印歷史報表", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation) == DialogResult.OK)
             {
                 deleteAllWorkingTimes();
             }
@@ -976,7 +976,7 @@ namespace RestaurantSystemUI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            SystemClock = DateTime.Now;
             lbSystemTime.Text = DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString();
             timer1.Start();
         }
