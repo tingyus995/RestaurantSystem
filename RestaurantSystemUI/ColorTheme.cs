@@ -20,8 +20,8 @@ namespace RestaurantSystemUI
         public string Name { get { return name;  } }
 
 
-        protected Color mainAccent = Color.FromArgb(26, 188, 156);
-        protected Color mainAcceintDerivative = Color.FromArgb(22, 160, 133);
+        protected Color mainAccent = Color.FromArgb(52, 73, 94);
+        protected Color mainAcceintDerivative = Color.FromArgb(44, 62, 80);
 
         protected Color secondary = Color.FromArgb(155, 89, 182);
         protected Color secondaryDerivative = Color.FromArgb(142, 68, 173);
