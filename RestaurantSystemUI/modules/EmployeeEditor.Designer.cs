@@ -128,7 +128,7 @@
             // iconPictureBox5
             // 
             this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.Buffer;
             this.iconPictureBox5.IconColor = System.Drawing.Color.White;
             this.iconPictureBox5.Location = new System.Drawing.Point(3, 4);
@@ -154,7 +154,7 @@
             // iconPictureBox3
             // 
             this.iconPictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.FolderOpen;
             this.iconPictureBox3.IconColor = System.Drawing.Color.White;
             this.iconPictureBox3.Location = new System.Drawing.Point(3, 4);
@@ -229,7 +229,7 @@
             // iconPictureBox6
             // 
             this.iconPictureBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.MobileAlt;
             this.iconPictureBox6.IconColor = System.Drawing.Color.White;
             this.iconPictureBox6.Location = new System.Drawing.Point(3, 4);
@@ -296,7 +296,7 @@
             // iconPictureBox4
             // 
             this.iconPictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.BirthdayCake;
             this.iconPictureBox4.IconColor = System.Drawing.Color.White;
             this.iconPictureBox4.Location = new System.Drawing.Point(3, 4);
@@ -378,7 +378,7 @@
             // iconPictureBox1
             // 
             this.iconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.FileSignature;
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.Location = new System.Drawing.Point(3, 7);
@@ -430,7 +430,7 @@
             // iconPictureBox2
             // 
             this.iconPictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.iconPictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
             this.iconPictureBox2.IconColor = System.Drawing.Color.White;
             this.iconPictureBox2.Location = new System.Drawing.Point(3, 9);

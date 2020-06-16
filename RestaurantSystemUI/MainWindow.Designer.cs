@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.pnMenuBar = new System.Windows.Forms.Panel();
+            this.pnActiveIndicator = new System.Windows.Forms.Panel();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.pnActiveIndicator = new System.Windows.Forms.Panel();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.ibOrder = new FontAwesome.Sharp.IconButton();
@@ -50,6 +49,7 @@
             this.pnContainer = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pnContentWrapper = new System.Windows.Forms.Panel();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.pnMenuBar.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,12 +62,12 @@
             // 
             this.pnMenuBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.pnMenuBar.Controls.Add(this.pnActiveIndicator);
+            this.pnMenuBar.Controls.Add(this.iconButton4);
             this.pnMenuBar.Controls.Add(this.iconButton9);
             this.pnMenuBar.Controls.Add(this.iconButton3);
             this.pnMenuBar.Controls.Add(this.iconButton7);
             this.pnMenuBar.Controls.Add(this.iconButton5);
             this.pnMenuBar.Controls.Add(this.iconButton6);
-            this.pnMenuBar.Controls.Add(this.iconButton4);
             this.pnMenuBar.Controls.Add(this.iconButton2);
             this.pnMenuBar.Controls.Add(this.iconButton1);
             this.pnMenuBar.Controls.Add(this.ibOrder);
@@ -77,6 +77,14 @@
             this.pnMenuBar.Name = "pnMenuBar";
             this.pnMenuBar.Size = new System.Drawing.Size(250, 562);
             this.pnMenuBar.TabIndex = 5;
+            // 
+            // pnActiveIndicator
+            // 
+            this.pnActiveIndicator.BackColor = System.Drawing.Color.White;
+            this.pnActiveIndicator.Location = new System.Drawing.Point(0, 511);
+            this.pnActiveIndicator.Name = "pnActiveIndicator";
+            this.pnActiveIndicator.Size = new System.Drawing.Size(10, 50);
+            this.pnActiveIndicator.TabIndex = 10;
             // 
             // iconButton9
             // 
@@ -93,8 +101,8 @@
             this.iconButton9.IconColor = System.Drawing.Color.White;
             this.iconButton9.IconSize = 32;
             this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton9.Location = new System.Drawing.Point(0, 466);
-            this.iconButton9.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconButton9.Location = new System.Drawing.Point(0, 416);
+            this.iconButton9.Margin = new System.Windows.Forms.Padding(6);
             this.iconButton9.Name = "iconButton9";
             this.iconButton9.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton9.Rotation = 0D;
@@ -120,8 +128,8 @@
             this.iconButton3.IconColor = System.Drawing.Color.White;
             this.iconButton3.IconSize = 32;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(0, 416);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconButton3.Location = new System.Drawing.Point(0, 366);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(6);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton3.Rotation = 0D;
@@ -147,8 +155,8 @@
             this.iconButton7.IconColor = System.Drawing.Color.White;
             this.iconButton7.IconSize = 32;
             this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(0, 366);
-            this.iconButton7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconButton7.Location = new System.Drawing.Point(0, 316);
+            this.iconButton7.Margin = new System.Windows.Forms.Padding(6);
             this.iconButton7.Name = "iconButton7";
             this.iconButton7.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton7.Rotation = 0D;
@@ -174,8 +182,8 @@
             this.iconButton5.IconColor = System.Drawing.Color.White;
             this.iconButton5.IconSize = 32;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 316);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconButton5.Location = new System.Drawing.Point(0, 266);
+            this.iconButton5.Margin = new System.Windows.Forms.Padding(6);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton5.Rotation = 0D;
@@ -185,14 +193,6 @@
             this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton5.UseVisualStyleBackColor = false;
-            // 
-            // pnActiveIndicator
-            // 
-            this.pnActiveIndicator.BackColor = System.Drawing.Color.White;
-            this.pnActiveIndicator.Location = new System.Drawing.Point(0, 511);
-            this.pnActiveIndicator.Name = "pnActiveIndicator";
-            this.pnActiveIndicator.Size = new System.Drawing.Size(10, 50);
-            this.pnActiveIndicator.TabIndex = 10;
             // 
             // iconButton6
             // 
@@ -209,8 +209,8 @@
             this.iconButton6.IconColor = System.Drawing.Color.White;
             this.iconButton6.IconSize = 32;
             this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.Location = new System.Drawing.Point(0, 266);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconButton6.Location = new System.Drawing.Point(0, 216);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(6);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton6.Rotation = 0D;
@@ -220,33 +220,6 @@
             this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton6.UseVisualStyleBackColor = false;
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.iconButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(93)))), ((int)(((byte)(119)))));
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.iconButton4.ForeColor = System.Drawing.Color.White;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Tools;
-            this.iconButton4.IconColor = System.Drawing.Color.White;
-            this.iconButton4.IconSize = 32;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 216);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(250, 50);
-            this.iconButton4.TabIndex = 11;
-            this.iconButton4.Text = "系統設定";
-            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = false;
             // 
             // iconButton2
             // 
@@ -264,7 +237,7 @@
             this.iconButton2.IconSize = 32;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton2.Location = new System.Drawing.Point(0, 166);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(6);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton2.Rotation = 0D;
@@ -291,7 +264,7 @@
             this.iconButton1.IconSize = 32;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton1.Location = new System.Drawing.Point(0, 116);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(6);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.iconButton1.Rotation = 0D;
@@ -318,7 +291,7 @@
             this.ibOrder.IconSize = 32;
             this.ibOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ibOrder.Location = new System.Drawing.Point(0, 66);
-            this.ibOrder.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ibOrder.Margin = new System.Windows.Forms.Padding(6);
             this.ibOrder.Name = "ibOrder";
             this.ibOrder.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.ibOrder.Rotation = 0D;
@@ -476,6 +449,33 @@
             this.pnContentWrapper.Size = new System.Drawing.Size(1099, 592);
             this.pnContentWrapper.TabIndex = 9;
             // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.iconButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(93)))), ((int)(((byte)(119)))));
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.iconButton4.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.iconButton4.ForeColor = System.Drawing.Color.White;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Tools;
+            this.iconButton4.IconColor = System.Drawing.Color.White;
+            this.iconButton4.IconSize = 32;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.Location = new System.Drawing.Point(0, 466);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(6);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.iconButton4.Rotation = 0D;
+            this.iconButton4.Size = new System.Drawing.Size(250, 50);
+            this.iconButton4.TabIndex = 19;
+            this.iconButton4.Text = "系統設定";
+            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton4.UseVisualStyleBackColor = false;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,7 +510,6 @@
         private System.Windows.Forms.Panel pnContainer;
         private System.Windows.Forms.Label lbShopName;
         private System.Windows.Forms.Label label2;
-        private FontAwesome.Sharp.IconButton iconButton4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private FontAwesome.Sharp.IconButton iconButton6;
         private FontAwesome.Sharp.IconButton ibtnCloseWindow;
@@ -522,5 +521,6 @@
         private FontAwesome.Sharp.IconButton iconButton5;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton9;
+        private FontAwesome.Sharp.IconButton iconButton4;
     }
 }

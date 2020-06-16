@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,9 @@ namespace RestaurantSystemUI
 {
     static class Program
     {
+
+        internal static MainWindow mainWindow = null;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -18,6 +22,8 @@ namespace RestaurantSystemUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            
+
             // check if data.db exists
 
             if (!File.Exists("data.db"))
@@ -26,7 +32,8 @@ namespace RestaurantSystemUI
             }
             else
             {
-                Application.Run(new MainWindow());
+                mainWindow = new MainWindow();
+                Application.Run(mainWindow);
             }
 
 

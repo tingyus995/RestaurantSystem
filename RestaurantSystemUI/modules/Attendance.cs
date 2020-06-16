@@ -192,6 +192,7 @@ namespace RestaurantSystemUI.modules
         {
             ColorTheme theme = ThemeProvider.GetTheme();
             BackColor = theme.ContentPanel;
+            panel1.BackColor = theme.ContentPanel;
         }
 
         public void BeforeMounted()

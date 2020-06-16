@@ -27,6 +27,8 @@ namespace RestaurantSystemUI
         public event EventHandler RemoveButtonClicked;
         public event EventHandler EditButtonClicked;
 
+        private FlatTextbox ftb;
+
         private bool editable = true;
         private ColorTheme theme = ThemeProvider.GetTheme();
 
@@ -132,65 +134,75 @@ namespace RestaurantSystemUI
 
         private void ibtnEdit_Click(object sender, EventArgs e)
         {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            if(ftb == null) { 
 
-            FlatTextbox ftb = new FlatTextbox();
-            ftb.textBox.Text = Category.Name;
-            Controls.Add(ftb);
-            ftb.Left = 10;
-            ftb.Top = 10;
+                ftb = new FlatTextbox();
+                ftb.textBox.Text = Category.Name;
+                ftb.BackColor = theme.ContentPanel;
+            
+                Controls.Add(ftb);
+                ftb.Left = 10;
+                ftb.Top = 10;
 
-            ftb.BringToFront();
+                ftb.BringToFront();
+            
+                
+                ftb.textBox.LostFocus += TextBox_LostFocus;
+            }
+        }
 
+        private void TextBox_LostFocus(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            HandleEditComplete(tb);
 
-            ftb.textBox.LostFocus += (object _s, EventArgs _e) =>
+        }
+
+        private void HandleEditComplete(TextBox tb)
+        {  
+
+            string text = tb.Text.Trim();
+
+            if (text.Length >= 0)
             {
 
-                TextBox tb = _s as TextBox;
-
-                string text = tb.Text.Trim();
-
-
-                if (text.Length >= 0)
+                switch (targetManager)
                 {
-
-                    switch (targetManager)
-                    {
-                        case "food":
-                            if (!FoodManager.EditCategory(Category.Name, text))
-                            {
-                                MessageBox.Show("同名稱的類別已經存在。", "改名失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                Category.Name = text;
-                                lbCatName.Text = Category.Name;
-                            }
-                            break;
-                        case "employee":
-                            if (!EmployeeManager.EditCategory(Category.Name, text))
-                            {
-                                MessageBox.Show("同名稱的身分組已經存在。", "改名失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                Category.Name = text;
-                                lbCatName.Text = Category.Name;
-                            }
-                            break;
-                        default:
-                            Console.Write("default");
-                            break;
-                    
-                    }
-                    
-
-
-
+                    case "food":
+                        if (!FoodManager.EditCategory(Category.Name, text))
+                        {
+                            MessageBox.Show("同名稱的類別已經存在。", "改名失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            Category.Name = text;
+                            lbCatName.Text = Category.Name;
+                        }
+                        
+                        break;
+                    case "employee":
+                        if (!EmployeeManager.EditCategory(Category.Name, text))
+                        {
+                            MessageBox.Show("同名稱的職位已經存在。", "改名失敗", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            Category.Name = text;
+                            lbCatName.Text = Category.Name;
+                        }
+                        break;
+                    default:
+                        Console.Write("default");
+                        break;
 
                 }
 
                 Controls.Remove(ftb);
-            };
+                ftb = null;
+
+            }
+            
         }
 
         private void handleClick()

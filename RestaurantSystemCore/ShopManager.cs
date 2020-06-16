@@ -100,6 +100,36 @@ namespace RestaurantSystemCore
             }
         }
 
+
+        public static string ShopAnnouncement
+        {
+            get
+            {
+
+                var result = col_configs.FindOne(x => x.Key == "announcement");
+
+                if (result == null) return "";
+                return result.Value;
+            }
+            set
+            {
+                var result = col_configs.FindOne(x => x.Key == "announcement");
+                if (result == null)
+                {
+                    col_configs.Insert(new ShopConfig
+                    {
+                        Key = "announcement",
+                        Value = value
+                    });
+                }
+                else
+                {
+                    result.Value = value;
+                    col_configs.Update(result);
+                }
+            }
+        }
+
         public static string ShopThemeName
         {
             get

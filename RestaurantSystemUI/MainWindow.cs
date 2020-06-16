@@ -21,6 +21,8 @@ namespace RestaurantSystemUI
         private List<Page> pages;
         public ColorTheme theme;
 
+        internal Display display = null;
+
         public MainWindow()
         {
             InitializeComponent();

@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnShowDisplay = new RestaurantSystemUI.controls.ThemedIconTextButton();
+            this.ftbAnnouncement = new RestaurantSystemUI.FlatTextbox();
+            this.btnSetText = new RestaurantSystemUI.controls.ThemedIconTextButton();
             this.SuspendLayout();
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(15, 15);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(124, 28);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // btnShowDisplay
             // 
@@ -56,7 +45,7 @@
             this.btnShowDisplay.IconChar = FontAwesome.Sharp.IconChar.Heart;
             this.btnShowDisplay.IconColor = System.Drawing.Color.White;
             this.btnShowDisplay.IconSize = 18;
-            this.btnShowDisplay.Location = new System.Drawing.Point(15, 49);
+            this.btnShowDisplay.Location = new System.Drawing.Point(15, 84);
             this.btnShowDisplay.MinimumSize = new System.Drawing.Size(10, 10);
             this.btnShowDisplay.Name = "btnShowDisplay";
             this.btnShowDisplay.Rotation = 0D;
@@ -67,23 +56,58 @@
             this.btnShowDisplay.UseVisualStyleBackColor = true;
             this.btnShowDisplay.Click += new System.EventHandler(this.btnShowDisplay_Click);
             // 
+            // ftbAnnouncement
+            // 
+            this.ftbAnnouncement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.ftbAnnouncement.IsPassword = false;
+            this.ftbAnnouncement.Location = new System.Drawing.Point(15, 22);
+            this.ftbAnnouncement.Name = "ftbAnnouncement";
+            this.ftbAnnouncement.PlaceHolder = "跑馬燈文字";
+            this.ftbAnnouncement.Size = new System.Drawing.Size(669, 45);
+            this.ftbAnnouncement.TabIndex = 2;
+            // 
+            // btnSetText
+            // 
+            this.btnSetText.AutoSize = true;
+            this.btnSetText.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSetText.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSetText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetText.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSetText.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold);
+            this.btnSetText.ForeColor = System.Drawing.Color.White;
+            this.btnSetText.IconChar = FontAwesome.Sharp.IconChar.Heart;
+            this.btnSetText.IconColor = System.Drawing.Color.White;
+            this.btnSetText.IconSize = 18;
+            this.btnSetText.Location = new System.Drawing.Point(690, 31);
+            this.btnSetText.MinimumSize = new System.Drawing.Size(10, 10);
+            this.btnSetText.Name = "btnSetText";
+            this.btnSetText.Rotation = 0D;
+            this.btnSetText.Size = new System.Drawing.Size(116, 36);
+            this.btnSetText.TabIndex = 3;
+            this.btnSetText.Text = "設定文字";
+            this.btnSetText.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSetText.UseVisualStyleBackColor = true;
+            this.btnSetText.Click += new System.EventHandler(this.btnSetText_Click);
+            // 
             // Status
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.Controls.Add(this.btnSetText);
+            this.Controls.Add(this.ftbAnnouncement);
             this.Controls.Add(this.btnShowDisplay);
-            this.Controls.Add(this.checkBox1);
             this.Name = "Status";
             this.Size = new System.Drawing.Size(809, 540);
+            this.Load += new System.EventHandler(this.Status_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox checkBox1;
         private controls.ThemedIconTextButton btnShowDisplay;
+        private FlatTextbox ftbAnnouncement;
+        private controls.ThemedIconTextButton btnSetText;
     }
 }

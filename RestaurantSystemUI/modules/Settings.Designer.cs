@@ -33,22 +33,22 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabChangeTheme = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnSave = new RestaurantSystemUI.controls.ThemedIconTextButton();
             this.btnBrowse = new RestaurantSystemUI.controls.ThemedIconTextButton();
             this.tbShopName = new RestaurantSystemUI.FlatTextbox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.vertPwd = new RestaurantSystemUI.FlatTextbox();
             this.btnChangePwd = new RestaurantSystemUI.controls.ThemedIconTextButton();
             this.oldPwd = new RestaurantSystemUI.FlatTextbox();
             this.newPwd = new RestaurantSystemUI.FlatTextbox();
-            this.tabChangeTheme = new System.Windows.Forms.TabPage();
             this.btnApplyTheme = new RestaurantSystemUI.controls.ThemedIconTextButton();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btnReset = new RestaurantSystemUI.controls.ThemedIconTextButton();
             this.btnAddFoods = new RestaurantSystemUI.controls.ThemedIconTextButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -110,6 +110,70 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "店家基本資訊";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.tabPage2.Controls.Add(this.vertPwd);
+            this.tabPage2.Controls.Add(this.btnChangePwd);
+            this.tabPage2.Controls.Add(this.oldPwd);
+            this.tabPage2.Controls.Add(this.newPwd);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(841, 469);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "密碼變更";
+            // 
+            // tabChangeTheme
+            // 
+            this.tabChangeTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.tabChangeTheme.Controls.Add(this.btnApplyTheme);
+            this.tabChangeTheme.Location = new System.Drawing.Point(4, 22);
+            this.tabChangeTheme.Name = "tabChangeTheme";
+            this.tabChangeTheme.Padding = new System.Windows.Forms.Padding(3);
+            this.tabChangeTheme.Size = new System.Drawing.Size(841, 469);
+            this.tabChangeTheme.TabIndex = 2;
+            this.tabChangeTheme.Text = "變更佈景主題";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.tabPage4.Controls.Add(this.btnReset);
+            this.tabPage4.Controls.Add(this.btnAddFoods);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(841, 469);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "其他系統管理工具";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(6, 495);
+            this.panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(843, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(6, 495);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(6, 489);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(837, 6);
+            this.panel3.TabIndex = 3;
+            // 
             // btnSave
             // 
             this.btnSave.AutoSize = true;
@@ -160,26 +224,12 @@
             // 
             this.tbShopName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
             this.tbShopName.IsPassword = false;
-            this.tbShopName.Location = new System.Drawing.Point(181, 83);
+            this.tbShopName.Location = new System.Drawing.Point(181, 66);
             this.tbShopName.Margin = new System.Windows.Forms.Padding(4);
             this.tbShopName.Name = "tbShopName";
             this.tbShopName.PlaceHolder = "店家名稱";
-            this.tbShopName.Size = new System.Drawing.Size(406, 35);
+            this.tbShopName.Size = new System.Drawing.Size(406, 52);
             this.tbShopName.TabIndex = 4;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.tabPage2.Controls.Add(this.vertPwd);
-            this.tabPage2.Controls.Add(this.btnChangePwd);
-            this.tabPage2.Controls.Add(this.oldPwd);
-            this.tabPage2.Controls.Add(this.newPwd);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(841, 469);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "密碼變更";
             // 
             // vertPwd
             // 
@@ -234,17 +284,6 @@
             this.newPwd.Size = new System.Drawing.Size(185, 45);
             this.newPwd.TabIndex = 10;
             // 
-            // tabChangeTheme
-            // 
-            this.tabChangeTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.tabChangeTheme.Controls.Add(this.btnApplyTheme);
-            this.tabChangeTheme.Location = new System.Drawing.Point(4, 22);
-            this.tabChangeTheme.Name = "tabChangeTheme";
-            this.tabChangeTheme.Padding = new System.Windows.Forms.Padding(3);
-            this.tabChangeTheme.Size = new System.Drawing.Size(841, 469);
-            this.tabChangeTheme.TabIndex = 2;
-            this.tabChangeTheme.Text = "變更佈景主題";
-            // 
             // btnApplyTheme
             // 
             this.btnApplyTheme.AutoSize = true;
@@ -267,18 +306,6 @@
             this.btnApplyTheme.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnApplyTheme.UseVisualStyleBackColor = true;
             this.btnApplyTheme.Click += new System.EventHandler(this.btnApplyTheme_Click);
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.tabPage4.Controls.Add(this.btnReset);
-            this.tabPage4.Controls.Add(this.btnAddFoods);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(841, 469);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "其他系統管理工具";
             // 
             // btnReset
             // 
@@ -325,33 +352,6 @@
             this.btnAddFoods.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAddFoods.UseVisualStyleBackColor = true;
             this.btnAddFoods.Click += new System.EventHandler(this.AddFoods_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(6, 495);
-            this.panel1.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(843, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(6, 495);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(6, 489);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(837, 6);
-            this.panel3.TabIndex = 3;
             // 
             // Settings
             // 

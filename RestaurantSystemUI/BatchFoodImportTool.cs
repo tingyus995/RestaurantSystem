@@ -146,7 +146,7 @@ namespace RestaurantSystemUI
                     BasePrice = int.Parse(flatTextbox1.textBox.Text),
                     Image = Utility.ImageToBytes(img),
                     Varients = new Varient[] { new Varient { Name = "中", delta = 0 } },
-                    Categories = new string[] { "自動匯入的食物" }
+                    Categories = new string[] { "匯入的食物" }
                 };
 
 

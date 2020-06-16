@@ -14,6 +14,7 @@ using RestaurantSystemUI.modules;
 using RestaurantSystemUI.controls;
 using System.Drawing.Text;
 
+
 namespace RestaurantSystemUI
 {
     public partial class AddOrder : UserControl, IThemeable
@@ -62,6 +63,27 @@ namespace RestaurantSystemUI
             };
 
             orderPreview1.SetNextButton("新增訂單", IconChar.Plus, Color.DarkCyan);
+
+            Timer updateDisplay = new Timer()
+            {
+                Interval = 1000,
+                Enabled = true
+            };
+
+            updateDisplay.Tick += UpdateDisplay_Tick;
+        }
+
+        private void UpdateDisplay_Tick(object sender, EventArgs e)
+        {
+            MainWindow win = Utility.GetMainWindow();
+
+            if(win.display != null)
+            {
+
+                Bitmap snapshot = new Bitmap(orderPreview1.Width, orderPreview1.Height);
+                orderPreview1.DrawToBitmap(snapshot, new Rectangle(0, 0, orderPreview1.Width, orderPreview1.Height));
+                win.display.pbOrderPreview.Image = snapshot;
+            }
         }
 
         private void loadCategories()

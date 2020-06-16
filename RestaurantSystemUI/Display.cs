@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RestaurantSystemCore;
+using RestaurantSystemCore.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +13,12 @@ using System.Windows.Forms;
 
 namespace RestaurantSystemUI
 {
-    public partial class Display : Form
+    public partial class Display : Form, IThemeable
     {
         private int speed = 3;
+        private int currentIndex = 0;
+
+        private List<string> readys = new List<string>();
         public Display()
         {
             InitializeComponent();
@@ -29,22 +34,56 @@ namespace RestaurantSystemUI
                     lbAnnouncement.Left = 0;
                 }
             }
+            else
+            {
+                lbAnnouncement.Left = 0;
+            }
+        }
+
+        private void UpdateReadyList()
+        {
+            readys.Clear();
+
+            Order[] orders = OrderManager.GetAllOrders();
+            foreach(Order ord in orders)
+            {
+                if(ord.Status == Order.OrderStatus.Ready)
+                {
+                    readys.Add(ord.No.ToString());
+                }
+            }
         }
 
         private void Display_Load(object sender, EventArgs e)
         {
-
+            ApplyTheme();
+            lbAnnouncement.Text = ShopManager.ShopAnnouncement;
         }
 
-        private void tmQueueScroll_Tick(object sender, EventArgs e)
+        private void tmShowReadyNum_Tick(object sender, EventArgs e)
         {
+            UpdateReadyList();
 
-            Control lastElement = fpnQueuingList.Controls[fpnQueuingList.Controls.Count - 1];
-
-            //if (lastElement.Right >= flowLayoutPanel1.Width)
+            if (readys.Count > 0)
             {
-                //fpnQueuingList.HorizontalScroll.Value += 1;
+                lbReadyNo.Text = readys[currentIndex];
+                Console.WriteLine("Index: = " + currentIndex);
+                currentIndex++;
+                if(readys.Count == currentIndex)
+                {
+                    currentIndex = 0;
+                }
             }
+            else
+            {
+                lbReadyNo.Text = "";
+            }
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
         }
     }
 }

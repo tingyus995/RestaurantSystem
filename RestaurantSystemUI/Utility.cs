@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -137,6 +138,11 @@ namespace RestaurantSystemUI
 
                 return sb.ToString();
             }
+        }
+
+        public static MainWindow GetMainWindow()
+        {
+            return Program.mainWindow;
         }
     }
 }
