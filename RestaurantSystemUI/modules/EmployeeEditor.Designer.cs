@@ -62,6 +62,7 @@
             this.ibtnBack = new FontAwesome.Sharp.IconButton();
             this.pbEmployeeImage = new System.Windows.Forms.PictureBox();
             this.pnTopHalf = new System.Windows.Forms.Panel();
+            this.themedLabel3 = new RestaurantSystemUI.controls.ThemedLabel();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
@@ -142,13 +143,14 @@
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.iconPictureBox3, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(139, 41);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(217, 41);
             this.tableLayoutPanel6.TabIndex = 21;
             // 
             // iconPictureBox3
@@ -173,13 +175,13 @@
             this.tlpBottomHalf.Controls.Add(this.tableLayoutPanel4, 1, 0);
             this.tlpBottomHalf.Controls.Add(this.tableLayoutPanel6, 0, 0);
             this.tlpBottomHalf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpBottomHalf.Location = new System.Drawing.Point(0, 169);
+            this.tlpBottomHalf.Location = new System.Drawing.Point(0, 213);
             this.tlpBottomHalf.Name = "tlpBottomHalf";
             this.tlpBottomHalf.RowCount = 3;
             this.tlpBottomHalf.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpBottomHalf.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpBottomHalf.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 14F));
-            this.tlpBottomHalf.Size = new System.Drawing.Size(1138, 553);
+            this.tlpBottomHalf.Size = new System.Drawing.Size(1138, 509);
             this.tlpBottomHalf.TabIndex = 24;
             // 
             // tagInput1
@@ -469,7 +471,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft JhengHei", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(158, 123);
+            this.btnSave.Location = new System.Drawing.Point(163, 172);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(125, 35);
             this.btnSave.TabIndex = 11;
@@ -508,6 +510,7 @@
             // 
             // pnTopHalf
             // 
+            this.pnTopHalf.Controls.Add(this.themedLabel3);
             this.pnTopHalf.Controls.Add(this.pbEmployeeImage);
             this.pnTopHalf.Controls.Add(this.ibtnBack);
             this.pnTopHalf.Controls.Add(this.btnSave);
@@ -516,8 +519,21 @@
             this.pnTopHalf.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTopHalf.Location = new System.Drawing.Point(0, 0);
             this.pnTopHalf.Name = "pnTopHalf";
-            this.pnTopHalf.Size = new System.Drawing.Size(1138, 169);
+            this.pnTopHalf.Size = new System.Drawing.Size(1138, 213);
             this.pnTopHalf.TabIndex = 23;
+            // 
+            // themedLabel3
+            // 
+            this.themedLabel3.AutoSize = true;
+            this.themedLabel3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.themedLabel3.ForeColor = System.Drawing.Color.White;
+            this.themedLabel3.Location = new System.Drawing.Point(158, 132);
+            this.themedLabel3.MaximumSize = new System.Drawing.Size(900, 0);
+            this.themedLabel3.Name = "themedLabel3";
+            this.themedLabel3.Size = new System.Drawing.Size(642, 28);
+            this.themedLabel3.TabIndex = 21;
+            this.themedLabel3.Text = "Pro TIp: 人員的職位增加 「clerk」，可以讓員工有排班的功能！";
+            this.themedLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EmployeeEditor
             // 
@@ -554,6 +570,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEmployeeImage)).EndInit();
             this.pnTopHalf.ResumeLayout(false);
+            this.pnTopHalf.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -593,5 +610,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Panel panel2;
         private FlatTextbox ftbSalary;
+        private controls.ThemedLabel themedLabel3;
     }
 }

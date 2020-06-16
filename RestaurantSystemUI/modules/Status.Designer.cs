@@ -49,9 +49,9 @@
             this.btnShowDisplay.MinimumSize = new System.Drawing.Size(10, 10);
             this.btnShowDisplay.Name = "btnShowDisplay";
             this.btnShowDisplay.Rotation = 0D;
-            this.btnShowDisplay.Size = new System.Drawing.Size(154, 36);
+            this.btnShowDisplay.Size = new System.Drawing.Size(173, 36);
             this.btnShowDisplay.TabIndex = 1;
-            this.btnShowDisplay.Text = "開啟第二螢幕";
+            this.btnShowDisplay.Text = "開啟店家外螢幕";
             this.btnShowDisplay.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnShowDisplay.UseVisualStyleBackColor = true;
             this.btnShowDisplay.Click += new System.EventHandler(this.btnShowDisplay_Click);

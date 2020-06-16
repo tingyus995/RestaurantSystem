@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace RestaurantSystemUI
 {
-    public partial class SignatureBoard : Form
+    public partial class SignatureBoard : Form, IThemeable
     {
         public SignatureBoard()
         {
@@ -71,6 +71,8 @@ namespace RestaurantSystemUI
 
             PenColor = Color.Black;
             Submit.Visible = false;
+
+            ApplyTheme();
             
         }
 
@@ -178,6 +180,12 @@ namespace RestaurantSystemUI
             length = 0;            
             //g.FillRectangle(Brushes.White, 0, 0, 667, 379);
             canvas.Image = bmp;
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
         }
     }
 }

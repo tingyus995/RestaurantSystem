@@ -494,8 +494,8 @@ namespace RestaurantSystemUI
             Console.WriteLine(CurrentWeekLabel.Text);
             //employee
 
-            //employeeList = EmployeeManager.GetEmployees("clerk");
-            employeeList = EmployeeManager.GetEmployees();
+            employeeList = EmployeeManager.GetEmployees("clerk");
+            //employeeList = EmployeeManager.GetEmployees();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel1.Controls.Clear();
             foreach (Employee employee in employeeList)

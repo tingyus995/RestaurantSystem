@@ -45,7 +45,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = global::RestaurantSystemUI.Properties.Resources.DefaultEmployeeImage;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 147);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -90,6 +90,7 @@
             // 
             // btnNext
             // 
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNext.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnNext.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.White;
@@ -101,8 +102,8 @@
             this.btnNext.IconChar = FontAwesome.Sharp.IconChar.Heart;
             this.btnNext.IconColor = System.Drawing.Color.White;
             this.btnNext.IconSize = 30;
-            this.btnNext.Location = new System.Drawing.Point(217, 12);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNext.Location = new System.Drawing.Point(329, 12);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
             this.btnNext.MinimumSize = new System.Drawing.Size(7, 7);
             this.btnNext.Name = "btnNext";
             this.btnNext.Rotation = 0D;
@@ -115,7 +116,7 @@
             // 
             // iconPictureBox5
             // 
-            this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconPictureBox5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.iconPictureBox5.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.UserCheck;
             this.iconPictureBox5.IconColor = System.Drawing.Color.White;
@@ -127,7 +128,7 @@
             // 
             // iconPictureBox1
             // 
-            this.iconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.iconPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.iconPictureBox1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
@@ -149,9 +150,9 @@
             this.Controls.Add(this.lbActualEnd);
             this.Controls.Add(this.lbActualStart);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeCard";
-            this.Size = new System.Drawing.Size(356, 147);
+            this.Size = new System.Drawing.Size(468, 147);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();

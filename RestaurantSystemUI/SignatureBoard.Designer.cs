@@ -43,11 +43,12 @@
             // 
             // Thickness
             // 
-            this.Thickness.Location = new System.Drawing.Point(174, 22);
+            this.Thickness.Location = new System.Drawing.Point(116, 16);
+            this.Thickness.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Thickness.Maximum = 20;
             this.Thickness.Minimum = 1;
             this.Thickness.Name = "Thickness";
-            this.Thickness.Size = new System.Drawing.Size(316, 69);
+            this.Thickness.Size = new System.Drawing.Size(211, 45);
             this.Thickness.TabIndex = 2;
             this.Thickness.Value = 1;
             this.Thickness.Scroll += new System.EventHandler(this.Thickness_Scroll);
@@ -55,9 +56,10 @@
             // canvas
             // 
             this.canvas.BackColor = System.Drawing.SystemColors.Window;
-            this.canvas.Location = new System.Drawing.Point(54, 90);
+            this.canvas.Location = new System.Drawing.Point(36, 65);
+            this.canvas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.canvas.Name = "canvas";
-            this.canvas.Size = new System.Drawing.Size(667, 379);
+            this.canvas.Size = new System.Drawing.Size(445, 274);
             this.canvas.TabIndex = 3;
             this.canvas.TabStop = false;
             this.canvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas_MouseDown);
@@ -67,9 +69,10 @@
             // 
             // CurrentColor
             // 
-            this.CurrentColor.Location = new System.Drawing.Point(649, 12);
+            this.CurrentColor.Location = new System.Drawing.Point(435, 9);
+            this.CurrentColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CurrentColor.Name = "CurrentColor";
-            this.CurrentColor.Size = new System.Drawing.Size(139, 72);
+            this.CurrentColor.Size = new System.Drawing.Size(68, 52);
             this.CurrentColor.TabIndex = 1;
             this.CurrentColor.TabStop = false;
             this.CurrentColor.Click += new System.EventHandler(this.CurrentColor_Click);
@@ -79,9 +82,10 @@
             this.themedLabel2.AutoSize = true;
             this.themedLabel2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold);
             this.themedLabel2.ForeColor = System.Drawing.Color.White;
-            this.themedLabel2.Location = new System.Drawing.Point(12, 30);
+            this.themedLabel2.Location = new System.Drawing.Point(11, 16);
+            this.themedLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.themedLabel2.Name = "themedLabel2";
-            this.themedLabel2.Size = new System.Drawing.Size(146, 41);
+            this.themedLabel2.Size = new System.Drawing.Size(100, 28);
             this.themedLabel2.TabIndex = 5;
             this.themedLabel2.Text = "筆的粗細";
             // 
@@ -90,9 +94,10 @@
             this.themedLabel1.AutoSize = true;
             this.themedLabel1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16F, System.Drawing.FontStyle.Bold);
             this.themedLabel1.ForeColor = System.Drawing.Color.White;
-            this.themedLabel1.Location = new System.Drawing.Point(497, 22);
+            this.themedLabel1.Location = new System.Drawing.Point(331, 16);
+            this.themedLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.themedLabel1.Name = "themedLabel1";
-            this.themedLabel1.Size = new System.Drawing.Size(146, 41);
+            this.themedLabel1.Size = new System.Drawing.Size(100, 28);
             this.themedLabel1.TabIndex = 6;
             this.themedLabel1.Text = "筆的顏色";
             // 
@@ -105,14 +110,15 @@
             this.Submit.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.Submit.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold);
             this.Submit.ForeColor = System.Drawing.Color.White;
-            this.Submit.IconChar = FontAwesome.Sharp.IconChar.Heart;
+            this.Submit.IconChar = FontAwesome.Sharp.IconChar.Check;
             this.Submit.IconColor = System.Drawing.Color.White;
             this.Submit.IconSize = 18;
-            this.Submit.Location = new System.Drawing.Point(447, 478);
-            this.Submit.MinimumSize = new System.Drawing.Size(10, 10);
+            this.Submit.Location = new System.Drawing.Point(298, 345);
+            this.Submit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Submit.MinimumSize = new System.Drawing.Size(7, 7);
             this.Submit.Name = "Submit";
             this.Submit.Rotation = 0D;
-            this.Submit.Size = new System.Drawing.Size(101, 48);
+            this.Submit.Size = new System.Drawing.Size(78, 36);
             this.Submit.TabIndex = 7;
             this.Submit.Text = "確定";
             this.Submit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -128,14 +134,15 @@
             this.Clear.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.Clear.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold);
             this.Clear.ForeColor = System.Drawing.Color.White;
-            this.Clear.IconChar = FontAwesome.Sharp.IconChar.Heart;
+            this.Clear.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.Clear.IconColor = System.Drawing.Color.White;
             this.Clear.IconSize = 18;
-            this.Clear.Location = new System.Drawing.Point(257, 478);
-            this.Clear.MinimumSize = new System.Drawing.Size(10, 10);
+            this.Clear.Location = new System.Drawing.Point(172, 345);
+            this.Clear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Clear.MinimumSize = new System.Drawing.Size(7, 7);
             this.Clear.Name = "Clear";
             this.Clear.Rotation = 0D;
-            this.Clear.Size = new System.Drawing.Size(101, 48);
+            this.Clear.Size = new System.Drawing.Size(78, 36);
             this.Clear.TabIndex = 8;
             this.Clear.Text = "清除";
             this.Clear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -144,10 +151,10 @@
             // 
             // SignatureBoard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(800, 538);
+            this.ClientSize = new System.Drawing.Size(533, 389);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.themedLabel1);
@@ -155,6 +162,7 @@
             this.Controls.Add(this.canvas);
             this.Controls.Add(this.Thickness);
             this.Controls.Add(this.CurrentColor);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SignatureBoard";
             this.Text = "SignatureBoard";
             this.Load += new System.EventHandler(this.SignatureBoard_Load);

@@ -31,6 +31,7 @@
             this.themedLabel2 = new RestaurantSystemUI.controls.ThemedLabel();
             this.themedLabel1 = new RestaurantSystemUI.controls.ThemedLabel();
             this.btnStartSystem = new RestaurantSystemUI.controls.ThemedIconTextButton();
+            this.themedLabel3 = new RestaurantSystemUI.controls.ThemedLabel();
             this.SuspendLayout();
             // 
             // themedLabel2
@@ -69,7 +70,7 @@
             this.btnStartSystem.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
             this.btnStartSystem.IconColor = System.Drawing.Color.White;
             this.btnStartSystem.IconSize = 18;
-            this.btnStartSystem.Location = new System.Drawing.Point(256, 264);
+            this.btnStartSystem.Location = new System.Drawing.Point(256, 294);
             this.btnStartSystem.MinimumSize = new System.Drawing.Size(10, 10);
             this.btnStartSystem.Name = "btnStartSystem";
             this.btnStartSystem.Rotation = 0D;
@@ -80,11 +81,25 @@
             this.btnStartSystem.UseVisualStyleBackColor = true;
             this.btnStartSystem.Click += new System.EventHandler(this.btnStartSystem_Click);
             // 
+            // themedLabel3
+            // 
+            this.themedLabel3.AutoSize = true;
+            this.themedLabel3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.themedLabel3.ForeColor = System.Drawing.Color.White;
+            this.themedLabel3.Location = new System.Drawing.Point(29, 188);
+            this.themedLabel3.MaximumSize = new System.Drawing.Size(600, 0);
+            this.themedLabel3.Name = "themedLabel3";
+            this.themedLabel3.Size = new System.Drawing.Size(597, 70);
+            this.themedLabel3.TabIndex = 11;
+            this.themedLabel3.Text = "人員的職位增加 「clerk」，可以讓員工有排班的功能！";
+            this.themedLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FinalInstructions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.Controls.Add(this.themedLabel3);
             this.Controls.Add(this.btnStartSystem);
             this.Controls.Add(this.themedLabel2);
             this.Controls.Add(this.themedLabel1);
@@ -100,5 +115,6 @@
         private controls.ThemedLabel themedLabel2;
         private controls.ThemedLabel themedLabel1;
         private controls.ThemedIconTextButton btnStartSystem;
+        private controls.ThemedLabel themedLabel3;
     }
 }
