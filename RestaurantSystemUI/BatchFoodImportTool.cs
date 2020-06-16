@@ -13,7 +13,7 @@ using RestaurantSystemCore;
 
 namespace RestaurantSystemUI
 {
-    public partial class BatchFoodImportTool : Form
+    public partial class BatchFoodImportTool : Form, IThemeable
     {
         public BatchFoodImportTool()
         {
@@ -123,6 +123,8 @@ namespace RestaurantSystemUI
             bgWorker.ProgressChanged += BgWorker_ProgressChanged;
             bgWorker.RunWorkerCompleted += BgWorker_RunWorkerCompleted;
             bgWorker.DoWork += BgWorker_DoWork;
+
+            ApplyTheme();
         }
 
         private void BgWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -169,6 +171,13 @@ namespace RestaurantSystemUI
             Console.WriteLine(e.ProgressPercentage);
             progressBar1.Value = e.ProgressPercentage;
             textBox1.AppendText(e.UserState as string);
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+            flatTextbox1.BackColor = theme.ContentPanel;
         }
     }
 }

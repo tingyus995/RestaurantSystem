@@ -56,6 +56,7 @@ namespace RestaurantSystemUI
             setting_page.ShopInfoUpdated += (Object _sender, EventArgs _e) =>
             {
                 lbShopName.Text = ShopManager.ShopName;
+                pictureBox1.Image = Utility.Base64ToImage(ShopManager.ShopLogo);
             };
 
             pages = new List<Page>() {
@@ -83,9 +84,6 @@ namespace RestaurantSystemUI
             }
 
             ApplyTheme(theme);
-
-            Form OOBE = new OOBE();
-            OOBE.Show();
 
         }
         #region borderless window
@@ -237,8 +235,10 @@ namespace RestaurantSystemUI
                                 break;
                             }
                         }
-                        if (!hasLockScreen) { 
-                            Utility.ShowFullSpaceDialog(p.page, new LockScreen());
+                        if (!hasLockScreen) {
+                            LockScreen ls = new LockScreen();
+                            ls.ApplyTheme();
+                            Utility.ShowFullSpaceDialog(p.page, ls);
                         }
                     }
 

@@ -16,7 +16,7 @@ using System.IO;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class Report : UserControl
+    public partial class Report : UserControl, IThemeable
     {
         DateTime CurrentDate;
         Dictionary<string, int> myDic = new Dictionary<string, int>();
@@ -404,6 +404,7 @@ namespace RestaurantSystemUI.modules
             webBrowser1.DocumentText = fullHTML;
 
             btnSave.Visible = true;
+            webBrowser1.Visible = true;
         }
 
 
@@ -791,7 +792,16 @@ namespace RestaurantSystemUI.modules
 
             webBrowser1.DocumentText = fullHTML;
             btnSave.Visible = true;
+            webBrowser1.Visible = true;
 
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            
+            BackColor = theme.ContentPanel;
+            panel1.BackColor = theme.ContentPanel;
         }
     }
 

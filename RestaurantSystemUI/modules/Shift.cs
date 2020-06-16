@@ -493,8 +493,9 @@ namespace RestaurantSystemUI
             CurrentWeekLabel.Text = CurrentWeekStart.ToLongDateString()+"~"+ CurrentWeekEnd.ToLongDateString();
             Console.WriteLine(CurrentWeekLabel.Text);
             //employee
-            
-            employeeList = EmployeeManager.GetEmployees("clerk");
+
+            //employeeList = EmployeeManager.GetEmployees("clerk");
+            employeeList = EmployeeManager.GetEmployees();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel1.Controls.Clear();
             foreach (Employee employee in employeeList)
@@ -990,6 +991,8 @@ namespace RestaurantSystemUI
         {
             ColorTheme theme = ThemeProvider.GetTheme();
             BackColor = theme.ContentPanel;
+
+            flowLayoutPanel1.BackColor = theme.ContentPanel;
 
            // flatTextbox1.BackColor = BackColor;
             //flatTextbox2.BackColor = BackColor;

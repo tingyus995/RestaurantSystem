@@ -42,6 +42,8 @@ namespace RestaurantSystemUI.OOBE_pages
             themeSelector1 = new ThemeSelector();
             themeSelector1.Location = new System.Drawing.Point(62, 99);
             themeSelector1.Size = new System.Drawing.Size(508, 320);
+
+            Controls.Add(themeSelector1);
         }
     }
 }

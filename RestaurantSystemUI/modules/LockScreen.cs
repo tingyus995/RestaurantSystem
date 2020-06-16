@@ -11,11 +11,18 @@ using RestaurantSystemCore;
 
 namespace RestaurantSystemUI.modules
 {
-    public partial class LockScreen : UserControl
+    public partial class LockScreen : UserControl, IThemeable
     {
         public LockScreen()
         {
             InitializeComponent();
+        }
+
+        public void ApplyTheme()
+        {
+            ColorTheme theme = ThemeProvider.GetTheme();
+            BackColor = theme.ContentPanel;
+            flatTextbox1.BackColor = theme.ContentPanel;
         }
 
         private void btnUnlock_Click(object sender, EventArgs e)

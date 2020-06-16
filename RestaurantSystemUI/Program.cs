@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,20 @@ namespace RestaurantSystemUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+
+            // check if data.db exists
+
+            if (!File.Exists("data.db"))
+            {
+                Application.Run(new OOBE());
+            }
+            else
+            {
+                Application.Run(new MainWindow());
+            }
+
+
+
         }
     }
 }

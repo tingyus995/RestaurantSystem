@@ -112,6 +112,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfirmWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmWindow.Designer.cs">
+      <DependentUpon>ConfirmWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="controls\TagInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -393,6 +399,9 @@
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="BatchFoodImportTool.resx">
       <DependentUpon>BatchFoodImportTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmWindow.resx">
+      <DependentUpon>ConfirmWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="controls\TagInput.resx">
       <DependentUpon>TagInput.cs</DependentUpon>

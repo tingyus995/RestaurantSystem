@@ -63,7 +63,7 @@
             this.btnBrowse.Rotation = 0D;
             this.btnBrowse.Size = new System.Drawing.Size(116, 36);
             this.btnBrowse.TabIndex = 7;
-            this.btnBrowse.Text = "瀏覽圖片";
+            this.btnBrowse.Text = "選擇圖片";
             this.btnBrowse.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
@@ -71,6 +71,7 @@
             // flatTextbox1
             // 
             this.flatTextbox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.flatTextbox1.IsPassword = false;
             this.flatTextbox1.Location = new System.Drawing.Point(161, 165);
             this.flatTextbox1.Name = "flatTextbox1";
             this.flatTextbox1.PlaceHolder = "店家名稱";
