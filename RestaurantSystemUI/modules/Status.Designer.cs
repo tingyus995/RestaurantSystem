@@ -42,7 +42,7 @@
             this.btnShowDisplay.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
             this.btnShowDisplay.Font = new System.Drawing.Font("Microsoft JhengHei UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnShowDisplay.ForeColor = System.Drawing.Color.White;
-            this.btnShowDisplay.IconChar = FontAwesome.Sharp.IconChar.Heart;
+            this.btnShowDisplay.IconChar = FontAwesome.Sharp.IconChar.Tv;
             this.btnShowDisplay.IconColor = System.Drawing.Color.White;
             this.btnShowDisplay.IconSize = 18;
             this.btnShowDisplay.Location = new System.Drawing.Point(15, 84);
